@@ -1,0 +1,246 @@
+@import '../../style/variables.scss';
+
+.wrapper {
+  padding: 30px 0;
+  background-color: $background-color;
+  .inner {
+    margin: 0 20px;
+    .heading {
+      font-size: 3.4rem;
+      color: $jetBlack-color;
+    }
+    .container {
+      margin-top: 20px;
+      .product {
+        padding: 20px;
+        margin-bottom: 20px;
+        background-color: $white-color;
+        .product__flex {
+          @include d-flex($f-start, $s-between);
+          gap: 20px;
+          .flex__quantity {
+            @include flex-direction();
+            flex: 6;
+            gap: 10px;
+            .flex__info {
+              @include d-flex($f-start, $f-start);
+              gap: 10px;
+              .img {
+                width: 80px;
+                height: 80px;
+                border: 1px solid #e1e1e1;
+              }
+              .data {
+                @include flex-direction();
+                gap: 5px;
+                .name,
+                .quantity {
+                  font-size: 1.6rem;
+                  font-weight: 500;
+                  color: $black-color;
+                }
+                .name {
+                  max-width: 700px;
+                  overflow: hidden;
+                  display: -webkit-box;
+                  text-overflow: ellipsis;
+                  -webkit-box-orient: vertical;
+                  -webkit-line-clamp: 1;
+                }
+
+                .type {
+                  color: $light-color;
+                  font-size: 1.4rem;
+                }
+              }
+            }
+            .price {
+              margin-top: 20px;
+              @include flex-direction();
+              gap: 10px;
+              .price__product {
+                font-size: 1.6rem;
+                font-weight: 500;
+                color: $light-color;
+              }
+              .price__pay {
+                font-size: 2rem;
+                font-weight: 600;
+                color: $primary-color;
+              }
+            }
+          }
+
+          .flex__status {
+            @include flex-direction();
+
+            gap: 5px;
+            .status__delivery {
+              text-transform: uppercase;
+              color: $firebrick-red-color;
+              font-weight: 700;
+              font-size: 1.6rem;
+            }
+            .status__price {
+              font-size: 1.6rem;
+              color: $primary-color;
+            }
+            .status__contact {
+              padding: 3px 6px;
+              background-color: $primary-color;
+              font-size: 1.4rem;
+              color: $white-color;
+              border-radius: 4px;
+              cursor: pointer;
+            }
+            .icon {
+              margin-right: 6px;
+            }
+          }
+          .box {
+            .address,
+            .time {
+              font-size: 1.5rem;
+              font-weight: 400;
+              color: $jetBlack-color;
+            }
+            .address {
+              color: $firebrick-red-color;
+            }
+          }
+        }
+        .detail__info {
+          .address,
+          .transport {
+            margin: 20px 0;
+            .title {
+              @include flex-alight($center);
+              gap: 10px;
+              margin-bottom: 10px;
+              .icon,
+              .text {
+                font-size: 2rem;
+                color: $primary-color;
+              }
+            }
+            .value {
+              font-size: 1.6rem;
+              color: $jetBlack-color;
+              margin-left: 28px;
+              .button__onchange {
+                margin-left: 10px;
+                padding: 4px;
+                color: $lightBlue-color;
+                background-color: $white-color;
+                cursor: pointer;
+                &:active {
+                  filter: brightness(0.95);
+                }
+              }
+            }
+          }
+          .transport {
+            .value {
+              @include d-flex($center, $f-start);
+              gap: 30px;
+              .price {
+                font-size: 1.8rem;
+                font-weight: 600;
+                color: $firebrick-red-color;
+              }
+            }
+          }
+        }
+
+        .payment {
+          @include d-flex($f-start, $s-between);
+          gap: 20px;
+          .payment__method {
+            margin: 20px 0;
+            .title {
+              @include flex-alight($center);
+              gap: 10px;
+              margin-bottom: 10px;
+              font-size: 2rem;
+              .icon,
+              .text {
+                font-size: 2rem;
+                color: $primary-color;
+              }
+            }
+            .value {
+              font-size: 1.6rem;
+              color: $jetBlack-color;
+              margin-left: 28px;
+              .button__onchange {
+                margin-left: 10px;
+                padding: 4px;
+                color: $lightBlue-color;
+                background-color: $white-color;
+                cursor: pointer;
+                &:active {
+                  filter: brightness(0.95);
+                }
+              }
+            }
+          }
+          .flex {
+            @include flex-direction();
+            gap: 20px;
+            .value {
+              @include d-flex($center, $s-between);
+              gap: 30px;
+              .name {
+                font-size: 1.6rem;
+                color: $light-color;
+              }
+              .price {
+                font-weight: 2rem;
+                font-weight: 600;
+                color: $primary-color;
+              }
+              .deduction {
+                @include flex-alight($center);
+                .deduction__value {
+                  position: relative;
+                  font-size: 1.4rem;
+                  padding: 2px 4px;
+                  margin: 4px;
+                  background-color: $firebrick-red-color;
+                  color: $white-color;
+                  .left {
+                    position: absolute;
+                    top: 0;
+                    left: -2px;
+                    height: 100%;
+                    width: 4px;
+                    background: radial-gradient(
+                      circle at 0 0.375rem,
+                      transparent 0,
+                      rgba(0, 0, 0, 0.03) 0.1875rem,
+                      $firebrick-red-color 0,
+                      $firebrick-red-color 0.25rem,
+                      $firebrick-red-color 0
+                    );
+                    background-size: 0.25rem 0.625rem;
+                    background-repeat: repeat-y;
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        .product__flex--line {
+          margin-top: 20px;
+          border-top: 1px solid $lightBlue-color;
+          padding-top: 20px;
+        }
+      }
+      .button {
+        @include flex-justify($f-end);
+        margin-top: 30px;
+      }
+    }
+  }
+}

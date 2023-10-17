@@ -1,0 +1,132 @@
+@import '../../../../style/variables.scss';
+
+.wrapper {
+  margin: 30px 0;
+  .inner {
+    .heading {
+      font-size: 3.4rem;
+      color: $jetBlack-color;
+    }
+
+    .container {
+      margin-top: 20px;
+      @include d-flex($f-start, $s-between);
+      gap: 20px;
+      .sidebar {
+        max-width: 180px;
+        background-color: $white-color;
+        .box {
+          @include d-flex($center, $s-between);
+          color: $lightBlue-color;
+          padding: 6px;
+          gap: 8px;
+          margin: 6px;
+          border-radius: 8px;
+          cursor: pointer;
+          .title,
+          .icon {
+            font-size: 1.6rem;
+            font-weight: 400;
+          }
+          &:active {
+            filter: brightness(0.9);
+          }
+        }
+        .box--active {
+          background-color: rgb(235, 241, 255);
+        }
+      }
+
+      .content {
+        flex: 1;
+        .list {
+          .product {
+            padding: 20px;
+            margin-bottom: 20px;
+            background-color: $white-color;
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px,
+              rgba(0, 0, 0, 0.23) 0px 3px 6px;
+            .product__flex {
+              @include d-flex($f-start, $s-between);
+              gap: 20px;
+              .flex__quantity,
+              .box {
+                @include flex-direction();
+                flex: 1;
+                gap: 10px;
+                .flex__info {
+                  @include d-flex($f-start, $f-start);
+                  gap: 10px;
+                  .img {
+                    width: 80px;
+                    height: 80px;
+                    border: 1px solid #e1e1e1;
+                  }
+                  .data {
+                    @include flex-direction();
+                    gap: 5px;
+                    .name,
+                    .quantity {
+                      font-size: 1.6rem;
+                      font-weight: 500;
+                      color: $black-color;
+                    }
+
+                    .type {
+                      color: $light-color;
+                      font-size: 1.4rem;
+                    }
+                  }
+                }
+              }
+
+              .flex__status {
+                @include flex-direction();
+                align-items: flex-end;
+                gap: 5px;
+                .status__delivery {
+                  text-transform: uppercase;
+                  color: $firebrick-red-color;
+                  font-weight: 700;
+                  font-size: 1.6rem;
+                }
+                .status__price {
+                  font-size: 1.6rem;
+                  color: $primary-color;
+                }
+                .status__contact {
+                  padding: 3px 6px;
+                  background-color: $primary-color;
+                  font-size: 1.4rem;
+                  color: $white-color;
+                  border-radius: 4px;
+                  cursor: pointer;
+                }
+                .icon {
+                  margin-right: 6px;
+                }
+              }
+              .box {
+                .address,
+                .time {
+                  font-size: 1.5rem;
+                  font-weight: 400;
+                  color: $jetBlack-color;
+                }
+                .address {
+                  color: $firebrick-red-color;
+                }
+              }
+            }
+
+            .product__flex--line {
+              margin-top: 20px;
+              border-top: 1px solid $lightBlue-color;
+              padding-top: 20px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

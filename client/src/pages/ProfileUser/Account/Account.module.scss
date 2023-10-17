@@ -1,0 +1,139 @@
+@import '../../../style/variables.scss';
+
+.wrapper {
+  margin: calc($height-header + 10px) 10px 20px 10px;
+  .title {
+    text-align: center;
+
+    font-size: 4rem;
+    font-weight: 500;
+    color: $black-color;
+  }
+  .inner {
+    .account {
+      display: flex;
+      margin-top: 20px;
+      @include breakpoint(xm) {
+        flex-direction: column;
+      }
+
+      .profile {
+        flex: 7;
+        .info {
+          display: flex;
+          @include breakpoint(xm) {
+            flex-direction: column;
+          }
+          .sideBar {
+            padding: 10px;
+            border-radius: 6px;
+            box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.3);
+
+            @include breakpoint(xs) {
+              border-radius: 0;
+            }
+            flex: 2;
+            .progress {
+              display: flex;
+              margin: 10px 0 20px 0;
+              .item {
+                flex: 1;
+                width: 100%;
+                height: 5px;
+                padding: 4px;
+                margin: 0 2px;
+                border-radius: 4px;
+                border: 1px solid $light-color;
+              }
+              .color {
+                background-color: rgb(51, 100, 51);
+              }
+            }
+
+            .navigate {
+              @include breakpoint(xm) {
+                display: flex;
+                justify-content: space-around;
+              }
+
+              .item {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                margin: 5px 0;
+                padding: 10px;
+                cursor: pointer;
+                border-radius: 6px;
+                &:hover {
+                  background-color: #ebf1ff;
+                }
+
+                .title {
+                  font-size: 1.5rem;
+                  font-weight: 500;
+                  color: $black-color;
+                  @include breakpoint(xs) {
+                    display: none;
+                  }
+                }
+
+                .icon {
+                  font-size: 1.4rem;
+                  margin-right: 6px;
+                  color: $white-color;
+                  padding: 6px;
+                  border-radius: 50%;
+                  background-color: $lightBlue-color;
+                  @include breakpoint(xs) {
+                    font-size: 2rem;
+                    margin-right: 0;
+                  }
+                }
+              }
+              .background {
+                background-color: #ebf1ff;
+              }
+            }
+          }
+          .content {
+            margin: 0 10px;
+            border-radius: 6px;
+
+            @include breakpoint(xm) {
+              margin: 10px 0;
+              border-radius: 0;
+            }
+            flex: 5;
+            box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.3);
+          }
+        }
+      }
+      .image {
+        flex: 3;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        background-color: $white-color;
+        border-radius: 16px;
+        @include breakpoint(xs) {
+          border-radius: 0;
+        }
+        .img {
+          width: 200px;
+          height: 200px;
+          border-radius: 50%;
+          border: 1px solid $black-color;
+          margin: 20px 0 5px 0;
+        }
+        .fullName {
+          margin-top: 10px;
+          color: $black-color;
+          font-size: 2rem;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+}

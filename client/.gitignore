@@ -1,0 +1,14 @@
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+.vscode
+# testing
+/coverage
+
+# production
+/node_modules
+/build
+.env
+.vscode

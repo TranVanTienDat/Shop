@@ -1,0 +1,27 @@
+@import '../../style/variables.scss';
+.wrapper {
+  .inner {
+    .list {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .star {
+        overflow: hidden;
+        position: relative;
+        color: $primary-color;
+        .element {
+          overflow: hidden;
+          position: absolute;
+          top: 0;
+          left: 0;
+          .element__icon {
+            font-size: 1.2rem;
+          }
+        }
+        .star__icon {
+          font-size: 1.2rem;
+        }
+      }
+    }
+  }
+}

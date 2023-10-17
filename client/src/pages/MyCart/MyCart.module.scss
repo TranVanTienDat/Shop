@@ -1,0 +1,21 @@
+@import '../../style/variables.scss';
+.wrapper {
+  margin-top: $height-header;
+  background-color: $background-color;
+  padding: 30px;
+  .inner {
+    .navigate {
+      .title {
+        font-size: 1.8rem;
+        font-weight: 600;
+        font-family: 'Roboto';
+        color: $light-color;
+        margin-right: 30px;
+        cursor: pointer;
+      }
+      .active {
+        color: $jetBlack-color;
+      }
+    }
+  }
+}

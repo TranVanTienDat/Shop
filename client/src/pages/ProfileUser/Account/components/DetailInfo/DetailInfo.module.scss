@@ -1,0 +1,55 @@
+@import '../../../../../style/variables.scss';
+.inner {
+  margin: 10px;
+
+  .gender {
+    display: flex;
+    flex-direction: column;
+    .title {
+      font-size: 1.3rem;
+      color: $primary-color;
+    }
+    form {
+      display: flex;
+      justify-content: space-around;
+      .check {
+        margin: 10px 0 5px 0;
+        display: flex;
+        align-items: center;
+
+        input[type='radio'] {
+          cursor: pointer;
+          transform: scale(1.1);
+        }
+
+        label {
+          font-size: 1.5rem;
+          margin-left: 6px;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  .detail {
+    margin: 16px 0;
+    .title {
+      display: block;
+      font-size: 1.3rem;
+      color: $primary-color;
+      margin-bottom: 2px;
+    }
+    .input {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid $light-color;
+      border-radius: 4px;
+      outline: navajowhite;
+    }
+  }
+
+  span {
+    display: flex;
+    justify-content: flex-end;
+  }
+}

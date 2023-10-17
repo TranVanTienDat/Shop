@@ -1,0 +1,120 @@
+// font
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Roboto:wght@300;400;500;700&display=swap');
+$font-family: sans-serif;
+
+// color
+$white-color: #fff;
+$black-color: #000;
+$light-color: #818181;
+$light-gray-color: #f5f5f5;
+$primary-color: #f86338;
+$firebrick-red-color: #db2828;
+$blue-color: #0c0c0c;
+$darkBue-color: #144e5c;
+$lightBlue-color: #3c71ff;
+$jetBlack-color: #11142d;
+$background-color: #f4f7f8;
+
+// size
+$height-header: 120px;
+// style css flex
+$center: center;
+$f-start: flex-start;
+$f-end: flex-end;
+$s-around: space-around;
+$s-between: space-between;
+$s-evenly: space-evenly;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: $font-family;
+  font-size: 1.6rem;
+  overflow-y: overlay;
+}
+
+button,
+// input,
+[tabindex] {
+  outline: none;
+  border: none;
+}
+
+a {
+  color: $black-color;
+  text-decoration: none;
+}
+@mixin d-flex($valueAlight, $valueJustify) {
+  display: flex;
+  align-items: $valueAlight;
+  justify-content: $valueJustify;
+}
+
+@mixin flex-alight($valueAlight) {
+  display: flex;
+  align-items: $valueAlight;
+}
+
+@mixin flex-direction() {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin flex-justify($valueJustify) {
+  display: flex;
+  justify-content: $valueJustify;
+}
+
+@mixin breakpoint($point) {
+  @if $point == xs {
+    // Under 576px
+    @media (max-width: 575px) {
+      @content;
+    }
+  }
+  @if $point == sm {
+    // From 576px to 767px
+    @media (min-width: 576px) and (max-width: 767px) {
+      @content;
+    }
+  }
+  @if $point == xm {
+    // Under 767px
+    @media (max-width: 767px) {
+      @content;
+    }
+  }
+
+  @if $point == md {
+    // From 768px to 991px
+    @media (min-width: 768px) and (max-width: 991px) {
+      @content;
+    }
+  }
+  @if $point == lg {
+    // From 992px to 1199px
+    @media (min-width: 992px) and (max-width: 1199px) {
+      @content;
+    }
+  }
+  @if $point == xl {
+    // From 1200px
+    @media (min-width: 1200px) {
+      @content;
+    }
+  }
+
+  @if $point == tm {
+    // Under 991
+    @media (max-width: 991px) {
+      @content;
+    }
+  }
+}

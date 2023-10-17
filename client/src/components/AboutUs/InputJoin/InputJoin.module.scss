@@ -1,0 +1,45 @@
+@import '../../../style/variables.scss';
+
+.wrapper {
+  background-color: $background-color;
+  padding: 50px 0;
+  .inner {
+    padding: 30px 0;
+    max-width: 1000px;
+    margin: 0 auto;
+    .join {
+      background-color: $white-color;
+      text-align: center;
+      padding: 40px;
+      .heading {
+        font-size: 3rem;
+        color: $jetBlack-color;
+      }
+      .text {
+        font-size: 1.4rem;
+        color: #9a9ab0;
+        margin: 40px auto 30px;
+        max-width: 500px;
+      }
+      .send {
+        position: relative;
+        max-width: 700px;
+        margin: 0 auto;
+        .input {
+          padding: 20px;
+          border-radius: 8px;
+          outline: none;
+          border: none;
+          background-color: #f4f7f8;
+          width: 100%;
+        }
+        .button {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          right: 6px;
+        }
+      }
+    }
+  }
+}

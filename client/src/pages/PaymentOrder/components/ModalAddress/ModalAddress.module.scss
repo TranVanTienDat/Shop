@@ -1,0 +1,84 @@
+@import '../../../../style/variables.scss';
+
+.heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .title {
+    font-size: 1.8rem;
+    margin: 0 20px;
+    font-weight: 700;
+    color: $jetBlack-color;
+    position: relative;
+    margin: 0 auto;
+  }
+  .menu {
+    font-size: 2.6rem;
+    padding: 0 6px;
+    cursor: pointer;
+    color: $firebrick-red-color;
+  }
+}
+.main {
+  .form {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(250px, 300px));
+    grid-gap: 16px;
+    width: 100%;
+    margin: 20px 0;
+    .field {
+      position: relative;
+      .title {
+        font-size: 1.4rem;
+        font-weight: 600;
+        color: $jetBlack-color;
+        display: block;
+        margin-bottom: -5px;
+      }
+      .input__info {
+        border: 1px solid $primary-color;
+        outline: none;
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border-radius: 3px;
+        font-size: 1.6rem;
+      }
+
+      .select {
+        position: absolute;
+        z-index: 1;
+        left: 0;
+        top: 68px;
+        width: 100%;
+        background-color: $white-color;
+        border: 1px solid $black-color;
+        max-height: 150px;
+        overflow-y: auto;
+        &::-webkit-scrollbar {
+          width: 0;
+        }
+
+        .option {
+          list-style-type: none;
+          cursor: pointer;
+          padding: 6px;
+          font-size: 1.5rem;
+          &:hover {
+            background-color: $background-color;
+          }
+        }
+      }
+    }
+  }
+
+  .text {
+    margin-top: 20px;
+    font-size: 1.3rem;
+    .link {
+      color: #08f;
+      font-size: 1.4rem;
+      margin-right: 5px;
+    }
+  }
+}

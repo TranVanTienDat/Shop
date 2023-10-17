@@ -1,0 +1,146 @@
+@import './style/variables.scss';
+
+.App {
+  position: relative;
+  -webkit-tap-highlight-color: transparent;
+  tap-highlight-color: rgba(0, 0, 0, 0);
+  // custom slider
+
+  .swiper-button-prev,
+  .swiper-button-next {
+    color: rgb(235, 108, 108) !important;
+    padding: 5px;
+    border-radius: 3px;
+    background-color: $white-color;
+    border: 1px solid $primary-color;
+
+    &::after {
+      font-size: 2rem;
+      font-weight: 700;
+    }
+
+    &:hover {
+      background-color: $lightBlue-color;
+      color: $white-color !important;
+    }
+  }
+
+  // style  navigation product
+  .pagination {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto 0;
+    max-width: 500px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    background-color: $white-color;
+    font-size: 2rem;
+    gap: 5px;
+    @include breakpoint(xs) {
+      width: 300px;
+    }
+
+    .page-item {
+      cursor: pointer;
+      border-radius: 3px;
+      display: flex;
+      font-weight: 400;
+      padding: 4px 0;
+      @include breakpoint(xs) {
+        padding: 0;
+      }
+
+      .page-link {
+        padding: 6px 16px;
+        @include breakpoint(xs) {
+          padding: 6px 8px;
+          font-size: 1.5rem;
+        }
+      }
+      &:hover {
+        background-color: #5ab1bb;
+        a {
+          color: $white-color;
+        }
+      }
+    }
+    & .active {
+      background-color: #5ab1bb;
+    }
+  }
+
+  .page-item-active .page-item:nth-child(2) {
+    background-color: #5ab1bb;
+  }
+
+  // custom Banner
+  .swiper-pagination-bullet {
+    padding: 8px;
+    border: 2px solid $black-color;
+    opacity: 1;
+    background-color: $white-color;
+  }
+  .swiper-pagination-bullet-active {
+    background-color: $primary-color;
+  }
+
+  // styles sideBar
+  .ps-sidebar-root {
+    border: none;
+    border-color: transparent;
+
+    .ps-menu-button {
+      border-radius: 10px;
+      font-family: sans-serif;
+      color: $black-color;
+
+      margin: 2px 0;
+      &:hover {
+        background-color: #ebf1ff;
+      }
+
+      .css-wx7wi4 {
+        margin-right: 3px;
+        font-size: 1.8rem;
+      }
+
+      .ps-menu-label {
+        display: flex;
+        justify-content: flex-start;
+      }
+    }
+  }
+
+  .css-vj11vy {
+    .css-ewdv3l {
+      .css-16jkw2k {
+        .ps-menu-button {
+          border-radius: 10px;
+          margin: 2px 0;
+          &:hover {
+            background-color: #ebf1ff;
+          }
+
+          .css-12w9als {
+            flex-grow: unset;
+            color: rgb(255, 140, 0);
+            overflow: unset;
+            display: flex;
+            align-items: center;
+          }
+        }
+      }
+    }
+  }
+}
+
+.active_slider {
+  position: relative;
+  .swiper-button-prev,
+  .swiper-button-next {
+    border-radius: 50% !important;
+  }
+}

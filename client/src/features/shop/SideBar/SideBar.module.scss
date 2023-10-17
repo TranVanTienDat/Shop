@@ -1,0 +1,131 @@
+@import '../../../style/variables.scss';
+
+.wrapper {
+  min-width: 180px;
+  background-color: $background-color;
+  padding: 20px;
+  margin: 6px 0;
+  .inner {
+    .search {
+      position: relative;
+      .input {
+        width: 100%;
+        padding: 14px;
+        border-radius: 4px;
+        outline: none;
+        border: 1px solid $jetBlack-color;
+        background-color: transparent;
+      }
+      .search__icon {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 3px;
+        padding: 6px;
+        background-color: $background-color;
+        color: #9a9ab0;
+        cursor: pointer;
+        font-size: 1.8rem;
+      }
+    }
+    .rating {
+      margin: 50px 0 62px 0;
+      .rating__price {
+        .filter {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          .heading {
+            color: $jetBlack-color;
+            font-size: 2rem;
+            font-weight: 600;
+          }
+          .icon {
+            font-size: 1.8rem;
+            color: $jetBlack-color;
+          }
+        }
+
+        .price__input {
+          margin: 24px 0 16px 0;
+          width: 100%;
+          height: 1px;
+          color: #e0e0e0;
+        }
+        .title {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          .text {
+            font-size: 1.4rem;
+            color: $jetBlack-color;
+          }
+        }
+      }
+    }
+
+    .product-categories {
+      .heading {
+        font-size: 2rem;
+        letter-spacing: 0.3px;
+      }
+      .categories {
+        margin: 24px 0;
+        .item {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          color: $jetBlack-color;
+          margin: 12px 0;
+          padding: 6px 0;
+          cursor: pointer;
+          .title {
+            font-size: 1.6rem;
+            font-weight: 600;
+          }
+          .icon {
+          }
+        }
+      }
+    }
+
+    .product-featured {
+      margin-top: 62px;
+      .heading {
+        font-size: 2rem;
+        color: $jetBlack-color;
+      }
+      .list {
+        margin: 32px 0;
+        .product {
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          margin: 24px 0;
+          cursor: pointer;
+          .img {
+            width: 80px;
+            border-radius: 8px;
+            margin-right: 6px;
+          }
+          .description {
+            margin-left: 6px;
+            overflow: hidden;
+            .name {
+              overflow: hidden;
+              white-space: nowrap;
+              text-overflow: ellipsis;
+              font-size: 1.6rem;
+              margin-bottom: 8px;
+              color: $jetBlack-color;
+              font-weight: 500;
+            }
+            .price {
+              color: $firebrick-red-color;
+            }
+          }
+        }
+      }
+    }
+  }
+}

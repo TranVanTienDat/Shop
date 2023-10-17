@@ -1,0 +1,43 @@
+@import '../../style/variables.scss';
+.wrapper {
+  background-color: $background-color;
+  padding: 20px 0;
+  .inner {
+    text-align: center;
+    padding: 20px;
+    margin: 0 20px;
+
+    .heading {
+      margin: 20px 0;
+    }
+    .list__Product {
+      text-align: center;
+      .category {
+        @include d-flex($center, $center);
+        .item {
+          padding: 10px;
+          margin: 0 8px;
+          cursor: pointer;
+          &:hover {
+            color: $primary-color;
+          }
+        }
+        .active {
+          color: $primary-color;
+        }
+      }
+      .products {
+        margin-top: 20px;
+        display: grid;
+        justify-content: center;
+        grid-template-columns: repeat(4, minmax(180px, 1fr));
+        grid-gap: 12px;
+      }
+      .button {
+        display: flex;
+        justify-content: center;
+        margin: 30px 0 10px 0;
+      }
+    }
+  }
+}

@@ -1,0 +1,89 @@
+@import '../../style/variables.scss';
+
+.category {
+  padding: 20px 0;
+  margin-bottom: 40px;
+  background-color: $white-color;
+  text-align: center;
+
+  .title {
+    font-size: 3rem;
+    margin: 10px 0;
+    color: $black-color;
+  }
+  .heading {
+    font-size: 1.4rem;
+    margin-bottom: 30px;
+    color: $light-color;
+    max-width: 600px;
+    margin: 0 auto 20px;
+  }
+
+  .card {
+    margin-top: 20px;
+    cursor: pointer;
+    .background {
+      position: relative;
+      .img {
+        height: 100%;
+        width: 100%;
+      }
+
+      .info {
+        padding: 20px 10px;
+        position: absolute;
+        bottom: -100%;
+        left: 0;
+        right: 0;
+        background-color: #e2e2ea;
+
+        .name {
+          color: #9a9ab0;
+          font-size: 1.6rem;
+          font-weight: 400;
+          overflow: hidden;
+          display: -webkit-box;
+          text-overflow: ellipsis;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 2;
+        }
+        .brand {
+          font-size: 1.2rem;
+          color: $light-color;
+          font-weight: 300;
+          margin: 8px 0;
+        }
+        .price {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          .item {
+            margin: 0 4px;
+            font-size: 1.3rem;
+            color: $primary-color;
+          }
+          .item--color {
+            color: #9a9ab0;
+            font-size: 1rem;
+            text-decoration-line: line-through;
+          }
+        }
+      }
+
+      &:hover .info {
+        animation: animate 0.4s ease-out forwards;
+      }
+    }
+  }
+}
+
+@keyframes animate {
+  from {
+    bottom: -100%;
+    opacity: 0;
+  }
+  to {
+    bottom: 1%;
+    opacity: 1;
+  }
+}

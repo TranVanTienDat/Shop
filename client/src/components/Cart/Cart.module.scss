@@ -1,0 +1,183 @@
+@import '../../style/variables.scss';
+
+.cart {
+  position: fixed;
+  z-index: 100;
+  top: $height-header;
+  width: 346px;
+  color: #000;
+  background-color: $white-color;
+
+  .title {
+    padding: 10px;
+    // font-weight: 300;
+    font-size: 1.6rem;
+    color: $jetBlack-color;
+  }
+
+  .item {
+    padding: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    &:hover {
+      background-color: $background-color;
+    }
+    .item__img {
+      width: 42px;
+      margin-right: 10px;
+    }
+    .description {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .name {
+        width: 150px;
+        font-weight: 500;
+        font-size: 1.4rem;
+        color: $jetBlack-color;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+
+      .component {
+        display: flex;
+        align-items: center;
+        .price {
+          color: #db2828;
+          font-weight: 500;
+          font-size: 1.4rem;
+          margin-right: 10px;
+        }
+        .remote {
+          font-size: 2rem;
+          margin-left: 20px;
+          color: #000;
+          cursor: pointer;
+          background-color: transparent;
+          &:hover {
+            color: $firebrick-red-color;
+            animation: animateDeg 0.4s linear;
+          }
+        }
+      }
+    }
+  }
+  .btn {
+    margin: 10px 0 10px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .number {
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: $jetBlack-color;
+    }
+  }
+  .no-product {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: solid 1px #d2001a;
+    overflow: hidden;
+
+    .heading {
+      margin: 10px;
+      font-weight: 400;
+      font-size: 1.6rem;
+    }
+    .img {
+      position: relative;
+      width: 60px;
+      animation: animateDelivery 3s linear infinite;
+    }
+  }
+  .cart__icon {
+    position: absolute;
+    font-size: 2.6rem;
+    background-color: $firebrick-red-color;
+    border-radius: 50%;
+    color: $white-color;
+    transform: rotate(45deg);
+    padding: 6px 12px;
+    cursor: pointer;
+    top: 50%;
+    left: -44px;
+    .total {
+      position: absolute;
+      top: 0;
+      left: -12px;
+      padding: 1px 6px;
+      border-radius: 40%;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: $firebrick-red-color;
+      background-color: $white-color;
+      border: 1.5px solid $firebrick-red-color;
+    }
+  }
+}
+
+.animate--open {
+  animation: animate-open 0.5s linear forwards;
+}
+.animate--close {
+  animation: animate-close 0.5s linear forwards;
+}
+
+@keyframes animateDelivery {
+  from {
+    left: -64%;
+  }
+  to {
+    left: 64%;
+  }
+}
+
+@keyframes animate-open {
+  from {
+    right: -346px;
+  }
+  to {
+    right: 0;
+  }
+}
+@keyframes animate-close {
+  from {
+    right: 0;
+  }
+  to {
+    right: -346px;
+  }
+}
+
+@keyframes animateDeg {
+  0% {
+    transform: rotate(0deg);
+  }
+  20% {
+    transform: rotate(-20deg);
+  }
+  40% {
+    transform: rotate(-30deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  60% {
+    transform: rotate(20deg);
+  }
+  80% {
+    transform: rotate(30deg);
+  }
+  90% {
+    transform: rotate(20deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
