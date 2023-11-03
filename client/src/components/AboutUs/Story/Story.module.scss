@@ -1,12 +1,15 @@
 @import '../../../style/variables.scss';
 .wrapper {
   .inner {
-    padding: 50px 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include breakpoint(xm) {
+      padding: 0 10px;
+      @include flex-direction();
+    }
+    padding: 20px 10px;
+    @include d-flex($center, $center);
+    gap: 24px;
+
     .stories__img {
-      margin-right: 12px;
       flex: 1;
       .img {
         width: 100%;
@@ -14,21 +17,29 @@
       }
     }
     .story {
-      margin-left: 12px;
       flex: 1;
       .title {
+        @include breakpoint(xm) {
+          font-size: 2rem;
+        }
         font-size: 3rem;
         color: $jetBlack-color;
+        margin-bottom: 20px;
       }
       .text {
+        @include breakpoint(xm) {
+          font-size: 1.2rem;
+        }
         font-size: 1.4rem;
         font-weight: 400;
         color: $light-color;
-        margin: 20px 30px 20px 0;
         display: inline-block;
         line-height: 18px;
       }
       .more {
+        @include breakpoint(xm) {
+          margin-top: 20px;
+        }
         margin-top: 40px;
         font-size: 1.3rem;
         color: $primary-color;

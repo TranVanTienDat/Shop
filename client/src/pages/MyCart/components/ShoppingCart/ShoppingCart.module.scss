@@ -1,249 +1,167 @@
 @import '../../../../style/variables.scss';
 .wrapper {
   margin: 30px 0;
-  .inner {
-    .heading {
-      font-size: 3.4rem;
-      color: $jetBlack-color;
+  @include breakpoint(tm) {
+    display: block;
+  }
+  .heading {
+    @include breakpoint(xm) {
+      font-size: 2.1rem;
     }
-    .container {
-      margin-top: 20px;
-
-      @include d-flex($f-start, $center);
-      gap: 50px;
-      .list {
-        flex: 6;
-        .product {
-          position: relative;
-          margin-bottom: 20px;
-          @include flex-alight($f-end);
-
-          .img {
-            width: 150px;
-            height: 150px;
-            border-radius: 4px;
-            margin-right: 20px;
+    font-size: 3.4rem;
+    color: $jetBlack-color;
+  }
+  .container {
+    @include breakpoint(tm) {
+      display: block;
+    }
+    margin-top: 20px;
+    @include d-flex($f-start, $center);
+    gap: 50px;
+    .list {
+      overflow: hidden;
+      flex: 6;
+      .product {
+        position: relative;
+        margin-bottom: 20px;
+        @include flex-alight($f-end);
+        gap: 10px;
+        .img {
+          @include breakpoint(xm) {
+            width: 100px;
+            height: 100px;
           }
-          .check {
-            position: absolute;
-            top: 4px;
-            left: 4px;
-            z-index: 1;
-            cursor: pointer;
-          }
-          .info {
-            .name {
-              display: block;
-              max-width: 250px;
-              font-size: 1.8rem;
-              font-weight: 600;
-              color: $jetBlack-color;
-              overflow: hidden;
-              white-space: nowrap;
-              text-overflow: ellipsis;
-            }
-            .flex {
-              @include d-flex($f-start, $s-between);
-              .title {
-                @include flex-justify($s-between);
-                flex-direction: column;
-                margin: 6px 0;
-                .text {
-                  font-size: 1.6rem;
-                  color: $jetBlack-color;
-                  margin-bottom: 5px;
-                }
-              }
-            }
-
-            .total {
-              @include flex-alight($center);
-              gap: 30px;
-              .price {
-                font-size: 3rem;
-                color: $primary-color;
-                margin-right: 20px;
-                position: relative;
-                &::after {
-                  position: absolute;
-                  content: 'đ';
-                  top: auto;
-                  right: auto;
-                  color: inherit;
-                  font-size: 1.8rem;
-                }
-              }
-              .button {
-                display: flex;
-                gap: 10px;
-              }
-            }
-          }
+          width: 150px;
+          height: 150px;
+          border-radius: 4px;
         }
-        .loading {
-          margin-top: 50px;
+        .check {
+          position: absolute;
+          top: 10px;
+          left: 8px;
+          z-index: 1;
+          cursor: pointer;
         }
-      }
-
-      .check-out {
-        flex: 4;
-        border-radius: 8px;
-        background-color: $white-color;
-
-        padding: 10px 20px;
-        .coupon {
-          .coupon__input {
-            border-radius: 8px;
-          }
-
+        .info {
+          overflow: hidden;
           .name {
-            display: block;
+            @include breakpoint(xm) {
+              font-size: 1.6rem;
+            }
             font-size: 1.8rem;
             font-weight: 600;
-            color: #11142d;
+            color: $jetBlack-color;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
           }
-          .voucher {
-            border: 1px solid $primary-color;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 20px 0;
-            position: relative;
-
-            .input {
-              padding: 10px;
-              outline: none;
-              border: none;
-              font-size: 1.4rem;
-              width: 100%;
-            }
-            .icon {
-              padding: 10px;
-              cursor: pointer;
-            }
-            .list {
-              position: absolute;
-              border: 1px solid #000;
-              background-color: $background-color;
-              top: calc(100% + 2px);
-              left: 0;
-              z-index: 1;
-              width: 100%;
-              height: 300px;
-              overflow-y: auto;
-              &::-webkit-scrollbar {
-                width: 2px;
+          .flex {
+            @include d-flex($f-start, $s-between);
+            .title {
+              @include breakpoint(xm) {
+                font-size: 1.6rem;
+                margin: 4px;
               }
-              .element {
-                padding: 20px;
-                .title {
-                  font-size: 1.8rem;
-                  color: $jetBlack-color;
-                  font-weight: 600;
+              @include flex-justify($s-between);
+              flex-direction: column;
+              margin: 6px;
+              .text {
+                @include breakpoint(xm) {
+                  font-size: 1.4rem;
                 }
-                .list__voucher {
-                  margin-top: 20px;
-                  .item {
-                    position: relative;
-                    list-style: none;
-                    @include d-flex($center, $s-between);
-                    margin: 10px 0;
-                    .item__img {
-                      width: 120px;
-                      padding: 8px 16px;
-                      text-align: center;
-
-                      .img {
-                        width: 60px;
-                      }
-
-                      .name {
-                        font-size: 1.2rem;
-                        font-weight: 400;
-                        color: $white-color;
-                      }
-                    }
-
-                    .des {
-                      padding: 8px 16px;
-                      color: $jetBlack-color;
-                      background-color: $white-color;
-                      flex: 1;
-                      .title {
-                        font-size: 1.5rem;
-                      }
-                      .condition {
-                        margin: 10px 0;
-                        font-size: 1.4rem;
-                        font-weight: 500;
-                      }
-                      .expiry {
-                        font-size: 1.3rem;
-                        color: $light-color;
-                      }
-                    }
-
-                    .check {
-                      position: absolute;
-                      top: 4px;
-                      right: 4px;
-                      cursor: pointer;
-                    }
-                  }
-                  .item--bg_trans {
-                    background-color: #00bfa5;
-                  }
-                  .item--bg_dis {
-                    background-color: $primary-color;
-                  }
-                }
+                font-size: 1.6rem;
+                color: $jetBlack-color;
+                margin-bottom: 5px;
               }
             }
-            .list--close {
-              display: none;
-            }
-            .list--open {
-              display: block;
-            }
           }
-        }
-        .cart-total {
-          margin-top: 50px;
-          .name {
-            display: block;
-            font-size: 2rem;
-            font-weight: 600;
-            color: $firebrick-red-color;
-          }
+
           .total {
-            .total__sub,
-            .pay {
-              margin: 20px 6px;
-              @include d-flex($center, $s-between);
-              color: $jetBlack-color;
-              .title,
-              .value {
-                font-size: 1.7rem;
-                font-weight: 600;
+            @include d-flex($f-end, $s-between);
+            .price {
+              @include breakpoint(tm) {
+                font-size: 1.6rem;
               }
-              .value {
-                position: relative;
-                &::after {
-                  position: absolute;
-                  content: 'đ';
-                  top: 0;
-                  right: auto;
-                  font-size: 1.2rem;
-                  color: $primary-color;
+              font-size: 3rem;
+              color: $primary-color;
+              margin-right: 20px;
+              position: relative;
+              &::after {
+                @include breakpoint(tm) {
+                  font-size: 1.4rem;
                 }
+                position: absolute;
+                content: 'đ';
+                top: auto;
+                right: auto;
+                color: inherit;
+                font-size: 1.8rem;
               }
+            }
+            .mobile__icon-remote {
+              @include breakpoint(xm) {
+                display: block;
+              }
+              display: none;
+              font-size: 2.8rem;
+              color: $firebrick-red-color;
+              cursor: pointer;
+              &:active {
+                filter: brightness(0.8);
+              }
+            }
+            .button {
+              @include breakpoint(xm) {
+                display: none;
+              }
+              display: flex;
+              gap: 10px;
             }
           }
         }
-        .button {
-          @include flex-justify($f-end);
-          margin: 24px -10px 0 0;
+      }
+      .loading {
+        margin-top: 50px;
+      }
+    }
+
+    .check-out {
+      flex: 4;
+      padding: 10px;
+      background-color: $white-color;
+
+      .cart-total {
+        .name {
+          display: block;
+          font-size: 2rem;
+          font-weight: 600;
+          color: $firebrick-red-color;
         }
+
+        .pay {
+          margin: 20px 6px;
+          @include d-flex($center, $s-between);
+          color: $jetBlack-color;
+          .title,
+          .value {
+            font-size: 1.7rem;
+            font-weight: 600;
+          }
+          .value {
+            position: relative;
+            &::after {
+              position: absolute;
+              content: 'đ';
+              top: 0;
+              right: auto;
+              font-size: 1.2rem;
+              color: $primary-color;
+            }
+          }
+        }
+      }
+      .button {
+        @include flex-justify($f-end);
       }
     }
   }

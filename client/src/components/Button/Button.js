@@ -1,13 +1,12 @@
 import classNames from 'classnames/bind';
-import styles from './Button.module.scss';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+import styles from './Button.module.scss';
 
 const cx = classNames.bind(styles);
 
 function Button({
   to,
-  style,
   href,
   onClick,
   large = false,
@@ -17,6 +16,8 @@ function Button({
   text = false,
   disabled = false,
   circle = false,
+  onChange = false,
+  btnSidebar = false,
   icon,
   children,
   className,
@@ -39,8 +40,10 @@ function Button({
   const classes = cx('wrapper', {
     [className]: className,
     leftIcon,
+    btnSidebar,
     large,
     outline,
+    onChange,
     color,
     text,
     circle,
@@ -59,19 +62,12 @@ Button.propTypes = {
   to: PropTypes.string,
   href: PropTypes.string,
   onClick: PropTypes.func,
-  shadow: PropTypes.bool,
-  small: PropTypes.bool,
-  marginLeft: PropTypes.bool,
   circle: PropTypes.bool,
   large: PropTypes.bool,
   outline: PropTypes.bool,
   color: PropTypes.bool,
-  danger: PropTypes.bool,
-  info: PropTypes.bool,
   text: PropTypes.bool,
-  success: PropTypes.bool,
-  login: PropTypes.bool,
-  round: PropTypes.bool,
+  onChange: PropTypes.bool,
   icon: PropTypes.node,
   children: PropTypes.node,
 };

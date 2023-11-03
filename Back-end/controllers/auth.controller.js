@@ -14,6 +14,7 @@ exports.create = (req, res) => {
     avatar,
     gender = "",
     address = "",
+    dateBirth = "",
     phoneNumber = "",
   } = req.body;
   const user = userDB.findOne({ email }).then((foundUser) => {
@@ -39,6 +40,7 @@ exports.create = (req, res) => {
           avatar,
           gender,
           address,
+          dateBirth,
           phoneNumber,
         });
         user
@@ -73,7 +75,14 @@ exports.login = (req, res) => {
           process.env.ACCESS_TOKEN_SECRET,
           { expiresIn: "24h" }
         );
-        res.status(200).send({ auth: true, token: token, message: "Success" });
+        res
+          .status(200)
+          .send({
+            user: foundUser._doc,
+            auth: true,
+            token: token,
+            message: "Success",
+          });
       });
     })
     .catch((error) => {
@@ -81,15 +90,13 @@ exports.login = (req, res) => {
     });
 };
 
-exports.update = (req, res) => {
+exports.updateUser = (req, res) => {
   if (!req.body) {
     res.status(400).send({ message: "error" });
   }
 
-  const id = req.params.id;
-
   userDB
-    .findByIdAndUpdate(id, req.body, { useFindAndModify: false })
+    .findByIdAndUpdate(req.user.id, req.body, { useFindAndModify: false })
     .then((data) => {
       if (!data) {
         res.status(404).send({ message: `update isn't success for ${id}` });
@@ -98,6 +105,7 @@ exports.update = (req, res) => {
       }
     })
     .catch((err) => {
+      console.log(err);
       res.status(500).send({ message: "error update" });
     });
 };
@@ -120,12 +128,11 @@ exports.updatePassword = (req, res) => {
   if (!req.body) {
     return res.status(400).send({ message: "error" });
   }
-  const id = req.params.id;
   const newPassword = req.body.newPassword;
   const currentPassword = req.body.currentPassword;
 
   userDB
-    .findById(id)
+    .findById(req.user.id)
     .then((foundUser) => {
       if (!foundUser) {
         return res
@@ -211,9 +218,8 @@ exports.forgotPassword = (req, res) => {
 };
 
 exports.deleteUser = (req, res) => {
-  const { id } = req.params;
   userDB
-    .findByIdAndDelete(id)
+    .findByIdAndDelete(req.user.id)
     .then((data) => {
       if (!data) {
         res.status(400).send({ message: "Error can not be deleted" });

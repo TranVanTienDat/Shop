@@ -45,6 +45,9 @@
     }
 
     .achievement {
+      @include breakpoint(tm) {
+        display: none;
+      }
       padding: 50px 10px;
       text-align: center;
       .title {
@@ -64,17 +67,23 @@
 
     .blog {
       padding: 50px 10px;
-      margin: 20px 0;
       .heading {
+        @include breakpoint(xm) {
+          padding-bottom: 0;
+        }
         padding-bottom: 20px;
-        display: flex;
-        align-items: flex-end;
-        justify-content: space-between;
-        .title {
+        @include d-flex($f-end, $s-between);
+        .heading__title {
+          @include breakpoint(xm) {
+            font-size: 2rem;
+          }
           font-size: 3rem;
           color: $jetBlack-color;
         }
         .see_more {
+          @include breakpoint(xm) {
+            font-size: 1.2rem;
+          }
           font-size: 1.5rem;
           color: $primary-color;
           cursor: pointer;
@@ -84,8 +93,8 @@
       .blog__post {
         margin-bottom: 30px;
         display: grid;
-        grid-template-columns: repeat(2, minmax(49%, 0));
-        grid-gap: 18px;
+        grid-template-columns: repeat(2, minmax(50px, 1fr));
+        grid-gap: 10px;
         .post {
           margin: 24px 0;
           .img {
@@ -95,15 +104,21 @@
 
           .body {
             .title {
+              @include breakpoint(xm) {
+                font-size: 1.5rem;
+                @include flex-direction();
+              }
               color: $jetBlack-color;
               font-size: 2.4rem;
               font-weight: 500;
             }
             .info {
-              display: flex;
-              align-items: center;
-              justify-content: flex-start;
+              @include d-flex($center, $f-start);
+
               .time {
+                @include breakpoint(xm) {
+                  font-size: 1.3rem;
+                }
                 font-size: 1.6rem;
                 color: #515151;
                 margin: 16px 0;
@@ -117,11 +132,22 @@
               }
             }
             .des {
+              @include breakpoint(xm) {
+                font-size: 1.2rem;
+              }
               color: $light-color;
               font-size: 1.4rem;
               margin-bottom: 32px;
+              overflow: hidden;
+              display: -webkit-box;
+              text-overflow: ellipsis;
+              -webkit-box-orient: vertical;
+              -webkit-line-clamp: 5;
             }
             .see_more {
+              @include breakpoint(xm) {
+                font-size: 1.2rem;
+              }
               font-size: 1.4rem;
               color: $primary-color;
               cursor: pointer;

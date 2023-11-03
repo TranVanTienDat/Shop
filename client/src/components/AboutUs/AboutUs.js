@@ -37,6 +37,7 @@ function AboutUs() {
       .from(brands[3], { y: 20, opacity: 0, duration: 0.8 }, '-=0.3')
       .from(brands[4], { y: 20, opacity: 0, duration: 0.8 }, '-=0.3')
       .from(brands[5], { y: 20, opacity: 0, duration: 0.8 }, '-=0.3');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <div className={cx('wrapper')}>
@@ -66,7 +67,7 @@ function AboutUs() {
         {/* blog  us*/}
         <div className={cx('blog')}>
           <div className={cx('heading')}>
-            <h1 className={cx('title')}>
+            <h1 className={cx('heading__title')}>
               Get Better Insights
               <br />
               from Our Articles

@@ -1,32 +1,35 @@
 import classNames from 'classnames/bind';
 import propTypes from 'prop-types';
-import styles from './CategoriesShop.module.scss';
-import { category } from '~/constants/category';
-import CardProduct from './CardProduct/CardProduct';
-import Button from '../Button/Button';
 import { useEffect, useState } from 'react';
-import { getCategoriesProduct } from '~/api/productsApi';
+import productApi from '~/api/modules/product.api';
+import { category } from '~/constants/category';
+import Button from '../Button/Button';
+import CardProduct from './CardProduct/CardProduct';
+import styles from './CategoriesShop.module.scss';
+import { Animate } from '~/features/Auth/Sign/LogIn';
 
 const cx = classNames.bind(styles);
 function CategoriesShop({ title }) {
   const [products, setProducts] = useState([]);
-  const [item, setItem] = useState({ category: 'dày', active: 0 });
+  const [loading, setLoading] = useState(false);
+  const [item, setItem] = useState({ category: 'Giày', active: 0 });
   useEffect(() => {
     const fetchProducts = async () => {
-      try {
-        const response = await getCategoriesProduct(item.category);
-        if (response) {
-          setProducts(response.data);
-        }
-      } catch (error) {
-        console.log(error);
+      console.log(item.category);
+      setLoading(true);
+      const { res } = await productApi.getCategoriesProduct({
+        category: item.category,
+      });
+      setLoading(false);
+      if (res) {
+        setProducts(res);
       }
     };
     fetchProducts();
   }, [item.category]);
 
   const handleCategories = (title, i) => {
-    setItem({ name: title, active: i });
+    setItem({ category: title, active: i });
   };
   return (
     <div className={cx('wrapper')}>
@@ -39,27 +42,33 @@ function CategoriesShop({ title }) {
                 <span
                   key={i}
                   className={cx('item', item.active === i ? 'active' : '')}
-                  onClick={() => handleCategories(data, i)}
+                  onClick={() => handleCategories(data.title, i)}
                 >
                   {data.title}
                 </span>
               );
             })}
           </div>
-          <div className={cx('products')}>
-            {products.length > 0 &&
-              products.map((data, i) => {
-                return (
-                  <CardProduct
-                    key={i}
-                    _id={data?._id}
-                    category={data?.categories?.[0]}
-                    name={data?.name}
-                    image={data?.images?.[0]}
-                  />
-                );
-              })}
-          </div>
+          {!loading ? (
+            <div className={cx('products')}>
+              {products.length > 0 &&
+                products.map((data, i) => {
+                  return (
+                    <CardProduct
+                      key={i}
+                      _id={data?._id}
+                      category={data?.categories?.[0]}
+                      name={data?.name}
+                      image={data?.images?.[0]}
+                    />
+                  );
+                })}
+            </div>
+          ) : (
+            <div className={cx('animate')}>
+              <Animate />
+            </div>
+          )}
 
           <div className={cx('button')}>
             <Button large>Find out more</Button>

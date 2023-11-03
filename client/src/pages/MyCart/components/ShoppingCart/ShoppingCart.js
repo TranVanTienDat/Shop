@@ -4,15 +4,16 @@ import classNames from 'classnames/bind';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { removeCart } from '~/api/cartApi';
+import cartApi from '~/api/modules/cart.api';
 import Button from '~/components/Button/Button';
-import { success, warning } from '~/constants/ToastMessage/ToastMessage';
+import { errMes, success } from '~/constants/ToastMessage/ToastMessage';
 import { Animate } from '~/features/Auth/Sign/LogIn';
 import { formatPrice } from '~/hook/func';
 import { onBuy } from '~/store/slice/BuyProductSlice';
 import { removeCartProduct } from '~/store/slice/myCart';
 import { myCart } from '~/store/slice/selector';
 import styles from './ShoppingCart.module.scss';
+import { setIsLoadingButton } from '~/store/slice/loadingSlice';
 
 const cx = classNames.bind(styles);
 
@@ -22,11 +23,13 @@ function ShoppingCart() {
   const myCartSelector = useSelector(myCart);
 
   const [listMyCart, setListMyCart] = useState([]);
+  const [isLoading, setIsLoading] = useState();
   const [totalPrice, setTotalPrice] = useState({ total: 0, pay: 0 });
 
-  // tính giá thành thanh toán
   useEffect(() => {
+    setIsLoading(true);
     setListMyCart(myCartSelector);
+    setIsLoading(false);
   }, [myCartSelector]);
 
   useEffect(() => {
@@ -52,13 +55,16 @@ function ShoppingCart() {
   };
 
   const handleRemote = async (_id) => {
-    const { res, error } = await removeCart(_id);
+    dispatch(setIsLoadingButton({ isLoadingButton: true }));
+    const { res, err } = await cartApi.remoteItemCart({ cartID: _id });
+    dispatch(setIsLoadingButton({ isLoadingButton: false }));
+
     if (res) {
-      dispatch(removeCartProduct(_id));
       success('Đã xóa sản phẩm');
+      dispatch(removeCartProduct(_id));
     }
-    if (error) {
-      warning(error.message);
+    if (err) {
+      errMes(err.message);
     }
   };
 
@@ -76,7 +82,7 @@ function ShoppingCart() {
 
         <div className={cx('container')}>
           <div className={cx('list')}>
-            {listMyCart.length > 0 ? (
+            {!isLoading > 0 ? (
               listMyCart.map((item, i) => {
                 return (
                   <div key={i} className={cx('product')}>
@@ -89,16 +95,8 @@ function ShoppingCart() {
                       className={cx('check')}
                     />
                     <div className={cx('info')}>
-                      <span className={cx('name')}>{item.productName}</span>
+                      <div className={cx('name')}>{item.productName}</div>
                       <div className={cx('flex')}>
-                        <div className={cx('title')}>
-                          <span className={cx('text')}>Kiểu</span>
-                          <span className={cx('text')}>Quantity</span>
-                        </div>
-                        <div className={cx('title')}>
-                          <span className={cx('text')}>:</span>
-                          <span className={cx('text')}>:</span>
-                        </div>
                         <div className={cx('title')}>
                           <span className={cx('text')}>
                             {item.productType}
@@ -111,7 +109,7 @@ function ShoppingCart() {
                             )}
                           </span>
                           <div className={cx('text')}>
-                            {item.productQuantity}
+                            {`x${item.productQuantity}`}
                           </div>
                         </div>
                       </div>
@@ -119,6 +117,11 @@ function ShoppingCart() {
                         <span className={cx('price')}>
                           {formatPrice.format(item.productPrice)}
                         </span>
+                        <FontAwesomeIcon
+                          icon={faTrashCan}
+                          className={cx('mobile__icon-remote')}
+                          onClick={() => handleRemote(item._id)}
+                        />
                         <div className={cx('button')}>
                           <Button
                             leftIcon
@@ -148,26 +151,20 @@ function ShoppingCart() {
           <div className={cx('check-out')}>
             <div className={cx('cart-total')}>
               <span className={cx('name')}>Thanh toán giỏ hàng</span>
-
-              <div className={cx('total')}>
-                <div className={cx('total__sub')}>
-                  <span className={cx('title')}>Tổng thanh toán</span>
-                  <span className={cx('value')}>
-                    {formatPrice.format(totalPrice.total)}
-                  </span>
-                </div>
-
-                <div className={cx('pay')}>
-                  <span className={cx('title')}>Số tiền thanh toán</span>
-                  <span className={cx('value')}>
-                    {formatPrice.format(totalPrice.pay)}
-                  </span>
-                </div>
+              <div className={cx('pay')}>
+                <span className={cx('title')}>tổng tiền hàng</span>
+                <span className={cx('value')}>
+                  {formatPrice.format(totalPrice.pay)}
+                </span>
               </div>
             </div>
             <div className={cx('button')}>
-              <Button large onClick={handleOnBuy}>
-                Buy
+              <Button
+                large={totalPrice.pay > 0}
+                disabled={totalPrice.pay === 0}
+                onClick={handleOnBuy}
+              >
+                Mua
               </Button>
             </div>
           </div>

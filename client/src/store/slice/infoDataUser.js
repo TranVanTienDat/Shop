@@ -8,6 +8,11 @@ const user = createSlice({
     address: '',
     phoneNumber: '',
     gender: '',
+    dateBirth: {
+      day: '1',
+      month: '1',
+      year: '1980',
+    },
     avatar: '',
     status: false,
     _id: '',
@@ -15,19 +20,20 @@ const user = createSlice({
   },
 
   reducers: {
-    addInfoDataUser(state, action) {
+    setInfo(state, action) {
       state.name = action.payload.name;
       state.email = action.payload.email;
       state.address = action.payload.address;
       state.phoneNumber = action.payload.phoneNumber;
       state.gender = action.payload.gender;
       state.avatar = action.payload.avatar;
+      state.dateBirth = action.payload.dateBirth;
       state.status = action.payload.status;
       state._id = action.payload._id;
     },
     setStatus(state, action) {
       state.status = action.payload.status;
-      state._id = action.payload._id;
+      state.avatar = '';
     },
     addInfoFirebase(state, action) {
       const { address, phoneNumber, gender } = action.payload;
@@ -35,13 +41,7 @@ const user = createSlice({
       state.phoneNumber = phoneNumber;
       state.gender = gender;
     },
-    addAddress(state, action) {
-      const { address, phoneNumber, isModal } = action.payload;
-      state.address = address;
-      state.phoneNumber = phoneNumber;
-      state.isModal = isModal;
-    },
-    addIsModal(state, action) {
+    setIsModal(state, action) {
       const { isModal } = action.payload;
       state.isModal = isModal;
     },
@@ -51,11 +51,11 @@ const user = createSlice({
   },
 });
 export const {
-  addInfoDataUser,
+  setInfo,
   setStatus,
   addAddress,
   addInfoFirebase,
-  addIsModal,
+  setIsModal,
   uploadImage,
 } = user.actions;
 export default user.reducer;

@@ -4,21 +4,31 @@
   background-color: $background-color;
   padding: 50px 0;
   .inner {
+    background-color: $white-color;
     padding: 30px 0;
     max-width: 1000px;
     margin: 0 auto;
     .join {
-      background-color: $white-color;
+      @include breakpoint(xs) {
+        padding: 10px;
+      }
       text-align: center;
       padding: 40px;
       .heading {
+        @include breakpoint(xm) {
+          font-size: 2.2rem;
+        }
         font-size: 3rem;
         color: $jetBlack-color;
       }
       .text {
+        @include breakpoint(xm) {
+          font-size: 1.2rem;
+          margin: 20px auto 20px;
+        }
         font-size: 1.4rem;
         color: #9a9ab0;
-        margin: 40px auto 30px;
+        margin: 30px auto 40px;
         max-width: 500px;
       }
       .send {
@@ -26,6 +36,10 @@
         max-width: 700px;
         margin: 0 auto;
         .input {
+          @include breakpoint(xm) {
+            padding: 14px;
+            border-radius: 4;
+          }
           padding: 20px;
           border-radius: 8px;
           outline: none;
@@ -37,7 +51,7 @@
           position: absolute;
           top: 50%;
           transform: translateY(-50%);
-          right: 6px;
+          right: 8px;
         }
       }
     }

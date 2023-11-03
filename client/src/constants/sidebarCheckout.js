@@ -1,6 +1,5 @@
 import {
   faBan,
-  faDolly,
   faGlobe,
   faHouseCircleCheck,
   faRoadCircleCheck,

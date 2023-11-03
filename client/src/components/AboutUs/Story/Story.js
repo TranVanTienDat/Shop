@@ -38,7 +38,7 @@ function Story() {
         </div>
         <div className={cx('story')}>
           <h1 className={cx('title')} ref={(el) => (titleRef = el)}>
-            Story about <br /> Our Brand
+            Story about Our Brand
           </h1>
           <p className={cx('text')} ref={(el) => (textRef = el)}>
             Develop a website by finding a product identity that has value and

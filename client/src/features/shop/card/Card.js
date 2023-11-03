@@ -24,7 +24,7 @@ function Card({ name, sold, rating, selectProduct, _id, images }) {
           <span className={cx('price')}>
             {formatPrice.format(first?.newPrice)}
           </span>
-          <div className={cx('quantity')}>Đã bán {sold}</div>
+          <div className={cx('quantity')}>Bán {sold}</div>
         </div>
       </div>
     </div>

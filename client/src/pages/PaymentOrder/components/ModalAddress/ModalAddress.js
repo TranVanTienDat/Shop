@@ -8,18 +8,22 @@ import { Link } from 'react-router-dom';
 import Button from '~/components/Button/Button';
 import Modal from '~/components/Modal/Modal';
 import { useDebounce } from '~/hook/debounce';
-import { addIsModal } from '~/store/slice/infoDataUser';
+import { setInfo, setIsModal } from '~/store/slice/infoDataUser';
 import { userData } from '~/store/slice/selector';
 import styles from './ModalAddress.module.scss';
+import userApi from '~/api/modules/auth.api';
+import { errMes, warning } from '~/constants/ToastMessage/ToastMessage';
+import { setIsLoadingButton } from '~/store/slice/loadingSlice';
 const cx = classNames.bind(styles);
 function ModalAddress() {
   const dispatch = useDispatch();
   const { isModal } = useSelector(userData);
+
   const [updateAddress, setUpdateAddress] = useState({
     addressCity: '',
     addressSpecific: '',
     name: '',
-    numberPhone: '',
+    phoneNumber: '',
   });
   const [resultSearch, setResultSearch] = useState([]);
   const [displaySelectAddress, setDisplaySelectAddress] = useState(false);
@@ -41,10 +45,12 @@ function ModalAddress() {
         const res = await axios.get(
           `https://nominatim.openstreetmap.org/search?&q=${deBounce}&format=json&addressdetails=1&polygon_svg=0`
         );
-        console.log(res.data);
         if (res.data.length > 0) {
           setResultSearch(res.data);
           setDisplaySelectAddress(true);
+        } else {
+          setDisplaySelectAddress(false);
+          setResultSearch([]);
         }
       } catch (error) {
         console.log(error);
@@ -52,28 +58,48 @@ function ModalAddress() {
     };
     getApi();
   }, [deBounce]);
+
   const handleInput = (value, field) => {
     setUpdateAddress((prev) => ({ ...prev, [field]: value }));
-  };
-
-  const handleClose = () => {
-    dispatch(addIsModal({ isModal: false }));
   };
 
   const handleGetAddress = (value) => {
     handleInput(value, 'addressCity');
     setDisplaySelectAddress(false);
   };
+  const handleUpdate = async () => {
+    const { addressCity, addressSpecific, name, phoneNumber } = updateAddress;
+    if (!addressCity || !addressSpecific || !name || !phoneNumber) {
+      warning('Nhập đầy đủ các ô');
+      return;
+    }
+
+    const data = {
+      ...updateAddress,
+      address: `${updateAddress.addressSpecific} ${updateAddress.addressCity}`,
+    };
+    dispatch(setIsLoadingButton({ isLoadingButton: true }));
+    const { res, err } = await userApi.updateUser(data);
+    dispatch(setIsLoadingButton({ isLoadingButton: false }));
+
+    if (res) {
+      dispatch(setInfo(data));
+      dispatch(setIsModal({ isModal: false }));
+    }
+    if (err) {
+      errMes('Cập nhật không thành công');
+    }
+  };
 
   return (
     loading && (
       <Modal>
         <div className={cx('heading')}>
-          <span className={cx('title')}>Nhập địa chỉ nhận hàng</span>
+          <span className={cx('title')}>Địa chỉ nhận hàng</span>
           <FontAwesomeIcon
             icon={faRectangleXmark}
             className={cx('menu')}
-            onClick={() => dispatch(addIsModal({ isModal: false }))}
+            onClick={() => dispatch(setIsModal({ isModal: false }))}
           />
         </div>
         <div className={cx('main')}>
@@ -141,20 +167,24 @@ function ModalAddress() {
                 id="inputPhone"
                 className={cx('input__info')}
                 placeholder="Enter the specific address"
-                value={updateAddress.numberPhone}
-                onChange={(e) => handleInput(e.target.value, 'numberPhone')}
+                value={updateAddress.phoneNumber}
+                onChange={(e) => handleInput(e.target.value, 'phoneNumber')}
               />
             </div>
           </form>
-          <Button marginLeft large>
-            Use
+          <Button large onClick={handleUpdate}>
+            Cập nhật
           </Button>
 
           <div className={cx('text')}>
-            <Link to="/" className={cx('link')} onClick={handleClose}>
-              Log in?
+            <Link
+              to="/log-in"
+              className={cx('link')}
+              onClick={() => dispatch(setIsModal({ isModal: false }))}
+            >
+              Đăng nhập?
             </Link>
-            Select the address to receive goods
+            Chọn địa chỉ để nhận hàng
           </div>
         </div>
       </Modal>

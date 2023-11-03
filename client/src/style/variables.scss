@@ -13,7 +13,7 @@ $blue-color: #0c0c0c;
 $darkBue-color: #144e5c;
 $lightBlue-color: #3c71ff;
 $jetBlack-color: #11142d;
-$background-color: #f4f7f8;
+$background-color: #e5e8e9;
 
 // size
 $height-header: 120px;
@@ -21,9 +21,11 @@ $height-header: 120px;
 $center: center;
 $f-start: flex-start;
 $f-end: flex-end;
+$b-line: baseLine;
 $s-around: space-around;
 $s-between: space-between;
 $s-evenly: space-evenly;
+
 * {
   margin: 0;
   padding: 0;
@@ -40,9 +42,7 @@ body {
   overflow-y: overlay;
 }
 
-button,
-// input,
-[tabindex] {
+button {
   outline: none;
   border: none;
 }
@@ -93,27 +93,28 @@ a {
   }
 
   @if $point == md {
-    // From 768px to 991px
-    @media (min-width: 768px) and (max-width: 991px) {
-      @content;
-    }
-  }
-  @if $point == lg {
-    // From 992px to 1199px
-    @media (min-width: 992px) and (max-width: 1199px) {
-      @content;
-    }
-  }
-  @if $point == xl {
-    // From 1200px
-    @media (min-width: 1200px) {
+    // From 768px to 900px
+    @media (min-width: 768px) and (max-width: 900px) {
       @content;
     }
   }
 
   @if $point == tm {
-    // Under 991
-    @media (max-width: 991px) {
+    // Under 900
+    @media (max-width: 900px) {
+      @content;
+    }
+  }
+
+  @if $point == lg {
+    // From 901px to 1199px
+    @media (min-width: 901px) and (max-width: 1023px) {
+      @content;
+    }
+  }
+  @if $point == xl {
+    // From 1200px
+    @media (min-width: 1024px) {
       @content;
     }
   }

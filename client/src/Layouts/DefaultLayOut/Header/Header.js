@@ -1,55 +1,77 @@
 import { faBell } from '@fortawesome/free-regular-svg-icons';
+
 import {
+  faArrowDownShortWide,
   faArrowRightToBracket,
+  faBars,
+  faCircleInfo,
+  faIdBadge,
   faMagnifyingGlass,
   faPhone,
   faTruck,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Tippy from '@tippyjs/react/headless';
 import classNames from 'classnames/bind';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import 'tippy.js/dist/svg-arrow.css';
 import images from '~/assets/images';
 import Button from '~/components/Button/Button';
-import Cart from '~/components/Cart/Cart';
-import { nav as Nav } from '~/constants/navigateHead';
-import styles from './header.module.scss';
 import config from '~/config';
-import { useEffect } from 'react';
-import { getUserData } from '~/api/authApi';
-import { useDispatch, useSelector } from 'react-redux';
-import { addInfoDataUser } from '~/store/slice/infoDataUser';
-import { userData } from '~/store/slice/selector';
+import { nav as Nav } from '~/constants/navigate';
+import { setStatus } from '~/store/slice/infoDataUser';
+import {
+  setToggleMenuFilter,
+  setToggleSidebar,
+} from '~/store/slice/loadingSlice';
+import { setKeyword } from '~/store/slice/searchParamsSlice';
+import { state, userData } from '~/store/slice/selector';
+import { setAppState } from '~/store/slice/stateAppSlice';
+import MenuFilterResponsive from './MenuFilterResponsive/MenuFilterResponsive';
+import styles from './header.module.scss';
 const cx = classNames.bind(styles);
 
 function Header() {
-  const user = useSelector(userData);
   const dispatch = useDispatch();
-  const [nav, setNav] = useState(0);
   const navigate = useNavigate();
-  const handleNav = (id, to) => {
-    setNav(id);
-    navigate(to);
-  };
+  const { status, avatar } = useSelector(userData);
+  const { appState } = useSelector(state);
+  const [user, setUser] = useState({
+    status: false,
+    avatar: '',
+  });
+  const [search, setSearch] = useState('');
 
   useEffect(() => {
-    const fetchUser = async () => {
-      try {
-        const res = await getUserData();
-        if (res) {
-          dispatch(
-            addInfoDataUser({
-              ...res,
-              status: true,
-            })
-          );
-        }
-      } catch (error) {
-        console.log('No users');
+    setUser({ status, avatar });
+  }, [status, avatar]);
+
+  const handleLogOut = () => {
+    localStorage.removeItem('access');
+    dispatch(setStatus({ status: false }));
+  };
+
+  const handleNavigate = () => {
+    navigate('/my-account');
+    dispatch(setAppState('account'));
+  };
+
+  const handleOnChange = (value) => {
+    if (!value.startsWith(' ')) {
+      setSearch(value);
+    }
+  };
+  const handleSearch = () => {
+    if (search) {
+      let location = window.location.pathname;
+      if (location !== '/order-online') {
+        navigate('/order-online');
       }
-    };
-    fetchUser();
-  }, []);
+      dispatch(setKeyword({ keyword: search }));
+    }
+  };
 
   return (
     <div className={cx('header')}>
@@ -72,30 +94,87 @@ function Header() {
             <div className={cx('category')}>
               {Nav.map((item, i) => {
                 return (
-                  <span
+                  <Button
                     key={i}
-                    onClick={() => handleNav(item.order, item.to)}
-                    className={cx('navigate', nav === i ? 'active' : '')}
+                    className={cx(
+                      appState.includes(item.state) ? 'active' : ''
+                    )}
+                    text
+                    to={item.to}
                   >
                     {item.text}
-                  </span>
+                  </Button>
                 );
               })}
             </div>
+            <FontAwesomeIcon
+              icon={faBars}
+              onClick={() => {
+                dispatch(setToggleSidebar({ isToggleSidebar: true }));
+              }}
+              className={cx('menu__responsive')}
+            />
+
             <div className={cx('search')}>
               <input
+                value={search}
+                onChange={(e) => handleOnChange(e.target.value)}
                 className={cx('input')}
                 placeholder="Search what you need"
               />
-              <FontAwesomeIcon
-                className={cx('icon')}
-                icon={faMagnifyingGlass}
-              />
+              <div className={cx('filter')}>
+                <FontAwesomeIcon
+                  className={cx('icon')}
+                  icon={faMagnifyingGlass}
+                  onClick={handleSearch}
+                />
+                <FontAwesomeIcon
+                  className={cx('icon')}
+                  icon={faArrowDownShortWide}
+                  onClick={() =>
+                    dispatch(setToggleMenuFilter({ isToggleMenuFilter: true }))
+                  }
+                />
+              </div>
             </div>
             <div className={cx('menu')}>
-              <FontAwesomeIcon className={cx('item')} icon={faBell} />
+              <FontAwesomeIcon className={cx('menu__item')} icon={faBell} />
               {user.status ? (
-                <img src={user.avatar} className={cx('avatar')} alt="" />
+                <Tippy
+                  arrow={true}
+                  interactive
+                  render={(attrs) => (
+                    <ul className={cx('user__menu')} {...attrs} tabIndex="-1">
+                      <li className={cx('item')} onClick={handleNavigate}>
+                        <FontAwesomeIcon
+                          className={cx('icon')}
+                          icon={faIdBadge}
+                        />
+                        My account
+                      </li>
+                      <li className={cx('item')}>
+                        <FontAwesomeIcon
+                          className={cx('icon')}
+                          icon={faCircleInfo}
+                        />
+                        Feedback and help
+                      </li>
+                      <li className={cx('item')} onClick={handleLogOut}>
+                        <FontAwesomeIcon
+                          className={cx('icon')}
+                          icon={faArrowRightToBracket}
+                        />
+                        Log out
+                      </li>
+                    </ul>
+                  )}
+                >
+                  <img
+                    className={cx('user__avatar')}
+                    src={user.avatar}
+                    alt="user"
+                  />
+                </Tippy>
               ) : (
                 <Button
                   outline
@@ -109,6 +188,7 @@ function Header() {
           </div>
         </div>
       </div>
+      <MenuFilterResponsive />
     </div>
   );
 }

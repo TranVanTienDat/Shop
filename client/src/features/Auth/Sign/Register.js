@@ -2,11 +2,11 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import classNames from 'classnames/bind';
 import { useForm } from 'react-hook-form';
 import * as Yup from 'yup';
-import { createUser } from '~/api/authApi';
+import userApi from '~/api/modules/auth.api';
+import images from '~/assets/images';
 import Button from '~/components/Button/Button';
 import { success, warning } from '~/constants/ToastMessage/ToastMessage';
 import styles from './Sign.module.scss';
-import images from '~/assets/images';
 const cx = classNames.bind(styles);
 function Register() {
   // form validation rules
@@ -32,8 +32,10 @@ function Register() {
         password: data.password,
         avatar: images.avatar,
       };
-      await createUser(user);
-      success('success, please login');
+      const { res } = await userApi.signUp(user);
+      if (res) {
+        success('success, please login');
+      }
     } catch (error) {
       warning(error?.response?.data?.message);
     }

@@ -17,3 +17,7 @@ export const voucherSelector = (state) => state.voucher;
 
 // buy product
 export const buySelector = (state) => state.buyProduct;
+
+// rating
+export const ratingSelector = (state) => state.ratingUser;
+export const state = (state) => state.stateApp;

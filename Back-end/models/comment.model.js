@@ -9,23 +9,35 @@ const commentSchema = new mongoose.Schema({
   data: [
     {
       user: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "userDB",
-        required: true,
-      },
-      name: {
-        type: String,
-        required: true,
+        userID: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "userDB",
+          required: true,
+        },
+        name: {
+          type: String,
+          required: true,
+        },
+        avatar: {
+          type: String,
+          required: true,
+        },
       },
       rating: {
-        type: String,
+        type: Number,
         required: true,
       },
       date: {
         type: String,
         required: true,
       },
-      images: [String],
+      images: [
+        {
+          name: { type: String, required: true },
+          data: { type: String, required: false },
+          contentType: { type: String, required: true },
+        },
+      ],
       comment: {
         type: String,
         required: true,

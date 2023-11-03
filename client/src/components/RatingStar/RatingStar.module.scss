@@ -17,9 +17,17 @@
           .element__icon {
             font-size: 1.2rem;
           }
+          .element--size {
+            font-size: 2.4rem;
+            cursor: pointer;
+          }
         }
         .star__icon {
           font-size: 1.2rem;
+        }
+        .star--size {
+          font-size: 2.4rem;
+          cursor: pointer;
         }
       }
     }

@@ -4,35 +4,71 @@
   margin: 30px 0;
   .inner {
     .heading {
+      @include breakpoint(xm) {
+        font-size: 2.1rem;
+      }
       font-size: 3.4rem;
       color: $jetBlack-color;
     }
 
     .container {
+      @include breakpoint(tm) {
+        @include flex-direction();
+      }
       margin-top: 20px;
       @include d-flex($f-start, $s-between);
       gap: 20px;
       .sidebar {
-        max-width: 180px;
+        @include breakpoint(tm) {
+          @include d-flex($center, $f-start);
+          width: 100%;
+          overflow: auto;
+          &::-webkit-scrollbar {
+            height: 0;
+          }
+        }
         background-color: $white-color;
         .box {
+          @include breakpoint(xm) {
+            border-radius: 0;
+            padding: 0 6px;
+          }
           @include d-flex($center, $s-between);
           color: $lightBlue-color;
           padding: 6px;
-          gap: 8px;
           margin: 6px;
           border-radius: 8px;
           cursor: pointer;
           .title,
           .icon {
+            @include breakpoint(xm) {
+              font-size: 1.3rem;
+              font-weight: 500;
+            }
             font-size: 1.6rem;
             font-weight: 400;
+          }
+          .title {
+            width: 120px;
+            @include breakpoint(xs) {
+              width: 100px;
+            }
+          }
+          .icon {
+            @include breakpoint(xs) {
+              display: none;
+            }
           }
           &:active {
             filter: brightness(0.9);
           }
         }
         .box--active {
+          @include breakpoint(xm) {
+            background-color: transparent;
+            border-left: 1.5px solid $primary-color;
+            color: $primary-color;
+          }
           background-color: rgb(235, 241, 255);
         }
       }
@@ -41,14 +77,23 @@
         flex: 1;
         .list {
           .product {
+            @include breakpoint(xm) {
+              padding: 10px;
+              margin: 0 -10px 20px -10px;
+            }
             padding: 20px;
             margin-bottom: 20px;
             background-color: $white-color;
             box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px,
               rgba(0, 0, 0, 0.23) 0px 3px 6px;
             .product__flex {
+              @include breakpoint(xs) {
+                @include flex-direction();
+                gap: 10px;
+              }
               @include d-flex($f-start, $s-between);
               gap: 20px;
+
               .flex__quantity,
               .box {
                 @include flex-direction();
@@ -65,14 +110,27 @@
                   .data {
                     @include flex-direction();
                     gap: 5px;
+                    .name {
+                      overflow: hidden;
+                      display: -webkit-box;
+                      text-overflow: ellipsis;
+                      -webkit-box-orient: vertical;
+                      -webkit-line-clamp: 2;
+                    }
                     .name,
                     .quantity {
+                      @include breakpoint(xm) {
+                        font-size: 1.3rem;
+                      }
                       font-size: 1.6rem;
                       font-weight: 500;
                       color: $black-color;
                     }
 
                     .type {
+                      @include breakpoint(xm) {
+                        font-size: 1.2rem;
+                      }
                       color: $light-color;
                       font-size: 1.4rem;
                     }
@@ -83,18 +141,30 @@
               .flex__status {
                 @include flex-direction();
                 align-items: flex-end;
+                @include breakpoint(xs) {
+                  align-items: flex-start;
+                }
                 gap: 5px;
+                .status__delivery,
+                .status__price {
+                  font-size: 1.6rem;
+                  @include breakpoint(xm) {
+                    font-size: 1.3rem;
+                  }
+                }
+
                 .status__delivery {
                   text-transform: uppercase;
                   color: $firebrick-red-color;
                   font-weight: 700;
-                  font-size: 1.6rem;
                 }
                 .status__price {
-                  font-size: 1.6rem;
                   color: $primary-color;
                 }
                 .status__contact {
+                  @include breakpoint(xm) {
+                    font-size: 1rem;
+                  }
                   padding: 3px 6px;
                   background-color: $primary-color;
                   font-size: 1.4rem;
@@ -107,13 +177,13 @@
                 }
               }
               .box {
-                .address,
-                .time {
-                  font-size: 1.5rem;
-                  font-weight: 400;
-                  color: $jetBlack-color;
-                }
                 .address {
+                  @include breakpoint(sm) {
+                    font-size: 1.4rem;
+                  }
+                  @include breakpoint(xs) {
+                    font-size: 1.3rem;
+                  }
                   color: $firebrick-red-color;
                 }
               }
@@ -123,6 +193,18 @@
               margin-top: 20px;
               border-top: 1px solid $lightBlue-color;
               padding-top: 20px;
+            }
+
+            .expected {
+              margin-top: 20px;
+              .time {
+                @include breakpoint(xm) {
+                  font-size: 1.3rem;
+                }
+                font-size: 1.5rem;
+                font-weight: 400;
+                color: $jetBlack-color;
+              }
             }
           }
         }

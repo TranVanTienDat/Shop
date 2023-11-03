@@ -10,9 +10,13 @@ const routes = {
   contact: '/contact',
   gallery: '/gallery',
   paymentOrder: '/payment-product',
-  // shoppingCart: 'shopping-Cart',
-  // shoppingCart: 'Checkout',
-  // shoppingCart: 'shopping-Cart'
+  shoppingCart: '/shopping-cart',
+  checkout: '/check-out',
+  profile: '/my-account',
+  setting: '/setting',
+  changePassword: '/change-password',
+  logOut: '/log-out',
+  remoteUser: '/remote-user',
 };
 
 export default routes;

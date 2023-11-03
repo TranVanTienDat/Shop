@@ -18,6 +18,7 @@ const auth = new Schema({
     type: String,
     required: true,
   },
+  dateBirth: String,
   gender: String,
   address: String,
   phoneNumber: String,

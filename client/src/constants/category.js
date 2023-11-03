@@ -1,9 +1,7 @@
 export const category = [
-  { title: 'Tất cả sản phẩm' },
-  { title: 'Áo khoác & áo khoác' },
-  { title: 'Quần áo' },
-  { title: 'Playsuit' },
-  { title: 'Shrentx' },
-  { title: 'Váy ngắn' },
+  { title: 'Giày' },
+  { title: 'Áo khoác' },
+  { title: 'Đồng hồ' },
+  { title: 'Váy' },
   { title: 'Áo thun' },
 ];

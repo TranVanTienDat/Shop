@@ -6,12 +6,18 @@
   background-color: $white-color;
   text-align: center;
 
-  .title {
+  .heading {
+    @include breakpoint(xm) {
+      font-size: 2.2rem;
+    }
     font-size: 3rem;
     margin: 10px 0;
     color: $black-color;
   }
-  .heading {
+  .text {
+    @include breakpoint(xm) {
+      font-size: 1.2rem;
+    }
     font-size: 1.4rem;
     margin-bottom: 30px;
     color: $light-color;
@@ -21,7 +27,6 @@
 
   .card {
     margin-top: 20px;
-    cursor: pointer;
     .background {
       position: relative;
       .img {
@@ -30,14 +35,20 @@
       }
 
       .info {
-        padding: 20px 10px;
         position: absolute;
+        padding: 20px 10px;
         bottom: -100%;
         left: 0;
         right: 0;
+        cursor: pointer;
         background-color: #e2e2ea;
 
         .name {
+          @include breakpoint(xm) {
+            font-size: 1.3rem;
+            -webkit-line-clamp: 1;
+          }
+
           color: #9a9ab0;
           font-size: 1.6rem;
           font-weight: 400;
@@ -48,6 +59,14 @@
           -webkit-line-clamp: 2;
         }
         .brand {
+          @include breakpoint(xm) {
+            font-size: 1rem;
+            overflow: hidden;
+            display: -webkit-box;
+            text-overflow: ellipsis;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 1;
+          }
           font-size: 1.2rem;
           color: $light-color;
           font-weight: 300;
@@ -83,7 +102,7 @@
     opacity: 0;
   }
   to {
-    bottom: 1%;
+    bottom: 4px;
     opacity: 1;
   }
 }

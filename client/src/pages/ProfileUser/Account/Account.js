@@ -1,149 +1,115 @@
+import { faRightLeft } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classNames from 'classnames/bind';
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import propTypes from 'prop-types';
+import { useState } from 'react';
+import {
+  Menu,
+  MenuItem,
+  Sidebar,
+  menuClasses,
+  sidebarClasses,
+} from 'react-pro-sidebar';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { deleteUser } from '~/api/authApi';
-import { success, warning } from '~/constants/ToastMessage/ToastMessage';
-import { content, sideBar } from '~/constants/menuComp';
-import { UserAuth } from '~/firebase/context/AuthContext';
-import { handleLogOut } from '~/hook/func';
+import images from '~/assets/images';
+import { sideBar } from '~/constants/navigate';
+// import { UserAuth } from '~/firebase/context/AuthContext';
+import { state, userData } from '~/store/slice/selector';
 import styles from './Account.module.scss';
-import { userData } from '~/store/slice/selector';
 const cx = classNames.bind(styles);
-const item = ['', '', ''];
-function Account() {
-  const { logOut } = UserAuth();
-  const dispatch = useDispatch();
+
+function Account({ children }) {
+  // const { logOut } = UserAuth();
+  const { appState } = useSelector(state);
   const navigate = useNavigate();
-  const { name, email, address, numberPhone, gender, id, image } =
-    useSelector(userData);
-
-  const [state, setState] = useState({
-    navigation: 0,
-    tag: 0,
-    progress: -1,
-  });
-
-  useEffect(() => {
-    const { progress } = state;
-    const getProgress = () => {
-      let updatedProgress = progress;
-      if (gender !== '') {
-        updatedProgress += 1;
-      }
-      if (name !== '' && email !== '') {
-        updatedProgress += 1;
-      }
-      if (address !== '' && numberPhone !== '') {
-        updatedProgress += 1;
-      }
-      setState((prevState) => ({ ...prevState, progress: updatedProgress }));
-    };
-    getProgress();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [name, email, address, numberPhone, gender]);
-
-  const handleNavigate = async (i) => {
-    const { navigation } = state;
-    let updatedNavigation = navigation;
-    if (i < 3) {
-      updatedNavigation = i;
-    }
-    setState((prevState) => ({
-      ...prevState,
-      navigation: updatedNavigation,
-      tag: i,
-    }));
-
-    switch (i) {
-      case 3:
-        handleLogOut(id, logOut, dispatch, navigate);
-        break;
-
-      case 4:
-        const message = 'you may want to delete';
-        const check = window.confirm(message);
-        if (check) {
-          try {
-            await deleteUser(id);
-            success('Delete success');
-            navigate('/');
-            window.location.reload();
-          } catch (error) {
-            warning(error.response.data.message);
-            console.log(error);
-          }
-        }
-        break;
-      default:
-        break;
+  const { name, avatar } = useSelector(userData);
+  const [collapsed, setCollapsed] = useState(true);
+  const handleNavigate = (i, link) => {
+    navigate(link);
+    if (i === 3) {
+      localStorage.removeItem('access');
+      window.location.reload();
     }
   };
   return (
     <div className={cx('wrapper')}>
-      <h2 className={cx('title')}>Account setting</h2>
+      <h3 className={cx('heading')}>MY ACCOUNT</h3>
       <div className={cx('inner')}>
         <div className={cx('account')}>
           <div className={cx('profile')}>
             <div className={cx('info')}>
-              <div className={cx('sideBar')}>
-                {/* progress */}
-                <div className={cx('progress')}>
-                  {item.map((item, i) => {
-                    return (
-                      <div
-                        key={i}
-                        className={cx(
-                          'item',
-                          state.progress >= i ? 'color' : ''
-                        )}
-                      ></div>
-                    );
-                  })}
-                </div>
-                {/* progress */}
-                <div className={cx('navigate')}>
-                  {sideBar.map((item, i) => {
-                    return (
-                      <span
-                        key={i}
-                        className={cx(
-                          'item',
-                          state.navigation === i ? 'background' : ''
-                        )}
-                        onClick={() => handleNavigate(i)}
-                      >
-                        <FontAwesomeIcon
-                          icon={item.icon}
-                          className={cx('icon')}
-                        />
-                        <h4 className={cx('title')}>{item.title}</h4>
-                      </span>
-                    );
-                  })}
-                </div>
+              <div className={cx('sidebar')}>
+                <Sidebar
+                  rootStyles={{
+                    [`.${sidebarClasses.container}`]: {
+                      backgroundColor: '#547AFF',
+                      padding: '10px',
+                    },
+                  }}
+                  collapsedWidth="65px"
+                  collapsed={collapsed}
+                >
+                  <div className={cx('menu')}>
+                    {!collapsed && (
+                      <img src={images.logo} className={cx('logo')} alt="" />
+                    )}
+                    <FontAwesomeIcon
+                      icon={faRightLeft}
+                      className={cx('icon')}
+                      onClick={() => setCollapsed(!collapsed)}
+                    />
+                  </div>
+                  <Menu
+                    rootStyles={{
+                      [`.${menuClasses.button}`]: {
+                        color: '#fff',
+                        paddingLeft: '5px',
+                        paddingRight: '5px',
+                        margin: '5px 0',
+                      },
+
+                      [`.${menuClasses.button}:hover`]: {
+                        backgroundColor: '#fff',
+                        color: '#547AFF',
+                      },
+                    }}
+                  >
+                    {sideBar.map((item, i) => {
+                      return (
+                        <MenuItem
+                          key={i}
+                          style={
+                            appState.includes(item.state)
+                              ? {
+                                  backgroundColor: '#fff',
+                                  color: '#547AFF',
+                                }
+                              : null
+                          }
+                          icon={<FontAwesomeIcon icon={item.icon} />}
+                          onClick={() => handleNavigate(i, item.navigate)}
+                        >
+                          {item.title}
+                        </MenuItem>
+                      );
+                    })}
+                  </Menu>
+                </Sidebar>
               </div>
-              <div className={cx('content')}>
-                {/*render component*/}
-                {content.map((item, i) => {
-                  const Tag = item.title;
-                  return (
-                    <Tag key={i} isBlock={state.tag === i ? true : false} />
-                  );
-                })}
-                {/*render component*/}
-              </div>
+              <div className={cx('content')}>{children}</div>
             </div>
           </div>
           <div className={cx('image')}>
-            <img className={cx('img')} src={image} alt="" />
-            <span className={cx('fullName')}>{name}</span>
+            <img className={cx('img')} src={avatar} alt="" />
+            <h4 className={cx('fullName')}>{name}</h4>
           </div>
         </div>
       </div>
     </div>
   );
 }
-
+Account.propTypes = {
+  children: propTypes.node,
+};
 export default Account;

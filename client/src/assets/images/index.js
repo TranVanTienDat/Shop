@@ -1,6 +1,7 @@
 const images = {
   // logo
   logo: require('~/assets/images/Dealerz.png'),
+  logoWhite: require('~/assets/images/Dealerz-white.png'),
 
   google: require('~/assets/images/google.png'),
   // no product

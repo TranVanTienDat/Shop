@@ -1,12 +1,10 @@
 import Default from '../Default/Default';
 
-function Notification({ isBlock = false }) {
+function Notification() {
   return (
-    <div style={isBlock ? { display: 'block' } : { display: 'none' }}>
-      <Default title="Notification">
-        <h3 style={{ textAlign: 'center' }}>updating...</h3>
-      </Default>
-    </div>
+    <Default title="Cài đặt thông báo">
+      <h3 style={{ textAlign: 'center' }}>updating...</h3>
+    </Default>
   );
 }
 

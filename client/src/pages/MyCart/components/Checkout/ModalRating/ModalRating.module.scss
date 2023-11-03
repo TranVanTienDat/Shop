@@ -1,0 +1,92 @@
+@import '../../../../../style/variables.scss';
+
+.heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .title {
+    font-size: 1.8rem;
+    margin: 0 20px;
+    font-weight: 700;
+    color: $jetBlack-color;
+    position: relative;
+    margin: 0 auto;
+  }
+  .menu {
+    font-size: 2.6rem;
+    padding: 0 6px;
+    cursor: pointer;
+    color: $firebrick-red-color;
+  }
+}
+
+.main {
+  .box {
+    margin: 40px 0 20px 0;
+    @include d-flex($center, $f-start);
+    gap: 20px;
+    .avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+    }
+    .comment {
+      border: none;
+      outline: none;
+      border-bottom: 1px solid $lightBlue-color;
+      width: 300px;
+      padding: 6px;
+      font-size: 1.5rem;
+    }
+  }
+  .rating {
+    @include flex-justify($f-start);
+  }
+  .list__image {
+    margin: 30px 0;
+    @include d-flex($center, $f-start);
+    gap: 10px;
+    .image {
+      width: 70px;
+      height: 70px;
+      border-radius: 2px;
+      border: 2px dashed $lightBlue-color;
+    }
+  }
+  .main_file {
+    @include d-flex($center, $f-start);
+    margin: 20px 0;
+    gap: 10px;
+    .file__input {
+      .flex {
+        display: inline-flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 10px;
+        padding: 4px;
+        border: 2px solid $firebrick-red-color;
+        border-radius: 4px;
+        cursor: pointer;
+        .title,
+        .icon {
+          font-size: 1.4rem;
+          font-weight: 400;
+          color: $primary-color;
+        }
+      }
+      .input {
+        display: none;
+      }
+    }
+
+    .note {
+      font-size: 1.4rem;
+      text-decoration: underline;
+      color: $lightBlue-color;
+    }
+  }
+
+  .button {
+    @include flex-justify($f-end);
+  }
+}

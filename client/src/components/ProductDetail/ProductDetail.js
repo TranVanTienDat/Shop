@@ -1,5 +1,6 @@
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import {
+  faAnglesLeft,
   faCartPlus,
   faChevronRight,
   faMinus,
@@ -10,18 +11,22 @@ import classNames from 'classnames/bind';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
-import { addCart } from '~/api/cartApi';
-import { getProductById } from '~/api/productsApi';
+import cartApi from '~/api/modules/cart.api';
+import productApi from '~/api/modules/product.api';
 import Button from '~/components/Button/Button';
 import Star from '~/components/RatingStar/RatingStar';
-import { err, success, warning } from '~/constants/ToastMessage/ToastMessage';
+import {
+  errMes,
+  success,
+  warning,
+} from '~/constants/ToastMessage/ToastMessage';
 import { formatPrice } from '~/hook/func';
-import { setIsLoading } from '~/store/slice/loadingSlice';
+import { onBuy } from '~/store/slice/BuyProductSlice';
+import { setIsLoading, setIsLoadingButton } from '~/store/slice/loadingSlice';
+import { addCartProduct } from '~/store/slice/myCart';
 import { userData } from '~/store/slice/selector';
 import styles from './ProductDetail.module.scss';
 import Review from './Reviews/Review';
-import { addCartProduct } from '~/store/slice/myCart';
-import { onBuy } from '~/store/slice/BuyProductSlice';
 const cx = classNames.bind(styles);
 function ProductDetail() {
   const { status } = useSelector(userData);
@@ -31,7 +36,6 @@ function ProductDetail() {
 
   const [product, setProduct] = useState(null); // lấy ra sản phẩm
   const [quantity, setQuantity] = useState(1); // số lượng cần mua ban đầu là 1
-
   // Gồm list ảnh và ảnh ban đầu
   const [listImg, setLisImg] = useState({ list: [], mainImg: '' });
 
@@ -54,36 +58,37 @@ function ProductDetail() {
 
   useEffect(() => {
     const getProduct = async () => {
-      try {
-        dispatch(setIsLoading(true));
-        const response = await getProductById(_id);
-        dispatch(setIsLoading(false));
-        if (response) {
-          const data = response.data.selectProduct;
-          setProduct(response.data);
-          setChooseProduct({
-            listProduct: data,
-            mainProduct: data.listProduct[0],
+      dispatch(setIsLoading(true));
+      const { res, err } = await productApi.getProductById({
+        productID: _id,
+      });
+      dispatch(setIsLoading(false));
+
+      if (res) {
+        const data = res.selectProduct;
+        setProduct(res);
+        setChooseProduct({
+          listProduct: data,
+          mainProduct: data.listProduct[0],
+        });
+        if (!data.listProduct[0].quantity) {
+          setSizes({
+            ListSize: data.listProduct[0].sizes,
+            quantity: data.listProduct[0].sizes[0].quantity,
           });
-          if (!data.listProduct[0].quantity) {
-            setSizes({
-              ListSize: data.listProduct[0].sizes,
-              quantity: data.listProduct[0].sizes[0].quantity,
-            });
-          } else {
-            setSizes((prev) => ({
-              ...prev,
-              quantity: data.listProduct[0].quantity,
-            }));
-          }
-          setLisImg({
-            list: response.data.images,
-            mainImg: response.data.images[0],
-          });
+        } else {
+          setSizes((prev) => ({
+            ...prev,
+            quantity: data.listProduct[0].quantity,
+          }));
         }
-      } catch (error) {
-        console.log(error);
+
+        setLisImg({
+          list: res.images,
+          mainImg: res.images[0],
+        });
       }
+      if (err) errMes(err.message);
     };
     getProduct();
   }, [_id, dispatch]);
@@ -109,11 +114,6 @@ function ProductDetail() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [typeProduct]);
 
-  // handle function
-  const handleNav = () => {
-    navigate('/detail-product');
-  };
-
   const handleOnChangeMainImg = (srcImg) => {
     setLisImg((prev) => ({ ...prev, mainImg: srcImg }));
   };
@@ -136,39 +136,46 @@ function ProductDetail() {
   };
 
   const handleOnClick = async (field) => {
-    if (status) {
-      if (typeProduct.type) {
-        const body = {
-          productID: product._id,
-          productName: product.name,
-          productImage: listImg.mainImg,
-          productPrice: chooseProduct.mainProduct.newPrice,
-          productType: typeProduct.type,
-          productValue: typeProduct.value
-            ? typeProduct.value
-            : typeProduct.type,
-          productQuantity: quantity,
-        };
+    if (!status) {
+      errMes('Bạn cần đăng nhập');
+      return;
+    }
 
-        if (field === 'cart') {
-          const { res, error } = await addCart(body);
-          if (res) {
-            dispatch(addCartProduct(body));
-            success('thêm vào giỏ hàng thành công');
-          }
-          if (error) {
-            err(error.message);
-          }
+    if (!typeProduct.type) {
+      warning('Lựa chọn sản phẩm');
+      return;
+    }
+
+    const body = {
+      productID: product._id,
+      productName: product.name,
+      productImage: listImg.mainImg,
+      productPrice: chooseProduct.mainProduct.newPrice,
+      productType: typeProduct.type,
+      productValue: typeProduct.value ? typeProduct.value : typeProduct.type,
+      productQuantity: quantity,
+    };
+
+    if (field === 'cart') {
+      dispatch(setIsLoadingButton({ isLoadingButton: true }));
+
+      const { res, err } = await cartApi.postCart({
+        ...body,
+        productCheck: false,
+      });
+      dispatch(setIsLoadingButton({ isLoadingButton: false }));
+      if (res) {
+        if (res.add) {
+          dispatch(addCartProduct(body));
         }
-        if (field === 'buy') {
-          dispatch(onBuy([body]));
-          navigate('/payment-product');
-        }
-      } else {
-        warning('Lựa chọn sản phẩm');
+        success(res.message);
       }
-    } else {
-      err('Bạn cần đăng nhập');
+      if (err) {
+        errMes(err.message);
+      }
+    } else if (field === 'buy') {
+      dispatch(onBuy([body]));
+      navigate('/payment-product');
     }
   };
 
@@ -177,11 +184,11 @@ function ProductDetail() {
       {product ? (
         <div className={cx('inner')}>
           <div className={cx('path')}>
-            Grocery{' '}
-            <FontAwesomeIcon className={cx('icon')} icon={faChevronRight} />{' '}
-            Fruits{' '}
+            Detail
             <FontAwesomeIcon className={cx('icon')} icon={faChevronRight} />
-            Japan Oranges
+            product
+            <FontAwesomeIcon className={cx('icon')} icon={faChevronRight} />
+            {product.name}
           </div>
 
           <div className={cx('detail')}>
@@ -309,23 +316,27 @@ function ProductDetail() {
                 <div className={cx('buy')}>
                   <div className={cx('quantity')}>
                     <span className={cx('title')}>Quantity</span>
-                    <div className={cx('counter')}>
-                      <span
-                        className={cx('prev')}
-                        onClick={() => handleQuantity('prev')}
-                      >
-                        <FontAwesomeIcon icon={faMinus} />
-                      </span>
-                      <span className={cx('number')}>{quantity}</span>
-                      <span
-                        className={cx('next')}
-                        onClick={() => handleQuantity('next')}
-                      >
-                        <FontAwesomeIcon icon={faPlus} />
-                      </span>
-                    </div>
-                    <div className={cx('existence')}>
-                      {sizes.quantity && <>{sizes.quantity} sản phẩm có sẵn</>}
+                    <div className={cx('flex')}>
+                      <div className={cx('counter')}>
+                        <span
+                          className={cx('prev')}
+                          onClick={() => handleQuantity('prev')}
+                        >
+                          <FontAwesomeIcon icon={faMinus} />
+                        </span>
+                        <span className={cx('number')}>{quantity}</span>
+                        <span
+                          className={cx('next')}
+                          onClick={() => handleQuantity('next')}
+                        >
+                          <FontAwesomeIcon icon={faPlus} />
+                        </span>
+                      </div>
+                      <div className={cx('existence')}>
+                        {sizes.quantity && (
+                          <>{sizes.quantity} sản phẩm có sẵn</>
+                        )}
+                      </div>
                     </div>
                   </div>
 
@@ -347,12 +358,18 @@ function ProductDetail() {
                   </div>
                 </div>
               </div>
+
+              <FontAwesomeIcon
+                onClick={() => navigate(-1)}
+                icon={faAnglesLeft}
+                className={cx('mobile__icon-back')}
+              />
             </div>
 
             <div className={cx('description')}>
               <div className={cx('description__detail')}>
                 <div className={cx('heading')}>CHI TIẾT SẢN PHẨM</div>
-                <div className={cx('info')}>
+                <div className={cx('description__info')}>
                   {product?.description.parameter?.length > 0 &&
                     product?.description.parameter.map((item, i) => {
                       return (
@@ -378,13 +395,16 @@ function ProductDetail() {
                   )}
                 </div>
                 <div className={cx('review')}>
-                  <Review data={product?.reviews} />
+                  <Review productID={product._id} />
                 </div>
               </div>
               <div className={cx('products-other')}>
                 <h4 className={cx('title')}>Top sản phẩm bán chạy</h4>
                 <div className={cx('list')}>
-                  <div className={cx('product')} onClick={handleNav}>
+                  <div
+                    className={cx('product')}
+                    onClick={() => navigate('/detail-product')}
+                  >
                     <img
                       className={cx('img')}
                       src="https://down-vn.img.susercontent.com/file/148212e6d7fbdb80316141cacf524f04"

@@ -4,7 +4,7 @@ const statusOrderDB = require("../models/statusOrder.model");
 const getDate = require("../utils/date");
 exports.getProducts = async (req, res) => {
   try {
-    const { keyword, price, category, page, limit } = req.query;
+    const { keyword, minPrice, maxPrice, category, page, limit } = req.query;
     const pageNumber = parseInt(page) || 1;
     const itemsPerPage = parseInt(limit) || 5;
     const skip = (pageNumber - 1) * itemsPerPage;
@@ -15,9 +15,26 @@ exports.getProducts = async (req, res) => {
       filter.name = { $regex: keyword, $options: "i" };
     }
 
-    if (price > 0) {
-      filter["selectProduct.listProduct"] = {
-        $elemMatch: { newPrice: { $lte: parseInt(price) } },
+    if (parseInt(minPrice) > 0 && parseInt(maxPrice) > 0) {
+      // filter.$and = [
+      //   { "selectProduct.listProduct.newPrice": { $gte: parseInt(minPrice) } },
+      //   { "selectProduct.listProduct.newPrice": { $lte: parseInt(maxPrice) } },
+      // ];
+      filter.$and = [
+        {
+          "selectProduct.listProduct.newPrice": {
+            $gte: parseInt(minPrice),
+            $lte: parseInt(maxPrice),
+          },
+        },
+      ];
+    } else if (parseInt(minPrice) > 0) {
+      filter["selectProduct.listProduct.newPrice"] = {
+        $gte: parseInt(minPrice),
+      };
+    } else if (parseInt(maxPrice) > 0) {
+      filter["selectProduct.listProduct.newPrice"] = {
+        $lte: parseInt(maxPrice),
       };
     }
 
@@ -32,7 +49,6 @@ exports.getProducts = async (req, res) => {
 
     const totalCount = await productDB.countDocuments(filter);
     const totalPages = Math.ceil(totalCount / itemsPerPage);
-
     res.status(200).send({
       products,
       totalPages,
@@ -86,74 +102,6 @@ exports.getProductById = async (req, res) => {
   }
 };
 
-// exports.getProductFilter = async (req, res) => {
-//   try {
-//     const { keyword, price, category, page, limit } = req.query;
-//     const pageNumber = parseInt(page) || 1;
-//     const itemsPerPage = parseInt(limit) || 5;
-//     const skip = (pageNumber - 1) * itemsPerPage;
-
-//     const newPrice = parseInt(price);
-//     let check = false;
-//     const filter = {};
-
-//     if (keyword !== "") {
-//       filter.name = { $regex: keyword, $options: "i" };
-//       check = true;
-//     }
-
-//     if (price > 0) {
-//       filter["selectProduct.listProduct"] = {
-//         $elemMatch: { newPrice: { $lte: newPrice } },
-//       };
-//       check = true;
-//     }
-
-//     if (category !== "") {
-//       filter.categories = { $regex: category, $options: "i" };
-//       check = true;
-//     }
-//     if (check) {
-//       const products = await productDB
-//         .find(filter)
-//         .limit(itemsPerPage)
-//         .skip(skip);
-//       const totalCount = await productDB.countDocuments(filter);
-//       const totalPages = Math.ceil(totalCount / itemsPerPage);
-//       res.status(200).send({
-//         products,
-//         totalPages,
-//         currentPage: pageNumber,
-//         itemsPerPage,
-//       });
-//     }
-//   } catch (error) {
-//     console.error(error);
-//     return res.status(500).json({ error: "Internal Server Error" });
-//   }
-// };
-
-exports.getAll = async (req, res) => {
-  try {
-    const { page, limit } = req.query;
-    const pageNumber = parseInt(page) || 1;
-    const itemsPerPage = parseInt(limit) || 5;
-    const skip = (pageNumber - 1) * itemsPerPage;
-
-    const products = await productDB.find({}).limit(itemsPerPage).skip(skip);
-    const totalCount = await productDB.countDocuments();
-    const totalPages = Math.ceil(totalCount / itemsPerPage);
-    res.status(200).send({
-      products,
-      totalPages,
-      currentPage: pageNumber,
-      itemsPerPage,
-    });
-  } catch (err) {
-    res.status(500).send({ message: err.message });
-  }
-};
-
 exports.orderProducts = async (req, res) => {
   try {
     const body = req.body;
@@ -169,7 +117,7 @@ exports.orderProducts = async (req, res) => {
     const { currentDateFormatted, nextDateFormatted } = currentAndNextDate;
 
     const data = {
-      store: [...body.store],
+      store: body.store,
       status: { typeStatus: 1, typeText: "chờ XN" },
       totalPay: body.totalPay,
       transferTime: currentDateFormatted,

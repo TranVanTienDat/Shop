@@ -1,7 +1,7 @@
 import classNames from 'classnames/bind';
 import { useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getProducts } from '~/api/productsApi';
+import productApi from '~/api/modules/product.api';
 import { useDebounce } from '~/hook/debounce';
 import { searchParams } from '~/store/slice/selector';
 import { Animate } from '../Auth/Sign/LogIn';
@@ -9,10 +9,9 @@ import styles from './Shop.module.scss';
 import SideBar from './SideBar/SideBar';
 import Card from './card/Card';
 const cx = classNames.bind(styles);
-function ShopFood() {
+function Shop() {
   const dispatch = useDispatch();
-  const { keyword, price, category } = useSelector(searchParams);
-  const debounceKeyword = useDebounce(keyword);
+  const { keyword, minPrice, maxPrice, category } = useSelector(searchParams);
   const [listProduct, setListProduct] = useState([]);
   const [currentItemPage, setCurrentItemPage] = useState({
     current: parseInt(localStorage.getItem('currentPage')) || 1,
@@ -25,15 +24,17 @@ function ShopFood() {
     const fetchProducts = async () => {
       const currentPage = currentItemPage.status ? 1 : currentItemPage.current;
       setIsLoading(true);
-      const response = await getProducts(
-        debounceKeyword,
-        price,
+      window.scrollTo(0, 300);
+      const { res } = await productApi.getProducts({
+        keyword,
+        minPrice,
+        maxPrice,
         category,
-        currentPage,
-        3
-      );
-      if (response) {
-        const { products, totalPages } = response.data;
+        page: currentPage,
+        limit: 5,
+      });
+      if (res) {
+        const { products, totalPages } = res;
         setListProduct(products);
         const listPage = [];
         Array.from({ length: totalPages }).forEach((_, i) => {
@@ -44,17 +45,18 @@ function ShopFood() {
       setIsLoading(false);
     };
     fetchProducts();
-  }, [dispatch, debounceKeyword, price, category, currentItemPage]);
+  }, [dispatch, keyword, minPrice, maxPrice, category, currentItemPage]);
 
   // Lưu lại giá trị cũ
   const currentMemo = useMemo(() => {
     return {
-      debounceKeyword,
-      price,
+      keyword,
+      minPrice,
+      maxPrice,
       category,
       status: true,
     };
-  }, [debounceKeyword, price, category]);
+  }, [keyword, minPrice, maxPrice, category]);
 
   useEffect(() => {
     setCurrentItemPage({ current: 1, status: true });
@@ -67,53 +69,54 @@ function ShopFood() {
   };
   return (
     <div className={cx('shop')}>
-      <div className={cx('sidebar')}>
+      <div className={cx('inner')}>
         <SideBar />
-      </div>
-      <div className={cx('shop__list')}>
-        {!isLoading ? (
-          listProduct.length > 0 ? (
-            <div>
-              <div className={cx('products')}>
-                {listProduct.map((data, i) => {
-                  return <Card key={i} {...data} />;
-                })}
-              </div>
 
-              <div className={cx('page')}>
-                <div className={cx('navigation')}>
-                  {getTotalPage.length > 0 &&
-                    getTotalPage.map((item, i) => {
-                      return (
-                        <button
-                          key={i}
-                          className={cx(
-                            'button',
-                            currentItemPage.current === item
-                              ? 'button__active'
-                              : null
-                          )}
-                          value={item}
-                          onClick={(e) => handleNavigation(e.target.value)}
-                        >
-                          {item}
-                        </button>
-                      );
-                    })}
+        <div className={cx('shop__list')}>
+          {!isLoading ? (
+            listProduct.length > 0 ? (
+              <div>
+                <div className={cx('products')}>
+                  {listProduct.map((data, i) => {
+                    return <Card key={i} {...data} />;
+                  })}
+                </div>
+
+                <div className={cx('page')}>
+                  <div className={cx('navigation')}>
+                    {getTotalPage.length > 0 &&
+                      getTotalPage.map((item, i) => {
+                        return (
+                          <button
+                            key={i}
+                            className={cx(
+                              'button',
+                              currentItemPage.current === item
+                                ? 'button__active'
+                                : null
+                            )}
+                            value={item}
+                            onClick={(e) => handleNavigation(e.target.value)}
+                          >
+                            {item}
+                          </button>
+                        );
+                      })}
+                  </div>
                 </div>
               </div>
-            </div>
+            ) : (
+              <div className={cx('no-product')}>không tìm thấy sản phẩm...</div>
+            )
           ) : (
-            <div className={cx('no-product')}>không tìm thấy sản phẩm...</div>
-          )
-        ) : (
-          <div className={cx('animate')}>
-            <Animate />
-          </div>
-        )}
+            <div className={cx('animate')}>
+              <Animate />
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
 }
 
-export default ShopFood;
+export default Shop;

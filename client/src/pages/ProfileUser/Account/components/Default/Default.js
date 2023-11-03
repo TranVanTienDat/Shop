@@ -6,13 +6,13 @@ function Default({ title, children }) {
   return (
     <div
       style={{
-        margin: '15px',
+        margin: '16px 10px',
       }}
     >
       <h3
         style={{
-          fontSize: '1.6rem',
-          marginBottom: '20px',
+          fontSize: '2rem',
+          marginBottom: '30px',
           color: '#3c71ff',
         }}
       >

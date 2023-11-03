@@ -1,44 +1,56 @@
 import classNames from 'classnames/bind';
 import styles from './RatingStar.module.scss';
+import propTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar as Rating } from '@fortawesome/free-solid-svg-icons';
 import { faStar } from '@fortawesome/free-regular-svg-icons';
+import { useEffect } from 'react';
+import { useState } from 'react';
+import { handleStar } from '~/utils/Star';
+import { setRating } from '~/store/slice/ratingSlice';
+import { useDispatch } from 'react-redux';
 const cx = classNames.bind(styles);
 
-const list = ['', '', '', '', ''];
-function RatingStar({ value }) {
-  const handle = (value, i) => {
-    const result = Math.round((value - i) * 100);
-    return result > 0 ? result : 0;
-  };
+function RatingStar({ value = false, onClick = false, sizeStar = false }) {
+  const dispatch = useDispatch();
+  const [star, setStar] = useState([]);
+  const [onClickStar, setOnClickStar] = useState(5);
+  useEffect(() => {
+    if (value) {
+      const rs = handleStar(value);
+      setStar(rs);
+    }
+    if (onClick) {
+      const rs = handleStar(onClickStar);
+      setStar(rs);
+    }
+  }, [value, onClick, onClickStar]);
 
+  const handleRating = (i) => {
+    setOnClickStar(i);
+    dispatch(setRating({ rating: i }));
+  };
   return (
     <div className={cx('wrapper')}>
       <div className={cx('inner')}>
         <div className={cx('list')}>
-          {list.map((item, i) => {
+          {star.map((item, i) => {
             return (
               <div
                 key={i}
                 className={cx('star')}
-                onClick={() => handle(value, i)}
+                onClick={() => onClick && handleRating(i + 1)}
               >
-                <div
-                  className={cx('element')}
-                  style={
-                    value >= i + 1
-                      ? {
-                          width: '100%',
-                        }
-                      : { width: `${handle(value, i)}%` }
-                  }
-                >
+                <div className={cx('element')} style={{ width: `${item}%` }}>
                   <FontAwesomeIcon
-                    className={cx('element__icon')}
+                    className={cx(sizeStar ? 'element--size' : 'element__icon')}
                     icon={Rating}
                   />
                 </div>
-                <FontAwesomeIcon className={cx('star__icon')} icon={faStar} />
+                <FontAwesomeIcon
+                  className={cx(sizeStar ? 'star--size' : 'star__icon')}
+                  icon={faStar}
+                />
               </div>
             );
           })}
@@ -47,5 +59,11 @@ function RatingStar({ value }) {
     </div>
   );
 }
+
+Rating.propTypes = {
+  value: propTypes.number,
+  onClick: propTypes.func,
+  sizeStar: propTypes.bool,
+};
 
 export default RatingStar;

@@ -1,35 +1,42 @@
 import classNames from 'classnames/bind';
-import { useState } from 'react';
-import { menuCart } from '~/constants/menuComp';
+import propTypes from 'prop-types';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { menuCart } from '~/constants/navigate';
+import { state } from '~/store/slice/selector';
 import styles from './MyCart.module.scss';
 
 const cx = classNames.bind(styles);
 
-function MyCart() {
-  const [nav, setNav] = useState({
-    index: 0,
-    Comp: menuCart[0].Comp,
-  });
+function MyCart({ children }) {
+  const navigate = useNavigate();
+  const { appState } = useSelector(state);
   return (
     <div className={cx('wrapper')}>
       <div className={cx('inner')}>
         <div className={cx('navigate')}>
-          {menuCart.map((title, i) => {
+          {menuCart.map((item, i) => {
             return (
               <span
                 key={i}
-                onClick={() => setNav({ index: i, Comp: title.Comp })}
-                className={cx('title', nav.index === i && 'active')}
+                onClick={() => navigate(item.to)}
+                className={cx(
+                  'title',
+                  appState.includes(item.state) && 'active'
+                )}
               >
-                {title.title}
+                {item.title}
               </span>
             );
           })}
         </div>
-        {<nav.Comp />}
+        {children}
       </div>
     </div>
   );
 }
+MyCart.propTypes = {
+  children: propTypes.node,
+};
 
 export default MyCart;

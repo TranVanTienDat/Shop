@@ -8,43 +8,37 @@ const statusOrderSchema = new mongoose.Schema({
   },
   data: [
     {
-      store: [
-        {
-          productID: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "Product",
-            required: true,
-          },
-          productName: {
-            type: String,
-            required: true,
-          },
-          productImage: {
-            type: String,
-            required: true,
-          },
-          productPrice: {
-            type: Number,
-            required: true,
-          },
-          productType: {
-            type: String,
-            required: true,
-          },
-          productValue: {
-            type: String,
-            required: true,
-          },
-          productQuantity: {
-            type: Number,
-            required: true,
-          },
-          // productCheck: {
-          //   type: Boolean,
-          //   required: true,
-          // },
+      store: {
+        productID: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "Product",
+          required: true,
         },
-      ],
+        productName: {
+          type: String,
+          required: true,
+        },
+        productImage: {
+          type: String,
+          required: true,
+        },
+        productPrice: {
+          type: Number,
+          required: true,
+        },
+        productType: {
+          type: String,
+          required: true,
+        },
+        productValue: {
+          type: String,
+          required: true,
+        },
+        productQuantity: {
+          type: Number,
+          required: true,
+        },
+      },
       status: {
         typeStatus: {
           type: Number,

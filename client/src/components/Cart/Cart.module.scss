@@ -1,86 +1,98 @@
 @import '../../style/variables.scss';
 
 .cart {
+  // @include breakpoint(xs) {
+  //   width: 100%;
+  // }
   position: fixed;
-  z-index: 100;
   top: $height-header;
-  width: 346px;
+  width: 360px;
   color: #000;
   background-color: $white-color;
+  z-index: 100;
 
-  .title {
-    padding: 10px;
-    // font-weight: 300;
-    font-size: 1.6rem;
-    color: $jetBlack-color;
-  }
-
-  .item {
-    padding: 10px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    &:hover {
-      background-color: $background-color;
+  .product {
+    position: relative;
+    .title {
+      padding: 10px;
+      font-size: 1.6rem;
+      color: $jetBlack-color;
     }
-    .item__img {
-      width: 42px;
-      margin-right: 10px;
-    }
-    .description {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
 
-      .name {
-        width: 150px;
-        font-weight: 500;
-        font-size: 1.4rem;
-        color: $jetBlack-color;
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
+    .item {
+      padding: 10px;
+      cursor: pointer;
+      @include d-flex($center, $s-between);
+      &:hover {
+        background-color: $background-color;
       }
+      .item__img {
+        width: 42px;
+        margin-right: 10px;
+      }
+      .description {
+        flex: 1;
+        @include d-flex($center, $s-between);
 
-      .component {
-        display: flex;
-        align-items: center;
-        .price {
-          color: #db2828;
+        .name {
+          width: 150px;
           font-weight: 500;
           font-size: 1.4rem;
-          margin-right: 10px;
+          color: $jetBlack-color;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
         }
-        .remote {
-          font-size: 2rem;
-          margin-left: 20px;
-          color: #000;
-          cursor: pointer;
-          background-color: transparent;
-          &:hover {
-            color: $firebrick-red-color;
-            animation: animateDeg 0.4s linear;
+
+        .component {
+          @include flex-alight($center);
+          .price {
+            color: #db2828;
+            font-weight: 500;
+            font-size: 1.4rem;
+            margin-right: 10px;
+          }
+          .remote {
+            font-size: 2rem;
+            margin-left: 20px;
+            color: #000;
+            cursor: pointer;
+            background-color: transparent;
+            &:hover {
+              color: $firebrick-red-color;
+              animation: animateDeg 0.4s linear;
+            }
           }
         }
       }
     }
-  }
-  .btn {
-    margin: 10px 0 10px 10px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    .number {
-      font-size: 1.5rem;
-      font-weight: 400;
-      color: $jetBlack-color;
+    .btn {
+      margin: 10px;
+      @include d-flex($center, $s-between);
+      .number {
+        font-size: 1.5rem;
+        font-weight: 400;
+        color: $jetBlack-color;
+      }
+    }
+    .mobile__icon-close {
+      @include breakpoint(xs) {
+        display: block;
+      }
+      display: none;
+      position: absolute;
+      top: 8px;
+      right: 10px;
+      font-size: 2.6rem;
+      color: $firebrick-red-color;
+      cursor: pointer;
+      &:active {
+        filter: brightness(0.9);
+      }
     }
   }
   .no-product {
-    display: flex;
-    flex-direction: column;
+    @include flex-direction();
     align-items: center;
     border: solid 1px #d2001a;
     overflow: hidden;
@@ -99,10 +111,10 @@
   .cart__icon {
     position: absolute;
     font-size: 2.6rem;
-    background-color: $firebrick-red-color;
     border-radius: 50%;
     color: $white-color;
     transform: rotate(45deg);
+    background-color: $firebrick-red-color;
     padding: 6px 12px;
     cursor: pointer;
     top: 50%;
@@ -140,7 +152,7 @@
 
 @keyframes animate-open {
   from {
-    right: -346px;
+    right: -360px;
   }
   to {
     right: 0;
@@ -151,7 +163,7 @@
     right: 0;
   }
   to {
-    right: -346px;
+    right: -360px;
   }
 }
 

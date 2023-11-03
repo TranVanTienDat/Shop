@@ -1,17 +1,17 @@
 import classNames from 'classnames/bind';
-import propType from 'prop-types';
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
-import { updatePassword } from '~/api/authApi';
+import userApi from '~/api/modules/auth.api';
 import Button from '~/components/Button/Button';
-import { err, success } from '~/constants/ToastMessage/ToastMessage';
-import { userData } from '~/store/slice/selector';
+import { errMes, success } from '~/constants/ToastMessage/ToastMessage';
 import Default from '../Default/Default';
 import styles from './ChangePassword.module.scss';
+import { useDispatch } from 'react-redux';
+import { setIsLoadingButton } from '~/store/slice/loadingSlice';
 const cx = classNames.bind(styles);
 
-function ChangePassword({ isBlock = false }) {
-  const { id } = useSelector(userData);
+function ChangePassword() {
+  const dispatch = useDispatch();
+  const [isSetInfoBtn, setIsSetInfoBtn] = useState(false);
   const [password, setPassword] = useState({
     currentPassword: '',
     newPassword: '',
@@ -23,6 +23,7 @@ function ChangePassword({ isBlock = false }) {
       ...prev,
       [field]: value,
     }));
+    setIsSetInfoBtn(true);
   };
 
   const funcCheckPassword = (arg) => {
@@ -31,93 +32,95 @@ function ChangePassword({ isBlock = false }) {
   };
 
   const handleUpdatePassword = async () => {
-    if (id === 'firebase') {
-      err('No password update');
-      return;
-    }
     const { currentPassword, newPassword, enterPassword } = password;
     if (currentPassword === newPassword) {
-      err('The same password');
+      errMes('The same password');
     } else if (
       newPassword === enterPassword &&
       newPassword.length > 0 &&
       funcCheckPassword(newPassword)
     ) {
       try {
-        await updatePassword(id, {
+        dispatch(setIsLoadingButton({ isLoadingButton: true }));
+
+        const { res } = await userApi.updatePassword({
           currentPassword,
           newPassword,
         });
-        success('Update success');
-        setPassword({
-          currentPassword: '',
-          newPassword: '',
-          enterPassword: '',
-        });
+        dispatch(setIsLoadingButton({ isLoadingButton: false }));
+
+        if (res) {
+          success('Update success');
+          setPassword({
+            currentPassword: '',
+            newPassword: '',
+            enterPassword: '',
+          });
+          setIsSetInfoBtn(false);
+        }
       } catch (error) {
-        err(error.response.data.message);
+        errMes(error.response.data.message);
       }
     } else {
-      err('Please enter correctly');
+      errMes('Please enter correctly');
     }
   };
 
   return (
-    <div style={isBlock ? { display: 'block' } : { display: 'none' }}>
-      <Default title="Change password">
-        {/* detail */}
-        <form>
-          <div className={cx('detail')}>
-            <label className={cx('title')}>Current password</label>
-            <input
-              className={cx('input')}
-              value={password?.currentPassword}
-              onChange={(e) =>
-                handlePasswordChange('currentPassword', e.target.value)
-              }
-            />
-          </div>
+    <Default title="Thay đổi mật khẩu">
+      {/* detail */}
+      <form>
+        <div className={cx('detail')}>
+          <label className={cx('title')}>Mật khẩu hiện tại</label>
+          <input
+            className={cx('input')}
+            value={password?.currentPassword}
+            onChange={(e) =>
+              handlePasswordChange('currentPassword', e.target.value)
+            }
+          />
+        </div>
 
-          <div className={cx('detail')}>
-            <label className={cx('title')}>New password</label>
-            <input
-              className={cx('input')}
-              type="password"
-              value={password?.newPassword}
-              onChange={(e) =>
-                handlePasswordChange('newPassword', e.target.value)
-              }
-            />
-          </div>
+        <div className={cx('detail')}>
+          <label className={cx('title')}>Mật khẩu mới</label>
+          <input
+            className={cx('input')}
+            type="password"
+            value={password?.newPassword}
+            onChange={(e) =>
+              handlePasswordChange('newPassword', e.target.value)
+            }
+          />
+        </div>
 
-          <div className={cx('detail')}>
-            <label className={cx('title')}>Enter the password</label>
-            <input
-              className={cx('input')}
-              type="password"
-              value={password?.enterPassword}
-              onChange={(e) =>
-                handlePasswordChange('enterPassword', e.target.value)
-              }
-            />
-          </div>
-        </form>
-        {/* detail */}
-        <h3 className={cx('note')}>
-          Note: The new password has a length of at least 6 characters, with
-          numbers, letters and special characters
-        </h3>
-        <span className={cx('button')}>
-          <Button success onClick={handleUpdatePassword}>
-            update
-          </Button>
-        </span>
-      </Default>
-    </div>
+        <div className={cx('detail')}>
+          <label className={cx('title')}>Nhập lại mật khẩu</label>
+          <input
+            className={cx('input')}
+            type="password"
+            value={password?.enterPassword}
+            onChange={(e) =>
+              handlePasswordChange('enterPassword', e.target.value)
+            }
+          />
+        </div>
+      </form>
+      {/* detail */}
+      <h3 className={cx('note')}>
+        Lưu ý: Mật khẩu mới có độ dài ít nhất 6 ký tự, với số, chữ cái và ký tự
+        đặc biệt
+      </h3>
+      <span className={cx('button')}>
+        <Button
+          large={isSetInfoBtn}
+          disabled={!isSetInfoBtn}
+          onClick={handleUpdatePassword}
+        >
+          Cập nhật
+        </Button>
+      </span>
+    </Default>
   );
 }
 
-ChangePassword.propType = {
-  isBlock: propType.bool,
-};
 export default ChangePassword;

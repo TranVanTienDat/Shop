@@ -2,8 +2,8 @@ export const dataVoucherTransport = [
   {
     id: '90NBE4',
     name: 'Mã vận chuyển',
-    title: 'Miễn phí vận chuyển ',
-    condition: 'Đơn Tối Thiểu 0₫ tối đa 30k',
+    title: 'Miễn phí',
+    condition: 'Đơn từ 0₫ tối đa 30k',
     price: 30000,
     priceProduct: 0,
     quantity: 1,
@@ -13,8 +13,8 @@ export const dataVoucherTransport = [
   {
     id: 'VSD3G34F',
     name: 'Mã vận chuyển',
-    title: 'Miễn phí vận chuyển',
-    condition: 'Đơn Tối Thiểu 250k tối đa 40k',
+    title: 'Miễn phí',
+    condition: 'Đơn từ 250k tối đa 40k',
     price: 40000,
     priceProduct: 250000,
     quantity: 1,

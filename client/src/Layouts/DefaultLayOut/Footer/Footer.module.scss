@@ -6,8 +6,10 @@
     max-width: 1000px;
     margin: 0 auto;
     padding: 20px 0;
-    display: flex;
-    justify-content: space-between;
+    @include flex-justify($s-between);
+    @include breakpoint(xs) {
+      @include flex-direction();
+    }
 
     .customer {
       display: flex;
@@ -42,9 +44,10 @@
       }
     }
     .Social-Network {
-      display: flex;
-      align-items: flex-start;
-      justify-content: center;
+      @include d-flex($f-start, $center);
+      @include breakpoint(sm) {
+        @include flex-direction();
+      }
       .icon {
         width: 40px;
         margin: 0 8px;

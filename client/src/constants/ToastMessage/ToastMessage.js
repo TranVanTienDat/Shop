@@ -29,7 +29,7 @@ export const success = (info) =>
     className: 'toast_message',
   });
 
-export const err = (info) =>
+export const errMes = (info) =>
   toast.error(info, {
     position: 'top-right',
     autoClose: 3000,

@@ -1,7 +1,9 @@
 @import '../../style//variables.scss';
 
 .wrapper {
-  font-weight: 700;
+  @include breakpoint(xm) {
+    padding: 5px 10px;
+  }
   padding: 8px 16px;
   display: flex;
   align-items: center;
@@ -19,6 +21,15 @@
     border-radius: 50%;
     color: inherit;
     background-color: $white-color;
+  }
+  .title,
+  .icon {
+    @include breakpoint(xm) {
+      font-size: 1.3rem;
+    }
+    @include breakpoint(md) {
+      font-size: 1.4rem;
+    }
   }
   &:active {
     filter: brightness(0.9);
@@ -57,9 +68,6 @@
 .large {
   background-color: $primary-color;
   color: $white-color;
-  .title {
-    font-size: 1.4rem;
-  }
   .icon {
     background-color: $primary-color;
   }
@@ -75,11 +83,47 @@
 
 .text {
   border: none;
-  color: $primary-color;
+  color: $jetBlack-color;
   background-color: transparent;
+
+  .icon,
+  .title {
+    font-size: 1.7rem;
+    font-weight: 700;
+  }
 }
 
 .disabled {
   cursor: no-drop;
   background-color: #eaeaea;
+}
+
+.onChange {
+  color: $lightBlue-color;
+  background-color: $white-color;
+  padding: 4px;
+  &:active {
+    filter: brightness(0.95);
+  }
+  .title {
+    font-size: 1.3rem;
+  }
+}
+
+.btnSidebar {
+  padding: 10px 14px;
+  border-radius: 12px;
+  width: 100%;
+  display: block;
+  &:active {
+    filter: brightness(0.95);
+  }
+  .title,
+  .icon {
+    font-size: 2rem;
+    color: $white-color;
+  }
+  .icon {
+    background-color: transparent;
+  }
 }

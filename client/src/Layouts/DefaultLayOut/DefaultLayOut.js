@@ -1,30 +1,60 @@
 import propTypes from 'prop-types';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import userApi from '~/api/modules/auth.api';
+import cartApi from '~/api/modules/cart.api';
+import Cart from '~/components/Cart/Cart';
+import ModalRating from '~/pages/MyCart/components/Checkout/ModalRating/ModalRating';
+import { setInfo } from '~/store/slice/infoDataUser';
+import { getCartProduct } from '~/store/slice/myCart';
+import { userData } from '~/store/slice/selector';
+import { parseDate } from '~/utils/timeConversion';
 import Container from './Container/Container';
 import Footer from './Footer/Footer';
-import { useEffect } from 'react';
 import Header from './Header/Header';
-import Loading from './Loading/Loading';
-import { getCart } from '~/api/cartApi';
-import { useDispatch } from 'react-redux';
-import { getCartProduct } from '~/store/slice/myCart';
+import Loading from './Loading/Loading/Loading';
+import SidebarResponsive from '../../features/shop/SideBar/SidebarResponsive/SidebarResponsive';
 function DefaultLayOut({ children }) {
   const dispatch = useDispatch();
+  const { status } = useSelector(userData);
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [children]);
-  useEffect(() => {
-    const fetchLitCart = async () => {
-      const { res } = await getCart();
-      if (res) {
-        dispatch(getCartProduct(res.data.cart));
+    const fetchUser = async () => {
+      try {
+        const { res } = await userApi.getInfoUser();
+        if (res) {
+          const date = parseDate(res.user.dateBirth);
+          dispatch(
+            setInfo({
+              ...res.user,
+              status: true,
+              dateBirth: date,
+            })
+          );
+        }
+      } catch (error) {
+        console.log('No users');
       }
     };
-    fetchLitCart();
-  });
+    fetchUser();
+  }, [dispatch]);
+  useEffect(() => {
+    const fetchListCart = async () => {
+      const { res } = await cartApi.getCart();
+      if (res) {
+        dispatch(getCartProduct(res?.cart));
+      }
+    };
+    if (status) {
+      fetchListCart();
+    }
+  }, [status, dispatch]);
   return (
     <>
       <Header />
+      <SidebarResponsive />
       <Loading />
+      <Cart />
+      <ModalRating />
       <Container children={children} />
       <Footer />
     </>

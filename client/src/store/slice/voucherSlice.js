@@ -6,6 +6,7 @@ const voucher = createSlice({
     discount: 0,
     transport: 0,
     status: false,
+    productID: '',
   },
 
   reducers: {
@@ -13,6 +14,7 @@ const voucher = createSlice({
       state.discount = parseInt(action.payload.discount);
       state.transport = parseInt(action.payload.transport);
       state.status = action.payload.status;
+      state.productID = action.payload.productID;
     },
     setStatus(state, action) {
       state.status = action.payload.status;

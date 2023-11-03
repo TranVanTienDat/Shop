@@ -15,6 +15,9 @@
     border: 1px solid $primary-color;
 
     &::after {
+      @include breakpoint(xm) {
+        font-size: 1.5rem;
+      }
       font-size: 2rem;
       font-weight: 700;
     }
@@ -87,53 +90,15 @@
     background-color: $primary-color;
   }
 
-  // styles sideBar
-  .ps-sidebar-root {
-    border: none;
-    border-color: transparent;
-
-    .ps-menu-button {
-      border-radius: 10px;
-      font-family: sans-serif;
-      color: $black-color;
-
-      margin: 2px 0;
-      &:hover {
-        background-color: #ebf1ff;
-      }
-
-      .css-wx7wi4 {
-        margin-right: 3px;
-        font-size: 1.8rem;
-      }
-
-      .ps-menu-label {
-        display: flex;
-        justify-content: flex-start;
-      }
-    }
+  // sidebar profile
+  .css-1ec8anr {
+    height: 100%;
   }
 
-  .css-vj11vy {
-    .css-ewdv3l {
-      .css-16jkw2k {
-        .ps-menu-button {
-          border-radius: 10px;
-          margin: 2px 0;
-          &:hover {
-            background-color: #ebf1ff;
-          }
-
-          .css-12w9als {
-            flex-grow: unset;
-            color: rgb(255, 140, 0);
-            overflow: unset;
-            display: flex;
-            align-items: center;
-          }
-        }
-      }
-    }
+  // sidebar menu
+  .css-r2qlta {
+    height: 100%;
+    border: none;
   }
 }
 

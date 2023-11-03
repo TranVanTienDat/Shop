@@ -1,159 +1,195 @@
 import classNames from 'classnames/bind';
-import propType from 'prop-types';
+
 import { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { updateUser } from '~/api/authApi';
 
 import Button from '~/components/Button/Button';
-import { err, success } from '~/constants/ToastMessage/ToastMessage';
-import { addInfoFirebase } from '~/store/slice/infoDataUser';
+import { errMes, success } from '~/constants/ToastMessage/ToastMessage';
 import { userData } from '~/store/slice/selector';
 import Default from '../Default/Default';
 
+import { days, months, years } from '~/constants/date';
+
+import userApi from '~/api/modules/auth.api';
+import { setIsLoadingButton } from '~/store/slice/loadingSlice';
 import styles from './DetailInfo.module.scss';
 const cx = classNames.bind(styles);
 
-function DetailInfo({ isBlock = false }) {
-  const { name, email, address, numberPhone, gender, id } =
-    useSelector(userData);
-
+function DetailInfo() {
   const dispatch = useDispatch();
+  const { dateBirth, name, email, address, phoneNumber, gender } =
+    useSelector(userData);
   const [info, setInfo] = useState(null);
+  const [isSetInfoBtn, setIsSetInfoBtn] = useState(false);
+
   useEffect(() => {
     setInfo({
       name,
       email,
       address,
-      numberPhone,
+      phoneNumber,
+      dateBirth,
       gender,
-      id,
     });
-  }, [name, email, address, numberPhone, gender, id]);
+  }, [name, email, address, phoneNumber, gender, dateBirth]);
 
-  // Handle gender
+  // Handle onchange
   const handleInfoChange = useCallback((field, value) => {
     setInfo((prev) => ({
       ...prev,
       [field]: value,
     }));
+    setIsSetInfoBtn(true);
   }, []);
 
   const handleUpdate = async () => {
-    const { id, name, email, gender, address, numberPhone } = info;
-    if (id === 'firebase') {
-      try {
-        dispatch(addInfoFirebase({ address, numberPhone, gender }));
-        success('Update success');
-      } catch (error) {
-        err('Update failure');
-        console.log(error);
-      }
-    } else {
-      try {
-        await updateUser(id, {
-          name,
-          email,
-          gender,
-          address,
-          phoneNumber: numberPhone,
-        });
-        success('Update success');
-      } catch (error) {
-        err(error.response.data.message);
-      }
+    const { dateBirth } = info;
+    dispatch(setIsLoadingButton({ isLoadingButton: true }));
+    const { res, err } = await userApi.updateUser({
+      ...info,
+      dateBirth: `${dateBirth.day}/${dateBirth.month}/${dateBirth.year}`,
+    });
+    dispatch(setIsLoadingButton({ isLoadingButton: true }));
+    if (res) {
+      dispatch(setInfo({ ...info }));
+      setIsSetInfoBtn(false);
+      success('Update success');
+    }
+    if (err) {
+      errMes(err.message);
     }
   };
 
   return (
-    <div style={isBlock ? { display: 'block' } : { display: 'none' }}>
-      <Default title="My account">
-        <div className={cx('inner')}>
-          <div className={cx('gender')}>
-            <label className={cx('title')}>Gender</label>
-            <form>
-              <div className={cx('check')}>
-                <input
-                  type="radio"
-                  id="gender1"
-                  value="male"
-                  onChange={(e) => handleInfoChange('gender', e.target.value)}
-                  checked={info?.gender === 'male'}
-                />
-                <label htmlFor="gender1">Male</label>
-              </div>
-              <div className={cx('check')}>
-                <input
-                  type="radio"
-                  id="gender2"
-                  value="female"
-                  onChange={(e) => handleInfoChange('gender', e.target.value)}
-                  checked={info?.gender === 'female'}
-                />
-                <label htmlFor="gender2">Female</label>
-              </div>
-              <div className={cx('check')}>
-                <input
-                  type="radio"
-                  id="gender3"
-                  value="other"
-                  onChange={(e) => handleInfoChange('gender', e.target.value)}
-                  checked={info?.gender === 'other'}
-                />
-                <label htmlFor="gender3">Other</label>
-              </div>
-            </form>
-            {/* gender */}
-          </div>
-
-          {/*  */}
-          <div className={cx('detail')}>
-            <label className={cx('title')}>Full name</label>
-            <input
-              className={cx('input')}
-              value={info?.name || ''}
-              onChange={(e) => handleInfoChange('name', e.target.value)}
-              disabled={!!(id === 'firebase')}
-            />
-          </div>
-          <div className={cx('detail')}>
-            <label className={cx('title')}>Email</label>
-            <input
-              className={cx('input')}
-              value={info?.email || ''}
-              onChange={(e) => handleInfoChange('email', e.target.value)}
-              disabled={!!(id === 'firebase')}
-            />
-          </div>
-          <div className={cx('detail')}>
-            <label className={cx('title')}>Address</label>
-            <input
-              className={cx('input')}
-              value={info?.address || ''}
-              onChange={(e) => handleInfoChange('address', e.target.value)}
-            />
-          </div>
-          <div className={cx('detail')}>
-            <label className={cx('title')}>Phone number</label>
-            <input
-              className={cx('input')}
-              value={info?.numberPhone || ''}
-              onChange={(e) => handleInfoChange('numberPhone', e.target.value)}
-            />
-          </div>
-          {/*  */}
-          <span>
-            <Button success onClick={handleUpdate}>
-              Update
-            </Button>
-          </span>
+    <Default title="Hồ sơ của tôi">
+      <div className={cx('inner')}>
+        <div className={cx('gender')}>
+          <label className={cx('title')}>Giới tính</label>
+          <form>
+            <div className={cx('check')}>
+              <input
+                type="radio"
+                id="gender1"
+                value="male"
+                onChange={(e) => handleInfoChange('gender', e.target.value)}
+                checked={info?.gender === 'male'}
+              />
+              <label htmlFor="gender1">Nam</label>
+            </div>
+            <div className={cx('check')}>
+              <input
+                type="radio"
+                id="gender2"
+                value="female"
+                onChange={(e) => handleInfoChange('gender', e.target.value)}
+                checked={info?.gender === 'female'}
+              />
+              <label htmlFor="gender2">Nữ</label>
+            </div>
+            <div className={cx('check')}>
+              <input
+                type="radio"
+                id="gender3"
+                value="other"
+                onChange={(e) => handleInfoChange('gender', e.target.value)}
+                checked={info?.gender === 'other'}
+              />
+              <label htmlFor="gender3">Khác</label>
+            </div>
+          </form>
+          {/* gender */}
         </div>
-      </Default>
-    </div>
+
+        {/*  */}
+        <div className={cx('detail')}>
+          <label className={cx('title')}>Họ tên</label>
+          <input
+            className={cx('input')}
+            value={info?.name || ''}
+            onChange={(e) => handleInfoChange('name', e.target.value)}
+          />
+        </div>
+        <div className={cx('detail')}>
+          <label className={cx('title')}>Email</label>
+          <input
+            className={cx('input')}
+            value={info?.email || ''}
+            onChange={(e) => handleInfoChange('email', e.target.value)}
+          />
+        </div>
+        <div className={cx('detail')}>
+          <label className={cx('title')}>Ngày sinh</label>
+          <div className={cx('flex')}>
+            <select
+              value={info?.dateBirth.day}
+              onChange={(e) =>
+                handleInfoChange('dateBirth', {
+                  ...info?.dateBirth,
+                  day: e.target.value,
+                })
+              }
+            >
+              {days.map((item, i) => (
+                <option key={i} className={cx('item')} value={item.value}>
+                  {item.title}
+                </option>
+              ))}
+            </select>
+
+            <select
+              value={info?.dateBirth.month}
+              onChange={(e) =>
+                handleInfoChange('dateBirth', {
+                  ...info?.dateBirth,
+                  month: e.target.value,
+                })
+              }
+            >
+              {months.map((item, i) => (
+                <option key={i} className={cx('item')} value={item.value}>
+                  {item.title}
+                </option>
+              ))}
+            </select>
+
+            <select
+              value={info?.dateBirth.year}
+              onChange={(e) =>
+                handleInfoChange('dateBirth', {
+                  ...info?.dateBirth,
+                  year: e.target.value,
+                })
+              }
+            >
+              {years.map((item, i) => (
+                <option key={i} className={cx('item')} value={item.value}>
+                  {item.title}
+                </option>
+              ))}
+            </select>
+          </div>
+        </div>
+        <div className={cx('detail')}>
+          <label className={cx('title')}>Số điện thoại</label>
+          <input
+            className={cx('input')}
+            type="tel"
+            value={info?.phoneNumber || ''}
+            onChange={(e) => handleInfoChange('phoneNumber', e.target.value)}
+          />
+        </div>
+        <span>
+          <Button
+            large={isSetInfoBtn}
+            disabled={!isSetInfoBtn}
+            onClick={handleUpdate}
+          >
+            Cập nhật
+          </Button>
+        </span>
+      </div>
+    </Default>
   );
 }
-
-Default.propType = {
-  isBlock: propType.bool,
-};
 
 export default DetailInfo;

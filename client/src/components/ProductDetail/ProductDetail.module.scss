@@ -1,5 +1,4 @@
 @import '../../style/variables.scss';
-
 .wrapper {
   margin-top: $height-header;
   background-color: $background-color;
@@ -7,12 +6,16 @@
     font-size: 3rem;
     font-weight: 600;
     height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include d-flex($center, $center);
   }
   .inner {
     .path {
+      @include breakpoint(sn) {
+        font-size: 1.4rem;
+      }
+      @include breakpoint(xs) {
+        display: none;
+      }
       font-size: 1.8rem;
       font-weight: 500;
       color: $lightBlue-color;
@@ -26,35 +29,62 @@
     }
     .detail {
       margin: 0 20px;
+      @include breakpoint(tm) {
+        margin: 0;
+      }
       .info {
+        @include breakpoint(tm) {
+          display: block;
+          padding: 10px;
+        }
+        position: relative;
         background-color: $white-color;
         display: flex;
-        overflow: hidden;
+        gap: 20px;
         padding: 20px;
         .info__img {
-          max-width: 480px;
-          flex: 4;
-          margin-right: 10px;
+          @include breakpoint(md) {
+            height: 600px;
+            display: flex;
+            gap: 10px;
+          }
+          overflow: hidden;
+          flex: 1;
           .main {
+            @include breakpoint(md) {
+              flex: 1;
+            }
             .main_img {
+              @include breakpoint(tm) {
+                border: none;
+              }
               width: 100%;
+              height: 100%;
+              object-fit: cover;
               border: 1px solid $black-color;
             }
           }
           .secondary {
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
+            @include breakpoint(md) {
+              @include flex-direction();
+              padding: 6px;
+              gap: 6;
+            }
+            @include d-flex($center, $f-start);
+            gap: 10px;
             background-color: $background-color;
             overflow-x: auto;
             white-space: nowrap;
 
             &::-webkit-scrollbar {
               height: 0;
+              width: 0;
             }
             .secondary_img {
-              margin-right: 10px;
               width: 90px;
+              @include breakpoint(xs) {
+                width: 70px;
+              }
               &:hover {
                 border: 2px solid $firebrick-red-color;
               }
@@ -62,25 +92,29 @@
           }
         }
         .info__product {
-          flex: 6;
-          margin-left: 10px;
+          flex: 1;
           .name {
-            font-size: 3rem;
+            @include breakpoint(tm) {
+              margin-top: 20px;
+            }
+            @include breakpoint(xm) {
+              font-size: 1.8rem;
+            }
+            font-size: 2.6rem;
             font-weight: 500;
             color: $jetBlack-color;
           }
           .product__parameters {
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
+            @include d-flex($center, $f-start);
             margin: 10px 0;
             .rating {
-              display: flex;
-              align-items: center;
-              justify-content: center;
+              @include d-flex($center, $center);
               color: $firebrick-red-color;
               padding-right: 5px;
               .number {
+                @include breakpoint(xm) {
+                  font-size: 1.4rem;
+                }
                 text-decoration-line: underline;
                 margin-right: 4px;
                 font-size: 1.8rem;
@@ -89,6 +123,9 @@
             .sales {
               display: flex;
               .item {
+                @include breakpoint(xm) {
+                  font-size: 1.4rem;
+                }
                 font-size: 1.6rem;
                 padding: 0 10px;
                 color: $light-color;
@@ -97,6 +134,9 @@
                   border-right: 1px solid $light-color;
                 }
                 .text {
+                  @include breakpoint(xm) {
+                    font-size: 1.5rem;
+                  }
                   font-size: 1.7rem;
                   color: $black-color;
                   margin: 0 4px;
@@ -107,17 +147,22 @@
           }
           .price {
             margin: 30px 0;
-            display: flex;
-            align-items: center;
             padding: 20px 0;
+            @include flex-alight($center);
             background-color: $background-color;
             .old {
+              @include breakpoint(xm) {
+                font-size: 1.6rem;
+              }
               font-size: 2rem;
               color: $light-color;
               text-decoration-line: line-through;
               margin-left: 20px;
             }
             .new {
+              @include breakpoint(xm) {
+                font-size: 2rem;
+              }
               font-size: 2.4rem;
               position: relative;
               color: $primary-color;
@@ -132,6 +177,9 @@
               }
             }
             .discount {
+              @include breakpoint(xm) {
+                font-size: 1rem;
+              }
               font-size: 1.4rem;
               padding: 2px;
               color: $white-color;
@@ -152,12 +200,16 @@
               display: flex;
               flex-wrap: wrap;
               .item {
+                @include breakpoint(xm) {
+                  font-size: 1.2rem;
+                }
                 padding: 6px 8px;
                 border: 1px solid #e0e0e0;
                 background-color: $white-color;
                 color: $black-color;
                 border-radius: 2px;
                 font-size: 1.4rem;
+
                 margin: 6px;
                 cursor: pointer;
                 &:hover {
@@ -185,43 +237,40 @@
           .buy {
             margin: 30px 0;
             .quantity {
-              display: flex;
-              align-items: center;
-              justify-content: space-between;
-              margin-bottom: 20px;
               .title {
                 font-size: 1.8rem;
                 font-weight: 600;
                 color: $jetBlack-color;
               }
-              .counter {
-                display: flex;
-                align-items: center;
-                background-color: $white-color;
-                padding: 10px;
-                border: 1px solid $primary-color;
-                color: $jetBlack-color;
-                border-radius: 4px;
-                .prev,
-                .next {
-                  padding: 2px 10px;
-                  border-radius: 4px;
-                  cursor: pointer;
-                  background-color: $primary-color;
-                  color: $white-color;
-                  &:active {
-                    filter: brightness(0.7);
+              .flex {
+                @include d-flex($center, $s-between);
+                margin: 10px 0 20px 0;
+
+                .counter {
+                  @include flex-alight($center);
+                  margin: 10px 0;
+                  color: $jetBlack-color;
+                  background-color: $white-color;
+                  .prev,
+                  .next {
+                    padding: 2px 10px;
+                    cursor: pointer;
+                    color: $white-color;
+                    background-color: $primary-color;
+                    &:active {
+                      filter: brightness(0.7);
+                    }
+                  }
+                  .number {
+                    margin: 0 10px;
+                    font-size: 1.8rem;
                   }
                 }
-                .number {
-                  margin: 0 10px;
-                  font-size: 1.8rem;
-                }
-              }
 
-              .existence {
-                font-size: 1.4rem;
-                color: $light-color;
+                .existence {
+                  font-size: 1.4rem;
+                  color: $light-color;
+                }
               }
             }
 
@@ -233,29 +282,59 @@
         }
       }
 
+      // mobile
+      .mobile__icon-back {
+        @include breakpoint(xm) {
+          display: block;
+        }
+        display: none;
+        position: absolute;
+        left: 24px;
+        top: 24px;
+        font-size: 2rem;
+        padding: 6px;
+        cursor: pointer;
+        color: $white-color;
+        border-radius: 50%;
+        background-color: rgba(0, 0, 0, 0.2);
+        &:active {
+          filter: brightness(0.9);
+        }
+      }
+
       .description {
+        display: flex;
         margin-top: 30px;
         padding: 10px;
         background-color: $white-color;
-        display: flex;
+        gap: 10px;
+        @include breakpoint(xs) {
+          @include flex-direction();
+        }
         .description__detail {
-          margin-right: 10px;
-          flex: 8;
+          flex: 7;
           .heading {
             padding: 20px;
             background-color: $background-color;
-            font-size: 1.8em;
+            @include breakpoint(xm) {
+              font-size: 2rem;
+              padding: 10px;
+              margin-left: -10px;
+            }
+            font-size: 2.6rem;
             color: $jetBlack-color;
           }
-          .info {
-            display: flex;
-            flex-direction: column;
+          .description__info {
+            @include flex-direction();
+            gap: 10px;
             .item {
-              display: flex;
-              align-items: center;
-              justify-content: flex-start;
+              @include d-flex($f-start, $f-start);
+              gap: 8px;
+              margin: 10px 0;
               .title {
-                margin: 10px 30px 10px 0;
+                @include breakpoint(xm) {
+                  font-size: 1.3rem;
+                }
                 font-size: 1.5rem;
                 color: $light-color;
                 letter-spacing: 1px;
@@ -265,21 +344,29 @@
                 text-overflow: ellipsis;
               }
               .value {
+                @include breakpoint(xm) {
+                  font-size: 1.2rem;
+                }
                 flex: 1;
                 font-size: 1.4rem;
                 color: rgba(0, 0, 0, 0.8);
+                overflow: hidden;
+                display: -webkit-box;
+                text-overflow: ellipsis;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 2;
               }
             }
             .text {
-              margin: 20px 0;
+              @include breakpoint(xm) {
+                font-size: 1.5rem;
+              }
+              margin-top: 20px;
               font-size: 1.8rem;
             }
           }
-          .review {
-          }
         }
         .products-other {
-          margin-left: 10px;
           flex: 2;
           .title {
             font-size: 1.5rem;
@@ -289,13 +376,16 @@
             text-decoration-line: underline;
           }
           .list {
+            display: grid;
+            grid-template-columns: repeat(1, minmax(50px, 1fr));
+            gap: 10px;
+            @include breakpoint(xs) {
+              grid-template-columns: repeat(2, minmax(50px, 1fr));
+            }
             .product {
-              margin: 30px 0;
               cursor: pointer;
               .img {
                 width: 100%;
-                height: 100%;
-                overflow: hidden;
               }
               .name {
                 font-size: 1.3rem;

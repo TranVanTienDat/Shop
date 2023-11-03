@@ -5,6 +5,8 @@ import searchParamsSlice from './slice/searchParamsSlice';
 import infoDataUser from './slice/infoDataUser';
 import voucherSlice from './slice/voucherSlice';
 import BuyProductSlice from './slice/BuyProductSlice';
+import ratingSlice from './slice/ratingSlice';
+import stateAppSlice from './slice/stateAppSlice';
 export const store = configureStore({
   reducer: {
     myCart: myCart,
@@ -13,5 +15,7 @@ export const store = configureStore({
     userData: infoDataUser,
     voucher: voucherSlice,
     buyProduct: BuyProductSlice,
+    ratingUser: ratingSlice,
+    stateApp: stateAppSlice,
   },
 });

@@ -21,6 +21,9 @@
 }
 .main {
   .form {
+    @include breakpoint(xs) {
+      grid-template-columns: repeat(1, minmax(250px, 350px));
+    }
     display: grid;
     grid-template-columns: repeat(2, minmax(250px, 300px));
     grid-gap: 16px;

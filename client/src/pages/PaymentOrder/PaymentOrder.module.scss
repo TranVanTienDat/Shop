@@ -5,19 +5,34 @@
   background-color: $background-color;
   .inner {
     margin: 0 20px;
+    @include breakpoint(xm) {
+      margin: 0 10px;
+    }
+    @include breakpoint(xs) {
+      margin: 0;
+    }
     .heading {
+      @include breakpoint(xs) {
+        margin-left: 10px;
+      }
       font-size: 3.4rem;
       color: $jetBlack-color;
     }
     .container {
       margin-top: 20px;
       .product {
+        @include breakpoint(xm) {
+          padding: 10px;
+        }
         padding: 20px;
         margin-bottom: 20px;
         background-color: $white-color;
         .product__flex {
           @include d-flex($f-start, $s-between);
           gap: 20px;
+          @include breakpoint(tm) {
+            display: block;
+          }
           .flex__quantity {
             @include flex-direction();
             flex: 6;
@@ -64,6 +79,9 @@
                 color: $light-color;
               }
               .price__pay {
+                @include breakpoint(xm) {
+                  font-size: 1.7rem;
+                }
                 font-size: 2rem;
                 font-weight: 600;
                 color: $primary-color;
@@ -119,31 +137,31 @@
               margin-bottom: 10px;
               .icon,
               .text {
+                @include breakpoint(xm) {
+                  font-size: 1.7rem;
+                }
                 font-size: 2rem;
                 color: $primary-color;
               }
             }
             .value {
+              @include breakpoint(xm) {
+                font-size: 1.5rem;
+              }
               font-size: 1.6rem;
               color: $jetBlack-color;
               margin-left: 28px;
-              .button__onchange {
-                margin-left: 10px;
-                padding: 4px;
-                color: $lightBlue-color;
-                background-color: $white-color;
-                cursor: pointer;
-                &:active {
-                  filter: brightness(0.95);
+              @include d-flex($b-line, $f-start);
+              gap: 20px;
+              .value__text {
+                @include breakpoint(xm) {
+                  flex: 1;
                 }
               }
-            }
-          }
-          .transport {
-            .value {
-              @include d-flex($center, $f-start);
-              gap: 30px;
               .price {
+                @include breakpoint(xm) {
+                  font-size: 1.6rem;
+                }
                 font-size: 1.8rem;
                 font-weight: 600;
                 color: $firebrick-red-color;
@@ -153,6 +171,9 @@
         }
 
         .payment {
+          @include breakpoint(xm) {
+            display: block;
+          }
           @include d-flex($f-start, $s-between);
           gap: 20px;
           .payment__method {
@@ -161,25 +182,27 @@
               @include flex-alight($center);
               gap: 10px;
               margin-bottom: 10px;
-              font-size: 2rem;
               .icon,
               .text {
+                @include breakpoint(xm) {
+                  font-size: 1.7rem;
+                }
                 font-size: 2rem;
                 color: $primary-color;
               }
             }
             .value {
+              @include breakpoint(xm) {
+                font-size: 1.5rem;
+              }
               font-size: 1.6rem;
               color: $jetBlack-color;
               margin-left: 28px;
-              .button__onchange {
-                margin-left: 10px;
-                padding: 4px;
-                color: $lightBlue-color;
-                background-color: $white-color;
-                cursor: pointer;
-                &:active {
-                  filter: brightness(0.95);
+              @include d-flex($b-line, $f-start);
+              gap: 20px;
+              .value__text {
+                @include breakpoint(xm) {
+                  flex: 1;
                 }
               }
             }
@@ -189,12 +212,17 @@
             gap: 20px;
             .value {
               @include d-flex($center, $s-between);
-              gap: 30px;
               .name {
+                @include breakpoint(xm) {
+                  font-size: 1.4rem;
+                }
                 font-size: 1.6rem;
                 color: $light-color;
               }
               .price {
+                @include breakpoint(xm) {
+                  font-size: 1.6rem;
+                }
                 font-weight: 2rem;
                 font-weight: 600;
                 color: $primary-color;
@@ -202,6 +230,9 @@
               .deduction {
                 @include flex-alight($center);
                 .deduction__value {
+                  @include breakpoint(xm) {
+                    font-size: 1.3rem;
+                  }
                   position: relative;
                   font-size: 1.4rem;
                   padding: 2px 4px;

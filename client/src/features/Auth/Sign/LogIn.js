@@ -2,16 +2,20 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import classNames from 'classnames/bind';
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
-import { loginUser } from '~/api/authApi';
+import userApi from '~/api/modules/auth.api';
 import images from '~/assets/images';
 import Button from '~/components/Button/Button';
 import { warning } from '~/constants/ToastMessage/ToastMessage';
 import { UserAuth } from '~/firebase/context/AuthContext';
+import { setInfo } from '~/store/slice/infoDataUser';
+import { parseDate } from '~/utils/timeConversion';
 import styles from './Sign.module.scss';
 const cx = classNames.bind(styles);
 function LogIn() {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const { googleSignIn, user } = UserAuth();
   const [animate, setAnimate] = useState(false);
@@ -31,9 +35,19 @@ function LogIn() {
         email: data.email,
         password: data.password,
       };
-      const rs = await loginUser(user);
-      JSON.stringify(localStorage.setItem('access', rs.data.token));
-      navigate('/');
+      const { res } = await userApi.signIn(user);
+      if (res) {
+        JSON.stringify(localStorage.setItem('access', res.token));
+        const date = parseDate(res.user.dateBirth);
+        dispatch(
+          setInfo({
+            ...res.user,
+            status: true,
+            dateBirth: date,
+          })
+        );
+        navigate('/');
+      }
     } catch (error) {
       warning(error.response.data.message);
     }

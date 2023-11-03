@@ -1,16 +1,16 @@
-import classNames from 'classnames/bind';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { yupResolver } from '@hookform/resolvers/yup';
-import * as Yup from 'yup';
-import { err } from '~/constants/ToastMessage/ToastMessage';
+import classNames from 'classnames/bind';
 import { useForm } from 'react-hook-form';
-import { forgotPassword } from '~/api/authApi';
+import * as Yup from 'yup';
+import { errMes } from '~/constants/ToastMessage/ToastMessage';
 
-import styles from './ResetPassword.module.scss';
-import Button from '~/components/Button/Button';
 import { useNavigate } from 'react-router-dom';
+import userApi from '~/api/modules/auth.api';
+import Button from '~/components/Button/Button';
 import { success } from '~/constants/ToastMessage/ToastMessage';
+import styles from './ResetPassword.module.scss';
 
 const cx = classNames.bind(styles);
 function ResetPassword() {
@@ -24,11 +24,11 @@ function ResetPassword() {
 
   const onSubmit = async (data) => {
     try {
-      const res = await forgotPassword({ email: data.email });
+      const res = await userApi.forgotPassword({ email: data.email });
       success(res.data.message);
       navigate('/log-in');
     } catch (error) {
-      err(error.response.data.message);
+      errMes(error.response.data.message);
     }
   };
 

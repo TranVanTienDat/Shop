@@ -1,11 +1,20 @@
 @import '../../style/variables.scss';
 .wrapper {
+  @include breakpoint(tm) {
+    padding: 30px 10px;
+  }
   margin-top: $height-header;
   background-color: $background-color;
   padding: 30px;
   .inner {
     .navigate {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
       .title {
+        @include breakpoint(xm) {
+          font-size: 1.6rem;
+        }
         font-size: 1.8rem;
         font-weight: 600;
         font-family: 'Roboto';

@@ -1,18 +1,27 @@
 @import '../../../style/variables.scss';
 
 .wrapper {
-  margin: calc($height-header + 10px) 10px 20px 10px;
-  .title {
+  margin-top: calc($height-header);
+  padding-bottom: 20px;
+  background-color: $background-color;
+  .heading {
+    @include breakpoint(xm) {
+      font-size: 2.2rem;
+    }
     text-align: center;
-
-    font-size: 4rem;
-    font-weight: 500;
-    color: $black-color;
+    font-size: 2.6rem;
+    font-weight: 700;
+    padding: 20px 0;
+    color: $primary-color;
   }
   .inner {
+    margin: 0 10px;
+    @include breakpoint(xs) {
+      margin: 0;
+    }
     .account {
       display: flex;
-      margin-top: 20px;
+      gap: 10px;
       @include breakpoint(xm) {
         flex-direction: column;
       }
@@ -20,109 +29,60 @@
       .profile {
         flex: 7;
         .info {
+          @include breakpoint(xm) {
+            position: relative;
+          }
           display: flex;
+          height: 100%;
           @include breakpoint(xm) {
             flex-direction: column;
           }
-          .sideBar {
-            padding: 10px;
-            border-radius: 6px;
-            box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.3);
-
-            @include breakpoint(xs) {
-              border-radius: 0;
+          gap: 10px;
+          .sidebar {
+            @include breakpoint(xm) {
+              position: absolute;
             }
-            flex: 2;
-            .progress {
-              display: flex;
-              margin: 10px 0 20px 0;
-              .item {
-                flex: 1;
-                width: 100%;
-                height: 5px;
-                padding: 4px;
-                margin: 0 2px;
-                border-radius: 4px;
-                border: 1px solid $light-color;
+            height: 100%;
+            .menu {
+              padding: 10px;
+              @include d-flex($center, $s-between);
+              .logo {
+                width: 100px;
               }
-              .color {
-                background-color: rgb(51, 100, 51);
-              }
-            }
-
-            .navigate {
-              @include breakpoint(xm) {
-                display: flex;
-                justify-content: space-around;
-              }
-
-              .item {
-                display: flex;
-                justify-content: flex-start;
-                align-items: center;
-                margin: 5px 0;
-                padding: 10px;
+              .icon {
+                font-size: 2rem;
+                color: $white-color;
                 cursor: pointer;
-                border-radius: 6px;
+                padding: 4px;
                 &:hover {
-                  background-color: #ebf1ff;
+                  background-color: $white-color;
+                  color: #547aff;
                 }
-
-                .title {
-                  font-size: 1.5rem;
-                  font-weight: 500;
-                  color: $black-color;
-                  @include breakpoint(xs) {
-                    display: none;
-                  }
-                }
-
-                .icon {
-                  font-size: 1.4rem;
-                  margin-right: 6px;
-                  color: $white-color;
-                  padding: 6px;
-                  border-radius: 50%;
-                  background-color: $lightBlue-color;
-                  @include breakpoint(xs) {
-                    font-size: 2rem;
-                    margin-right: 0;
-                  }
-                }
-              }
-              .background {
-                background-color: #ebf1ff;
               }
             }
           }
           .content {
-            margin: 0 10px;
-            border-radius: 6px;
+            background-color: $white-color;
 
+            flex: 1;
             @include breakpoint(xm) {
-              margin: 10px 0;
+              margin-left: 65px;
               border-radius: 0;
             }
-            flex: 5;
-            box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.3);
           }
         }
       }
       .image {
-        flex: 3;
-        text-align: center;
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        align-items: center;
-        background-color: $white-color;
-        border-radius: 16px;
-        @include breakpoint(xs) {
-          border-radius: 0;
+        @include breakpoint(xm) {
+          display: none;
         }
+        flex: 3;
+        @include flex-direction();
+        align-items: center;
         .img {
-          width: 200px;
-          height: 200px;
+          background-color: $white-color;
+          width: 180px;
+          height: 180px;
           border-radius: 50%;
           border: 1px solid $black-color;
           margin: 20px 0 5px 0;
