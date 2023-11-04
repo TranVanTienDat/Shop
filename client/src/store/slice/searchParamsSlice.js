@@ -7,6 +7,7 @@ const searchParamsSlice = createSlice({
     minPrice: 0,
     maxPrice: 0,
     category: '',
+    rating: 0,
   },
   reducers: {
     setKeyword(state, action) {
@@ -22,6 +23,10 @@ const searchParamsSlice = createSlice({
       const { category } = action.payload;
       state.category = category;
     },
+    setRating(state, action) {
+      const { rating } = action.payload;
+      state.rating = rating;
+    },
     setSearch(state, action) {
       const { category, keyword, minPrice, maxPrice } = action.payload;
       state.category = category;
@@ -31,6 +36,6 @@ const searchParamsSlice = createSlice({
     },
   },
 });
-export const { setCategory, setKeyword, setPrice, setSearch } =
+export const { setCategory, setKeyword, setPrice, setSearch, setRating } =
   searchParamsSlice.actions;
 export default searchParamsSlice.reducer;

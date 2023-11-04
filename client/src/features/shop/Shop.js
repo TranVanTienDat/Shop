@@ -11,7 +11,8 @@ import Card from './card/Card';
 const cx = classNames.bind(styles);
 function Shop() {
   const dispatch = useDispatch();
-  const { keyword, minPrice, maxPrice, category } = useSelector(searchParams);
+  const { keyword, minPrice, maxPrice, category, rating } =
+    useSelector(searchParams);
   const [listProduct, setListProduct] = useState([]);
   const [currentItemPage, setCurrentItemPage] = useState({
     current: parseInt(localStorage.getItem('currentPage')) || 1,
@@ -30,6 +31,7 @@ function Shop() {
         minPrice,
         maxPrice,
         category,
+        rating,
         page: currentPage,
         limit: 5,
       });
@@ -45,7 +47,15 @@ function Shop() {
       setIsLoading(false);
     };
     fetchProducts();
-  }, [dispatch, keyword, minPrice, maxPrice, category, currentItemPage]);
+  }, [
+    dispatch,
+    keyword,
+    minPrice,
+    maxPrice,
+    category,
+    rating,
+    currentItemPage,
+  ]);
 
   // Lưu lại giá trị cũ
   const currentMemo = useMemo(() => {
@@ -54,9 +64,10 @@ function Shop() {
       minPrice,
       maxPrice,
       category,
+      rating,
       status: true,
     };
-  }, [keyword, minPrice, maxPrice, category]);
+  }, [keyword, minPrice, maxPrice, rating, category]);
 
   useEffect(() => {
     setCurrentItemPage({ current: 1, status: true });

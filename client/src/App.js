@@ -2,8 +2,8 @@ import { Fragment } from 'react';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import './App.scss';
-import Container from './Layouts/DefaultLayOut/Container/Container';
-import DefaultLayOut from './Layouts/DefaultLayOut/DefaultLayOut';
+import Layout from './Layouts/DefaultLayout/Layout';
+import Container from './Layouts/DefaultLayout/Container/Container';
 import { AuthContextProvider } from './firebase/context/AuthContext';
 import { publicRoutes } from './routes/routes';
 // gsap
@@ -11,8 +11,8 @@ import gsap from 'gsap';
 
 // gsap plugins
 import ScrollTrigger from 'gsap/ScrollTrigger';
+import LoadingButton from './Layouts/DefaultLayout/Loading/LoadingButton/LoadingButton';
 import ModalAddress from './pages/PaymentOrder/components/ModalAddress/ModalAddress';
-import LoadingButton from './Layouts/DefaultLayOut/Loading/LoadingButton/LoadingButton';
 
 function App() {
   gsap.registerPlugin(ScrollTrigger);
@@ -32,15 +32,15 @@ function App() {
           <Routes>
             {publicRoutes.map((route, index) => {
               const Page = route.component;
-              let Layout = DefaultLayOut;
+              let LayoutDefault = Layout;
               let ChildrenLayout = Fragment;
               if (route.childrenLayout) {
                 ChildrenLayout = route.childrenLayout;
               }
               if (route.layout) {
-                Layout = route.layout;
+                LayoutDefault = route.layout;
               } else if (route.layout === null) {
-                Layout = Fragment;
+                LayoutDefault = Fragment;
               }
 
               return (
@@ -48,7 +48,7 @@ function App() {
                   key={index}
                   path={route.path}
                   element={
-                    <Layout>
+                    <LayoutDefault>
                       {route.index ? (
                         <Container
                           state={route.state ? route.state : undefined}
@@ -66,7 +66,7 @@ function App() {
                           </ChildrenLayout>
                         </Container>
                       )}
-                    </Layout>
+                    </LayoutDefault>
                   }
                 />
               );

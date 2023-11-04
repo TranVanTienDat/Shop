@@ -4,7 +4,8 @@ const statusOrderDB = require("../models/statusOrder.model");
 const getDate = require("../utils/date");
 exports.getProducts = async (req, res) => {
   try {
-    const { keyword, minPrice, maxPrice, category, page, limit } = req.query;
+    const { keyword, minPrice, maxPrice, category, rating, page, limit } =
+      req.query;
     const pageNumber = parseInt(page) || 1;
     const itemsPerPage = parseInt(limit) || 5;
     const skip = (pageNumber - 1) * itemsPerPage;
@@ -40,6 +41,10 @@ exports.getProducts = async (req, res) => {
 
     if (category !== "") {
       filter.categories = { $regex: category, $options: "i" };
+    }
+
+    if (parseInt(rating) > 0) {
+      filter.rating = { $gte: parseInt(rating) };
     }
 
     const products = await productDB

@@ -10,7 +10,7 @@ import classNames from 'classnames/bind';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import Footer from '~/Layouts/DefaultLayOut/Footer/Footer';
+import Footer from '~/Layouts/DefaultLayout/Footer/Footer';
 import orderApi from '~/api/modules/order.api';
 import Button from '~/components/Button/Button';
 import InputVoucher from '~/components/InputVoucher/InputVoucher';

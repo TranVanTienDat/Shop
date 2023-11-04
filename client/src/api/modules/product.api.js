@@ -2,8 +2,16 @@ import publicClient from '../client/public.client';
 
 const productEndpoints = {
   getProductById: ({ productID }) => `product/${productID}`,
-  getProducts: ({ keyword, minPrice, maxPrice, category, page, limit }) =>
-    `product/products?keyword=${keyword}&minPrice=${minPrice}&maxPrice=${maxPrice}&category=${category}&page=${page}&limit=${limit}`,
+  getProducts: ({
+    keyword,
+    minPrice,
+    maxPrice,
+    category,
+    rating,
+    page,
+    limit,
+  }) =>
+    `product/products?keyword=${keyword}&minPrice=${minPrice}&maxPrice=${maxPrice}&category=${category}&rating=${rating}&page=${page}&limit=${limit}`,
   getTopProducts: 'product/top',
   getCategoriesProduct: ({ category }) =>
     `product/category?category=${category}`,
@@ -38,6 +46,7 @@ const productApi = {
     minPrice,
     maxPrice,
     category,
+    rating,
     page,
     limit,
   }) => {
@@ -48,6 +57,7 @@ const productApi = {
           minPrice,
           maxPrice,
           category,
+          rating,
           page,
           limit,
         })

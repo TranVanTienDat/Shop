@@ -1,14 +1,13 @@
+import { faXmark } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classNames from 'classnames/bind';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Button from '~/components/Button/Button';
 import { setToggleMenuFilter } from '~/store/slice/loadingSlice';
-import styles from './MenuFilterResponsive.module.scss';
-import { useEffect } from 'react';
+import { setPrice, setRating } from '~/store/slice/searchParamsSlice';
 import { setGlobalLoading } from '~/store/slice/selector';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faXmark } from '@fortawesome/free-solid-svg-icons';
-import { setPrice, setSearch } from '~/store/slice/searchParamsSlice';
+import styles from './MenuFilterResponsive.module.scss';
 
 const cx = classNames.bind(styles);
 function TopSidebar() {
@@ -18,6 +17,7 @@ function TopSidebar() {
   const [filter, setFilter] = useState({
     minPrice: 0,
     maxPrice: 0,
+    rating: 0,
   });
   useEffect(() => {
     setIsToggle(isToggleMenuFilter);
@@ -31,7 +31,9 @@ function TopSidebar() {
     dispatch(setToggleMenuFilter({ isToggleMenuFilter: false }));
   };
   const handleSearch = () => {
-    dispatch(setPrice({ ...filter }));
+    const { minPrice, maxPrice, rating } = filter;
+    dispatch(setPrice({ minPrice, maxPrice }));
+    dispatch(setRating({ rating }));
     handleClose();
   };
   return (
@@ -75,7 +77,14 @@ function TopSidebar() {
         <div className={cx('box')}>
           <h5 className={cx('heading')}>Lượt đánh giá</h5>
           <div className={cx('menu')}>
-            <select className={cx('select')}>
+            <select
+              className={cx('select')}
+              value={filter.rating}
+              onChange={(e) => handleFilter('rating', e.target.value)}
+            >
+              <option value={0} className={cx('option')}>
+                Lựa chọn
+              </option>
               <option value={5} className={cx('option')}>
                 đánh giá 5 sao
               </option>
