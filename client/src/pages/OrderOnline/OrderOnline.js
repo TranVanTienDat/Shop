@@ -1,12 +1,9 @@
-import classNames from 'classnames/bind';
-import styles from './OrderOnline.module.scss';
-import Shop from '~/features/shop/Shop';
-import Banner from '~/components/Banner/Banner';
 import InputJoin from '~/components/AboutUs/InputJoin/InputJoin';
-const cx = classNames.bind(styles);
+import Banner from '~/components/Banner/Banner';
+import Shop from '~/features/shop/Shop';
 function OrderOnline() {
   return (
-    <div className={cx('wrapper')}>
+    <div style={{ marginTop: '120px' }}>
       <Banner />
       <Shop />
       <InputJoin />

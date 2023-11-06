@@ -1,7 +1,7 @@
 @import '../../../style/variables.scss';
 .wrapper {
-  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.3);
   background-color: $white-color;
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.3);
 
   .img {
     @include breakpoint(xs) {
@@ -9,9 +9,9 @@
     }
     width: 100%;
     height: 150px;
+    margin-bottom: 14px;
     cursor: pointer;
     object-fit: cover;
-    margin-bottom: 14px;
   }
 
   .info {
@@ -28,9 +28,7 @@
       }
       font-size: 1.3rem;
       font-weight: 500;
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
+      @include format-text-line(1);
     }
 
     .footer {
@@ -45,10 +43,10 @@
 
         &::after {
           position: absolute;
-          content: 'đ';
           top: 0;
-          right: auto;
           font-size: 1.3rem;
+          right: auto;
+          content: 'đ';
           color: $primary-color;
         }
       }

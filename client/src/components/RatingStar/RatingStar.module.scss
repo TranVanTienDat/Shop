@@ -1,34 +1,30 @@
 @import '../../style/variables.scss';
 .wrapper {
-  .inner {
-    .list {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      .star {
+  .list {
+    @include d-flex($center, $center);
+    .star {
+      overflow: hidden;
+      position: relative;
+      color: $primary-color;
+      .element {
+        top: 0;
+        left: 0;
         overflow: hidden;
-        position: relative;
-        color: $primary-color;
-        .element {
-          overflow: hidden;
-          position: absolute;
-          top: 0;
-          left: 0;
-          .element__icon {
-            font-size: 1.2rem;
-          }
-          .element--size {
-            font-size: 2.4rem;
-            cursor: pointer;
-          }
-        }
-        .star__icon {
+        position: absolute;
+        .element__icon {
           font-size: 1.2rem;
         }
-        .star--size {
+        .element--size {
           font-size: 2.4rem;
           cursor: pointer;
         }
+      }
+      .star__icon {
+        font-size: 1.2rem;
+      }
+      .star--size {
+        font-size: 2.4rem;
+        cursor: pointer;
       }
     }
   }

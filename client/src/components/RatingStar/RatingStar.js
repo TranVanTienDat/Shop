@@ -32,29 +32,27 @@ function RatingStar({ value = false, onClick = false, sizeStar = false }) {
   };
   return (
     <div className={cx('wrapper')}>
-      <div className={cx('inner')}>
-        <div className={cx('list')}>
-          {star.map((item, i) => {
-            return (
-              <div
-                key={i}
-                className={cx('star')}
-                onClick={() => onClick && handleRating(i + 1)}
-              >
-                <div className={cx('element')} style={{ width: `${item}%` }}>
-                  <FontAwesomeIcon
-                    className={cx(sizeStar ? 'element--size' : 'element__icon')}
-                    icon={Rating}
-                  />
-                </div>
+      <div className={cx('list')}>
+        {star.map((item, i) => {
+          return (
+            <div
+              key={i}
+              className={cx('star')}
+              onClick={() => onClick && handleRating(i + 1)}
+            >
+              <div className={cx('element')} style={{ width: `${item}%` }}>
                 <FontAwesomeIcon
-                  className={cx(sizeStar ? 'star--size' : 'star__icon')}
-                  icon={faStar}
+                  className={cx(sizeStar ? 'element--size' : 'element__icon')}
+                  icon={Rating}
                 />
               </div>
-            );
-          })}
-        </div>
+              <FontAwesomeIcon
+                className={cx(sizeStar ? 'star--size' : 'star__icon')}
+                icon={faStar}
+              />
+            </div>
+          );
+        })}
       </div>
     </div>
   );

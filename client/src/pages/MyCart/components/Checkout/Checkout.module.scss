@@ -20,9 +20,9 @@
       gap: 20px;
       .sidebar {
         @include breakpoint(tm) {
-          @include d-flex($center, $f-start);
           width: 100%;
           overflow: auto;
+          @include d-flex($center, $f-start);
           &::-webkit-scrollbar {
             height: 0;
           }
@@ -33,12 +33,12 @@
             border-radius: 0;
             padding: 0 6px;
           }
-          @include d-flex($center, $s-between);
-          color: $lightBlue-color;
-          padding: 6px;
           margin: 6px;
+          padding: 6px;
           border-radius: 8px;
           cursor: pointer;
+          color: $lightBlue-color;
+          @include d-flex($center, $s-between);
           .title,
           .icon {
             @include breakpoint(xm) {
@@ -65,9 +65,9 @@
         }
         .box--active {
           @include breakpoint(xm) {
+            color: $primary-color;
             background-color: transparent;
             border-left: 1.5px solid $primary-color;
-            color: $primary-color;
           }
           background-color: rgb(235, 241, 255);
         }
@@ -96,8 +96,8 @@
 
               .flex__quantity,
               .box {
-                @include flex-direction();
                 flex: 1;
+                @include flex-direction();
                 gap: 10px;
                 .flex__info {
                   @include d-flex($f-start, $f-start);
@@ -111,11 +111,7 @@
                     @include flex-direction();
                     gap: 5px;
                     .name {
-                      overflow: hidden;
-                      display: -webkit-box;
-                      text-overflow: ellipsis;
-                      -webkit-box-orient: vertical;
-                      -webkit-line-clamp: 2;
+                      @include format-text-line(2);
                     }
                     .name,
                     .quantity {
@@ -131,19 +127,19 @@
                       @include breakpoint(xm) {
                         font-size: 1.2rem;
                       }
-                      color: $light-color;
                       font-size: 1.4rem;
+                      color: $light-color;
                     }
                   }
                 }
               }
 
               .flex__status {
-                @include flex-direction();
-                align-items: flex-end;
                 @include breakpoint(xs) {
                   align-items: flex-start;
                 }
+                @include flex-direction();
+                align-items: flex-end;
                 gap: 5px;
                 .status__delivery,
                 .status__price {
@@ -154,9 +150,9 @@
                 }
 
                 .status__delivery {
+                  font-weight: 700;
                   text-transform: uppercase;
                   color: $firebrick-red-color;
-                  font-weight: 700;
                 }
                 .status__price {
                   color: $primary-color;
@@ -166,11 +162,11 @@
                     font-size: 1rem;
                   }
                   padding: 3px 6px;
-                  background-color: $primary-color;
                   font-size: 1.4rem;
-                  color: $white-color;
                   border-radius: 4px;
                   cursor: pointer;
+                  color: $white-color;
+                  background-color: $primary-color;
                 }
                 .icon {
                   margin-right: 6px;
@@ -191,8 +187,8 @@
 
             .product__flex--line {
               margin-top: 20px;
-              border-top: 1px solid $lightBlue-color;
               padding-top: 20px;
+              border-top: 1px solid $lightBlue-color;
             }
 
             .expected {

@@ -50,7 +50,7 @@ function Cart() {
   };
 
   return (
-    <div className={cx('cart', isAnimate ? 'animate--open' : 'animate--close')}>
+    <div className={cx('cart', isAnimate ? 'cart--open' : 'cart--close')}>
       {listMyCart?.length > 0 ? (
         <div className={cx('product')}>
           <h1 className={cx('title')}>Sản phẩm mới thêm</h1>

@@ -1,19 +1,17 @@
 @import '../../style/variables.scss';
 .wrapper {
-  background-color: $background-color;
   padding: 50px 0;
+  background-color: $background-color;
   .inner {
+    margin: 0 auto;
     padding: 30px 0;
     max-width: 1000px;
-    margin: 0 auto;
 
     .about_stories {
       padding: 50px 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      @include d-flex($center, $center);
+      gap: 24px;
       .stories__img {
-        margin-right: 12px;
         flex: 1;
         .img {
           width: 100%;
@@ -21,7 +19,6 @@
         }
       }
       .story {
-        margin-left: 12px;
         flex: 1;
         .title {
           font-size: 3rem;
@@ -30,16 +27,16 @@
         .text {
           font-size: 1.4rem;
           font-weight: 400;
-          color: $light-color;
-          margin: 20px 30px 20px 0;
-          display: inline-block;
           line-height: 18px;
+          margin: 20px 30px 20px 0;
+          color: $light-color;
+          display: inline-block;
         }
         .more {
           margin-top: 40px;
           font-size: 1.3rem;
-          color: $primary-color;
           cursor: pointer;
+          color: $primary-color;
         }
       }
     }
@@ -55,12 +52,10 @@
         color: $jetBlack-color;
       }
       .brand {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
+        @include d-flex($center, $s-between);
         .brand__img {
-          margin-top: 20px;
           width: 140px;
+          margin-top: 20px;
         }
       }
     }
@@ -85,8 +80,8 @@
             font-size: 1.2rem;
           }
           font-size: 1.5rem;
-          color: $primary-color;
           cursor: pointer;
+          color: $primary-color;
         }
       }
 
@@ -108,9 +103,9 @@
                 font-size: 1.5rem;
                 @include flex-direction();
               }
-              color: $jetBlack-color;
               font-size: 2.4rem;
               font-weight: 500;
+              color: $jetBlack-color;
             }
             .info {
               @include d-flex($center, $f-start);
@@ -119,38 +114,34 @@
                 @include breakpoint(xm) {
                   font-size: 1.3rem;
                 }
-                font-size: 1.6rem;
-                color: #515151;
                 margin: 16px 0;
+                color: #515151;
+                font-size: 1.6rem;
               }
               div {
                 width: 4px;
                 padding: 3px;
                 margin: 0 5px;
-                background-color: #515151;
                 border-radius: 50%;
+                background-color: #515151;
               }
             }
             .des {
               @include breakpoint(xm) {
                 font-size: 1.2rem;
               }
-              color: $light-color;
               font-size: 1.4rem;
               margin-bottom: 32px;
-              overflow: hidden;
-              display: -webkit-box;
-              text-overflow: ellipsis;
-              -webkit-box-orient: vertical;
-              -webkit-line-clamp: 5;
+              color: $light-color;
+              @include format-text-line(5);
             }
             .see_more {
               @include breakpoint(xm) {
                 font-size: 1.2rem;
               }
               font-size: 1.4rem;
-              color: $primary-color;
               cursor: pointer;
+              color: $primary-color;
             }
           }
         }

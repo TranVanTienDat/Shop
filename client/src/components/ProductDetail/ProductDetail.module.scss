@@ -3,9 +3,9 @@
   margin-top: $height-header;
   background-color: $background-color;
   .loading {
+    height: 100vh;
     font-size: 3rem;
     font-weight: 600;
-    height: 100vh;
     @include d-flex($center, $center);
   }
   .inner {
@@ -18,12 +18,12 @@
       }
       font-size: 1.8rem;
       font-weight: 500;
+      padding: 20px 20px 10px;
       color: $lightBlue-color;
       background-color: $background-color;
-      padding: 20px 20px 10px;
       .icon {
-        font-size: 1.3rem;
         margin: 0 4px;
+        font-size: 1.3rem;
         color: $jetBlack-color;
       }
     }
@@ -38,10 +38,10 @@
           padding: 10px;
         }
         position: relative;
-        background-color: $white-color;
-        display: flex;
         gap: 20px;
         padding: 20px;
+        display: flex;
+        background-color: $white-color;
         .info__img {
           @include breakpoint(md) {
             height: 600px;
@@ -66,15 +66,15 @@
           }
           .secondary {
             @include breakpoint(md) {
-              @include flex-direction();
               padding: 6px;
+              @include flex-direction();
               gap: 6;
             }
             @include d-flex($center, $f-start);
             gap: 10px;
-            background-color: $background-color;
             overflow-x: auto;
             white-space: nowrap;
+            background-color: $background-color;
 
             &::-webkit-scrollbar {
               height: 0;
@@ -105,19 +105,19 @@
             color: $jetBlack-color;
           }
           .product__parameters {
-            @include d-flex($center, $f-start);
             margin: 10px 0;
+            @include d-flex($center, $f-start);
             .rating {
-              @include d-flex($center, $center);
-              color: $firebrick-red-color;
               padding-right: 5px;
+              color: $firebrick-red-color;
+              @include d-flex($center, $center);
               .number {
                 @include breakpoint(xm) {
                   font-size: 1.4rem;
                 }
-                text-decoration-line: underline;
                 margin-right: 4px;
                 font-size: 1.8rem;
+                text-decoration-line: underline;
               }
             }
             .sales {
@@ -126,8 +126,8 @@
                 @include breakpoint(xm) {
                   font-size: 1.4rem;
                 }
-                font-size: 1.6rem;
                 padding: 0 10px;
+                font-size: 1.6rem;
                 color: $light-color;
                 &:nth-child(1) {
                   border-left: 1px solid $light-color;
@@ -137,9 +137,9 @@
                   @include breakpoint(xm) {
                     font-size: 1.5rem;
                   }
+                  margin: 0 4px;
                   font-size: 1.7rem;
                   color: $black-color;
-                  margin: 0 4px;
                   text-decoration-line: underline;
                 }
               }
@@ -155,9 +155,9 @@
                 font-size: 1.6rem;
               }
               font-size: 2rem;
+              margin-left: 20px;
               color: $light-color;
               text-decoration-line: line-through;
-              margin-left: 20px;
             }
             .new {
               @include breakpoint(xm) {
@@ -191,8 +191,8 @@
             margin: 20px 0;
             .type {
               display: block;
-              margin-bottom: 10px;
               font-size: 1.4rem;
+              margin-bottom: 10px;
               color: $light-color;
             }
             .values {
@@ -203,15 +203,15 @@
                 @include breakpoint(xm) {
                   font-size: 1.2rem;
                 }
+                margin: 6px;
                 padding: 6px 8px;
+                font-size: 1.4rem;
+                border-radius: 2px;
+                cursor: pointer;
+                color: $black-color;
                 border: 1px solid #e0e0e0;
                 background-color: $white-color;
-                color: $black-color;
-                border-radius: 2px;
-                font-size: 1.4rem;
 
-                margin: 6px;
-                cursor: pointer;
                 &:hover {
                   color: $primary-color;
                   border-color: $firebrick-red-color;
@@ -219,14 +219,14 @@
               }
 
               .active {
-                color: $firebrick-red-color;
                 font-weight: 600;
+                color: $firebrick-red-color;
                 border: 2px solid $firebrick-red-color;
               }
               .disabled {
+                border: none;
                 cursor: no-drop;
                 background-color: #eaeaea;
-                border: none;
                 &:hover {
                   color: #999999;
                 }
@@ -243,13 +243,13 @@
                 color: $jetBlack-color;
               }
               .flex {
-                @include d-flex($center, $s-between);
                 margin: 10px 0 20px 0;
+                @include d-flex($center, $s-between);
 
                 .counter {
-                  @include flex-alight($center);
                   margin: 10px 0;
                   color: $jetBlack-color;
+                  @include flex-alight($center);
                   background-color: $white-color;
                   .prev,
                   .next {
@@ -291,8 +291,8 @@
         position: absolute;
         left: 24px;
         top: 24px;
-        font-size: 2rem;
         padding: 6px;
+        font-size: 2rem;
         cursor: pointer;
         color: $white-color;
         border-radius: 50%;
@@ -303,11 +303,11 @@
       }
 
       .description {
-        display: flex;
         margin-top: 30px;
         padding: 10px;
-        background-color: $white-color;
+        display: flex;
         gap: 10px;
+        background-color: $white-color;
         @include breakpoint(xs) {
           @include flex-direction();
         }
@@ -317,8 +317,8 @@
             padding: 20px;
             background-color: $background-color;
             @include breakpoint(xm) {
-              font-size: 2rem;
               padding: 10px;
+              font-size: 2rem;
               margin-left: -10px;
             }
             font-size: 2.6rem;
@@ -335,13 +335,11 @@
                 @include breakpoint(xm) {
                   font-size: 1.3rem;
                 }
-                font-size: 1.5rem;
-                color: $light-color;
-                letter-spacing: 1px;
                 width: 150px;
-                overflow: hidden;
-                white-space: nowrap;
-                text-overflow: ellipsis;
+                font-size: 1.5rem;
+                letter-spacing: 1px;
+                color: $light-color;
+                @include format-text-line(1);
               }
               .value {
                 @include breakpoint(xm) {
@@ -350,11 +348,7 @@
                 flex: 1;
                 font-size: 1.4rem;
                 color: rgba(0, 0, 0, 0.8);
-                overflow: hidden;
-                display: -webkit-box;
-                text-overflow: ellipsis;
-                -webkit-box-orient: vertical;
-                -webkit-line-clamp: 2;
+                @include format-text-line(2);
               }
             }
             .text {
@@ -369,10 +363,10 @@
         .products-other {
           flex: 2;
           .title {
+            margin: 20px 0;
+            font-weight: 300;
             font-size: 1.5rem;
             color: $firebrick-red-color;
-            font-weight: 300;
-            margin: 20px 0;
             text-decoration-line: underline;
           }
           .list {
@@ -388,19 +382,15 @@
                 width: 100%;
               }
               .name {
+                margin: 5px;
                 font-size: 1.3rem;
                 font-weight: 300;
                 color: $light-color;
-                margin: 5px;
-                overflow: hidden;
-                display: -webkit-box;
-                text-overflow: ellipsis;
-                -webkit-box-orient: vertical;
-                -webkit-line-clamp: 2;
+                @include format-text-line(2);
               }
               .price {
-                font-size: 1.4rem;
                 margin: 0 5px;
+                font-size: 1.4rem;
                 color: $primary-color;
               }
             }

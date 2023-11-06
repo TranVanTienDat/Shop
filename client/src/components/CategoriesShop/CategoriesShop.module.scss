@@ -1,7 +1,7 @@
 @import '../../style/variables.scss';
 .wrapper {
-  background-color: $background-color;
   padding: 20px 10px;
+  background-color: $background-color;
   .inner {
     text-align: center;
     .heading {
@@ -64,9 +64,9 @@
         @include d-flex($center, $center);
       }
       .button {
+        margin: 30px 0 10px 0;
         display: flex;
         justify-content: center;
-        margin: 30px 0 10px 0;
       }
     }
   }

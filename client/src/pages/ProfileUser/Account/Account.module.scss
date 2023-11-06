@@ -1,17 +1,17 @@
 @import '../../../style/variables.scss';
 
 .wrapper {
-  margin-top: calc($height-header);
   padding-bottom: 20px;
+  margin-top: calc($height-header);
   background-color: $background-color;
   .heading {
     @include breakpoint(xm) {
       font-size: 2.2rem;
     }
-    text-align: center;
+    padding: 20px 0;
     font-size: 2.6rem;
     font-weight: 700;
-    padding: 20px 0;
+    text-align: center;
     color: $primary-color;
   }
   .inner {
@@ -32,8 +32,8 @@
           @include breakpoint(xm) {
             position: relative;
           }
-          display: flex;
           height: 100%;
+          display: flex;
           @include breakpoint(xm) {
             flex-direction: column;
           }
@@ -50,10 +50,10 @@
                 width: 100px;
               }
               .icon {
-                font-size: 2rem;
-                color: $white-color;
-                cursor: pointer;
                 padding: 4px;
+                font-size: 2rem;
+                cursor: pointer;
+                color: $white-color;
                 &:hover {
                   background-color: $white-color;
                   color: #547aff;
@@ -80,18 +80,18 @@
         @include flex-direction();
         align-items: center;
         .img {
-          background-color: $white-color;
           width: 180px;
           height: 180px;
           border-radius: 50%;
-          border: 1px solid $black-color;
           margin: 20px 0 5px 0;
+          background-color: $white-color;
+          border: 1px solid $black-color;
         }
         .fullName {
           margin-top: 10px;
-          color: $black-color;
           font-size: 2rem;
           font-weight: 600;
+          color: $black-color;
         }
       }
     }

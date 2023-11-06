@@ -14,7 +14,7 @@ import Footer from './Footer/Footer';
 import Header from './Header/Header';
 import Loading from './Loading/Loading/Loading';
 import SidebarResponsive from '../../features/shop/SideBar/SidebarResponsive/SidebarResponsive';
-function DefaultLayOut({ children }) {
+function MainLayout({ children }) {
   const dispatch = useDispatch();
   const { status } = useSelector(userData);
   useEffect(() => {
@@ -61,8 +61,8 @@ function DefaultLayOut({ children }) {
   );
 }
 
-DefaultLayOut.propTypes = {
+MainLayout.propTypes = {
   children: propTypes.node,
 };
 
-export default DefaultLayOut;
+export default MainLayout;

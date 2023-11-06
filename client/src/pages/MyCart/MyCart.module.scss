@@ -3,9 +3,9 @@
   @include breakpoint(tm) {
     padding: 30px 10px;
   }
+  padding: 30px;
   margin-top: $height-header;
   background-color: $background-color;
-  padding: 30px;
   .inner {
     .navigate {
       display: flex;

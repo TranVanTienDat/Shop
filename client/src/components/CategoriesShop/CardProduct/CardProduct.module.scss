@@ -1,8 +1,8 @@
 @import '../../../style/variables.scss';
 .wrapper {
-  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.3);
-  background-color: $white-color;
   position: relative;
+  background-color: $white-color;
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.3);
 
   .img {
     @include breakpoint(xs) {
@@ -21,24 +21,16 @@
       font-size: 1.2rem;
       font-weight: 400;
       color: $light-color;
-      overflow: hidden;
-      display: -webkit-box;
-      text-overflow: ellipsis;
-      -webkit-box-orient: vertical;
-      -webkit-line-clamp: 1;
+      @include format-text-line(1);
     }
     .name {
       @include breakpoint(xm) {
         font-size: 1.6rem;
       }
+      margin: 10px 0;
       font-size: 1.8rem;
       font-weight: 500;
-      margin: 10px 0;
-      overflow: hidden;
-      display: -webkit-box;
-      text-overflow: ellipsis;
-      -webkit-box-orient: vertical;
-      -webkit-line-clamp: 1;
+      @include format-text-line(1);
     }
   }
 }

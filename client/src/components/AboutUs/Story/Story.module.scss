@@ -23,8 +23,8 @@
           font-size: 2rem;
         }
         font-size: 3rem;
-        color: $jetBlack-color;
         margin-bottom: 20px;
+        color: $jetBlack-color;
       }
       .text {
         @include breakpoint(xm) {
@@ -32,9 +32,9 @@
         }
         font-size: 1.4rem;
         font-weight: 400;
+        line-height: 18px;
         color: $light-color;
         display: inline-block;
-        line-height: 18px;
       }
       .more {
         @include breakpoint(xm) {
@@ -42,8 +42,8 @@
         }
         margin-top: 40px;
         font-size: 1.3rem;
-        color: $primary-color;
         cursor: pointer;
+        color: $primary-color;
       }
     }
   }

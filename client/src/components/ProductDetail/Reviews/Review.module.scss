@@ -2,21 +2,19 @@
 .wrapper {
   .heading {
     @include breakpoint(xm) {
-      font-size: 2rem;
       padding: 10px;
+      font-size: 2rem;
       margin-left: -10px;
     }
     padding: 20px;
     margin: 20px 0;
-    background-color: $background-color;
     font-size: 2.6rem;
     color: $jetBlack-color;
+    background-color: $background-color;
   }
 
   .box {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
+    @include d-flex($center, $f-start);
     gap: 20px;
     .avatar {
       width: 40px;
@@ -36,9 +34,9 @@
 
   .list {
     .user {
-      @include d-flex($f-start, $f-start);
       gap: 12px;
       margin: 30px 0;
+      @include d-flex($f-start, $f-start);
       .avatar {
         width: 46px;
         border-radius: 50%;
@@ -59,15 +57,13 @@
         }
         .comment {
           .comment__list__img {
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
+            @include d-flex($center, $f-start);
             margin-left: -6px;
             .img {
               width: 90px;
               height: 90px;
-              border-radius: 4px;
               margin: 0 6px;
+              border-radius: 4px;
               cursor: pointer;
               transition: 0.5s linear;
               transform-origin: center;
@@ -78,14 +74,10 @@
             }
           }
           .text {
-            font-size: 1.4rem;
             margin: 10px 0;
+            font-size: 1.4rem;
             color: #515151;
-            overflow: hidden;
-            display: -webkit-box;
-            text-overflow: ellipsis;
-            -webkit-box-orient: vertical;
-            -webkit-line-clamp: 4;
+            @include format-text-line(4);
           }
         }
       }

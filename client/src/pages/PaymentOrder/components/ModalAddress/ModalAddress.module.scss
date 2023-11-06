@@ -1,20 +1,17 @@
 @import '../../../../style/variables.scss';
 
 .heading {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  @include d-flex($center, $s-between);
   .title {
-    font-size: 1.8rem;
-    margin: 0 20px;
-    font-weight: 700;
-    color: $jetBlack-color;
     position: relative;
     margin: 0 auto;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: $jetBlack-color;
   }
   .menu {
-    font-size: 2.6rem;
     padding: 0 6px;
+    font-size: 2.6rem;
     cursor: pointer;
     color: $firebrick-red-color;
   }
@@ -24,49 +21,49 @@
     @include breakpoint(xs) {
       grid-template-columns: repeat(1, minmax(250px, 350px));
     }
+    width: 100%;
+    margin: 20px 0;
     display: grid;
     grid-template-columns: repeat(2, minmax(250px, 300px));
     grid-gap: 16px;
-    width: 100%;
-    margin: 20px 0;
     .field {
       position: relative;
       .title {
         font-size: 1.4rem;
         font-weight: 600;
-        color: $jetBlack-color;
-        display: block;
         margin-bottom: -5px;
+        display: block;
+        color: $jetBlack-color;
       }
       .input__info {
-        border: 1px solid $primary-color;
-        outline: none;
         width: 100%;
         padding: 10px;
         margin: 10px 0;
-        border-radius: 3px;
         font-size: 1.6rem;
+        border-radius: 3px;
+        outline: none;
+        border: 1px solid $primary-color;
       }
 
       .select {
         position: absolute;
-        z-index: 1;
         left: 0;
         top: 68px;
+        z-index: 1;
         width: 100%;
-        background-color: $white-color;
-        border: 1px solid $black-color;
         max-height: 150px;
         overflow-y: auto;
+        background-color: $white-color;
+        border: 1px solid $black-color;
         &::-webkit-scrollbar {
           width: 0;
         }
 
         .option {
-          list-style-type: none;
-          cursor: pointer;
           padding: 6px;
           font-size: 1.5rem;
+          cursor: pointer;
+          list-style-type: none;
           &:hover {
             background-color: $background-color;
           }
@@ -79,9 +76,9 @@
     margin-top: 20px;
     font-size: 1.3rem;
     .link {
-      color: #08f;
       font-size: 1.4rem;
       margin-right: 5px;
+      color: #08f;
     }
   }
 }

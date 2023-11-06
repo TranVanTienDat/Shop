@@ -3,15 +3,15 @@
 .category {
   padding: 20px 0;
   margin-bottom: 40px;
-  background-color: $white-color;
   text-align: center;
+  background-color: $white-color;
 
   .heading {
     @include breakpoint(xm) {
       font-size: 2.2rem;
     }
-    font-size: 3rem;
     margin: 10px 0;
+    font-size: 3rem;
     color: $black-color;
   }
   .text {
@@ -19,10 +19,10 @@
       font-size: 1.2rem;
     }
     font-size: 1.4rem;
-    margin-bottom: 30px;
-    color: $light-color;
     max-width: 600px;
+    margin-bottom: 30px;
     margin: 0 auto 20px;
+    color: $light-color;
   }
 
   .card {
@@ -36,10 +36,10 @@
 
       .info {
         position: absolute;
-        padding: 20px 10px;
-        bottom: -100%;
         left: 0;
         right: 0;
+        bottom: -100%;
+        padding: 20px 10px;
         cursor: pointer;
         background-color: #e2e2ea;
 
@@ -52,30 +52,21 @@
           color: #9a9ab0;
           font-size: 1.6rem;
           font-weight: 400;
-          overflow: hidden;
-          display: -webkit-box;
-          text-overflow: ellipsis;
-          -webkit-box-orient: vertical;
-          -webkit-line-clamp: 2;
+          @include format-text-line(2);
         }
         .brand {
           @include breakpoint(xm) {
             font-size: 1rem;
-            overflow: hidden;
-            display: -webkit-box;
-            text-overflow: ellipsis;
-            -webkit-box-orient: vertical;
-            -webkit-line-clamp: 1;
+            @include format-text-line(1);
           }
-          font-size: 1.2rem;
-          color: $light-color;
-          font-weight: 300;
           margin: 8px 0;
+          font-size: 1.2rem;
+          font-weight: 300;
+          color: $light-color;
         }
         .price {
-          display: flex;
-          align-items: center;
-          justify-content: center;
+          @include d-flex($center, $center);
+
           .item {
             margin: 0 4px;
             font-size: 1.3rem;

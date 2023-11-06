@@ -2,8 +2,8 @@ import { Fragment } from 'react';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import './App.scss';
-import Layout from './Layouts/DefaultLayout/Layout';
-import Container from './Layouts/DefaultLayout/Container/Container';
+import Container from './layout/MainLayout/Container/Container';
+import MainLayout from './layout/MainLayout/Layout';
 import { AuthContextProvider } from './firebase/context/AuthContext';
 import { publicRoutes } from './routes/routes';
 // gsap
@@ -11,7 +11,7 @@ import gsap from 'gsap';
 
 // gsap plugins
 import ScrollTrigger from 'gsap/ScrollTrigger';
-import LoadingButton from './Layouts/DefaultLayout/Loading/LoadingButton/LoadingButton';
+import LoadingButton from './layout/MainLayout/Loading/LoadingButton/LoadingButton';
 import ModalAddress from './pages/PaymentOrder/components/ModalAddress/ModalAddress';
 
 function App() {
@@ -32,7 +32,7 @@ function App() {
           <Routes>
             {publicRoutes.map((route, index) => {
               const Page = route.component;
-              let LayoutDefault = Layout;
+              let LayoutDefault = MainLayout;
               let ChildrenLayout = Fragment;
               if (route.childrenLayout) {
                 ChildrenLayout = route.childrenLayout;

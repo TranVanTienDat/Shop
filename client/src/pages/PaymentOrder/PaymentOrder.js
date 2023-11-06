@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import {
   faBagShopping,
   faDolly,
@@ -10,7 +9,7 @@ import classNames from 'classnames/bind';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import Footer from '~/Layouts/DefaultLayout/Footer/Footer';
+import Footer from '~/layout/MainLayout/Footer/Footer';
 import orderApi from '~/api/modules/order.api';
 import Button from '~/components/Button/Button';
 import InputVoucher from '~/components/InputVoucher/InputVoucher';
@@ -75,6 +74,7 @@ function PaymentOrder() {
       });
       setProduct(updatedProducts);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [voucher]);
 
   const handleOnchangeAddress = () => {

@@ -7,19 +7,18 @@
   }
   padding: 10px 0;
   margin: 0 16px;
-  gap: 6px;
 
   .inner {
-    @include flex-alight($f-start);
-    gap: 10px;
     @include breakpoint(tm) {
       position: relative;
       overflow: hidden;
     }
+    gap: 10px;
+    @include flex-alight($f-start);
+
     .shop__list {
-      border-width: 5px;
-      border-color: aqua;
       flex: 1;
+      border-width: 5px;
       .products {
         @include breakpoint(md) {
           grid-template-columns: repeat(4, minmax(150px, 1fr));
@@ -36,9 +35,9 @@
       }
       .no-product {
         margin-top: 50px;
-        @include flex-justify($center);
         font-size: 2.6rem;
         font-weight: 700;
+        @include flex-justify($center);
       }
 
       .page {
@@ -49,25 +48,25 @@
           border-radius: 8px;
           border: 1px solid $black-color;
           .button {
-            font-size: 2rem;
-            background-color: $white-color;
             margin: 0 8px;
+            font-size: 2rem;
             padding: 6px 12px;
             border-radius: 4px;
+            background-color: $white-color;
             &:hover {
-              background-color: #5ab1bb;
               cursor: pointer;
+              background-color: #5ab1bb;
             }
           }
           .button__active {
-            background-color: #5ab1bb;
             color: $white-color;
+            background-color: #5ab1bb;
           }
         }
       }
       .animate {
-        @include d-flex($center, $center);
         height: 200px;
+        @include d-flex($center, $center);
       }
     }
   }

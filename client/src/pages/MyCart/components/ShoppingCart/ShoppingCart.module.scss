@@ -19,8 +19,8 @@
     @include d-flex($f-start, $center);
     gap: 50px;
     .list {
-      overflow: hidden;
       flex: 6;
+      overflow: hidden;
       .product {
         position: relative;
         margin-bottom: 20px;
@@ -51,27 +51,25 @@
             font-size: 1.8rem;
             font-weight: 600;
             color: $jetBlack-color;
-            overflow: hidden;
-            white-space: nowrap;
-            text-overflow: ellipsis;
+            @include format-text-line(1);
           }
           .flex {
             @include d-flex($f-start, $s-between);
             .title {
               @include breakpoint(xm) {
-                font-size: 1.6rem;
                 margin: 4px;
+                font-size: 1.6rem;
               }
+              margin: 6px;
               @include flex-justify($s-between);
               flex-direction: column;
-              margin: 6px;
               .text {
                 @include breakpoint(xm) {
                   font-size: 1.4rem;
                 }
                 font-size: 1.6rem;
-                color: $jetBlack-color;
                 margin-bottom: 5px;
+                color: $jetBlack-color;
               }
             }
           }
@@ -82,20 +80,20 @@
               @include breakpoint(tm) {
                 font-size: 1.6rem;
               }
-              font-size: 3rem;
-              color: $primary-color;
-              margin-right: 20px;
               position: relative;
+              font-size: 3rem;
+              margin-right: 20px;
+              color: $primary-color;
               &::after {
                 @include breakpoint(tm) {
                   font-size: 1.4rem;
                 }
                 position: absolute;
                 content: 'đ';
+                font-size: 1.8rem;
                 top: auto;
                 right: auto;
                 color: inherit;
-                font-size: 1.8rem;
               }
             }
             .mobile__icon-remote {
@@ -104,8 +102,8 @@
               }
               display: none;
               font-size: 2.8rem;
-              color: $firebrick-red-color;
               cursor: pointer;
+              color: $firebrick-red-color;
               &:active {
                 filter: brightness(0.8);
               }
@@ -140,8 +138,8 @@
 
         .pay {
           margin: 20px 6px;
-          @include d-flex($center, $s-between);
           color: $jetBlack-color;
+          @include d-flex($center, $s-between);
           .title,
           .value {
             font-size: 1.7rem;
@@ -153,8 +151,8 @@
               position: absolute;
               content: 'đ';
               top: 0;
-              right: auto;
               font-size: 1.2rem;
+              right: auto;
               color: $primary-color;
             }
           }

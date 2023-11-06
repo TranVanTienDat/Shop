@@ -72,6 +72,14 @@ a {
   justify-content: $valueJustify;
 }
 
+@mixin format-text-line($line) {
+  overflow: hidden;
+  display: -webkit-box;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $line;
+}
+
 @mixin breakpoint($point) {
   @if $point == xs {
     // Under 576px
