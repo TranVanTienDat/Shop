@@ -1,146 +1,141 @@
 @import '../../../style/variables.scss';
 
-// login
-.inner {
-  overflow: hidden;
-  min-width: 400px;
+.wrapper {
+  width: 100%;
+  color: $white-color;
+  .heading {
+    @include breakpoint(xs) {
+      margin-bottom: 10px;
+    }
+    margin-bottom: 30px;
+    @include flex-direction();
+    align-items: center;
+    gap: 20px;
+    .title {
+      @include breakpoint(xs) {
+        font-size: 2.6rem;
+      }
+      font-size: 4rem;
+    }
+    .register {
+      .text {
+        @include breakpoint(xs) {
+          font-size: 1.6rem;
+        }
+        font-size: 2.2rem;
+        margin-right: 6px;
+      }
+      .text--blue {
+        cursor: pointer;
+        color: #1a83ff;
+      }
+    }
+  }
 
   .login {
-    background-color: $white-color;
-    animation: animationLeft linear 0.3s;
-
     @include breakpoint(xs) {
-      background-color: transparent;
+      width: 100%;
+      @include flex-direction();
     }
-    padding: 20px;
-    position: relative;
-
-    &::after {
-      content: '';
-      position: absolute;
-      width: 70px;
-      height: 70px;
-      top: 0;
-      right: 0;
-      background-color: #144e5c;
-      border-radius: 0 0 0% 65%/0 0 40% 70%;
-      @include breakpoint(xs) {
-        display: none;
-      }
-    }
-
-    &::before {
-      content: '';
-      position: absolute;
-      width: 70px;
-      height: 70px;
-      bottom: 0;
-      right: 0;
-      background-color: #144e5c;
-      border-radius: 65% 0 0 0 /70% 40% 0 0;
-      @include breakpoint(xs) {
-        display: none;
-      }
-    }
-
-    .input {
-      color: #144e5c;
-      @include breakpoint(xs) {
-        color: $white-color;
-      }
+    @include d-flex($center, $center);
+    gap: 30px;
+    .login__email {
+      width: 100%;
       form {
-        margin: 40px;
-
-        .title {
-          text-align: center;
-          font-size: 3rem;
-          margin-bottom: 20px;
-          // color: #144e5c;
-        }
-
-        label {
-          font-size: 1.4rem;
-          margin-top: 10px;
-          display: block;
-        }
-
-        input {
-          display: block;
-          width: 100%;
-          padding: 10px;
-          border-radius: 8px;
-          border: none;
-          outline: none;
-          border: 1px solid #144e5c;
+        .box {
           @include breakpoint(xs) {
-            background-color: transparent;
+            margin: 10px 0;
+          }
+          margin: 24px 0;
+          label {
+            @include breakpoint(xs) {
+              font-size: 1.5rem;
+            }
+            display: block;
+            font-size: 1.8rem;
+            margin-bottom: 6px;
+          }
+
+          .input {
+            @include breakpoint(xs) {
+              padding: 8px;
+              font-size: 1.5rem;
+            }
+            display: block;
+            width: 100%;
+            padding: 16px;
+            font-size: 1.8rem;
+            outline: none;
             color: $white-color;
+            background-color: transparent;
             border: 1px solid $white-color;
           }
-        }
 
-        .error {
-          font-size: 1.3rem;
-          margin: 4px 0 10px 4px;
-          color: $primary-color;
-        }
-
-        .logo {
-          .brand {
-            padding: 4px;
-            width: 100%;
-            height: 46px;
-            margin: 10px 0;
-            border-radius: 20px;
-            color: $white-color;
-            background-color: $light-color;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            .icon {
-              width: 4.6rem;
-            }
-          }
-        }
-
-        .link {
-          margin: 5px;
-
-          span {
-            font-size: 1.3rem;
-            color: $black-color;
-            cursor: pointer;
+          .error {
             @include breakpoint(xs) {
-              color: $white-color;
+              font-size: 1.4rem;
             }
-          }
-
-          .register {
-            font-size: 1.3rem;
-            color: #4eb317;
+            font-size: 1.6rem;
+            color: $firebrick-red-color;
           }
         }
-
-        .text {
-          font-size: 1.4rem;
-          font-weight: 500;
-          text-align: center;
-          margin: 10px 0 5px 0;
+        .button {
+          width: 100%;
+          margin-top: 20px;
+          @include flex-justify($f-end);
         }
       }
     }
-  }
-}
 
-@keyframes animationLeft {
-  from {
-    opacity: 0;
-    left: -100%;
-  }
-  to {
-    opacity: 1;
-    left: 0;
+    .middle {
+      @include breakpoint(xs) {
+        width: 100%;
+        height: 2px;
+      }
+      width: 2px;
+      height: 150px;
+      background-color: $white-color;
+      @include d-flex($center, $center);
+      border-radius: 2px;
+      .text {
+        padding: 4px;
+        font-size: 1.6rem;
+        background-color: #001136;
+      }
+    }
+
+    .login__other {
+      width: 100%;
+      @include flex-direction();
+      gap: 14px;
+      .button {
+        @include breakpoint(xs) {
+          padding: 10px 20px;
+          font-size: 1.3rem;
+        }
+        font-size: 1.6rem;
+        padding: 16px 30px;
+        cursor: pointer;
+        color: $white-color;
+        border-radius: 6px;
+        @include d-flex($center, $s-between);
+        gap: 8px;
+      }
+      .icon {
+        width: 16px;
+        height: 16px;
+      }
+      .button--bg-light-blue {
+        background-color: #1a83ff;
+      }
+      .button--bg-dark-blue {
+        background-color: $primary-color;
+      }
+      .button--bg-white {
+        color: $primary-color;
+        background-color: $white-color;
+      }
+    }
   }
 }
 

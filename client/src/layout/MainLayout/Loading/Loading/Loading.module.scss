@@ -2,7 +2,7 @@
 .wrapper {
   margin-top: $height-header;
   overflow: hidden;
-  height: calc(100vh - $height-header);
+  height: calc(100vh);
   background-color: rgba(0, 0, 0, 0.1);
   z-index: 1000;
 

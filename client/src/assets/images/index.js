@@ -34,6 +34,11 @@ const images = {
   // voucher
   discount: require('~/assets/images/voucherDis.png'),
   transport: require('~/assets/images/voucherTransport.png'),
+
+  //icon
+  iconGoogle: require('~/assets/images/icon-google.png'),
+  iconFacebook: require('~/assets/images/icon-facebook.png'),
+  iconApple: require('~/assets/images/icon-apple.png'),
 };
 
 export default images;

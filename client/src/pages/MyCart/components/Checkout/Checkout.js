@@ -7,7 +7,7 @@ import orderApi from '~/api/modules/order.api';
 import Button from '~/components/Button/Button';
 import { errMes, success } from '~/constants/ToastMessage/ToastMessage';
 import { sidebarCheckout } from '~/constants/sidebarCheckout';
-import { Animate } from '~/features/Auth/Sign/LogIn';
+import { Animate } from '~/features/Auth/Sign/SignIn';
 import { formatPrice } from '~/hook/func';
 import {
   setIsLoadingButton,

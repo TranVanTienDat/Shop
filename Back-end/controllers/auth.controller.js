@@ -138,12 +138,12 @@ exports.login = async (req, res) => {
   try {
     const foundUser = await userDB.findOne({ email: req.body.email });
     if (!foundUser) {
-      return res.status(404).send({ message: "Email not registered." });
+      return res.status(404).json({ message: "Email not registered." });
     }
 
     const match = await bcrypt.compare(req.body.password, foundUser.password);
     if (!match) {
-      return res.status(401).send({ message: "Incorrect password" });
+      return res.status(401).json({ message: "Incorrect password" });
     }
 
     const token = jwt.sign(
@@ -151,14 +151,14 @@ exports.login = async (req, res) => {
       process.env.ACCESS_TOKEN_SECRET,
       { expiresIn: "24h" }
     );
-    res.status(200).send({
+    res.status(200).json({
       user: foundUser._doc,
       auth: true,
       token: token,
       message: "Success",
     });
   } catch (error) {
-    res.status(500).send({ message: "Internal server error" });
+    res.status(500).json({ message: "Internal server error" });
   }
 };
 

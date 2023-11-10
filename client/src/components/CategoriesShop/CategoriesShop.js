@@ -6,7 +6,7 @@ import { category } from '~/constants/category';
 import Button from '../Button/Button';
 import CardProduct from './CardProduct/CardProduct';
 import styles from './CategoriesShop.module.scss';
-import { Animate } from '~/features/Auth/Sign/LogIn';
+import { Animate } from '~/features/Auth/Sign/SignIn';
 
 const cx = classNames.bind(styles);
 function CategoriesShop({ title }) {

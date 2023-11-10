@@ -3,8 +3,8 @@ const auth = require("../controllers/auth.controller");
 const tokenMiddleware = require("../middlewares/token.middleware");
 const route = express.Router();
 
-route.post("/signup", auth.create);
-route.post("/signin", auth.login);
+route.post("/sign-up", auth.create);
+route.post("/sign-in", auth.login);
 route.get("/get-user", tokenMiddleware.auth, auth.getUserData);
 route.put("/update-user", tokenMiddleware.auth, auth.updateUser);
 route.put("/update-password", tokenMiddleware.auth, auth.updatePassword);

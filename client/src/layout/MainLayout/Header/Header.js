@@ -178,7 +178,7 @@ function Header() {
               ) : (
                 <Button
                   outline
-                  onClick={() => navigate(config.routes.LogIn)}
+                  onClick={() => navigate(config.routes.signIn)}
                   icon={<FontAwesomeIcon icon={faArrowRightToBracket} />}
                 >
                   Log in

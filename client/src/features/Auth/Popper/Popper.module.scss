@@ -1,97 +1,25 @@
 @import '../../../style/variables.scss';
 
 .wrapper {
+  @include breakpoint(xs) {
+    padding: 10px;
+  }
   height: 100vh;
-  background-image: url('../../../assets/images/background-delivery.png');
+  background-color: #001136;
   background-attachment: fixed;
   background-size: cover;
   background-repeat: no-repeat;
-  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 20px;
   position: relative;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    filter: blur(2px);
-    backdrop-filter: blur(2px);
-  }
   .inner {
     z-index: 99;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    background-color: $darkBue-color;
-    border-radius: 16px;
-    max-width: 920px;
     @include breakpoint(xs) {
       padding: 0;
+      width: 100%;
       background-color: transparent;
-    }
-    .background {
-      flex: 1;
-      text-align: center;
-      color: $white-color;
-      margin: 0 20px;
-      max-width: 380px;
-      @include breakpoint(xm) {
-        display: none;
-      }
-
-      .heading {
-        font-size: 4rem;
-      }
-
-      .text {
-        margin: 20px 0;
-        font-size: 1.8rem;
-      }
-
-      .button-logIn {
-        font-size: 1.6rem;
-        color: $white-color;
-        border: 2px solid $white-color;
-        padding: 10px 16px;
-        border-radius: 12px;
-        background-color: $darkBue-color;
-        cursor: pointer;
-        &:active {
-          filter: brightness(0.8);
-        }
-      }
-    }
-
-    .logIn {
-      position: relative;
-      flex: 1;
-      .toggle-login {
-        display: none;
-        position: absolute;
-        top: 26px;
-        left: 20%;
-        font-size: 3rem;
-        color: #144e5c;
-        z-index: 2;
-        cursor: pointer;
-        &:active {
-          filter: brightness(0.6);
-        }
-
-        @include breakpoint(xm) {
-          display: block;
-        }
-        @include breakpoint(xs) {
-          color: $white-color;
-        }
-      }
     }
   }
 }

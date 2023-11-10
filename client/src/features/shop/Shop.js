@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import productApi from '~/api/modules/product.api';
 import { useDebounce } from '~/hook/debounce';
 import { searchParams } from '~/store/slice/selector';
-import { Animate } from '../Auth/Sign/LogIn';
+import { Animate } from '../Auth/Sign/SignIn';
 import styles from './Shop.module.scss';
 import SideBar from './SideBar/SideBar';
 import Card from './card/Card';

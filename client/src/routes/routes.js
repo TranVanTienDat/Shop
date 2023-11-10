@@ -15,6 +15,8 @@ import Checkout from '~/pages/MyCart/components/Checkout/Checkout';
 import DetailInfo from '~/pages/ProfileUser/Account/components/DetailInfo/DetailInfo';
 import ChangePassword from '~/pages/ProfileUser/Account/components/ChangePassword/ChangePassword';
 import Notification from '~/pages/ProfileUser/Account/components/Notification/Notification';
+import SignIn from '~/features/Auth/Sign/SignIn';
+import SignUp from '~/features/Auth/Sign/SignUp';
 // Public routes
 const publicRoutes = [
   { path: config.routes.home, component: Home, index: true, state: 'home' },
@@ -82,7 +84,18 @@ const publicRoutes = [
     layout: null,
   },
   { path: config.routes.resetPassword, component: ResetPassword, layout: null },
-  { path: config.routes.LogIn, component: Popper, layout: null },
+  {
+    path: config.routes.signIn,
+    component: SignIn,
+    childrenLayout: Popper,
+    layout: null,
+  },
+  {
+    path: config.routes.signUp,
+    component: SignUp,
+    childrenLayout: Popper,
+    layout: null,
+  },
 ];
 
 const privateRoutes = [];

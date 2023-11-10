@@ -2,8 +2,8 @@ import privateClient from '../client/private.client';
 import publicClient from '../client/public.client';
 
 const authEndpoints = {
-  signUp: 'user/signup',
-  signIn: 'user/signin',
+  signUp: 'user/sign-up',
+  signIn: 'user/sign-in',
   updateUser: 'user/update-user',
   updatePassword: 'user/update-password',
   forgotPassword: 'user/forgot-password',
