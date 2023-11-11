@@ -2,7 +2,6 @@ import classNames from 'classnames/bind';
 import { useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import productApi from '~/api/modules/product.api';
-import { useDebounce } from '~/hook/debounce';
 import { searchParams } from '~/store/slice/selector';
 import { Animate } from '../Auth/Sign/SignIn';
 import styles from './Shop.module.scss';
