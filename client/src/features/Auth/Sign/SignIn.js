@@ -51,7 +51,7 @@ function SignIn() {
       navigate('/');
     }
     if (err) {
-      errMes(err.response.data.message);
+      errMes(err?.response?.data?.message);
     }
   };
 

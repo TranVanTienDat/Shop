@@ -17,11 +17,9 @@
     @include breakpoint(xm) {
       font-size: 1.2rem;
     }
-    margin: 10px 0;
     font-size: 1.4rem;
     max-width: 600px;
-    margin-bottom: 30px;
-    margin: 0 auto 20px;
+    margin: 10px 10px 20px;
     color: $light-color;
   }
 
