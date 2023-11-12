@@ -120,7 +120,7 @@ function Header() {
                 value={search}
                 onChange={(e) => handleOnChange(e.target.value)}
                 className={cx('input')}
-                placeholder="Search what you need"
+                placeholder="Tìm kiếm sản phẩm"
               />
               <div className={cx('filter')}>
                 <FontAwesomeIcon
@@ -129,6 +129,11 @@ function Header() {
                   onClick={handleSearch}
                 />
                 <FontAwesomeIcon
+                  style={
+                    appState.includes('shop')
+                      ? { display: 'block' }
+                      : { display: 'none' }
+                  }
                   className={cx('icon')}
                   icon={faArrowDownShortWide}
                   onClick={() =>

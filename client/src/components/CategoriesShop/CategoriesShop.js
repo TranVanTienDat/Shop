@@ -9,13 +9,12 @@ import styles from './CategoriesShop.module.scss';
 import { Animate } from '~/features/Auth/Sign/SignIn';
 
 const cx = classNames.bind(styles);
-function CategoriesShop({ title }) {
+function CategoriesShop() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [item, setItem] = useState({ category: 'Giày', active: 0 });
   useEffect(() => {
     const fetchProducts = async () => {
-      console.log(item.category);
       setLoading(true);
       const { res } = await productApi.getCategoriesProduct({
         category: item.category,
@@ -34,7 +33,7 @@ function CategoriesShop({ title }) {
   return (
     <div className={cx('wrapper')}>
       <div className={cx('inner')}>
-        <h1 className={cx('heading')}>{title}</h1>
+        <h1 className={cx('heading')}>Mặt hàng của chúng tôi</h1>
         <div className={cx('list__Product')}>
           <div className={cx('category')}>
             {category.map((data, i) => {

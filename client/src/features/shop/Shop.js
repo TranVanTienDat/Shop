@@ -7,6 +7,7 @@ import { Animate } from '../Auth/Sign/SignIn';
 import styles from './Shop.module.scss';
 import SideBar from './SideBar/SideBar';
 import Card from './card/Card';
+import images from '~/assets/images';
 const cx = classNames.bind(styles);
 function Shop() {
   const dispatch = useDispatch();
@@ -116,7 +117,7 @@ function Shop() {
                 </div>
               </div>
             ) : (
-              <div className={cx('no-product')}>không tìm thấy sản phẩm...</div>
+              <img src={images.notSearch} alt="" className={cx('no-product')} />
             )
           ) : (
             <div className={cx('animate')}>

@@ -44,7 +44,7 @@ function TopProducts() {
   };
   return (
     <section className={cx('category')}>
-      <h1 className={cx('heading')}>Top Items</h1>
+      <h1 className={cx('heading')}>Top sản phẩm</h1>
       <p className={cx('text')}>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim

@@ -34,10 +34,7 @@
         grid-gap: 8px;
       }
       .no-product {
-        margin-top: 50px;
-        font-size: 2.6rem;
-        font-weight: 700;
-        @include flex-justify($center);
+        width: 100%;
       }
 
       .page {

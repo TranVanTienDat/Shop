@@ -6,7 +6,7 @@ const images = {
   google: require('~/assets/images/google.png'),
   // no product
   noProduct: require('~/assets/images/delivery.png'),
-  noFound: require('~/assets/images/no-found.png'),
+  notSearch: require('~/assets/images/notProduct.png'),
 
   // user profile
   avatar: require('~/assets/images/user.png'),

@@ -48,7 +48,7 @@ function AboutUs() {
         <CustomerReviews />
         {/* achievement us */}
         <div className={cx('achievement')}>
-          <h1 className={cx('title')}>Our Achievement</h1>
+          <h1 className={cx('title')}>Thành tích của chúng tôi</h1>
           <div ref={(el) => (containerRef = el)} className={cx('brand')}>
             {brand.map((item, i) => {
               return (

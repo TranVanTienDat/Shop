@@ -5,7 +5,7 @@ import TopProducts from '~/components/SliderTopProducts/TopProducts';
 function Home() {
   return (
     <div style={{ marginTop: '120px' }}>
-      <CategoriesShop title="Our Premium Collection" />
+      <CategoriesShop />
       <TopProducts />
       <AboutUs />
     </div>

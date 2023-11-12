@@ -2,205 +2,204 @@
 
 .wrapper {
   margin: 30px 0;
-  .inner {
-    .heading {
-      @include breakpoint(xm) {
-        font-size: 2.1rem;
+
+  .heading {
+    @include breakpoint(xm) {
+      font-size: 2.1rem;
+    }
+    font-size: 3.4rem;
+    color: $jetBlack-color;
+  }
+
+  .container {
+    @include breakpoint(tm) {
+      @include flex-direction();
+    }
+    margin-top: 20px;
+    @include d-flex($f-start, $center);
+    gap: 20px;
+    .sidebar {
+      @include breakpoint(tm) {
+        width: 100%;
+        overflow: auto;
+        @include d-flex($center, $f-start);
+        &::-webkit-scrollbar {
+          height: 0;
+        }
       }
-      font-size: 3.4rem;
-      color: $jetBlack-color;
+      background-color: $white-color;
+      .box {
+        @include breakpoint(xm) {
+          border-radius: 0;
+          padding: 0 6px;
+        }
+        margin: 6px;
+        padding: 6px;
+        border-radius: 8px;
+        cursor: pointer;
+        color: $lightBlue-color;
+        @include d-flex($center, $s-between);
+        .title,
+        .icon {
+          @include breakpoint(xm) {
+            font-size: 1.3rem;
+            font-weight: 500;
+          }
+          font-size: 1.6rem;
+          font-weight: 400;
+        }
+        .title {
+          width: 120px;
+          @include breakpoint(xs) {
+            width: 100px;
+          }
+        }
+        .icon {
+          @include breakpoint(xs) {
+            display: none;
+          }
+        }
+        &:active {
+          filter: brightness(0.9);
+        }
+      }
+      .box--active {
+        @include breakpoint(xm) {
+          color: $primary-color;
+          background-color: transparent;
+          border-left: 1.5px solid $primary-color;
+        }
+        background-color: rgb(235, 241, 255);
+      }
     }
 
-    .container {
-      @include breakpoint(tm) {
-        @include flex-direction();
-      }
-      margin-top: 20px;
-      @include d-flex($f-start, $s-between);
-      gap: 20px;
-      .sidebar {
-        @include breakpoint(tm) {
-          width: 100%;
-          overflow: auto;
-          @include d-flex($center, $f-start);
-          &::-webkit-scrollbar {
-            height: 0;
-          }
-        }
-        background-color: $white-color;
-        .box {
+    .content {
+      width: 100%;
+      .list {
+        .product {
           @include breakpoint(xm) {
-            border-radius: 0;
-            padding: 0 6px;
+            padding: 10px;
+            margin: 0 -10px 20px -10px;
           }
-          margin: 6px;
-          padding: 6px;
-          border-radius: 8px;
-          cursor: pointer;
-          color: $lightBlue-color;
-          @include d-flex($center, $s-between);
-          .title,
-          .icon {
-            @include breakpoint(xm) {
-              font-size: 1.3rem;
-              font-weight: 500;
-            }
-            font-size: 1.6rem;
-            font-weight: 400;
-          }
-          .title {
-            width: 120px;
+          padding: 20px;
+          margin-bottom: 20px;
+          background-color: $white-color;
+          box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px,
+            rgba(0, 0, 0, 0.23) 0px 3px 6px;
+          .product__flex {
             @include breakpoint(xs) {
-              width: 100px;
+              @include flex-direction();
+              gap: 10px;
             }
-          }
-          .icon {
-            @include breakpoint(xs) {
-              display: none;
-            }
-          }
-          &:active {
-            filter: brightness(0.9);
-          }
-        }
-        .box--active {
-          @include breakpoint(xm) {
-            color: $primary-color;
-            background-color: transparent;
-            border-left: 1.5px solid $primary-color;
-          }
-          background-color: rgb(235, 241, 255);
-        }
-      }
+            @include d-flex($f-start, $s-between);
+            gap: 20px;
 
-      .content {
-        flex: 1;
-        .list {
-          .product {
-            @include breakpoint(xm) {
-              padding: 10px;
-              margin: 0 -10px 20px -10px;
-            }
-            padding: 20px;
-            margin-bottom: 20px;
-            background-color: $white-color;
-            box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px,
-              rgba(0, 0, 0, 0.23) 0px 3px 6px;
-            .product__flex {
-              @include breakpoint(xs) {
-                @include flex-direction();
+            .flex__quantity,
+            .box {
+              flex: 1;
+              @include flex-direction();
+              gap: 10px;
+              .flex__info {
+                @include d-flex($f-start, $f-start);
                 gap: 10px;
-              }
-              @include d-flex($f-start, $s-between);
-              gap: 20px;
-
-              .flex__quantity,
-              .box {
-                flex: 1;
-                @include flex-direction();
-                gap: 10px;
-                .flex__info {
-                  @include d-flex($f-start, $f-start);
-                  gap: 10px;
-                  .img {
-                    width: 80px;
-                    height: 80px;
-                    border: 1px solid #e1e1e1;
+                .img {
+                  width: 80px;
+                  height: 80px;
+                  border: 1px solid #e1e1e1;
+                }
+                .data {
+                  @include flex-direction();
+                  gap: 5px;
+                  .name {
+                    @include format-text-line(2);
                   }
-                  .data {
-                    @include flex-direction();
-                    gap: 5px;
-                    .name {
-                      @include format-text-line(2);
+                  .name,
+                  .quantity {
+                    @include breakpoint(xm) {
+                      font-size: 1.3rem;
                     }
-                    .name,
-                    .quantity {
-                      @include breakpoint(xm) {
-                        font-size: 1.3rem;
-                      }
-                      font-size: 1.6rem;
-                      font-weight: 500;
-                      color: $black-color;
+                    font-size: 1.6rem;
+                    font-weight: 500;
+                    color: $black-color;
+                  }
+
+                  .type {
+                    @include breakpoint(xm) {
+                      font-size: 1.2rem;
                     }
-
-                    .type {
-                      @include breakpoint(xm) {
-                        font-size: 1.2rem;
-                      }
-                      font-size: 1.4rem;
-                      color: $light-color;
-                    }
-                  }
-                }
-              }
-
-              .flex__status {
-                @include breakpoint(xs) {
-                  align-items: flex-start;
-                }
-                @include flex-direction();
-                align-items: flex-end;
-                gap: 5px;
-                .status__delivery,
-                .status__price {
-                  font-size: 1.6rem;
-                  @include breakpoint(xm) {
-                    font-size: 1.3rem;
-                  }
-                }
-
-                .status__delivery {
-                  font-weight: 700;
-                  text-transform: uppercase;
-                  color: $firebrick-red-color;
-                }
-                .status__price {
-                  color: $primary-color;
-                }
-                .status__contact {
-                  @include breakpoint(xm) {
-                    font-size: 1rem;
-                  }
-                  padding: 3px 6px;
-                  font-size: 1.4rem;
-                  border-radius: 4px;
-                  cursor: pointer;
-                  color: $white-color;
-                  background-color: $primary-color;
-                }
-                .icon {
-                  margin-right: 6px;
-                }
-              }
-              .box {
-                .address {
-                  @include breakpoint(sm) {
                     font-size: 1.4rem;
+                    color: $light-color;
                   }
-                  @include breakpoint(xs) {
-                    font-size: 1.3rem;
-                  }
-                  color: $firebrick-red-color;
                 }
               }
             }
 
-            .product__flex--line {
-              margin-top: 20px;
-              padding-top: 20px;
-              border-top: 1px solid $lightBlue-color;
-            }
-
-            .expected {
-              margin-top: 20px;
-              .time {
+            .flex__status {
+              @include breakpoint(xs) {
+                align-items: flex-start;
+              }
+              @include flex-direction();
+              align-items: flex-end;
+              gap: 5px;
+              .status__delivery,
+              .status__price {
+                font-size: 1.6rem;
                 @include breakpoint(xm) {
                   font-size: 1.3rem;
                 }
-                font-size: 1.5rem;
-                font-weight: 400;
-                color: $jetBlack-color;
               }
+
+              .status__delivery {
+                font-weight: 700;
+                text-transform: uppercase;
+                color: $firebrick-red-color;
+              }
+              .status__price {
+                color: $primary-color;
+              }
+              .status__contact {
+                @include breakpoint(xm) {
+                  font-size: 1rem;
+                }
+                padding: 3px 6px;
+                font-size: 1.4rem;
+                border-radius: 4px;
+                cursor: pointer;
+                color: $white-color;
+                background-color: $primary-color;
+              }
+              .icon {
+                margin-right: 6px;
+              }
+            }
+            .box {
+              .address {
+                @include breakpoint(sm) {
+                  font-size: 1.4rem;
+                }
+                @include breakpoint(xs) {
+                  font-size: 1.3rem;
+                }
+                color: $firebrick-red-color;
+              }
+            }
+          }
+
+          .product__flex--line {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid $lightBlue-color;
+          }
+
+          .expected {
+            margin-top: 20px;
+            .time {
+              @include breakpoint(xm) {
+                font-size: 1.3rem;
+              }
+              font-size: 1.5rem;
+              font-weight: 400;
+              color: $jetBlack-color;
             }
           }
         }

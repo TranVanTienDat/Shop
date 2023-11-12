@@ -8,11 +8,8 @@
 
   .swiper-button-prev,
   .swiper-button-next {
-    color: rgb(235, 108, 108) !important;
-    padding: 5px;
-    border-radius: 3px;
-    background-color: $white-color;
-    border: 1px solid $primary-color;
+    color: $white-color !important;
+    background-color: $primary-color;
 
     &::after {
       @include breakpoint(xm) {
@@ -24,8 +21,13 @@
 
     &:hover {
       background-color: $lightBlue-color;
-      color: $white-color !important;
     }
+  }
+  .swiper-button-prev {
+    left: 2px;
+  }
+  .swiper-button-next {
+    right: 2px;
   }
 
   // style  navigation product
@@ -81,6 +83,9 @@
 
   // custom Banner
   .swiper-pagination-bullet {
+    @include breakpoint(xs) {
+      padding: 6px;
+    }
     padding: 8px;
     border: 2px solid $black-color;
     opacity: 1;
