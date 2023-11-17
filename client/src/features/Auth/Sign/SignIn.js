@@ -1,6 +1,5 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import classNames from 'classnames/bind';
-import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -10,7 +9,6 @@ import images from '~/assets/images';
 import Button from '~/components/Button/Button';
 import config from '~/config';
 import { errMes } from '~/constants/ToastMessage/ToastMessage';
-import { UserAuth } from '~/firebase/context/AuthContext';
 import { setInfo } from '~/store/slice/infoDataUser';
 import { setIsLoadingButton } from '~/store/slice/loadingSlice';
 import { parseDate } from '~/utils/timeConversion';
@@ -19,7 +17,6 @@ const cx = classNames.bind(styles);
 function SignIn() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { googleSignIn, user } = UserAuth();
 
   // form rules
   const validationSchema = Yup.object().shape({
@@ -54,21 +51,6 @@ function SignIn() {
       errMes(err?.response?.data?.message);
     }
   };
-
-  // const handleSignGoogle = async () => {
-  //   try {
-  //     setAnimate(!animate);
-  //     await googleSignIn();
-  //     setAnimate(!animate);
-  //   } catch {
-  //     console.error('loi');
-  //   }
-  // };
-  useEffect(() => {
-    if (user !== null) {
-      navigate('/');
-    }
-  }, [user, navigate]);
 
   return (
     <div className={cx('wrapper')}>

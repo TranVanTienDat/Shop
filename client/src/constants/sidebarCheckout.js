@@ -8,7 +8,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 export const sidebarCheckout = [
   {
-    title: 'Tổng sản phẩm',
+    title: 'Tổng đơn',
     icon: faGlobe,
   },
   {
@@ -24,7 +24,7 @@ export const sidebarCheckout = [
     icon: faRoadCircleCheck,
   },
   {
-    title: 'Giao thành công',
+    title: 'Đã giao',
     icon: faHouseCircleCheck,
   },
   {

@@ -13,25 +13,20 @@ function MyCart({ children }) {
   const { appState } = useSelector(state);
   return (
     <div className={cx('wrapper')}>
-      <div className={cx('inner')}>
-        <div className={cx('navigate')}>
-          {menuCart.map((item, i) => {
-            return (
-              <span
-                key={i}
-                onClick={() => navigate(item.to)}
-                className={cx(
-                  'title',
-                  appState.includes(item.state) && 'active'
-                )}
-              >
-                {item.title}
-              </span>
-            );
-          })}
-        </div>
-        {children}
+      <div className={cx('navigate')}>
+        {menuCart.map((item, i) => {
+          return (
+            <span
+              key={i}
+              onClick={() => navigate(item.to)}
+              className={cx('title', appState.includes(item.state) && 'active')}
+            >
+              {item.title}
+            </span>
+          );
+        })}
       </div>
+      {children}
     </div>
   );
 }

@@ -49,9 +49,9 @@
           font-weight: 400;
         }
         .title {
-          width: 120px;
+          width: 100px;
           @include breakpoint(xs) {
-            width: 100px;
+            width: 80px;
           }
         }
         .icon {

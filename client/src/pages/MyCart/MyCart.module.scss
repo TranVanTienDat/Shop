@@ -6,25 +6,22 @@
   padding: 30px;
   margin-top: $height-header;
   background-color: $background-color;
-  .inner {
-    .navigate {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-      .title {
-        @include breakpoint(xm) {
-          font-size: 1.6rem;
-        }
-        font-size: 1.8rem;
-        font-weight: 600;
-        font-family: 'Roboto';
-        color: $light-color;
-        margin-right: 30px;
-        cursor: pointer;
+  .navigate {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    .title {
+      @include breakpoint(xm) {
+        font-size: 1.6rem;
       }
-      .active {
-        color: $jetBlack-color;
-      }
+      font-size: 1.8rem;
+      font-weight: 600;
+      font-family: 'Roboto';
+      color: $light-color;
+      cursor: pointer;
+    }
+    .active {
+      color: $jetBlack-color;
     }
   }
 }

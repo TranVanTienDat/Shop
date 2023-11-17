@@ -4,7 +4,6 @@ import { ToastContainer } from 'react-toastify';
 import './App.scss';
 import Container from './layout/MainLayout/Container/Container';
 import MainLayout from './layout/MainLayout/Layout';
-import { AuthContextProvider } from './firebase/context/AuthContext';
 import { publicRoutes } from './routes/routes';
 // gsap
 import gsap from 'gsap';
@@ -22,58 +21,52 @@ function App() {
   });
   return (
     <Router>
-      <AuthContextProvider>
-        <div className="App">
-          {/* <Cart /> */}
-          <ModalAddress />
-          <LoadingButton />
+      <div className="App">
+        {/* <Cart /> */}
+        <ModalAddress />
+        <LoadingButton />
 
-          <ToastContainer />
-          <Routes>
-            {publicRoutes.map((route, index) => {
-              const Page = route.component;
-              let LayoutDefault = MainLayout;
-              let ChildrenLayout = Fragment;
-              if (route.childrenLayout) {
-                ChildrenLayout = route.childrenLayout;
-              }
-              if (route.layout) {
-                LayoutDefault = route.layout;
-              } else if (route.layout === null) {
-                LayoutDefault = Fragment;
-              }
+        <ToastContainer />
+        <Routes>
+          {publicRoutes.map((route, index) => {
+            const Page = route.component;
+            let LayoutDefault = MainLayout;
+            let ChildrenLayout = Fragment;
+            if (route.childrenLayout) {
+              ChildrenLayout = route.childrenLayout;
+            }
+            if (route.layout) {
+              LayoutDefault = route.layout;
+            } else if (route.layout === null) {
+              LayoutDefault = Fragment;
+            }
 
-              return (
-                <Route
-                  key={index}
-                  path={route.path}
-                  element={
-                    <LayoutDefault>
-                      {route.index ? (
-                        <Container
-                          state={route.state ? route.state : undefined}
-                        >
-                          <ChildrenLayout>
-                            <Page />
-                          </ChildrenLayout>
-                        </Container>
-                      ) : (
-                        <Container
-                          state={route.state ? route.state : undefined}
-                        >
-                          <ChildrenLayout>
-                            <Page />
-                          </ChildrenLayout>
-                        </Container>
-                      )}
-                    </LayoutDefault>
-                  }
-                />
-              );
-            })}
-          </Routes>
-        </div>
-      </AuthContextProvider>
+            return (
+              <Route
+                key={index}
+                path={route.path}
+                element={
+                  <LayoutDefault>
+                    {route.index ? (
+                      <Container state={route.state ? route.state : undefined}>
+                        <ChildrenLayout>
+                          <Page />
+                        </ChildrenLayout>
+                      </Container>
+                    ) : (
+                      <Container state={route.state ? route.state : undefined}>
+                        <ChildrenLayout>
+                          <Page />
+                        </ChildrenLayout>
+                      </Container>
+                    )}
+                  </LayoutDefault>
+                }
+              />
+            );
+          })}
+        </Routes>
+      </div>
     </Router>
   );
 }

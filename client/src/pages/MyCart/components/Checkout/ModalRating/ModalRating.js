@@ -82,7 +82,6 @@ function ModalRating() {
       errMes(err.message);
     }
   };
-
   return (
     loading.loading && (
       <Modal>

@@ -2,10 +2,12 @@ const commentDB = require("../models/comment.model");
 const productDB = require("../models/products.model");
 const userDB = require("../models/auth.model");
 const getDate = require("../utils/date");
+
 exports.addComment = async (req, res) => {
   try {
     const { productID, rating, comment } = req.body;
     const images = req.files;
+
     const user = req.user;
     const currentAndNextDate = await getDate.getCurrentAndNextDate(new Date());
     const { currentDateFormatted } = currentAndNextDate;
@@ -23,7 +25,6 @@ exports.addComment = async (req, res) => {
 
     for (let i = 0; i < images.length; i++) {
       const image = images[i];
-
       const imageInfo = {
         name: image.originalname,
         contentType: image.mimetype,

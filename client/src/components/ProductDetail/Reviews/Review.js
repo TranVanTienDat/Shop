@@ -42,8 +42,8 @@ function Review({ productID }) {
                             <img
                               key={i}
                               className={cx('img')}
-                              src={`http://localhost:5000/${item.name}`}
-                              alt=""
+                              src={item.data}
+                              alt={item.name}
                             />
                           );
                         })}
