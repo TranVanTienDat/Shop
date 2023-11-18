@@ -182,7 +182,7 @@ function ProductDetail() {
   return (
     <div className={cx('wrapper')}>
       {product ? (
-        <div className={cx('inner')}>
+        <>
           <div className={cx('path')}>
             Detail
             <FontAwesomeIcon className={cx('icon')} icon={faChevronRight} />
@@ -444,7 +444,7 @@ function ProductDetail() {
               </div>
             </div>
           </div>
-        </div>
+        </>
       ) : null}
     </div>
   );

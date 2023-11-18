@@ -25,7 +25,6 @@ function Shop() {
     const fetchProducts = async () => {
       const currentPage = currentItemPage.status ? 1 : currentItemPage.current;
       setIsLoading(true);
-      window.scrollTo(0, 300);
       const { res } = await productApi.getProducts({
         keyword,
         minPrice,

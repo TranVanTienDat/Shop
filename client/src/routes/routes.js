@@ -45,6 +45,7 @@ const publicRoutes = [
     path: config.routes.detailProduct,
     component: ProductDetail,
     state: null,
+    layout: null,
   },
 
   {
