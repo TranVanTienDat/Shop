@@ -42,23 +42,20 @@ function Footer() {
           </div>
 
           <div className={cx('column')}>
-            <span className={cx('title')}>Services</span>
+            <span className={cx('title')}>Support</span>
             <ul>
-              <li className={cx('text')}>Web Hosting</li>
-              <li className={cx('text')}>Domains</li>
-              <li className={cx('text')}>Premium Hosting</li>
-              <li className={cx('text')}>Private Server</li>
-              <li className={cx('text')}>E-mail Hosting</li>
+              <li className={cx('text')}>Pricing Plan</li>
+              <li className={cx('text')}>Documentation</li>
+              <li className={cx('text')}>Guide</li>
+              <li className={cx('text')}>Tutorial</li>
             </ul>
           </div>
           <div className={cx('column')}>
-            <span className={cx('title')}>Services</span>
+            <span className={cx('title')}>Legal</span>
             <ul>
-              <li className={cx('text')}>Web Hosting</li>
-              <li className={cx('text')}>Domains</li>
-              <li className={cx('text')}>Premium Hosting</li>
-              <li className={cx('text')}>Private Server</li>
-              <li className={cx('text')}>E-mail Hosting</li>
+              <li className={cx('text')}>Claim</li>
+              <li className={cx('text')}>Privacy</li>
+              <li className={cx('text')}>Terms</li>
             </ul>
           </div>
         </div>

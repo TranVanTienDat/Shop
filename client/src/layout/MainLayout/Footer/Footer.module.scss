@@ -2,9 +2,9 @@
 
 .footer {
   @include breakpoint(xs) {
-    padding: 30px 10px;
+    padding: 40px 6px;
   }
-  padding: 40px;
+  padding: 40px 20px;
   color: $white-color;
   background-color: #283646;
   font-family: 'Roboto';
@@ -12,7 +12,10 @@
     @include breakpoint(xm) {
       @include flex-direction();
     }
-    @include d-flex($f-start, $center);
+
+    max-width: 1000px;
+    margin: 0 auto;
+    @include d-flex($f-start, $s-between);
     gap: 30px;
     .brand {
       flex: 3;
@@ -44,8 +47,8 @@
     .info {
       flex: 7;
       width: 100%;
-      @include d-flex($center, $s-between);
-      gap: 20px;
+      @include d-flex($f-start, $s-between);
+      gap: 40px;
       .column {
         @include flex-direction();
         gap: 20px;
