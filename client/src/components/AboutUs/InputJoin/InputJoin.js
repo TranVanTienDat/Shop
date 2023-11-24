@@ -24,6 +24,7 @@ function InputJoin() {
             <span className={cx('button')}>
               <Button
                 leftIcon
+                ariaLabel="join"
                 icon={<FontAwesomeIcon icon={faChevronRight} />}
               />
             </span>

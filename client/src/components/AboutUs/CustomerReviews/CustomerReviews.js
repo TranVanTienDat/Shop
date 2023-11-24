@@ -10,6 +10,7 @@ function CustomerReviews() {
   return (
     <div className={cx('wrapper')}>
       <div className={cx('inner')}>
+        <h2 className={cx('heading')}>Good Seller!</h2>
         <section className={cx('seller')}>
           <Swiper
             modules={[Autoplay, Navigation]}
@@ -29,7 +30,6 @@ function CustomerReviews() {
                     <img className={cx('img')} src={item.img} alt="" />
 
                     <div className={cx('description')}>
-                      <h2 className={cx('heading')}>Good Seller!</h2>
                       <p className={cx('text')}>
                         I am very happy with the services provided, it is very
                         helpful, starting from the insight that the company gave

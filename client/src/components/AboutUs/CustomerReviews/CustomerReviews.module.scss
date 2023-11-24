@@ -6,11 +6,20 @@
     margin: 0 auto;
     padding: 30px 0;
     max-width: 1000px;
+    background-color: $white-color;
+    .heading {
+      @include breakpoint(xm) {
+        font-size: 2rem;
+      }
+      font-size: 3rem;
+      text-align: center;
+      letter-spacing: 2px;
+      color: $primary-color;
+    }
     .seller {
       padding: 30px 10px;
-      background-color: $white-color;
       .seller__inner {
-        @include flex-alight($center);
+        @include d-flex($f-end, $center);
         gap: 30px;
         .img {
           @include breakpoint(sm) {
@@ -20,36 +29,28 @@
             width: 80px;
           }
           flex: 3;
-          height: 100%;
           max-width: 200px;
+          aspect-ratio: 3/2;
           border-radius: 8px;
         }
         .description {
           flex: 7;
-          .heading {
-            @include breakpoint(xm) {
-              font-size: 2.2rem;
-            }
-            font-size: 3rem;
-            letter-spacing: 2px;
-            color: $primary-color;
-          }
+
           .text {
             @include breakpoint(xm) {
               font-size: 1.2rem;
             }
-            font-size: 1.5rem;
-            margin: 36px 0;
-            color: $light-color;
             @include breakpoint(xs) {
-              margin: 20px 0;
               @include format-text-line(3);
             }
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: $light-color;
           }
           .name {
             font-size: 1.5rem;
             font-weight: 600;
-            margin-bottom: 14px;
+            margin-bottom: 4px;
             color: $jetBlack-color;
           }
           .title {

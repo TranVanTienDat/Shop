@@ -55,6 +55,7 @@
         @include d-flex($center, $s-between);
         .brand__img {
           width: 140px;
+          height: 74px;
           margin-top: 20px;
         }
       }
@@ -94,6 +95,7 @@
           margin: 24px 0;
           .img {
             width: 100%;
+            height: auto;
             margin-bottom: 24px;
           }
 

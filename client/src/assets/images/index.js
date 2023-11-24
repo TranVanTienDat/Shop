@@ -39,6 +39,12 @@ const images = {
   iconGoogle: require('~/assets/images/icon-google.png'),
   iconFacebook: require('~/assets/images/icon-facebook.png'),
   iconApple: require('~/assets/images/icon-apple.png'),
+
+  //review
+  userReview1: require('~/assets/images/review (1).avif'),
+  userReview2: require('~/assets/images/review (2).jpg'),
+  userReview3: require('~/assets/images/review (3).jpg'),
+  userReview4: require('~/assets/images/review (4).jpg'),
 };
 
 export default images;

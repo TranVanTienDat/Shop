@@ -18,6 +18,7 @@ function CardProduct({ _id, name, category, image }) {
         <Button
           leftIcon
           circle
+          ariaLabel="navigate"
           icon={<FontAwesomeIcon icon={faArrowRight} />}
           onClick={() => navigate(`/detail-product/${name}/${_id}`)}
         />

@@ -6,6 +6,7 @@ import styles from './Button.module.scss';
 const cx = classNames.bind(styles);
 
 function Button({
+  ariaLabel,
   to,
   href,
   onClick,
@@ -51,7 +52,7 @@ function Button({
   });
 
   return (
-    <Component className={classes} {...props}>
+    <Component aria-label={ariaLabel} className={classes} {...props}>
       {icon && <span className={cx('icon')}>{icon}</span>}
       <span className={cx('title')}>{children}</span>
     </Component>
@@ -60,6 +61,7 @@ function Button({
 
 Button.propTypes = {
   to: PropTypes.string,
+  ariaLabel: PropTypes.string,
   href: PropTypes.string,
   onClick: PropTypes.func,
   circle: PropTypes.bool,
