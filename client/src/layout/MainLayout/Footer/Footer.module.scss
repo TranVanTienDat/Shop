@@ -1,60 +1,62 @@
 @import '../../../style/variables.scss';
 
 .footer {
-  background-color: $white-color;
-  .view {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 20px 0;
-    @include flex-justify($s-between);
-    @include breakpoint(xs) {
+  padding: 40px;
+  color: $white-color;
+  background-color: #283646;
+  font-family: 'Roboto';
+  .inner {
+    @include breakpoint(xm) {
       @include flex-direction();
     }
-
-    .customer {
-      display: flex;
-      .img {
-        width: 200px;
-        height: 200px;
-        margin-right: 24px;
+    @include d-flex($f-start, $center);
+    gap: 30px;
+    .brand {
+      flex: 3;
+      @include flex-direction();
+      gap: 20px;
+      .logo {
+        width: 90px;
+        height: 20px;
       }
-      .element {
-        margin: 20px 24px;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: space-between;
+      .text {
+        font-size: 1.4rem;
+      }
 
-        .colum {
-          .element__img {
-            height: 20px;
-            width: 100px;
-            cursor: pointer;
+      .contact {
+        @include flex-direction();
+        gap: 16px;
+        .box {
+          @include d-flex($center, $f-start);
+          gap: 6px;
+
+          .icon,
+          .title {
+            font-size: 1.6rem;
           }
-          .text {
-            font-size: 1.5rem;
-            margin: 20px 0;
-            color: $jetBlack-color;
-          }
-        }
-        .text-end {
-          font-size: 1.5rem;
-          margin: 20px 0;
-          color: $jetBlack-color;
         }
       }
     }
-    .Social-Network {
-      @include d-flex($f-start, $center);
-      @include breakpoint(sm) {
+
+    .info {
+      flex: 7;
+      width: 100%;
+      @include d-flex($center, $s-between);
+      gap: 20px;
+      .column {
         @include flex-direction();
-      }
-      .icon {
-        width: 40px;
-        height: 40px;
-        margin: 0 8px;
-        padding: 6px;
-        cursor: pointer;
+        gap: 20px;
+        .title {
+          font-size: 1.8rem;
+        }
+        ul {
+          @include flex-direction();
+          gap: 12px;
+          .text {
+            font-size: 1.4rem;
+            list-style: none;
+          }
+        }
       }
     }
   }
