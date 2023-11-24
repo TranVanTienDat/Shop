@@ -1,6 +1,9 @@
 @import '../../../style/variables.scss';
 
 .footer {
+  @include breakpoint(xs) {
+    padding: 30px 10px;
+  }
   padding: 40px;
   color: $white-color;
   background-color: #283646;
@@ -47,13 +50,13 @@
         @include flex-direction();
         gap: 20px;
         .title {
-          font-size: 1.8rem;
+          font-size: 1.6rem;
         }
         ul {
           @include flex-direction();
           gap: 12px;
           .text {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             list-style: none;
           }
         }
