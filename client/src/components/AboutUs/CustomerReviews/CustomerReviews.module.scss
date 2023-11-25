@@ -28,14 +28,11 @@
           @include breakpoint(xs) {
             width: 80px;
           }
-          flex: 3;
-          max-width: 200px;
+          width: 200px;
           aspect-ratio: 3/2;
           border-radius: 8px;
         }
         .description {
-          flex: 7;
-
           .text {
             @include breakpoint(xm) {
               font-size: 1.2rem;

@@ -61,14 +61,18 @@
         }
 
         .blog__post {
+          @include breakpoint(xl) {
+            grid-gap: 30px;
+          }
           margin-bottom: 30px;
           display: grid;
           grid-template-columns: repeat(2, minmax(50px, 1fr));
-          grid-gap: 10px;
+          grid-gap: 14px;
           .post {
             margin: 24px 0;
             .img {
               width: 100%;
+              max-width: 630px;
               height: auto;
               margin-bottom: 24px;
             }

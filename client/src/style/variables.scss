@@ -115,13 +115,13 @@ a {
   }
 
   @if $point == lg {
-    // From 901px to 1199px
+    // From 901px to 1023px
     @media (min-width: 901px) and (max-width: 1023px) {
       @content;
     }
   }
   @if $point == xl {
-    // From 1200px
+    // From 1024px
     @media (min-width: 1024px) {
       @content;
     }
