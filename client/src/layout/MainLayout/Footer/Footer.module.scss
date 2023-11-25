@@ -4,7 +4,7 @@
   @include breakpoint(xs) {
     padding: 40px 6px;
   }
-  padding: 40px 20px;
+  padding: 40px;
   color: $white-color;
   background-color: #283646;
   font-family: 'Roboto';
@@ -13,8 +13,8 @@
       @include flex-direction();
     }
 
-    max-width: 1000px;
-    margin: 0 auto;
+    margin: auto;
+    max-width: 1340px;
     @include d-flex($f-start, $s-between);
     gap: 30px;
     .brand {
@@ -45,10 +45,14 @@
     }
 
     .info {
+      @include breakpoint(tm) {
+        @include d-flex($f-start, $s-between);
+        gap: 0;
+      }
       flex: 7;
       width: 100%;
-      @include d-flex($f-start, $s-between);
-      gap: 40px;
+      @include d-flex($f-start, $f-end);
+      gap: 10rem;
       .column {
         @include flex-direction();
         gap: 20px;

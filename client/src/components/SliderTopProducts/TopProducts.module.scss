@@ -1,7 +1,9 @@
 @import '../../style/variables.scss';
 
 .category {
+  margin: auto;
   padding: 20px 0;
+  max-width: 1340px;
   margin-bottom: 40px;
   text-align: center;
   background-color: $white-color;

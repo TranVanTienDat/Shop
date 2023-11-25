@@ -1,11 +1,11 @@
 @import '../../../style/variables.scss';
 .wrapper {
+  margin: auto;
   padding: 20px 10px;
+  max-width: 1340px;
   background-color: $background-color;
   .inner {
-    margin: 0 auto;
     padding: 30px 0;
-    max-width: 1000px;
     background-color: $white-color;
     .heading {
       @include breakpoint(xm) {

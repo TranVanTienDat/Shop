@@ -46,6 +46,12 @@ const images = {
 
   //history
   imgHistory: require('~/assets/images/AnyConv.com__history-img.webp'),
+
+  //blog
+  blog1: require('~/assets/images/AnyConv.com__blog (1).webp'),
+  blog2: require('~/assets/images/AnyConv.com__blog (2).webp'),
+  blog3: require('~/assets/images/AnyConv.com__blog (3).webp'),
+  blog4: require('~/assets/images/AnyConv.com__blog (4).webp'),
 };
 
 export default images;

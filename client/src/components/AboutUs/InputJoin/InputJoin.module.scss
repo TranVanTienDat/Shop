@@ -2,11 +2,12 @@
 
 .wrapper {
   padding: 50px 0;
+  margin: auto;
+  max-width: 1340px;
   background-color: $background-color;
+
   .inner {
-    margin: 0 auto;
     padding: 30px 0;
-    max-width: 1000px;
     background-color: $white-color;
     .join {
       @include breakpoint(xs) {

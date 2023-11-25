@@ -3,51 +3,16 @@
   padding: 50px 0;
   background-color: $background-color;
   .inner {
-    margin: 0 auto;
-    padding: 30px 0;
-    max-width: 1000px;
-
-    .about_stories {
-      padding: 50px 10px;
-      @include d-flex($center, $center);
-      gap: 24px;
-      .stories__img {
-        flex: 1;
-        .img {
-          width: 100%;
-          border-radius: 8px;
-        }
-      }
-      .story {
-        flex: 1;
-        .title {
-          font-size: 3rem;
-          color: $jetBlack-color;
-        }
-        .text {
-          font-size: 1.4rem;
-          font-weight: 400;
-          line-height: 18px;
-          margin: 20px 30px 20px 0;
-          color: $light-color;
-          display: inline-block;
-        }
-        .more {
-          margin-top: 40px;
-          font-size: 1.3rem;
-          cursor: pointer;
-          color: $primary-color;
-        }
-      }
-    }
-
     .achievement {
       @include breakpoint(tm) {
         display: none;
       }
+      margin: auto;
+      max-width: 1340px;
       padding: 50px 10px;
       text-align: center;
       .title {
+        margin-bottom: 20px;
         font-size: 3rem;
         color: $jetBlack-color;
       }
@@ -62,88 +27,98 @@
     }
 
     .blog {
-      padding: 50px 10px;
-      .heading {
+      padding: 50px 0;
+      background-color: $white-color;
+      .blog__inner {
         @include breakpoint(xm) {
-          padding-bottom: 0;
+          padding: 0 10px;
         }
-        padding-bottom: 20px;
-        @include d-flex($f-end, $s-between);
-        .heading__title {
-          @include breakpoint(xm) {
-            font-size: 2rem;
-          }
-          font-size: 3rem;
-          color: $jetBlack-color;
-        }
-        .see_more {
-          @include breakpoint(xm) {
-            font-size: 1.2rem;
-          }
-          font-size: 1.5rem;
-          cursor: pointer;
-          color: $primary-color;
-        }
-      }
+        margin: auto;
+        padding: 0 30px;
+        max-width: 1340px;
 
-      .blog__post {
-        margin-bottom: 30px;
-        display: grid;
-        grid-template-columns: repeat(2, minmax(50px, 1fr));
-        grid-gap: 10px;
-        .post {
-          margin: 24px 0;
-          .img {
-            width: 100%;
-            height: auto;
-            margin-bottom: 24px;
+        .heading {
+          @include breakpoint(xm) {
+            padding-bottom: 0;
           }
-
-          .body {
-            .title {
-              @include breakpoint(xm) {
-                font-size: 1.5rem;
-                @include flex-direction();
-              }
-              font-size: 2.4rem;
-              font-weight: 500;
-              color: $jetBlack-color;
+          padding-bottom: 20px;
+          @include d-flex($f-end, $s-between);
+          .heading__title {
+            @include breakpoint(xm) {
+              font-size: 2rem;
             }
-            .info {
-              @include d-flex($center, $f-start);
+            font-size: 3rem;
+            color: $jetBlack-color;
+          }
+          .see_more {
+            @include breakpoint(xm) {
+              font-size: 1.2rem;
+            }
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: $primary-color;
+          }
+        }
 
-              .time {
+        .blog__post {
+          margin-bottom: 30px;
+          display: grid;
+          grid-template-columns: repeat(2, minmax(50px, 1fr));
+          grid-gap: 10px;
+          .post {
+            margin: 24px 0;
+            .img {
+              width: 100%;
+              height: auto;
+              margin-bottom: 24px;
+            }
+
+            .body {
+              .title {
                 @include breakpoint(xm) {
-                  font-size: 1.3rem;
+                  font-size: 1.5rem;
+                  @include flex-direction();
                 }
-                margin: 16px 0;
-                color: #515151;
-                font-size: 1.6rem;
+                font-size: 2.4rem;
+                font-weight: 500;
+                color: $jetBlack-color;
               }
-              div {
-                width: 4px;
-                padding: 3px;
-                margin: 0 5px;
-                border-radius: 50%;
-                background-color: #515151;
+              .info {
+                @include d-flex($center, $f-start);
+
+                .time {
+                  @include breakpoint(xm) {
+                    font-size: 1.3rem;
+                  }
+                  margin: 16px 0;
+                  color: #515151;
+                  font-size: 1.6rem;
+                }
+                div {
+                  width: 4px;
+                  padding: 3px;
+                  margin: 0 5px;
+                  border-radius: 50%;
+                  background-color: #515151;
+                }
               }
-            }
-            .des {
-              @include breakpoint(xm) {
-                font-size: 1.2rem;
+              .des {
+                @include breakpoint(xm) {
+                  font-size: 1.2rem;
+                }
+                font-size: 1.4rem;
+                margin-bottom: 32px;
+                color: $light-color;
+                @include format-text-line(5);
               }
-              font-size: 1.4rem;
-              margin-bottom: 32px;
-              color: $light-color;
-              @include format-text-line(5);
-            }
-            .see_more {
-              @include breakpoint(xm) {
-                font-size: 1.2rem;
+              .see_more {
+                @include breakpoint(xm) {
+                  font-size: 1.2rem;
+                }
+                font-size: 1.4rem;
+                cursor: pointer;
+                color: $primary-color;
               }
-              font-size: 1.4rem;
-              cursor: pointer;
-              color: $primary-color;
             }
           }
         }
