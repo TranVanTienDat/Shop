@@ -2,6 +2,7 @@ import classNames from 'classnames/bind';
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import styles from './Story.module.scss';
+import images from '~/assets/images';
 
 const cx = classNames.bind(styles);
 
@@ -31,7 +32,7 @@ function Story() {
         <img
           ref={(el) => (imageRef = el)}
           className={cx('img')}
-          src="https://down-vn.img.susercontent.com/file/00fbe083abf1192506a041f849f77391"
+          src={images.imgHistory}
           alt=""
         />
       </div>

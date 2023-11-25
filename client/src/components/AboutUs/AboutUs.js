@@ -1,5 +1,6 @@
 import classNames from 'classnames/bind';
 import gsap from 'gsap';
+import React, { Suspense } from 'react';
 import { useEffect, useRef } from 'react';
 import { brand } from '~/constants/dateBrand';
 import styles from './AboutUs.module.scss';
@@ -8,6 +9,7 @@ import InputJoin from './InputJoin/InputJoin';
 import Story from './Story/Story';
 const cx = classNames.bind(styles);
 
+const StoryComponent = React.lazy(() => import('./Story/Story'));
 function AboutUs() {
   let containerRef = useRef(null);
   let brand1Ref = useRef(null);
@@ -43,7 +45,12 @@ function AboutUs() {
     <div className={cx('wrapper')}>
       <div className={cx('inner')}>
         {/* story us */}
-        <Story />
+        {/* <Story /> */}
+        <Suspense fallback={<div>...</div>}>
+          <section>
+            <StoryComponent />
+          </section>
+        </Suspense>
         {/* Good Seller! */}
         <CustomerReviews />
         {/* achievement us */}
