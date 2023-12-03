@@ -8,6 +8,9 @@
 
   .swiper-button-prev,
   .swiper-button-next {
+    @include breakpoint(xs) {
+      display: none;
+    }
     color: $white-color !important;
     background-color: $primary-color;
 

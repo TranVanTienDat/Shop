@@ -5,13 +5,22 @@ import propTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 import Button from '../../Button/Button';
 import styles from './CardProduct.module.scss';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
+import 'react-lazy-load-image-component/src/effects/opacity.css';
 const cx = classNames.bind(styles);
 function CardProduct({ _id, name, category, image }) {
   const navigate = useNavigate();
 
   return (
     <div className={cx('wrapper')}>
-      <img className={cx('img')} src={image} alt="" />
+      <LazyLoadImage
+        src={image}
+        className={cx('img')}
+        effect="blur"
+        width="100%"
+        placeholderSrc={image}
+      />
       <div className={cx('body')}>
         <h5 className={cx('type')}>{category}</h5>
         <h3 className={cx('name')}>{name}</h3>

@@ -27,7 +27,12 @@ function CustomerReviews() {
               return (
                 <SwiperSlide key={i}>
                   <div className={cx('seller__inner')}>
-                    <img className={cx('img')} src={item.img} alt="" />
+                    <img
+                      className={cx('img')}
+                      src={item.img}
+                      alt=""
+                      loading="lazy"
+                    />
 
                     <div className={cx('description')}>
                       <p className={cx('text')}>

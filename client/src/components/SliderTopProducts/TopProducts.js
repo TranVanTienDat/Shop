@@ -1,13 +1,21 @@
+import 'react-lazy-load-image-component/src/effects/blur.css';
 import { Autoplay, Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 // Import styles
-import classNames from 'classnames/bind';
-import styles from './TopProducts.module.scss';
 // style swiper
-import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import 'swiper/scss';
 import 'swiper/scss/navigation';
+
+// lazy images
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
+import 'react-lazy-load-image-component/src/effects/opacity.css';
+
+import classNames from 'classnames/bind';
+import styles from './TopProducts.module.scss';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import productApi from '~/api/modules/product.api';
 import { formatPrice } from '~/hook/func';
 
@@ -67,7 +75,14 @@ function TopProducts() {
               <SwiperSlide key={index}>
                 <div className={cx('card')}>
                   <div className={cx('background')}>
-                    <img className={cx('img')} src={data?.images[0]} alt="" />
+                    {/* <img className={cx('img')} src={data?.images[0]} alt="" /> */}
+                    <LazyLoadImage
+                      src={data?.images[0]}
+                      className={cx('img')}
+                      effect="blur"
+                      width="100%"
+                      placeholderSrc={data?.images[0]}
+                    />
                     <div
                       className={cx('info')}
                       onClick={() => handleNavigate(data?.name, data?._id)}

@@ -1,16 +1,14 @@
 import classNames from 'classnames/bind';
 import gsap from 'gsap';
-import React, { Suspense } from 'react';
 import { useEffect, useRef } from 'react';
 import { brand } from '~/constants/dateBrand';
 import styles from './AboutUs.module.scss';
+import Blog from './Blog/Blog';
 import CustomerReviews from './CustomerReviews/CustomerReviews';
 import InputJoin from './InputJoin/InputJoin';
 import Story from './Story/Story';
-import images from '~/assets/images';
 const cx = classNames.bind(styles);
 
-const StoryComponent = React.lazy(() => import('./Story/Story'));
 function AboutUs() {
   let containerRef = useRef(null);
   let brand1Ref = useRef(null);
@@ -31,7 +29,7 @@ function AboutUs() {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: containerRef,
-        start: '150% bottom',
+        start: '120% bottom',
       },
     });
     tl.from(brands[0], { y: 20, opacity: 0, duration: 0.8 }, '-=0.3')
@@ -46,12 +44,7 @@ function AboutUs() {
     <div className={cx('wrapper')}>
       <div className={cx('inner')}>
         {/* story us */}
-        {/* <Story /> */}
-        <Suspense fallback={<div>...</div>}>
-          <section>
-            <StoryComponent />
-          </section>
-        </Suspense>
+        <Story />
         {/* Good Seller! */}
         <CustomerReviews />
         {/* achievement us */}
@@ -66,6 +59,7 @@ function AboutUs() {
                   src={item.brand}
                   alt=""
                   ref={(el) => (brands[i] = el)}
+                  loading="lazy"
                 />
               );
             })}
@@ -73,104 +67,7 @@ function AboutUs() {
         </div>
 
         {/* blog  us*/}
-        <div className={cx('blog')}>
-          <div className={cx('blog__inner')}>
-            <div className={cx('heading')}>
-              <h1 className={cx('heading__title')}>
-                Get Better Insights
-                <br />
-                from Our Articles
-              </h1>
-              <span className={cx('see_more')}>See more</span>
-            </div>
-
-            <div className={cx('blog__post')}>
-              <div className={cx('post')}>
-                <img className={cx('img')} src={images.blog1} alt="" />
-
-                <div className={cx('body')}>
-                  <h3 className={cx('title')}>Best Summer Outfit Style</h3>
-                  <div className={cx('info')}>
-                    <span className={cx('time')}>14 Feb</span>
-                    <div></div>
-                    <span className={cx('time')}>Livina Style</span>
-                  </div>
-                  <p className={cx('des')}>
-                    Lorem Ipsum has been the industry's standard dummy text ever
-                    since the 1500s, when an unknown printer took a galley.
-                    Lorem Ipsum has been the industry's standard dummy text ever
-                    since the 1500s.
-                  </p>
-
-                  <div className={cx('see_more')}>Explore More...</div>
-                </div>
-              </div>
-
-              <div className={cx('post')}>
-                <img className={cx('img')} src={images.blog2} alt="" />
-
-                <div className={cx('body')}>
-                  <h3 className={cx('title')}>Best Summer Outfit Style</h3>
-                  <div className={cx('info')}>
-                    <span className={cx('time')}>14 Feb</span>
-                    <div></div>
-                    <span className={cx('time')}>Livina Style</span>
-                  </div>
-                  <p className={cx('des')}>
-                    Lorem Ipsum has been the industry's standard dummy text ever
-                    since the 1500s, when an unknown printer took a galley.
-                    Lorem Ipsum has been the industry's standard dummy text ever
-                    since the 1500s.
-                  </p>
-
-                  <div className={cx('see_more')}>Explore More...</div>
-                </div>
-              </div>
-
-              <div className={cx('post')}>
-                <img className={cx('img')} src={images.blog3} alt="" />
-
-                <div className={cx('body')}>
-                  <h3 className={cx('title')}>Best Summer Outfit Style</h3>
-                  <div className={cx('info')}>
-                    <span className={cx('time')}>14 Feb</span>
-                    <div></div>
-                    <span className={cx('time')}>Livina Style</span>
-                  </div>
-                  <p className={cx('des')}>
-                    Lorem Ipsum has been the industry's standard dummy text ever
-                    since the 1500s, when an unknown printer took a galley.
-                    Lorem Ipsum has been the industry's standard dummy text ever
-                    since the 1500s.
-                  </p>
-
-                  <div className={cx('see_more')}>Explore More...</div>
-                </div>
-              </div>
-
-              <div className={cx('post')}>
-                <img className={cx('img')} src={images.blog4} alt="" />
-
-                <div className={cx('body')}>
-                  <h3 className={cx('title')}>Best Summer Outfit Style</h3>
-                  <div className={cx('info')}>
-                    <span className={cx('time')}>14 Feb</span>
-                    <div></div>
-                    <span className={cx('time')}>Livina Style</span>
-                  </div>
-                  <p className={cx('des')}>
-                    Lorem Ipsum has been the industry's standard dummy text ever
-                    since the 1500s, when an unknown printer took a galley.
-                    Lorem Ipsum has been the industry's standard dummy text ever
-                    since the 1500s.
-                  </p>
-
-                  <div className={cx('see_more')}>Explore More...</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <Blog />
         {/* join us */}
         <InputJoin />
       </div>

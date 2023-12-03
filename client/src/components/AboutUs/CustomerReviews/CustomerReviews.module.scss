@@ -33,6 +33,7 @@
           border-radius: 8px;
         }
         .description {
+          flex: 1;
           .text {
             @include breakpoint(xm) {
               font-size: 1.2rem;
@@ -45,12 +46,18 @@
             color: $light-color;
           }
           .name {
+            @include breakpoint(xs) {
+              font-size: 1.3rem;
+            }
             font-size: 1.5rem;
             font-weight: 600;
             margin-bottom: 4px;
             color: $jetBlack-color;
           }
           .title {
+            @include breakpoint(xs) {
+              font-size: 1rem;
+            }
             font-size: 1.2rem;
             color: #515151;
           }

@@ -5,6 +5,8 @@
     padding: 0;
   }
   @include flex-justify($f-start);
+  max-width: 1340px;
+  margin: auto;
   padding: 30px 16px;
   .slider {
     @include breakpoint(tm) {

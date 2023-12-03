@@ -12,8 +12,9 @@
   gap: 24px;
 
   .stories__img {
+    flex: 1;
     .img {
-      max-width: 500px;
+      width: 100%;
       height: auto;
       border-radius: 8px;
     }

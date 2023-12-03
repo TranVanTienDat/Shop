@@ -33,10 +33,9 @@ function SidebarResponsive() {
           [`.${sidebarClasses.container}`]: {
             backgroundColor: '#5f5f5f',
             padding: '20px 0',
-            // height: '100%',
             position: 'fixed',
             top: '0',
-            left: collapsed ? '0' : '-200px',
+            left: collapsed ? '0' : '-300px',
             transition: 'all .3s linear',
             zIndex: '200',
           },

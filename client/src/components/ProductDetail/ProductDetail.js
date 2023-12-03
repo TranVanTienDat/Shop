@@ -181,209 +181,200 @@ function ProductDetail() {
 
   return (
     <div className={cx('wrapper')}>
-      {product ? (
-        <>
-          <div className={cx('path')}>
-            Detail
-            <FontAwesomeIcon className={cx('icon')} icon={faChevronRight} />
-            product
-            <FontAwesomeIcon className={cx('icon')} icon={faChevronRight} />
-            {product.name}
-          </div>
+      <div className={cx('inner')}>
+        {product ? (
+          <>
+            <div className={cx('path')}>
+              Detail
+              <FontAwesomeIcon className={cx('icon')} icon={faChevronRight} />
+              product
+              <FontAwesomeIcon className={cx('icon')} icon={faChevronRight} />
+              {product.name}
+            </div>
 
-          <div className={cx('detail')}>
-            <div className={cx('info')}>
-              <div className={cx('info__img')}>
-                <div className={cx('main')}>
-                  <img
-                    className={cx('main_img')}
-                    src={listImg.mainImg}
-                    alt=""
-                  />
-                </div>
-                <div className={cx('secondary')}>
-                  {listImg.list.length > 0 &&
-                    listImg.list.map((item, i) => {
-                      return (
-                        <img
-                          key={i}
-                          className={cx('secondary_img')}
-                          src={item}
-                          alt=""
-                          onMouseMove={() => handleOnChangeMainImg(item)}
-                        />
-                      );
-                    })}
-                </div>
-              </div>
-
-              <div className={cx('info__product')}>
-                <h1 className={cx('name')}>{product?.name}</h1>
-
-                <div className={cx('product__parameters')}>
-                  <div className={cx('rating')}>
-                    <span className={cx('number')}>{product?.rating}</span>
-                    <Star value={product?.rating} />
+            <div className={cx('detail')}>
+              <div className={cx('info')}>
+                <div className={cx('info__img')}>
+                  <div className={cx('main')}>
+                    <img
+                      className={cx('main_img')}
+                      src={listImg.mainImg}
+                      alt=""
+                    />
                   </div>
-                  <div className={cx('sales')}>
-                    <div className={cx('item')}>
-                      <span className={cx('text')}>{product?.sold}</span>
-                      Đã Bán
-                    </div>
-                    <div className={cx('item')}>
-                      <span className={cx('text')}>
-                        {product.reviews.length}
-                      </span>
-                      Đánh giá
-                    </div>
-                  </div>
-                </div>
-                <div className={cx('price')}>
-                  {chooseProduct.mainProduct?.oldPrice && (
-                    <span className={cx('old')}>
-                      {formatPrice.format(chooseProduct.mainProduct?.oldPrice)}
-                    </span>
-                  )}
-
-                  <span className={cx('new')}>
-                    {formatPrice.format(chooseProduct.mainProduct?.newPrice)}
-                  </span>
-                  {chooseProduct.mainProduct?.discount && (
-                    <span className={cx('discount')}>
-                      Giảm {chooseProduct.mainProduct?.discount}%
-                    </span>
-                  )}
-                </div>
-
-                <div className={cx('selection')}>
-                  <span className={cx('type')}>Màu sắc</span>
-                  <div className={cx('values')}>
-                    {chooseProduct.listProduct?.listProduct?.length > 0 &&
-                      chooseProduct.listProduct.listProduct.map((item, i) => {
+                  <div className={cx('secondary')}>
+                    {listImg.list.length > 0 &&
+                      listImg.list.map((item, i) => {
                         return (
-                          <button
+                          <img
                             key={i}
-                            onClick={() =>
-                              handleChoose('type', item.color, 'active1', i)
-                            }
-                            className={cx(
-                              'item',
-                              item.quantity === 0
-                                ? 'disabled'
-                                : typeProduct.active1 === i
-                                ? 'active'
-                                : ''
-                            )}
-                          >
-                            {item.color}
-                          </button>
+                            className={cx('secondary_img')}
+                            src={item}
+                            alt=""
+                            onMouseMove={() => handleOnChangeMainImg(item)}
+                          />
                         );
                       })}
                   </div>
                 </div>
 
-                {sizes.ListSize?.length > 0 && (
+                <div className={cx('info__product')}>
+                  <h1 className={cx('name')}>{product?.name}</h1>
+
+                  <div className={cx('product__parameters')}>
+                    <div className={cx('rating')}>
+                      <span className={cx('number')}>{product?.rating}</span>
+                      <Star value={product?.rating} />
+                    </div>
+                    <div className={cx('sales')}>
+                      <div className={cx('item')}>
+                        <span className={cx('text')}>{product?.sold}</span>
+                        Đã Bán
+                      </div>
+                      <div className={cx('item')}>
+                        <span className={cx('text')}>
+                          {product.reviews.length}
+                        </span>
+                        Đánh giá
+                      </div>
+                    </div>
+                  </div>
+                  <div className={cx('price')}>
+                    {chooseProduct.mainProduct?.oldPrice && (
+                      <span className={cx('old')}>
+                        {formatPrice.format(
+                          chooseProduct.mainProduct?.oldPrice
+                        )}
+                      </span>
+                    )}
+
+                    <span className={cx('new')}>
+                      {formatPrice.format(chooseProduct.mainProduct?.newPrice)}
+                    </span>
+                    {chooseProduct.mainProduct?.discount && (
+                      <span className={cx('discount')}>
+                        Giảm {chooseProduct.mainProduct?.discount}%
+                      </span>
+                    )}
+                  </div>
+
                   <div className={cx('selection')}>
-                    <span className={cx('type')}>Size</span>
+                    <span className={cx('type')}>Màu sắc</span>
                     <div className={cx('values')}>
-                      {sizes.ListSize?.length > 0 &&
-                        sizes.ListSize?.map((item, i) => {
+                      {chooseProduct.listProduct?.listProduct?.length > 0 &&
+                        chooseProduct.listProduct.listProduct.map((item, i) => {
                           return (
                             <button
-                              onClick={() =>
-                                item.quantity > 0 &&
-                                handleChoose('value', item.size, 'active2', i)
-                              }
                               key={i}
+                              onClick={() =>
+                                handleChoose('type', item.color, 'active1', i)
+                              }
                               className={cx(
                                 'item',
-
                                 item.quantity === 0
                                   ? 'disabled'
-                                  : typeProduct.active2 === i
+                                  : typeProduct.active1 === i
                                   ? 'active'
                                   : ''
                               )}
                             >
-                              {item.size}
+                              {item.color}
                             </button>
                           );
                         })}
                     </div>
                   </div>
-                )}
 
-                <div className={cx('buy')}>
-                  <div className={cx('quantity')}>
-                    <span className={cx('title')}>Quantity</span>
-                    <div className={cx('flex')}>
-                      <div className={cx('counter')}>
-                        <span
-                          className={cx('prev')}
-                          onClick={() => handleQuantity('prev')}
-                        >
-                          <FontAwesomeIcon icon={faMinus} />
-                        </span>
-                        <span className={cx('number')}>{quantity}</span>
-                        <span
-                          className={cx('next')}
-                          onClick={() => handleQuantity('next')}
-                        >
-                          <FontAwesomeIcon icon={faPlus} />
-                        </span>
-                      </div>
-                      <div className={cx('existence')}>
-                        {sizes.quantity && (
-                          <>{sizes.quantity} sản phẩm có sẵn</>
-                        )}
+                  {sizes.ListSize?.length > 0 && (
+                    <div className={cx('selection')}>
+                      <span className={cx('type')}>Size</span>
+                      <div className={cx('values')}>
+                        {sizes.ListSize?.length > 0 &&
+                          sizes.ListSize?.map((item, i) => {
+                            return (
+                              <button
+                                onClick={() =>
+                                  item.quantity > 0 &&
+                                  handleChoose('value', item.size, 'active2', i)
+                                }
+                                key={i}
+                                className={cx(
+                                  'item',
+
+                                  item.quantity === 0
+                                    ? 'disabled'
+                                    : typeProduct.active2 === i
+                                    ? 'active'
+                                    : ''
+                                )}
+                              >
+                                {item.size}
+                              </button>
+                            );
+                          })}
                       </div>
                     </div>
-                  </div>
+                  )}
 
-                  <div className={cx('button')}>
-                    <Button
-                      outline
-                      icon={<FontAwesomeIcon icon={faCartPlus} />}
-                      onClick={() => handleOnClick('cart')}
-                    >
-                      Add to Cart
-                    </Button>
-                    <Button
-                      large
-                      onClick={() => handleOnClick('buy')}
-                      icon={<FontAwesomeIcon icon={faHeart} />}
-                    >
-                      Buy
-                    </Button>
+                  <div className={cx('buy')}>
+                    <div className={cx('quantity')}>
+                      <span className={cx('title')}>Quantity</span>
+                      <div className={cx('flex')}>
+                        <div className={cx('counter')}>
+                          <span
+                            className={cx('prev')}
+                            onClick={() => handleQuantity('prev')}
+                          >
+                            <FontAwesomeIcon icon={faMinus} />
+                          </span>
+                          <span className={cx('number')}>{quantity}</span>
+                          <span
+                            className={cx('next')}
+                            onClick={() => handleQuantity('next')}
+                          >
+                            <FontAwesomeIcon icon={faPlus} />
+                          </span>
+                        </div>
+                        <div className={cx('existence')}>
+                          {sizes.quantity && (
+                            <>{sizes.quantity} sản phẩm có sẵn</>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className={cx('button')}>
+                      <Button
+                        outline
+                        icon={<FontAwesomeIcon icon={faCartPlus} />}
+                        onClick={() => handleOnClick('cart')}
+                      >
+                        Add to Cart
+                      </Button>
+                      <Button
+                        large
+                        onClick={() => handleOnClick('buy')}
+                        icon={<FontAwesomeIcon icon={faHeart} />}
+                      >
+                        Buy
+                      </Button>
+                    </div>
                   </div>
                 </div>
+
+                <FontAwesomeIcon
+                  onClick={() => navigate(-1)}
+                  icon={faAnglesLeft}
+                  className={cx('mobile__icon-back')}
+                />
               </div>
 
-              <FontAwesomeIcon
-                onClick={() => navigate(-1)}
-                icon={faAnglesLeft}
-                className={cx('mobile__icon-back')}
-              />
-            </div>
-
-            <div className={cx('description')}>
-              <div className={cx('description__detail')}>
-                <div className={cx('heading')}>CHI TIẾT SẢN PHẨM</div>
-                <div className={cx('description__info')}>
-                  {product?.description.parameter?.length > 0 &&
-                    product?.description.parameter.map((item, i) => {
-                      return (
-                        <div key={i} className={cx('item')}>
-                          <span className={cx('title')}>{item.title}</span>
-                          <span className={cx('value')}>{item.value}</span>
-                        </div>
-                      );
-                    })}
-
-                  {product?.description.selectSize?.length > 0 && (
-                    <>
-                      <div className={cx('text')}>Lựa chọn size</div>
-                      {product?.description.selectSize.map((item, i) => {
+              <div className={cx('description')}>
+                <div className={cx('description__detail')}>
+                  <div className={cx('heading')}>CHI TIẾT SẢN PHẨM</div>
+                  <div className={cx('description__info')}>
+                    {product?.description.parameter?.length > 0 &&
+                      product?.description.parameter.map((item, i) => {
                         return (
                           <div key={i} className={cx('item')}>
                             <span className={cx('title')}>{item.title}</span>
@@ -391,61 +382,74 @@ function ProductDetail() {
                           </div>
                         );
                       })}
-                    </>
-                  )}
-                </div>
-                <div className={cx('review')}>
-                  <Review productID={product._id} />
-                </div>
-              </div>
-              <div className={cx('products-other')}>
-                <h4 className={cx('title')}>Top sản phẩm bán chạy</h4>
-                <div className={cx('list')}>
-                  <div
-                    className={cx('product')}
-                    onClick={() => navigate('/detail-product')}
-                  >
-                    <img
-                      className={cx('img')}
-                      src="https://down-vn.img.susercontent.com/file/148212e6d7fbdb80316141cacf524f04"
-                      alt=""
-                    />
-                    <h6 className={cx('name')}>
-                      Đồng Hồ Nam Nữ Dây Da ROSIVGA - Đồng hồ đeo tay thời trang
-                      mặt vuông
-                    </h6>
-                    <div className={cx('price')}>208.100</div>
+
+                    {product?.description.selectSize?.length > 0 && (
+                      <>
+                        <div className={cx('text')}>Lựa chọn size</div>
+                        {product?.description.selectSize.map((item, i) => {
+                          return (
+                            <div key={i} className={cx('item')}>
+                              <span className={cx('title')}>{item.title}</span>
+                              <span className={cx('value')}>{item.value}</span>
+                            </div>
+                          );
+                        })}
+                      </>
+                    )}
                   </div>
-                  <div className={cx('product')}>
-                    <img
-                      className={cx('img')}
-                      src="https://down-vn.img.susercontent.com/file/148212e6d7fbdb80316141cacf524f04"
-                      alt=""
-                    />
-                    <h6 className={cx('name')}>
-                      Đồng Hồ Nam Nữ Dây Da ROSIVGA - Đồng hồ đeo tay thời trang
-                      mặt vuông
-                    </h6>
-                    <div className={cx('price')}>208.100</div>
+                  <div className={cx('review')}>
+                    <Review productID={product._id} />
                   </div>
-                  <div className={cx('product')}>
-                    <img
-                      className={cx('img')}
-                      src="https://down-vn.img.susercontent.com/file/148212e6d7fbdb80316141cacf524f04"
-                      alt=""
-                    />
-                    <h6 className={cx('name')}>
-                      Đồng Hồ Nam Nữ Dây Da ROSIVGA - Đồng hồ đeo tay thời trang
-                      mặt vuông
-                    </h6>
-                    <div className={cx('price')}>208.100</div>
+                </div>
+                <div className={cx('products-other')}>
+                  <h4 className={cx('title')}>Top sản phẩm bán chạy</h4>
+                  <div className={cx('list')}>
+                    <div
+                      className={cx('product')}
+                      onClick={() => navigate('/detail-product')}
+                    >
+                      <img
+                        className={cx('img')}
+                        src="https://down-vn.img.susercontent.com/file/148212e6d7fbdb80316141cacf524f04"
+                        alt=""
+                      />
+                      <h6 className={cx('name')}>
+                        Đồng Hồ Nam Nữ Dây Da ROSIVGA - Đồng hồ đeo tay thời
+                        trang mặt vuông
+                      </h6>
+                      <div className={cx('price')}>208.100</div>
+                    </div>
+                    <div className={cx('product')}>
+                      <img
+                        className={cx('img')}
+                        src="https://down-vn.img.susercontent.com/file/148212e6d7fbdb80316141cacf524f04"
+                        alt=""
+                      />
+                      <h6 className={cx('name')}>
+                        Đồng Hồ Nam Nữ Dây Da ROSIVGA - Đồng hồ đeo tay thời
+                        trang mặt vuông
+                      </h6>
+                      <div className={cx('price')}>208.100</div>
+                    </div>
+                    <div className={cx('product')}>
+                      <img
+                        className={cx('img')}
+                        src="https://down-vn.img.susercontent.com/file/148212e6d7fbdb80316141cacf524f04"
+                        alt=""
+                      />
+                      <h6 className={cx('name')}>
+                        Đồng Hồ Nam Nữ Dây Da ROSIVGA - Đồng hồ đeo tay thời
+                        trang mặt vuông
+                      </h6>
+                      <div className={cx('price')}>208.100</div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        </>
-      ) : null}
+          </>
+        ) : null}
+      </div>
     </div>
   );
 }

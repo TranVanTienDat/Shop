@@ -1,0 +1,103 @@
+@import '../../../style/variables.scss';
+
+.wrapper {
+  padding: 50px 0;
+  background-color: $white-color;
+  .blog__inner {
+    @include breakpoint(xm) {
+      padding: 0 10px;
+    }
+    margin: auto;
+    padding: 0 30px;
+    max-width: 1340px;
+
+    .heading {
+      @include breakpoint(xm) {
+        padding-bottom: 0;
+      }
+      padding-bottom: 20px;
+      @include d-flex($f-end, $s-between);
+      .heading__title {
+        @include breakpoint(xm) {
+          font-size: 2rem;
+        }
+        font-size: 3rem;
+        color: $jetBlack-color;
+      }
+      .see_more {
+        @include breakpoint(xm) {
+          font-size: 1.2rem;
+        }
+        font-size: 1.5rem;
+        cursor: pointer;
+        color: $primary-color;
+      }
+    }
+
+    .blog__post {
+      @include breakpoint(xl) {
+        grid-gap: 30px;
+      }
+      margin-bottom: 30px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(50px, 1fr));
+      grid-gap: 14px;
+      .post {
+        margin: 24px 0;
+        .img {
+          width: 100%;
+          height: auto;
+          margin-bottom: 24px;
+        }
+
+        .body {
+          .title {
+            @include breakpoint(xm) {
+              font-size: 1.5rem;
+              @include flex-direction();
+            }
+            font-size: 2.4rem;
+            font-weight: 500;
+            color: $jetBlack-color;
+          }
+          .info {
+            @include d-flex($center, $f-start);
+
+            .time {
+              @include breakpoint(xm) {
+                font-size: 1.3rem;
+              }
+              margin: 16px 0;
+              color: #515151;
+              font-size: 1.6rem;
+            }
+            div {
+              width: 4px;
+              padding: 3px;
+              margin: 0 5px;
+              border-radius: 50%;
+              background-color: #515151;
+            }
+          }
+          .des {
+            @include breakpoint(xm) {
+              font-size: 1.2rem;
+            }
+            font-size: 1.4rem;
+            margin-bottom: 32px;
+            color: $light-color;
+            @include format-text-line(5);
+          }
+          .see_more {
+            @include breakpoint(xm) {
+              font-size: 1.2rem;
+            }
+            font-size: 1.4rem;
+            cursor: pointer;
+            color: $primary-color;
+          }
+        }
+      }
+    }
+  }
+}
