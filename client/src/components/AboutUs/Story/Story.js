@@ -1,6 +1,7 @@
 import classNames from 'classnames/bind';
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
+
 import styles from './Story.module.scss';
 import images from '~/assets/images';
 
@@ -34,6 +35,8 @@ function Story() {
           className={cx('img')}
           src={images.imgHistory}
           alt=""
+          width={500}
+          height={500}
         />
       </div>
       <div className={cx('story')}>

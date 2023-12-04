@@ -23,8 +23,8 @@ function CardProduct({ _id, name, category, image }) {
         placeholderSrc={image}
       />
       <div className={cx('body')}>
-        <h5 className={cx('type')}>{category}</h5>
-        <h3 className={cx('name')}>{name}</h3>
+        <span className={cx('type')}>{category}</span>
+        <h4 className={cx('name')}>{name}</h4>
         <Button
           leftIcon
           circle

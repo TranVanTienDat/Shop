@@ -82,7 +82,7 @@ function TopProducts() {
                     onClick={() => handleNavigate(data?.name, data?._id)}
                   >
                     <h2 className={cx('name')}>{data?.name}</h2>
-                    <h4 className={cx('brand')}>{data?.categories[0]}</h4>
+                    <h3 className={cx('brand')}>{data?.categories[0]}</h3>
                     <div className={cx('price')}>
                       <span className={cx('item')}>
                         {formatPrice.format(

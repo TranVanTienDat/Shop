@@ -36,7 +36,7 @@ function Blog() {
                 />
 
                 <div className={cx('body')}>
-                  <h3 className={cx('title')}>{item.title}</h3>
+                  <h2 className={cx('title')}>{item.title}</h2>
                   <div className={cx('info')}>
                     <span className={cx('time')}>{item.time}</span>
                     <div></div>
