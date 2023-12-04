@@ -24,7 +24,7 @@ function CardProduct({ _id, name, category, image }) {
       />
       <div className={cx('body')}>
         <span className={cx('type')}>{category}</span>
-        <h4 className={cx('name')}>{name}</h4>
+        <div className={cx('name')}>{name}</div>
         <Button
           leftIcon
           circle
