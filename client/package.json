@@ -26,6 +26,7 @@
     "react-hook-form": "^7.44.3",
     "react-lazy-load-image-component": "^1.6.0",
     "react-leaflet": "^4.2.1",
+    "react-loading-skeleton": "^3.3.1",
     "react-paginate": "^8.1.4",
     "react-pro-sidebar": "^1.1.0-alpha.1",
     "react-redux": "^8.0.5",

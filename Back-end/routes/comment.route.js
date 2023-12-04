@@ -12,10 +12,6 @@ route.post(
   comment.addComment
 );
 
-route.get(
-  "/get-comment/:productID",
-  tokenMiddleware.auth,
-  comment.getAllCommentsByProductID
-);
+route.get("/get-comment/:productID", comment.getAllCommentsByProductID);
 
 module.exports = route;

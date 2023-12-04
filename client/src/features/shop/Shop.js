@@ -24,6 +24,7 @@ function Shop() {
   useEffect(() => {
     const fetchProducts = async () => {
       const currentPage = currentItemPage.status ? 1 : currentItemPage.current;
+      window.scrollTo(0, 200);
       setIsLoading(true);
       const { res } = await productApi.getProducts({
         keyword,

@@ -5,9 +5,12 @@ import propTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 import Button from '../../Button/Button';
 import styles from './CardProduct.module.scss';
+
+// Lazy loading image
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import 'react-lazy-load-image-component/src/effects/opacity.css';
+
 const cx = classNames.bind(styles);
 function CardProduct({ _id, name, category, image }) {
   const navigate = useNavigate();

@@ -27,6 +27,7 @@ import { addCartProduct } from '~/store/slice/myCart';
 import { userData } from '~/store/slice/selector';
 import styles from './ProductDetail.module.scss';
 import Review from './Reviews/Review';
+import Footer from '~/layout/MainLayout/Footer/Footer';
 const cx = classNames.bind(styles);
 function ProductDetail() {
   const { status } = useSelector(userData);
@@ -450,6 +451,7 @@ function ProductDetail() {
           </>
         ) : null}
       </div>
+      <Footer />
     </div>
   );
 }

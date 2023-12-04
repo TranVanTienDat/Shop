@@ -1,6 +1,4 @@
 const commentDB = require("../models/comment.model");
-const productDB = require("../models/products.model");
-const userDB = require("../models/auth.model");
 const getDate = require("../utils/date");
 
 exports.addComment = async (req, res) => {
