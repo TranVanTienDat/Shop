@@ -19,6 +19,7 @@ function CardProduct({ _id, name, category, image }) {
         className={cx('img')}
         effect="blur"
         width="100%"
+        alt=""
         placeholderSrc={image}
       />
       <div className={cx('body')}>

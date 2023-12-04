@@ -1,6 +1,10 @@
 import classNames from 'classnames/bind';
 import styles from './Blog.module.scss';
-import images from '~/assets/images';
+// lazy images
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
+import 'react-lazy-load-image-component/src/effects/opacity.css';
+import { blog } from '~/constants/blog';
 
 const cx = classNames.bind(styles);
 
@@ -18,109 +22,33 @@ function Blog() {
         </div>
 
         <div className={cx('blog__post')}>
-          <div className={cx('post')}>
-            <img
-              className={cx('img')}
-              src={images.blog1}
-              alt=""
-              loading="lazy"
-            />
+          {blog.map((item, i) => {
+            return (
+              <div key={i} className={cx('post')}>
+                <LazyLoadImage
+                  src={item.img}
+                  effect="blur"
+                  alt=""
+                  width="100%"
+                  height="auto"
+                  placeholderSrc={item.img}
+                  threshold={0.5}
+                />
 
-            <div className={cx('body')}>
-              <h3 className={cx('title')}>Best Summer Outfit Style</h3>
-              <div className={cx('info')}>
-                <span className={cx('time')}>14 Feb</span>
-                <div></div>
-                <span className={cx('time')}>Livina Style</span>
+                <div className={cx('body')}>
+                  <h3 className={cx('title')}>{item.title}</h3>
+                  <div className={cx('info')}>
+                    <span className={cx('time')}>{item.time}</span>
+                    <div></div>
+                    <span className={cx('time')}>{item.style}</span>
+                  </div>
+                  <p className={cx('des')}>{item.desc}</p>
+
+                  <div className={cx('see_more')}>Explore More...</div>
+                </div>
               </div>
-              <p className={cx('des')}>
-                Lorem Ipsum has been the industry's standard dummy text ever
-                since the 1500s, when an unknown printer took a galley. Lorem
-                Ipsum has been the industry's standard dummy text ever since the
-                1500s.
-              </p>
-
-              <div className={cx('see_more')}>Explore More...</div>
-            </div>
-          </div>
-
-          <div className={cx('post')}>
-            <img
-              className={cx('img')}
-              src={images.blog2}
-              alt=""
-              loading="lazy"
-            />
-
-            <div className={cx('body')}>
-              <h3 className={cx('title')}>Best Summer Outfit Style</h3>
-              <div className={cx('info')}>
-                <span className={cx('time')}>14 Feb</span>
-                <div></div>
-                <span className={cx('time')}>Livina Style</span>
-              </div>
-              <p className={cx('des')}>
-                Lorem Ipsum has been the industry's standard dummy text ever
-                since the 1500s, when an unknown printer took a galley. Lorem
-                Ipsum has been the industry's standard dummy text ever since the
-                1500s.
-              </p>
-
-              <div className={cx('see_more')}>Explore More...</div>
-            </div>
-          </div>
-
-          <div className={cx('post')}>
-            <img
-              className={cx('img')}
-              src={images.blog3}
-              alt=""
-              loading="lazy"
-            />
-
-            <div className={cx('body')}>
-              <h3 className={cx('title')}>Best Summer Outfit Style</h3>
-              <div className={cx('info')}>
-                <span className={cx('time')}>14 Feb</span>
-                <div></div>
-                <span className={cx('time')}>Livina Style</span>
-              </div>
-              <p className={cx('des')}>
-                Lorem Ipsum has been the industry's standard dummy text ever
-                since the 1500s, when an unknown printer took a galley. Lorem
-                Ipsum has been the industry's standard dummy text ever since the
-                1500s.
-              </p>
-
-              <div className={cx('see_more')}>Explore More...</div>
-            </div>
-          </div>
-
-          <div className={cx('post')}>
-            <img
-              className={cx('img')}
-              src={images.blog4}
-              alt=""
-              loading="lazy"
-            />
-
-            <div className={cx('body')}>
-              <h3 className={cx('title')}>Best Summer Outfit Style</h3>
-              <div className={cx('info')}>
-                <span className={cx('time')}>14 Feb</span>
-                <div></div>
-                <span className={cx('time')}>Livina Style</span>
-              </div>
-              <p className={cx('des')}>
-                Lorem Ipsum has been the industry's standard dummy text ever
-                since the 1500s, when an unknown printer took a galley. Lorem
-                Ipsum has been the industry's standard dummy text ever since the
-                1500s.
-              </p>
-
-              <div className={cx('see_more')}>Explore More...</div>
-            </div>
-          </div>
+            );
+          })}
         </div>
       </div>
     </div>

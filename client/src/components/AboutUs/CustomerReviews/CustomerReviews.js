@@ -1,6 +1,12 @@
 import classNames from 'classnames/bind';
 import styles from './CustomerReviews.module.scss';
 import { dataSeller } from '~/constants/dataSeller';
+
+// Lazy loading image
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
+import 'react-lazy-load-image-component/src/effects/opacity.css';
+
 import { Navigation, Autoplay } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/scss';
@@ -27,11 +33,19 @@ function CustomerReviews() {
               return (
                 <SwiperSlide key={i}>
                   <div className={cx('seller__inner')}>
-                    <img
+                    {/* <img
                       className={cx('img')}
                       src={item.img}
                       alt=""
                       loading="lazy"
+                    /> */}
+                    <LazyLoadImage
+                      src={item.img}
+                      className={cx('img')}
+                      effect="blur"
+                      alt=""
+                      placeholderSrc={item.img}
+                      threshold={1}
                     />
 
                     <div className={cx('description')}>

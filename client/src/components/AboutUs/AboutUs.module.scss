@@ -4,21 +4,29 @@
   background-color: $background-color;
   .inner {
     .achievement {
-      @include breakpoint(tm) {
-        display: none;
-      }
       margin: auto;
       max-width: 1340px;
       padding: 50px 10px;
       text-align: center;
       .title {
+        @include breakpoint(xm) {
+          font-size: 2.2rem;
+        }
         margin-bottom: 20px;
         font-size: 3rem;
         color: $jetBlack-color;
       }
       .brand {
+        @include breakpoint(tm) {
+          flex-wrap: wrap;
+        }
         @include d-flex($center, $s-between);
         .brand__img {
+          @include breakpoint(tm) {
+            flex-basis: 33.333%;
+            max-width: 100px;
+            height: 52px;
+          }
           width: 140px;
           height: 74px;
           margin-top: 20px;

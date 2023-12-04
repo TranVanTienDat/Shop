@@ -1,5 +1,6 @@
 import classNames from 'classnames/bind';
 import gsap from 'gsap';
+
 import { useEffect, useRef } from 'react';
 import { brand } from '~/constants/dateBrand';
 import styles from './AboutUs.module.scss';

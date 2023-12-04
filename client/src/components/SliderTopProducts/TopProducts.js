@@ -1,15 +1,9 @@
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import { Autoplay, Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
-// Import styles
 // style swiper
 import 'swiper/scss';
 import 'swiper/scss/navigation';
-
-// lazy images
-import { LazyLoadImage } from 'react-lazy-load-image-component';
-import 'react-lazy-load-image-component/src/effects/blur.css';
-import 'react-lazy-load-image-component/src/effects/opacity.css';
 
 import classNames from 'classnames/bind';
 import styles from './TopProducts.module.scss';
@@ -73,34 +67,33 @@ function TopProducts() {
           products.map((data, index) => {
             return (
               <SwiperSlide key={index}>
-                <div className={cx('card')}>
-                  <div className={cx('background')}>
-                    {/* <img className={cx('img')} src={data?.images[0]} alt="" /> */}
-                    <LazyLoadImage
-                      src={data?.images[0]}
-                      className={cx('img')}
-                      effect="blur"
-                      width="100%"
-                      placeholderSrc={data?.images[0]}
-                    />
-                    <div
-                      className={cx('info')}
-                      onClick={() => handleNavigate(data?.name, data?._id)}
-                    >
-                      <h2 className={cx('name')}>{data?.name}</h2>
-                      <h4 className={cx('brand')}>{data?.categories[0]}</h4>
-                      <div className={cx('price')}>
-                        <span className={cx('item')}>
-                          {formatPrice.format(
-                            data?.selectProduct?.listProduct[0]?.newPrice
-                          )}
-                        </span>
-                        <span className={cx('item', 'item--color')}>
-                          {formatPrice.format(
-                            data.selectProduct.listProduct[0]?.oldPrice
-                          )}
-                        </span>
-                      </div>
+                <div
+                  className={cx('card')}
+                  style={{
+                    backgroundImage: `url(${data?.images[0]})`,
+                    position: 'relative',
+                    backgroundSize: 'cover',
+                    backgroundRepeat: 'no-repeat',
+                    backgroundPosition: 'center center',
+                  }}
+                >
+                  <div
+                    className={cx('info')}
+                    onClick={() => handleNavigate(data?.name, data?._id)}
+                  >
+                    <h2 className={cx('name')}>{data?.name}</h2>
+                    <h4 className={cx('brand')}>{data?.categories[0]}</h4>
+                    <div className={cx('price')}>
+                      <span className={cx('item')}>
+                        {formatPrice.format(
+                          data?.selectProduct?.listProduct[0]?.newPrice
+                        )}
+                      </span>
+                      <span className={cx('item', 'item--color')}>
+                        {formatPrice.format(
+                          data.selectProduct.listProduct[0]?.oldPrice
+                        )}
+                      </span>
                     </div>
                   </div>
                 </div>

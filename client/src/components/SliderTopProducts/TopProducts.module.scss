@@ -28,62 +28,56 @@
 
   .card {
     margin-top: 20px;
-    .background {
-      position: relative;
-      .img {
-        width: 100%;
-        height: auto;
+    padding-top: 120%;
+
+    .info {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -100%;
+      padding: 20px 10px;
+      cursor: pointer;
+      background-color: #e2e2ea;
+
+      .name {
+        @include breakpoint(xm) {
+          font-size: 1.3rem;
+          -webkit-line-clamp: 1;
+        }
+
+        color: #9a9ab0;
+        font-size: 1.6rem;
+        font-weight: 400;
+        @include format-text-line(2);
       }
+      .brand {
+        @include breakpoint(xm) {
+          font-size: 1rem;
+          @include format-text-line(1);
+        }
+        margin: 8px 0;
+        font-size: 1.2rem;
+        font-weight: 300;
+        color: $light-color;
+      }
+      .price {
+        @include d-flex($center, $center);
 
-      .info {
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: -100%;
-        padding: 20px 10px;
-        cursor: pointer;
-        background-color: #e2e2ea;
-
-        .name {
-          @include breakpoint(xm) {
-            font-size: 1.3rem;
-            -webkit-line-clamp: 1;
-          }
-
+        .item {
+          margin: 0 4px;
+          font-size: 1.3rem;
+          color: $primary-color;
+        }
+        .item--color {
           color: #9a9ab0;
-          font-size: 1.6rem;
-          font-weight: 400;
-          @include format-text-line(2);
-        }
-        .brand {
-          @include breakpoint(xm) {
-            font-size: 1rem;
-            @include format-text-line(1);
-          }
-          margin: 8px 0;
-          font-size: 1.2rem;
-          font-weight: 300;
-          color: $light-color;
-        }
-        .price {
-          @include d-flex($center, $center);
-
-          .item {
-            margin: 0 4px;
-            font-size: 1.3rem;
-            color: $primary-color;
-          }
-          .item--color {
-            color: #9a9ab0;
-            font-size: 1rem;
-            text-decoration-line: line-through;
-          }
+          font-size: 1rem;
+          text-decoration-line: line-through;
         }
       }
+    }
 
-      &:hover .info {
-        animation: animate 0.4s ease-out forwards;
-      }
+    &:hover .info {
+      animation: animate 0.4s ease-out forwards;
     }
   }
 }
@@ -94,7 +88,7 @@
     opacity: 0;
   }
   to {
-    bottom: 4px;
+    bottom: 0;
     opacity: 1;
   }
 }
