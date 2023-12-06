@@ -32,7 +32,7 @@ export function RelatedProducts({ categories }) {
   }, [categories]);
   return (
     <div className={cx('wrapper')}>
-      <h4 className={cx('title')}>Top sản phẩm bán chạy</h4>
+      <h4 className={cx('title')}>Top sản phẩm tương tự</h4>
       <div className={cx('list')}>
         {!isLoading ? (
           relatedProduct.map((item, i) => {
