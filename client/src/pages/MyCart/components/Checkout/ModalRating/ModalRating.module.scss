@@ -1,20 +1,18 @@
 @import '../../../../../style/variables.scss';
 
 .heading {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  @include d-flex($center, $s-between);
   .title {
-    font-size: 1.8rem;
-    margin: 0 20px;
-    font-weight: 700;
-    color: $jetBlack-color;
     position: relative;
     margin: 0 auto;
+    margin: 0 20px;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: $jetBlack-color;
   }
   .menu {
-    font-size: 2.6rem;
     padding: 0 6px;
+    font-size: 2.6rem;
     cursor: pointer;
     color: $firebrick-red-color;
   }

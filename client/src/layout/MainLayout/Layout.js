@@ -9,11 +9,10 @@ import { setInfo } from '~/store/slice/infoDataUser';
 import { getCartProduct } from '~/store/slice/myCart';
 import { userData } from '~/store/slice/selector';
 import { parseDate } from '~/utils/timeConversion';
+import SidebarResponsive from '../../features/shop/SideBar/SidebarResponsive/SidebarResponsive';
 import Container from './Container/Container';
 import Footer from './Footer/Footer';
 import Header from './Header/Header';
-import Loading from './Loading/Loading/Loading';
-import SidebarResponsive from '../../features/shop/SideBar/SidebarResponsive/SidebarResponsive';
 function MainLayout({ children }) {
   const dispatch = useDispatch();
   const { status } = useSelector(userData);
@@ -52,7 +51,6 @@ function MainLayout({ children }) {
     <>
       <Header />
       <SidebarResponsive />
-      <Loading />
       <Cart />
       <ModalRating />
       <Container children={children} />

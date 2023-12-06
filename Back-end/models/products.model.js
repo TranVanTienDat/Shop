@@ -66,7 +66,7 @@ const productSchema = new mongoose.Schema({
   ],
   images: [String],
   selectProduct: {
-    lisProduct: [
+    listProduct: [
       {
         color: {
           type: String,

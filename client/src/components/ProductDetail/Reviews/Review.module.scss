@@ -38,31 +38,49 @@
       margin: 30px 0;
       @include d-flex($f-start, $f-start);
       .avatar {
+        @include breakpoint(xs) {
+          width: 20px;
+        }
         width: 46px;
         border-radius: 50%;
       }
       .item {
-        .rating {
+        overflow: hidden;
+        @include flex-direction();
+        gap: 4px;
+        .info {
           @include d-flex($center, $f-start);
           gap: 10px;
           .name {
+            @include breakpoint(xs) {
+              font-size: 1.2rem;
+            }
             font-size: 1.4rem;
             color: $jetBlack-color;
           }
+          .time {
+            font-size: 1.2rem;
+            color: $light-color;
+          }
         }
-        .time {
-          margin: 0px 0 14px;
-          font-size: 1.3rem;
-          color: $light-color;
+
+        .star {
+          display: flex;
         }
+
         .comment {
           .comment__list__img {
+            width: 100%;
+            overflow-x: auto;
+            &::-webkit-scrollbar {
+              height: 0;
+            }
             @include d-flex($center, $f-start);
-            margin-left: -6px;
+            gap: 8px;
+
             .img {
               width: 90px;
               height: 90px;
-              margin: 0 6px;
               border-radius: 4px;
               cursor: pointer;
               transition: 0.5s linear;
@@ -74,6 +92,9 @@
             }
           }
           .text {
+            @include breakpoint(xs) {
+              font-size: 1.2rem;
+            }
             margin: 10px 0;
             font-size: 1.4rem;
             color: #515151;
@@ -84,7 +105,7 @@
     }
 
     .text {
-      font-size: 1.6rem;
+      font-size: 1.5rem;
     }
   }
 }

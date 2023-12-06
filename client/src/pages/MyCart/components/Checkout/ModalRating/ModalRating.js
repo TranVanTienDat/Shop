@@ -14,7 +14,10 @@ import {
   success,
   warning,
 } from '~/constants/ToastMessage/ToastMessage';
-import { setIsLoadingRating } from '~/store/slice/loadingSlice';
+import {
+  setIsLoadingButton,
+  setIsLoadingRating,
+} from '~/store/slice/loadingSlice';
 import { setRating } from '~/store/slice/ratingSlice';
 import {
   ratingSelector,
@@ -69,8 +72,9 @@ function ModalRating() {
     formData.append('productID', loading.productID);
     formData.append('rating', ratingProduct.rating);
     formData.append('comment', ratingProduct.comment);
-
+    dispatch(setIsLoadingButton({ isLoadingButton: true }));
     const { res, err } = await ratingApi.postComment(formData);
+    dispatch(setIsLoadingButton({ isLoadingButton: false }));
     if (res) {
       success('Đánh giá thành công');
       dispatch(setIsLoadingRating({ isLoadingRating: false }));

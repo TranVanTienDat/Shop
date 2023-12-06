@@ -21,19 +21,11 @@
       .seller__inner {
         @include d-flex($f-end, $center);
         gap: 30px;
-        .img {
-          @include breakpoint(sm) {
-            width: 120px;
-          }
-          @include breakpoint(xs) {
-            width: 80px;
-          }
-          width: 200px;
-          aspect-ratio: 3/2;
-          border-radius: 8px;
+        .inner__img {
+          flex: 2;
         }
         .description {
-          flex: 1;
+          flex: 8;
           .text {
             @include breakpoint(xm) {
               font-size: 1.2rem;

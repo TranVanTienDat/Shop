@@ -33,20 +33,18 @@ function CustomerReviews() {
               return (
                 <SwiperSlide key={i}>
                   <div className={cx('seller__inner')}>
-                    {/* <img
-                      className={cx('img')}
-                      src={item.img}
-                      alt=""
-                      loading="lazy"
-                    /> */}
-                    <LazyLoadImage
-                      src={item.img}
-                      className={cx('img')}
-                      effect="blur"
-                      alt=""
-                      placeholderSrc={item.img}
-                      threshold={1}
-                    />
+                    <div className={cx('inner__img')}>
+                      <LazyLoadImage
+                        src={item.img}
+                        effect="blur"
+                        alt=""
+                        width="100%"
+                        height="auto"
+                        threshold={1}
+                        placeholderSrc={item.img}
+                        style={{ borderRadius: '8px' }}
+                      />
+                    </div>
 
                     <div className={cx('description')}>
                       <p className={cx('text')}>

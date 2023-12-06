@@ -17,10 +17,6 @@ exports.getProducts = async (req, res) => {
     }
 
     if (parseInt(minPrice) > 0 && parseInt(maxPrice) > 0) {
-      // filter.$and = [
-      //   { "selectProduct.listProduct.newPrice": { $gte: parseInt(minPrice) } },
-      //   { "selectProduct.listProduct.newPrice": { $lte: parseInt(maxPrice) } },
-      // ];
       filter.$and = [
         {
           "selectProduct.listProduct.newPrice": {
@@ -102,6 +98,32 @@ exports.getProductById = async (req, res) => {
       return res.status(404).json({ error: "Product not found" });
     }
     return res.status(200).json(product);
+  } catch (error) {
+    return res.status(500).json({ error: "Server error" });
+  }
+};
+
+// Product related
+exports.getRelatedProducts = async (req, res) => {
+  try {
+    const { category } = req.query;
+    const searchArray = category.split(",");
+    const relatedItems = await productDB
+      .find(
+        {
+          categories: {
+            $elemMatch: { $regex: searchArray.join("|"), $options: "i" },
+          },
+        },
+        { _id: 1, name: 1, selectProduct: 1, images: 1 }
+      )
+      .limit(4);
+
+    // Check if related items were found
+    if (relatedItems.length === 0) {
+      return res.status(404).json({ error: "Related products not found" });
+    }
+    return res.status(200).json(relatedItems);
   } catch (error) {
     return res.status(500).json({ error: "Server error" });
   }

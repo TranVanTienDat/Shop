@@ -15,26 +15,18 @@ const productEndpoints = {
   getTopProducts: 'product/top',
   getCategoriesProduct: ({ category }) =>
     `product/category?category=${category}`,
+  getRelatedProducts: ({ related }) => {
+    const string = related.join(',');
+    return `product/related?category=${string}`;
+  },
 };
 
 const productApi = {
-  getAllProduct: async (payload) => {
-    try {
-      const res = await publicClient.get(productEndpoints.signIn, payload);
-
-      return { res };
-    } catch (err) {
-      console.log('err');
-      return { err };
-    }
-  },
-
   getProductById: async ({ productID }) => {
     try {
       const res = await publicClient.get(
         productEndpoints.getProductById({ productID })
       );
-
       return { res };
     } catch (err) {
       console.log('err');
@@ -80,12 +72,24 @@ const productApi = {
       return { err };
     }
   },
+
   getCategoriesProduct: async ({ category }) => {
     try {
       const res = await publicClient.get(
         productEndpoints.getCategoriesProduct({ category })
       );
+      return { res };
+    } catch (err) {
+      console.log('err');
+      return { err };
+    }
+  },
 
+  getRelatedProducts: async ({ related }) => {
+    try {
+      const res = await publicClient.get(
+        productEndpoints.getRelatedProducts({ related })
+      );
       return { res };
     } catch (err) {
       console.log('err');

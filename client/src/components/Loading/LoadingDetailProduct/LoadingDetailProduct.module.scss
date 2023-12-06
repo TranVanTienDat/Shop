@@ -1,12 +1,9 @@
-@import '../../../../style/variables.scss';
+@import '../../../style/variables.scss';
 .wrapper {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
   overflow: hidden;
+  height: calc(100vh);
   background-color: rgba(0, 0, 0, 0.1);
-  z-index: 200;
+  z-index: 1000;
 
   .animate {
     height: 5px;
@@ -21,6 +18,15 @@
       height: 100%;
       width: 50%;
       background-color: #ff0000;
+    }
+  }
+  .inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    .logo {
+      width: 120px;
     }
   }
 }

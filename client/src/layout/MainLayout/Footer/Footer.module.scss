@@ -2,7 +2,7 @@
 
 .footer {
   @include breakpoint(xs) {
-    padding: 40px 6px;
+    padding: 40px 10px;
   }
   padding: 40px;
   color: $white-color;
@@ -26,6 +26,10 @@
         height: 20px;
       }
       .text {
+        @include breakpoint(xs) {
+          font-size: 1.2rem;
+        }
+
         font-size: 1.4rem;
       }
 
@@ -38,6 +42,9 @@
 
           .icon,
           .title {
+            @include breakpoint(xs) {
+              font-size: 1.4rem;
+            }
             font-size: 1.6rem;
           }
         }
@@ -57,12 +64,18 @@
         @include flex-direction();
         gap: 20px;
         .title {
+          @include breakpoint(xs) {
+            font-size: 1.5rem;
+          }
           font-size: 1.6rem;
         }
         ul {
           @include flex-direction();
           gap: 12px;
           .text {
+            @include breakpoint(tm) {
+              font-size: 1.2rem;
+            }
             font-size: 1.3rem;
             list-style: none;
           }

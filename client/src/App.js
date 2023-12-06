@@ -10,7 +10,8 @@ import gsap from 'gsap';
 
 // gsap plugins
 import ScrollTrigger from 'gsap/ScrollTrigger';
-import LoadingButton from './layout/MainLayout/Loading/LoadingButton/LoadingButton';
+import LoadingButton from './components/Loading/LoadingButton/LoadingButton';
+import LoadingDetailProduct from './components/Loading/LoadingDetailProduct/LoadingDetailProduct';
 import ModalAddress from './pages/PaymentOrder/components/ModalAddress/ModalAddress';
 
 function App() {
@@ -22,10 +23,9 @@ function App() {
   return (
     <Router>
       <div className="App">
-        {/* <Cart /> */}
         <ModalAddress />
         <LoadingButton />
-
+        <LoadingDetailProduct />
         <ToastContainer />
         <Routes>
           {publicRoutes.map((route, index) => {

@@ -11,15 +11,15 @@ import { Animate } from '~/features/Auth/Sign/SignIn';
 const cx = classNames.bind(styles);
 function CategoriesShop() {
   const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [item, setItem] = useState({ category: 'Giày', active: 0 });
   useEffect(() => {
     const fetchProducts = async () => {
-      setLoading(true);
+      setIsLoading(true);
       const { res } = await productApi.getCategoriesProduct({
         category: item.category,
       });
-      setLoading(false);
+      setIsLoading(false);
       if (res) {
         setProducts(res);
       }
@@ -48,7 +48,7 @@ function CategoriesShop() {
               );
             })}
           </div>
-          {!loading ? (
+          {!isLoading ? (
             <div className={cx('products')}>
               {products.length > 0 &&
                 products.map((data, i) => {

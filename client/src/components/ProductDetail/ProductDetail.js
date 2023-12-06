@@ -28,6 +28,7 @@ import { userData } from '~/store/slice/selector';
 import styles from './ProductDetail.module.scss';
 import Review from './Reviews/Review';
 import Footer from '~/layout/MainLayout/Footer/Footer';
+import { RelatedProducts } from './RelatedProducts/RelatedProducts';
 const cx = classNames.bind(styles);
 function ProductDetail() {
   const { status } = useSelector(userData);
@@ -59,11 +60,11 @@ function ProductDetail() {
 
   useEffect(() => {
     const getProduct = async () => {
+      window.scrollTo(0, 0);
       dispatch(setIsLoading(true));
       const { res, err } = await productApi.getProductById({
         productID: _id,
       });
-      dispatch(setIsLoading(false));
 
       if (res) {
         const data = res.selectProduct;
@@ -90,7 +91,9 @@ function ProductDetail() {
         });
       }
       if (err) errMes(err.message);
+      dispatch(setIsLoading(false));
     };
+
     getProduct();
   }, [_id, dispatch]);
 
@@ -196,13 +199,11 @@ function ProductDetail() {
             <div className={cx('detail')}>
               <div className={cx('info')}>
                 <div className={cx('info__img')}>
-                  <div className={cx('main')}>
-                    <img
-                      className={cx('main_img')}
-                      src={listImg.mainImg}
-                      alt=""
-                    />
-                  </div>
+                  <img
+                    className={cx('img__main')}
+                    src={listImg.mainImg}
+                    alt=""
+                  />
                   <div className={cx('secondary')}>
                     {listImg.list.length > 0 &&
                       listImg.list.map((item, i) => {
@@ -402,50 +403,10 @@ function ProductDetail() {
                     <Review productID={product._id} />
                   </div>
                 </div>
-                <div className={cx('products-other')}>
-                  <h4 className={cx('title')}>Top sản phẩm bán chạy</h4>
-                  <div className={cx('list')}>
-                    <div
-                      className={cx('product')}
-                      onClick={() => navigate('/detail-product')}
-                    >
-                      <img
-                        className={cx('img')}
-                        src="https://down-vn.img.susercontent.com/file/148212e6d7fbdb80316141cacf524f04"
-                        alt=""
-                      />
-                      <h6 className={cx('name')}>
-                        Đồng Hồ Nam Nữ Dây Da ROSIVGA - Đồng hồ đeo tay thời
-                        trang mặt vuông
-                      </h6>
-                      <div className={cx('price')}>208.100</div>
-                    </div>
-                    <div className={cx('product')}>
-                      <img
-                        className={cx('img')}
-                        src="https://down-vn.img.susercontent.com/file/148212e6d7fbdb80316141cacf524f04"
-                        alt=""
-                      />
-                      <h6 className={cx('name')}>
-                        Đồng Hồ Nam Nữ Dây Da ROSIVGA - Đồng hồ đeo tay thời
-                        trang mặt vuông
-                      </h6>
-                      <div className={cx('price')}>208.100</div>
-                    </div>
-                    <div className={cx('product')}>
-                      <img
-                        className={cx('img')}
-                        src="https://down-vn.img.susercontent.com/file/148212e6d7fbdb80316141cacf524f04"
-                        alt=""
-                      />
-                      <h6 className={cx('name')}>
-                        Đồng Hồ Nam Nữ Dây Da ROSIVGA - Đồng hồ đeo tay thời
-                        trang mặt vuông
-                      </h6>
-                      <div className={cx('price')}>208.100</div>
-                    </div>
-                  </div>
-                </div>
+                <RelatedProducts
+                  categories={product?.categories}
+                  productID={product._id}
+                />
               </div>
             </div>
           </>

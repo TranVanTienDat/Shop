@@ -1,0 +1,38 @@
+@import '../../../style/variables.scss';
+
+.wrapper {
+  flex: 2;
+  .title {
+    margin: 20px 0;
+    font-weight: 300;
+    font-size: 1.5rem;
+    color: $firebrick-red-color;
+    text-decoration-line: underline;
+  }
+  .list {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(50px, 1fr));
+    gap: 10px;
+    @include breakpoint(xs) {
+      grid-template-columns: repeat(2, minmax(50px, 1fr));
+    }
+    .product {
+      cursor: pointer;
+      .img {
+        width: 100%;
+      }
+      .name {
+        margin: 5px;
+        font-size: 1.3rem;
+        font-weight: 300;
+        color: $light-color;
+        @include format-text-line(2);
+      }
+      .price {
+        margin: 0 5px;
+        font-size: 1.4rem;
+        color: $primary-color;
+      }
+    }
+  }
+}
