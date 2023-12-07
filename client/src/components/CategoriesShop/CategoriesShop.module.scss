@@ -18,13 +18,13 @@
           gap: 28px;
         }
         @include breakpoint(xs) {
-          gap: 12px;
+          gap: 15px;
         }
         @include d-flex($center, $center);
         gap: 36px;
         .item {
           @include breakpoint(xs) {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
           }
           @include breakpoint(sm) {
             font-size: 1.6rem;
