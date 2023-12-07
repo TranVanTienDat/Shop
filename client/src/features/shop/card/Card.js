@@ -16,7 +16,7 @@ function Card({ name, sold, rating, selectProduct, _id, images }) {
     navigate(`/detail-product/${name}/${_id}`);
   };
 
-  const first = selectProduct.listProduct[0];
+  const first = selectProduct[0];
 
   return (
     <div className={cx('wrapper')}>

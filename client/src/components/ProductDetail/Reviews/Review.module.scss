@@ -34,9 +34,9 @@
 
   .list {
     .user {
-      gap: 12px;
       margin: 30px 0;
       @include d-flex($f-start, $f-start);
+      gap: 12px;
       .avatar {
         @include breakpoint(xs) {
           width: 20px;
@@ -104,7 +104,7 @@
       }
     }
 
-    .text {
+    .not-comment {
       font-size: 1.5rem;
     }
   }

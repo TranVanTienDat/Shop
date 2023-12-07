@@ -19,18 +19,18 @@ exports.getProducts = async (req, res) => {
     if (parseInt(minPrice) > 0 && parseInt(maxPrice) > 0) {
       filter.$and = [
         {
-          "selectProduct.listProduct.newPrice": {
+          "selectProduct.newPrice": {
             $gte: parseInt(minPrice),
             $lte: parseInt(maxPrice),
           },
         },
       ];
     } else if (parseInt(minPrice) > 0) {
-      filter["selectProduct.listProduct.newPrice"] = {
+      filter["selectProduct.newPrice"] = {
         $gte: parseInt(minPrice),
       };
     } else if (parseInt(maxPrice) > 0) {
-      filter["selectProduct.listProduct.newPrice"] = {
+      filter["selectProduct.newPrice"] = {
         $lte: parseInt(maxPrice),
       };
     }
@@ -106,11 +106,12 @@ exports.getProductById = async (req, res) => {
 // Product related
 exports.getRelatedProducts = async (req, res) => {
   try {
-    const { category } = req.query;
+    const { category, _id } = req.query;
     const searchArray = category.split(",");
     const relatedItems = await productDB
       .find(
         {
+          _id: { $ne: _id },
           categories: {
             $elemMatch: { $regex: searchArray.join("|"), $options: "i" },
           },

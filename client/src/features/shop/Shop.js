@@ -3,7 +3,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import productApi from '~/api/modules/product.api';
 import { searchParams } from '~/store/slice/selector';
-import { Animate } from '../Auth/Sign/SignIn';
+import { LoadingAnimate } from '~/components/Loading/LoadingGlobal';
 import styles from './Shop.module.scss';
 import SideBar from './SideBar/SideBar';
 import Card from './card/Card';
@@ -38,11 +38,7 @@ function Shop() {
       if (res) {
         const { products, totalPages } = res;
         setListProduct(products);
-        const listPage = [];
-        Array.from({ length: totalPages }).forEach((_, i) => {
-          listPage.push(i + 1);
-        });
-        setGetTotalPage(listPage);
+        setGetTotalPage(totalPages);
       }
       setIsLoading(false);
     };
@@ -95,21 +91,22 @@ function Shop() {
 
                 <div className={cx('page')}>
                   <div className={cx('navigation')}>
-                    {getTotalPage.length > 0 &&
-                      getTotalPage.map((item, i) => {
+                    {Array(getTotalPage)
+                      .fill(0)
+                      .map((item, i) => {
                         return (
                           <button
                             key={i}
                             className={cx(
                               'button',
-                              currentItemPage.current === item
+                              currentItemPage.current === i + 1
                                 ? 'button__active'
                                 : null
                             )}
-                            value={item}
+                            value={i + 1}
                             onClick={(e) => handleNavigation(e.target.value)}
                           >
-                            {item}
+                            {i + 1}
                           </button>
                         );
                       })}
@@ -121,7 +118,7 @@ function Shop() {
             )
           ) : (
             <div className={cx('animate')}>
-              <Animate />
+              <LoadingAnimate />
             </div>
           )}
         </div>

@@ -10,6 +10,10 @@ const productSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  review: {
+    type: Number,
+    required: true,
+  },
   description: {
     parameter: [
       {
@@ -39,71 +43,40 @@ const productSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  reviews: [
+  images: [String],
+  selectProduct: [
     {
-      id_User: {
+      color: {
         type: String,
         required: true,
       },
-      user: {
-        type: String,
-        required: true,
-      },
-      avatar: {
-        type: String,
-        required: true,
-      },
-      rating: {
+      newPrice: {
         type: Number,
         required: true,
       },
-      imgProduct: [String],
-      comment: {
-        type: String,
-        required: true,
+      oldPrice: {
+        type: Number,
       },
+      discount: {
+        type: Number,
+      },
+      quantity: {
+        type: Number,
+      },
+      sizes: [
+        {
+          size: {
+            type: String,
+            required: true,
+          },
+          quantity: {
+            type: Number,
+            required: true,
+          },
+        },
+      ],
     },
   ],
-  images: [String],
-  selectProduct: {
-    listProduct: [
-      {
-        color: {
-          type: String,
-          required: true,
-        },
-        img: {
-          type: String,
-          required: true,
-        },
-        newPrice: {
-          type: Number,
-          required: true,
-        },
-        oldPrice: {
-          type: Number,
-        },
-        discount: {
-          type: Number,
-        },
-        quantity: {
-          type: Number,
-        },
-        sizes: [
-          {
-            size: {
-              type: String,
-              required: true,
-            },
-            quantity: {
-              type: Number,
-              required: true,
-            },
-          },
-        ],
-      },
-    ],
-  },
 });
 
 const Product = mongoose.model("Product", productSchema);

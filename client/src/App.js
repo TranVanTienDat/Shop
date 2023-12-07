@@ -3,15 +3,15 @@ import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import './App.scss';
 import Container from './layout/MainLayout/Container/Container';
-import MainLayout from './layout/MainLayout/Layout';
+import MainLayout, { PageWrapper } from './layout/MainLayout/Layout';
 import { publicRoutes } from './routes/routes';
 // gsap
 import gsap from 'gsap';
 
 // gsap plugins
 import ScrollTrigger from 'gsap/ScrollTrigger';
-import LoadingButton from './components/Loading/LoadingButton/LoadingButton';
-import LoadingDetailProduct from './components/Loading/LoadingDetailProduct/LoadingDetailProduct';
+import { LoadingButton } from './components/Loading/LoadingGlobal';
+import { LoadingDetailProduct } from './components/Loading/LoadingGlobal';
 import ModalAddress from './pages/PaymentOrder/components/ModalAddress/ModalAddress';
 
 function App() {
@@ -28,43 +28,47 @@ function App() {
         <LoadingDetailProduct />
         <ToastContainer />
         <Routes>
-          {publicRoutes.map((route, index) => {
-            const Page = route.component;
-            let LayoutDefault = MainLayout;
-            let ChildrenLayout = Fragment;
-            if (route.childrenLayout) {
-              ChildrenLayout = route.childrenLayout;
-            }
-            if (route.layout) {
-              LayoutDefault = route.layout;
-            } else if (route.layout === null) {
-              LayoutDefault = Fragment;
-            }
+          <Route path="/" element={<MainLayout />}>
+            {publicRoutes.map((route, index) => {
+              const Page = route.component;
+              let LayoutDefault = PageWrapper;
+              let ChildrenLayout = Fragment;
+              if (route.childrenLayout) {
+                ChildrenLayout = route.childrenLayout;
+              }
+              if (route.layout === null) {
+                LayoutDefault = Container;
+              }
 
-            return (
-              <Route
-                key={index}
-                path={route.path}
-                element={
-                  <LayoutDefault>
-                    {route.index ? (
-                      <Container state={route.state ? route.state : undefined}>
-                        <ChildrenLayout>
-                          <Page />
-                        </ChildrenLayout>
-                      </Container>
-                    ) : (
-                      <Container state={route.state ? route.state : undefined}>
-                        <ChildrenLayout>
-                          <Page />
-                        </ChildrenLayout>
-                      </Container>
-                    )}
-                  </LayoutDefault>
-                }
-              />
-            );
-          })}
+              return (
+                <Route
+                  key={index}
+                  path={route.path}
+                  element={
+                    <LayoutDefault>
+                      {route.index ? (
+                        <Container
+                          state={route.state ? route.state : undefined}
+                        >
+                          <ChildrenLayout>
+                            <Page />
+                          </ChildrenLayout>
+                        </Container>
+                      ) : (
+                        <Container
+                          state={route.state ? route.state : undefined}
+                        >
+                          <ChildrenLayout>
+                            <Page />
+                          </ChildrenLayout>
+                        </Container>
+                      )}
+                    </LayoutDefault>
+                  }
+                />
+              );
+            })}
+          </Route>
         </Routes>
       </div>
     </Router>

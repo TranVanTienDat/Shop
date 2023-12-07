@@ -15,8 +15,7 @@ import Checkout from '~/pages/MyCart/components/Checkout/Checkout';
 import DetailInfo from '~/pages/ProfileUser/Account/components/DetailInfo/DetailInfo';
 import ChangePassword from '~/pages/ProfileUser/Account/components/ChangePassword/ChangePassword';
 import Notification from '~/pages/ProfileUser/Account/components/Notification/Notification';
-import SignIn from '~/features/Auth/Sign/SignIn';
-import SignUp from '~/features/Auth/Sign/SignUp';
+import { SignIn, SignUp } from '~/features/Auth/Auth';
 // Public routes
 const publicRoutes = [
   { path: config.routes.home, component: Home, index: true, state: 'home' },

@@ -28,7 +28,7 @@ import { userData } from '~/store/slice/selector';
 import styles from './ProductDetail.module.scss';
 import Review from './Reviews/Review';
 import Footer from '~/layout/MainLayout/Footer/Footer';
-import { RelatedProducts } from './RelatedProducts/RelatedProducts';
+import RelatedProducts from './RelatedProducts/RelatedProducts';
 const cx = classNames.bind(styles);
 function ProductDetail() {
   const { status } = useSelector(userData);
@@ -36,21 +36,22 @@ function ProductDetail() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const [product, setProduct] = useState(null); // lấy ra sản phẩm
-  const [quantity, setQuantity] = useState(1); // số lượng cần mua ban đầu là 1
-  // Gồm list ảnh và ảnh ban đầu
+  const [product, setProduct] = useState(null); // get product
+  const [quantity, setQuantity] = useState(1); //
+
+  // List images
   const [listImg, setLisImg] = useState({ list: [], mainImg: '' });
 
-  // gồm list các sản phẩm và sản phẩm ban đầu cần render
+  //  list products and Initial product need render
   const [chooseProduct, setChooseProduct] = useState({
     listProduct: {},
     mainProduct: {},
   });
 
-  // mỗi sản phẩm gồm size và số lượng trong kho
+  // Each product includes size and quantity in the warehouse
   const [sizes, setSizes] = useState({ ListSize: [], quantity: null });
 
-  // lấy ra lựa chọn sản phẩm của khách hàng
+  // Choose products of customers
   const [typeProduct, setTypeProduct] = useState({
     type: '',
     value: '',
@@ -71,17 +72,18 @@ function ProductDetail() {
         setProduct(res);
         setChooseProduct({
           listProduct: data,
-          mainProduct: data.listProduct[0],
+          mainProduct: data[0],
         });
-        if (!data.listProduct[0].quantity) {
+
+        if (!data[0].quantity) {
           setSizes({
-            ListSize: data.listProduct[0].sizes,
-            quantity: data.listProduct[0].sizes[0].quantity,
+            ListSize: data[0].sizes,
+            quantity: data[0].sizes[0].quantity,
           });
         } else {
           setSizes((prev) => ({
             ...prev,
-            quantity: data.listProduct[0].quantity,
+            quantity: data[0].quantity,
           }));
         }
 
@@ -90,6 +92,7 @@ function ProductDetail() {
           mainImg: res.images[0],
         });
       }
+
       if (err) errMes(err.message);
       dispatch(setIsLoading(false));
     };
@@ -97,10 +100,9 @@ function ProductDetail() {
     getProduct();
   }, [_id, dispatch]);
 
-  // set lại lựa chọn khách hàng
   useEffect(() => {
     if (typeProduct.type) {
-      const product = chooseProduct.listProduct.listProduct.find(
+      const product = chooseProduct.listProduct.find(
         (item) => item.color === typeProduct.type
       );
       setChooseProduct((prev) => ({ ...prev, mainProduct: product }));
@@ -234,9 +236,7 @@ function ProductDetail() {
                         Đã Bán
                       </div>
                       <div className={cx('item')}>
-                        <span className={cx('text')}>
-                          {product.reviews.length}
-                        </span>
+                        <span className={cx('text')}>{product?.review}</span>
                         Đánh giá
                       </div>
                     </div>
@@ -263,8 +263,8 @@ function ProductDetail() {
                   <div className={cx('selection')}>
                     <span className={cx('type')}>Màu sắc</span>
                     <div className={cx('values')}>
-                      {chooseProduct.listProduct?.listProduct?.length > 0 &&
-                        chooseProduct.listProduct.listProduct.map((item, i) => {
+                      {chooseProduct.listProduct?.length > 0 &&
+                        chooseProduct.listProduct.map((item, i) => {
                           return (
                             <button
                               key={i}

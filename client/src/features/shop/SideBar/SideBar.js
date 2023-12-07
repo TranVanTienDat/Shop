@@ -1,16 +1,15 @@
 import {
   faChevronRight,
   faFilterCircleDollar,
-  faMagnifyingGlass,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classNames from 'classnames/bind';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import Button from '~/components/Button/Button';
 import { setSearch } from '~/store/slice/searchParamsSlice';
 import { setGlobalLoading } from '~/store/slice/selector';
 import styles from './SideBar.module.scss';
-import Button from '~/components/Button/Button';
 
 const cx = classNames.bind(styles);
 
@@ -48,125 +47,114 @@ function SideBar() {
     <div
       className={cx('wrapper', isToggle ? 'wrapper--open' : 'wrapper--close')}
     >
-      <div className={cx('inner')}>
-        <div className={cx('search')}>
+      <input
+        className={cx('search')}
+        placeholder="Search products"
+        value={filter.keyword}
+        onChange={(e) => handleFilter('keyword', e.target.value)}
+      />
+
+      <div className={cx('price')}>
+        <div className={cx('heading')}>
+          <span className={cx('title')}>Price</span>
+          <FontAwesomeIcon className={cx('icon')} icon={faFilterCircleDollar} />
+        </div>
+        <div className={cx('menu')}>
           <input
-            className={cx('input')}
-            placeholder="Search products"
-            value={filter.keyword}
-            onChange={(e) => handleFilter('keyword', e.target.value)}
+            className={cx('menu__input')}
+            placeholder="200"
+            value={filter.minPrice}
+            onChange={(e) => handleFilter('minPrice', e.target.value)}
           />
-          <FontAwesomeIcon
-            className={cx('search__icon')}
-            icon={faMagnifyingGlass}
+          <span className={cx('menu__text')}>đến</span>
+          <input
+            className={cx('menu__input')}
+            placeholder="200"
+            value={filter.maxPrice}
+            onChange={(e) => handleFilter('maxPrice', e.target.value)}
           />
         </div>
+      </div>
 
-        <div className={cx('price')}>
-          <div className={cx('heading')}>
-            <span className={cx('title')}>Price</span>
-            <FontAwesomeIcon
-              className={cx('icon')}
-              icon={faFilterCircleDollar}
-            />
+      <Button large onClick={handleSearch}>
+        Tìm kiếm
+      </Button>
+
+      <div className={cx('product__categories')}>
+        <h1 className={cx('heading')}>Product Categories</h1>
+        <div className={cx('categories')}>
+          <div className={cx('item')}>
+            <span className={cx('title')}>Coat and Jackets</span>
+            <FontAwesomeIcon className={cx('icon')} icon={faChevronRight} />
           </div>
-          <div className={cx('menu')}>
-            <input
-              className={cx('menu__input')}
-              placeholder="200"
-              value={filter.minPrice}
-              onChange={(e) => handleFilter('minPrice', e.target.value)}
-            />
-            <span className={cx('menu__text')}>đến</span>
-            <input
-              className={cx('menu__input')}
-              placeholder="200"
-              value={filter.maxPrice}
-              onChange={(e) => handleFilter('maxPrice', e.target.value)}
-            />
+          <div className={cx('item')}>
+            <span className={cx('title')}>Dressses</span>
+            <FontAwesomeIcon className={cx('icon')} icon={faChevronRight} />
           </div>
-        </div>
-
-        <Button large onClick={handleSearch}>
-          Tìm kiếm
-        </Button>
-
-        <div className={cx('product__categories')}>
-          <h1 className={cx('heading')}>Product Categories</h1>
-          <div className={cx('categories')}>
-            <div className={cx('item')}>
-              <span className={cx('title')}>Coat and Jackets</span>
-              <FontAwesomeIcon className={cx('icon')} icon={faChevronRight} />
-            </div>
-            <div className={cx('item')}>
-              <span className={cx('title')}>Dressses</span>
-              <FontAwesomeIcon className={cx('icon')} icon={faChevronRight} />
-            </div>
-            <div className={cx('item')}>
-              <span className={cx('title')}>Playsuit</span>
-              <FontAwesomeIcon className={cx('icon')} icon={faChevronRight} />
-            </div>
-            <div className={cx('item')}>
-              <span className={cx('title')}>Short</span>
-              <FontAwesomeIcon className={cx('icon')} icon={faChevronRight} />
-            </div>
-            <div className={cx('item')}>
-              <span className={cx('title')}>Top</span>
-              <FontAwesomeIcon className={cx('icon')} icon={faChevronRight} />
-            </div>
+          <div className={cx('item')}>
+            <span className={cx('title')}>Playsuit</span>
+            <FontAwesomeIcon className={cx('icon')} icon={faChevronRight} />
+          </div>
+          <div className={cx('item')}>
+            <span className={cx('title')}>Short</span>
+            <FontAwesomeIcon className={cx('icon')} icon={faChevronRight} />
+          </div>
+          <div className={cx('item')}>
+            <span className={cx('title')}>Top</span>
+            <FontAwesomeIcon className={cx('icon')} icon={faChevronRight} />
           </div>
         </div>
+      </div>
 
-        <div className={cx('product__featured')}>
-          <h1 className={cx('heading')}>Featured Product</h1>
-          <div className={cx('list')}>
-            <div className={cx('product')}>
-              <img
-                className={cx('img')}
-                src="https://down-vn.img.susercontent.com/file/vn-11134207-7qukw-lfalvvg3pjdj5e"
-                alt=""
-              />
+      <div className={cx('product__featured')}>
+        <h1 className={cx('heading')}>Featured Product</h1>
+        <div className={cx('list')}>
+          <div className={cx('product')}>
+            <img
+              className={cx('img')}
+              src="https://down-vn.img.susercontent.com/file/vn-11134207-7qukw-lfalvvg3pjdj5e"
+              alt=""
+            />
 
-              <div className={cx('description')}>
-                <h4 className={cx('name')}>Tropical Playsuit</h4>
-                <span className={cx('price')}>$100</span>
-              </div>
+            <div className={cx('description')}>
+              <h4 className={cx('name')}>Tropical Playsuit</h4>
+              <span className={cx('price')}>$100</span>
             </div>
-            <div className={cx('product')}>
-              <img
-                className={cx('img')}
-                src="https://down-vn.img.susercontent.com/file/vn-11134207-7qukw-lfalvvg3pjdj5e"
-                alt=""
-              />
+          </div>
+          <div className={cx('product')}>
+            <img
+              className={cx('img')}
+              src="https://down-vn.img.susercontent.com/file/vn-11134207-7qukw-lfalvvg3pjdj5e"
+              alt=""
+            />
 
-              <div className={cx('description')}>
-                <h4 className={cx('name')}>Tropical Playsuit</h4>
-                <span className={cx('price')}>$100</span>
-              </div>
+            <div className={cx('description')}>
+              <h4 className={cx('name')}>Tropical Playsuit</h4>
+              <span className={cx('price')}>$100</span>
             </div>
-            <div className={cx('product')}>
-              <img
-                className={cx('img')}
-                src="https://down-vn.img.susercontent.com/file/vn-11134207-7qukw-lfalvvg3pjdj5e"
-                alt=""
-              />
+          </div>
+          <div className={cx('product')}>
+            <img
+              className={cx('img')}
+              src="https://down-vn.img.susercontent.com/file/vn-11134207-7qukw-lfalvvg3pjdj5e"
+              alt=""
+            />
 
-              <div className={cx('description')}>
-                <h4 className={cx('name')}>Tropical Playsuit</h4>
-                <span className={cx('price')}>$100</span>
-              </div>
+            <div className={cx('description')}>
+              <h4 className={cx('name')}>Tropical Playsuit</h4>
+              <span className={cx('price')}>$100</span>
             </div>
-            <div className={cx('product')}>
-              <img
-                className={cx('img')}
-                src="https://down-vn.img.susercontent.com/file/vn-11134207-7qukw-lfalvvg3pjdj5e"
-                alt=""
-              />
+          </div>
+          <div className={cx('product')}>
+            <img
+              className={cx('img')}
+              src="https://down-vn.img.susercontent.com/file/vn-11134207-7qukw-lfalvvg3pjdj5e"
+              alt=""
+            />
 
-              <div className={cx('description')}>
-                <h4 className={cx('name')}>Tropical Playsuit</h4>
-                <span className={cx('price')}>$100</span>
-              </div>
+            <div className={cx('description')}>
+              <h4 className={cx('name')}>Tropical Playsuit</h4>
+              <span className={cx('price')}>$100</span>
             </div>
           </div>
         </div>

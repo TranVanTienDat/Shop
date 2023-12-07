@@ -1,0 +1,119 @@
+@import '../../style/variables.scss';
+
+@mixin animate-mixin {
+  height: 5px;
+  position: relative;
+  background-color: rgb(127, 0, 0);
+
+  .loading {
+    position: absolute;
+    animation: loading 1.5s ease infinite;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 50%;
+    background-color: #ff0000;
+  }
+
+  @keyframes loading {
+    from {
+      left: -50%;
+    }
+    to {
+      left: 100%;
+    }
+  }
+}
+
+.wrapper__1 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.1);
+  z-index: 200;
+
+  .animate {
+    @include animate-mixin();
+  }
+}
+
+.wrapper__2 {
+  overflow: hidden;
+  height: calc(100vh);
+  background-color: rgba(0, 0, 0, 0.1);
+  z-index: 200;
+
+  .animate {
+    @include animate-mixin();
+  }
+  .inner {
+    height: 100%;
+    @include d-flex($center, $center);
+    .logo {
+      width: 120px;
+    }
+  }
+}
+
+.wrapper__3 {
+  width: 100px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  .pointer {
+    background-color: #144e5c;
+    border-radius: 50%;
+    margin: 0 4px;
+    animation: loadingAnimate 1s linear infinite;
+
+    &:nth-child(2) {
+      animation-delay: 0.1s;
+    }
+    &:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+    &:nth-child(3) {
+      animation-delay: 0.3s;
+    }
+  }
+}
+@keyframes loadingAnimate {
+  0% {
+    padding: 0;
+  }
+  10% {
+    padding: 2px;
+  }
+  20% {
+    padding: 4px;
+  }
+  30% {
+    padding: 6px;
+  }
+  40% {
+    padding: 7px;
+  }
+
+  50% {
+    padding: 8px;
+  }
+  60% {
+    padding: 6px;
+  }
+  70% {
+    padding: 4px;
+  }
+  80% {
+    padding: 2px;
+  }
+  90% {
+    padding: 1px;
+  }
+  100% {
+    padding: 0;
+  }
+}

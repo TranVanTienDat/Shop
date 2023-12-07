@@ -6,7 +6,7 @@ import { category } from '~/constants/category';
 import Button from '../Button/Button';
 import CardProduct from './CardProduct/CardProduct';
 import styles from './CategoriesShop.module.scss';
-import { Animate } from '~/features/Auth/Sign/SignIn';
+import { LoadingAnimate } from '../Loading/LoadingGlobal';
 
 const cx = classNames.bind(styles);
 function CategoriesShop() {
@@ -65,7 +65,7 @@ function CategoriesShop() {
             </div>
           ) : (
             <div className={cx('animate')}>
-              <Animate />
+              <LoadingAnimate />
             </div>
           )}
 

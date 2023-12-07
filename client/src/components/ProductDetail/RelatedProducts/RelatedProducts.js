@@ -10,7 +10,7 @@ import productApi from '~/api/modules/product.api';
 import { formatPrice } from '~/hook/func';
 const cx = classNames.bind(styles);
 
-export function RelatedProducts({ categories }) {
+function RelatedProducts({ categories, productID }) {
   const navigate = useNavigate();
   const [relatedProduct, setRelatedProduct] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -19,20 +19,21 @@ export function RelatedProducts({ categories }) {
       setIsLoading(true);
       const { res, err } = await productApi.getRelatedProducts({
         related: categories,
+        _id: productID,
       });
+      setIsLoading(false);
       if (res) {
         setRelatedProduct(res);
       }
       if (err) {
         console.log(err);
       }
-      setIsLoading(false);
     };
     getRelatedProducts();
-  }, [categories]);
+  }, [categories, productID]);
   return (
     <div className={cx('wrapper')}>
-      <h4 className={cx('title')}>Top sản phẩm tương tự</h4>
+      <h4 className={cx('title')}>Sản phẩm tương tự</h4>
       <div className={cx('list')}>
         {!isLoading ? (
           relatedProduct.map((item, i) => {
@@ -47,9 +48,7 @@ export function RelatedProducts({ categories }) {
                 <img className={cx('img')} src={item.images[0]} alt="" />
                 <h6 className={cx('name')}>{item.name}</h6>
                 <div className={cx('price')}>
-                  {`${formatPrice.format(
-                    item.selectProduct.listProduct[0].newPrice
-                  )}đ`}
+                  {`${formatPrice.format(item.selectProduct[0]?.newPrice)}đ`}
                 </div>
               </div>
             );
@@ -61,17 +60,18 @@ export function RelatedProducts({ categories }) {
     </div>
   );
 }
+export default RelatedProducts;
 
-export function SkeletonRelatedProduct() {
+export const SkeletonRelatedProduct = () => {
   return Array(3)
     .fill(0)
     .map((item, i) => {
       return (
-        <div key={i} className={cx('product')}>
-          <Skeleton height={70} className={cx('img')} />
-          <Skeleton />
-          <Skeleton width={70} />
+        <div key={i}>
+          <Skeleton style={{ paddingTop: '100%' }} />
+          <Skeleton style={{ margin: '10px 0' }} />
+          <Skeleton width={100} />
         </div>
       );
     });
-}
+};

@@ -1,4 +1,4 @@
-@import '../../../style/variables.scss';
+@import '../../style/variables.scss';
 
 .wrapper {
   width: 100%;
@@ -136,66 +136,5 @@
         background-color: $white-color;
       }
     }
-  }
-}
-
-.animate {
-  width: 100px;
-  height: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto;
-  .pointer {
-    background-color: #144e5c;
-    border-radius: 50%;
-    margin: 0 4px;
-    animation: loading 1s linear infinite;
-
-    &:nth-child(2) {
-      animation-delay: 0.1s;
-    }
-    &:nth-child(2) {
-      animation-delay: 0.2s;
-    }
-    &:nth-child(3) {
-      animation-delay: 0.3s;
-    }
-  }
-}
-@keyframes loading {
-  0% {
-    padding: 0;
-  }
-  10% {
-    padding: 2px;
-  }
-  20% {
-    padding: 4px;
-  }
-  30% {
-    padding: 6px;
-  }
-  40% {
-    padding: 7px;
-  }
-
-  50% {
-    padding: 8px;
-  }
-  60% {
-    padding: 6px;
-  }
-  70% {
-    padding: 4px;
-  }
-  80% {
-    padding: 2px;
-  }
-  90% {
-    padding: 1px;
-  }
-  100% {
-    padding: 0;
   }
 }

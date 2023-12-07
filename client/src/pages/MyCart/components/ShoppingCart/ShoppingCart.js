@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import cartApi from '~/api/modules/cart.api';
 import Button from '~/components/Button/Button';
 import { errMes, success } from '~/constants/ToastMessage/ToastMessage';
-import { Animate } from '~/features/Auth/Sign/SignIn';
+import { LoadingAnimate } from '~/components/Loading/LoadingGlobal';
 import { formatPrice } from '~/hook/func';
 import { onBuy } from '~/store/slice/BuyProductSlice';
 import { removeCartProduct } from '~/store/slice/myCart';
@@ -143,7 +143,7 @@ function ShoppingCart() {
               })
             ) : (
               <div className={cx('loading')}>
-                <Animate />
+                <LoadingAnimate />
               </div>
             )}
           </div>

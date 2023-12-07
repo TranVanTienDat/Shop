@@ -1,11 +1,14 @@
 import classNames from 'classnames/bind';
 import { useEffect, useState } from 'react';
 import ratingApi from '~/api/modules/ratingUser.api';
+// Skeleton
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 
 import RatingStar from '~/components/RatingStar/RatingStar';
 import styles from './Review.module.scss';
-import SkeletonCard from './SkeletonCard/SkeletonCard';
 const cx = classNames.bind(styles);
+
 function Review({ productID }) {
   const [listComment, setListComment] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -64,7 +67,7 @@ function Review({ productID }) {
               );
             })
           ) : (
-            <span className={cx('text')}>Không có bình luận</span>
+            <span className={cx('not-comment')}>Không có bình luận</span>
           )
         ) : (
           <SkeletonCard />
@@ -75,3 +78,28 @@ function Review({ productID }) {
 }
 
 export default Review;
+
+export const SkeletonCard = () => {
+  return Array(2)
+    .fill(0)
+    .map((item, i) => {
+      return (
+        <div style={{ display: 'flex', gap: '12px' }} key={i}>
+          <Skeleton circle width={50} height={50} />
+          <div>
+            <div style={{ display: 'flex', gap: '10px' }}>
+              <Skeleton width={70} />
+              <Skeleton width={70} />
+            </div>
+            <Skeleton width={50} />
+
+            <div style={{ display: 'flex', gap: '8px' }}>
+              <Skeleton width={70} height={70} />
+              <Skeleton width={70} height={70} />
+            </div>
+            <Skeleton width={250} count={2} />
+          </div>
+        </div>
+      );
+    });
+};

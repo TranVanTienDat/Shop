@@ -7,116 +7,102 @@
   padding: 10px;
   max-width: 200px;
   background-color: $background-color;
-  .inner {
-    .search {
-      position: relative;
-      .input {
-        width: 100%;
-        padding: 14px;
-        border-radius: 4px;
-        outline: none;
-        background-color: transparent;
-        border: 1.5px solid $jetBlack-color;
-      }
-      .search__icon {
-        position: absolute;
-        top: 50%;
-        right: 3px;
-        padding: 6px;
-        font-size: 1.8rem;
-        transform: translateY(-50%);
-        color: #9a9ab0;
-        cursor: pointer;
-        background-color: $background-color;
-      }
-    }
-    .price {
-      margin: 24px 0;
-      .heading {
-        margin-bottom: 10px;
-        @include d-flex($center, $s-between);
-        .title {
-          font-size: 2rem;
-          font-weight: 600;
-          color: $jetBlack-color;
-        }
-        .icon {
-          font-size: 1.8rem;
-          color: $jetBlack-color;
-        }
-      }
-      .menu {
-        @include flex-direction();
-        gap: 8px;
-        .menu__input {
-          padding: 4px;
-          width: 100px;
-          font-size: 1.5rem;
-          border-radius: 4px;
-          outline: none;
-          color: $firebrick-red-color;
-          border: 1.5px solid $jetBlack-color;
-        }
-        .menu__text {
-          margin: 0 4px;
-          font-size: 1.6rem;
-          color: $jetBlack-color;
-        }
-      }
-    }
 
-    .product__categories {
-      margin-top: 30px;
-      .heading {
-        font-size: 2rem;
-        letter-spacing: 0.3px;
-      }
-      .categories {
-        margin: 24px 0;
-        .item {
-          margin: 12px 0;
-          padding: 6px 0;
-          cursor: pointer;
-          color: $jetBlack-color;
-          @include d-flex($center, $s-between);
-          .title {
-            font-size: 1.6rem;
-            font-weight: 600;
-          }
-        }
-      }
-    }
+  .search {
+    width: 100%;
+    padding: 14px;
+    border-radius: 4px;
+    outline: none;
+    background-color: transparent;
+    border: 1.5px solid $jetBlack-color;
+  }
 
-    .product__featured {
-      margin-top: 62px;
-      .heading {
+  .price {
+    margin: 24px 0;
+    .heading {
+      margin-bottom: 10px;
+      @include d-flex($center, $s-between);
+      .title {
         font-size: 2rem;
+        font-weight: 600;
         color: $jetBlack-color;
       }
-      .list {
-        margin: 32px 0;
-        .product {
-          margin: 24px 0;
-          cursor: pointer;
-          @include d-flex($center, $f-start);
-          .img {
-            width: 80px;
-            border-radius: 8px;
-            margin-right: 6px;
+      .icon {
+        font-size: 1.8rem;
+        color: $jetBlack-color;
+      }
+    }
+    .menu {
+      @include flex-direction();
+      gap: 8px;
+      .menu__input {
+        padding: 4px;
+        width: 100px;
+        font-size: 1.5rem;
+        border-radius: 4px;
+        outline: none;
+        color: $firebrick-red-color;
+        border: 1.5px solid $jetBlack-color;
+      }
+      .menu__text {
+        margin: 0 4px;
+        font-size: 1.6rem;
+        color: $jetBlack-color;
+      }
+    }
+  }
+
+  .product__categories {
+    margin-top: 30px;
+    .heading {
+      font-size: 2rem;
+      letter-spacing: 0.3px;
+    }
+    .categories {
+      margin: 24px 0;
+      .item {
+        margin: 12px 0;
+        padding: 6px 0;
+        cursor: pointer;
+        color: $jetBlack-color;
+        @include d-flex($center, $s-between);
+        .title {
+          font-size: 1.6rem;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+
+  .product__featured {
+    margin-top: 62px;
+    .heading {
+      font-size: 2rem;
+      color: $jetBlack-color;
+    }
+    .list {
+      margin: 32px 0;
+      .product {
+        margin: 24px 0;
+        cursor: pointer;
+        @include d-flex($center, $f-start);
+        .img {
+          width: 80px;
+          border-radius: 8px;
+          margin-right: 6px;
+        }
+        .description {
+          margin-left: 6px;
+          overflow: hidden;
+          .name {
+            font-size: 1.6rem;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: $jetBlack-color;
+            @include format-text-line(1);
           }
-          .description {
-            margin-left: 6px;
-            overflow: hidden;
-            .name {
-              font-size: 1.6rem;
-              font-weight: 500;
-              margin-bottom: 8px;
-              color: $jetBlack-color;
-              @include format-text-line(1);
-            }
-            .price {
-              color: $firebrick-red-color;
-            }
+          .price {
+            color: $firebrick-red-color;
           }
         }
       }

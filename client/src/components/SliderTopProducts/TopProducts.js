@@ -85,14 +85,10 @@ function TopProducts() {
                     <h3 className={cx('brand')}>{data?.categories[0]}</h3>
                     <div className={cx('price')}>
                       <span className={cx('item')}>
-                        {formatPrice.format(
-                          data?.selectProduct?.listProduct[0]?.newPrice
-                        )}
+                        {formatPrice.format(data?.selectProduct[0]?.newPrice)}
                       </span>
                       <span className={cx('item', 'item--color')}>
-                        {formatPrice.format(
-                          data.selectProduct.listProduct[0]?.oldPrice
-                        )}
+                        {formatPrice.format(data.selectProduct[0]?.oldPrice)}
                       </span>
                     </div>
                   </div>

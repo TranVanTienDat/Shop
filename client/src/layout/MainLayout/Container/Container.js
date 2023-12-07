@@ -4,9 +4,6 @@ import { useDispatch } from 'react-redux';
 import { setAppState } from '~/store/slice/stateAppSlice';
 function Container({ children, state }) {
   const dispatch = useDispatch();
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
 
   useEffect(() => {
     if (state !== undefined) {

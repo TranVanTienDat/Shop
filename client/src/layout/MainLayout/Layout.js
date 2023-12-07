@@ -8,12 +8,14 @@ import ModalRating from '~/pages/MyCart/components/Checkout/ModalRating/ModalRat
 import { setInfo } from '~/store/slice/infoDataUser';
 import { getCartProduct } from '~/store/slice/myCart';
 import { userData } from '~/store/slice/selector';
+import { setAppState } from '~/store/slice/stateAppSlice';
 import { parseDate } from '~/utils/timeConversion';
 import SidebarResponsive from '../../features/shop/SideBar/SidebarResponsive/SidebarResponsive';
-import Container from './Container/Container';
+
+import { Outlet } from 'react-router-dom';
 import Footer from './Footer/Footer';
 import Header from './Header/Header';
-function MainLayout({ children }) {
+function MainLayout() {
   const dispatch = useDispatch();
   const { status } = useSelector(userData);
   useEffect(() => {
@@ -49,18 +51,32 @@ function MainLayout({ children }) {
   }, [status, dispatch]);
   return (
     <>
-      <Header />
       <SidebarResponsive />
       <Cart />
       <ModalRating />
-      <Container children={children} />
-      <Footer />
+      <Outlet />
     </>
   );
 }
+export default MainLayout;
 
-MainLayout.propTypes = {
+export const PageWrapper = ({ children, state }) => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (state !== undefined) {
+      window.scrollTo(0, 0);
+      dispatch(setAppState(state));
+    }
+  }, [state, dispatch]);
+
+  return (
+    <>
+      <Header />
+      {children}
+      <Footer />
+    </>
+  );
+};
+PageWrapper.propTypes = {
   children: propTypes.node,
 };
-
-export default MainLayout;

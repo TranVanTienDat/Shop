@@ -15,9 +15,9 @@ const productEndpoints = {
   getTopProducts: 'product/top',
   getCategoriesProduct: ({ category }) =>
     `product/category?category=${category}`,
-  getRelatedProducts: ({ related }) => {
+  getRelatedProducts: ({ related, _id }) => {
     const string = related.join(',');
-    return `product/related?category=${string}`;
+    return `product/related?category=${string}&_id=${_id}`;
   },
 };
 
@@ -85,10 +85,10 @@ const productApi = {
     }
   },
 
-  getRelatedProducts: async ({ related }) => {
+  getRelatedProducts: async ({ related, _id }) => {
     try {
       const res = await publicClient.get(
-        productEndpoints.getRelatedProducts({ related })
+        productEndpoints.getRelatedProducts({ related, _id })
       );
       return { res };
     } catch (err) {
