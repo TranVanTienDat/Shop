@@ -1,21 +1,22 @@
 //Page
+import ProductDetail from '~/components/ProductDetail/ProductDetail';
 import config from '~/config';
+import { SignIn, SignUp } from '~/features/Auth/Auth';
 import Popper from '~/features/Auth/Popper/Popper';
+import ResetPassword from '~/features/Auth/resetPassword/ResetPassword';
+import AccountWrapper from '~/pages/Account/AccountWrapper';
+import {
+  ChangePassword,
+  DetailInfo,
+} from '~/pages/Account/components/Components';
+import Notification from '~/pages/Account/components/Notification/Notification';
 import Contact from '~/pages/Contact/Contact';
 import Gallery from '~/pages/Gallery/Gallery';
 import Home from '~/pages/Home/Home';
-import MyCart from '~/pages/MyCart/MyCart';
+import MyCartWrapper from '~/pages/MyCart/MyCartWrapper';
+import { Checkout, ShoppingCart } from '~/pages/MyCart/components/Components';
 import OrderOnline from '~/pages/OrderOnline/OrderOnline';
-import Account from '~/pages/ProfileUser/Account/Account';
-import ResetPassword from '~/pages/ProfileUser/resetPassword/ResetPassword';
-import ProductDetail from '~/components/ProductDetail/ProductDetail';
 import PaymentOrder from '~/pages/PaymentOrder/PaymentOrder';
-import ShoppingCart from '~/pages/MyCart/components/ShoppingCart/ShoppingCart';
-import Checkout from '~/pages/MyCart/components/Checkout/Checkout';
-import DetailInfo from '~/pages/ProfileUser/Account/components/DetailInfo/DetailInfo';
-import ChangePassword from '~/pages/ProfileUser/Account/components/ChangePassword/ChangePassword';
-import Notification from '~/pages/ProfileUser/Account/components/Notification/Notification';
-import { SignIn, SignUp } from '~/features/Auth/Auth';
 // Public routes
 const publicRoutes = [
   { path: config.routes.home, component: Home, index: true, state: 'home' },
@@ -24,11 +25,6 @@ const publicRoutes = [
     path: config.routes.orderOnline,
     component: OrderOnline,
     state: 'shop',
-  },
-  {
-    path: config.routes.profileUser,
-    component: Account,
-    state: null,
   },
   {
     path: config.routes.gallery,
@@ -50,31 +46,33 @@ const publicRoutes = [
   {
     path: config.routes.shoppingCart,
     component: ShoppingCart,
-    childrenLayout: MyCart,
+    childrenLayout: MyCartWrapper,
     state: 'shoppingcart',
   },
   {
     path: config.routes.checkout,
     component: Checkout,
-    childrenLayout: MyCart,
+    childrenLayout: MyCartWrapper,
     state: 'checkout',
   },
   {
     path: config.routes.profile,
     component: DetailInfo,
-    childrenLayout: Account,
+    childrenLayout: AccountWrapper,
     state: 'account',
+    layout: null,
   },
   {
     path: config.routes.changePassword,
     component: ChangePassword,
-    childrenLayout: Account,
+    childrenLayout: AccountWrapper,
     state: 'changePassword',
+    layout: null,
   },
   {
     path: config.routes.setting,
     component: Notification,
-    childrenLayout: Account,
+    childrenLayout: AccountWrapper,
     state: 'setting',
   },
 

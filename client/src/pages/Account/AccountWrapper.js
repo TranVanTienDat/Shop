@@ -16,10 +16,11 @@ import images from '~/assets/images';
 import { sideBar } from '~/constants/navigate';
 // import { UserAuth } from '~/firebase/context/AuthContext';
 import { state, userData } from '~/store/slice/selector';
-import styles from './Account.module.scss';
+import styles from './AccountWrapper.module.scss';
+import Footer from '~/layout/MainLayout/Footer/Footer';
 const cx = classNames.bind(styles);
 
-function Account({ children }) {
+function AccountWrapper({ children }) {
   // const { logOut } = UserAuth();
   const { appState } = useSelector(state);
   const navigate = useNavigate();
@@ -106,10 +107,11 @@ function Account({ children }) {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }
-Account.propTypes = {
+AccountWrapper.propTypes = {
   children: propTypes.node,
 };
-export default Account;
+export default AccountWrapper;

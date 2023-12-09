@@ -1,6 +1,6 @@
-@import '../../../../style/variables.scss';
+@import '../../../style/variables.scss';
 
-.wrapper {
+.wrapper__1 {
   margin: 30px 0;
 
   .heading {
@@ -203,6 +203,172 @@
             }
           }
         }
+      }
+    }
+  }
+}
+
+.wrapper__2 {
+  margin: 30px 0;
+  @include breakpoint(tm) {
+    display: block;
+  }
+  .heading {
+    @include breakpoint(xm) {
+      font-size: 2.1rem;
+    }
+    font-size: 3.4rem;
+    color: $jetBlack-color;
+  }
+  .container {
+    @include breakpoint(tm) {
+      display: block;
+    }
+    margin-top: 20px;
+    @include d-flex($f-start, $center);
+    gap: 50px;
+    .list {
+      flex: 6;
+      overflow: hidden;
+      .product {
+        position: relative;
+        margin-bottom: 20px;
+        @include flex-alight($f-end);
+        gap: 10px;
+        .img {
+          @include breakpoint(xm) {
+            width: 100px;
+            height: 100px;
+          }
+          width: 150px;
+          height: 150px;
+          border-radius: 4px;
+        }
+        .check {
+          position: absolute;
+          top: 10px;
+          left: 8px;
+          z-index: 1;
+          cursor: pointer;
+        }
+        .info {
+          overflow: hidden;
+          .name {
+            @include breakpoint(xm) {
+              font-size: 1.6rem;
+            }
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: $jetBlack-color;
+            @include format-text-line(1);
+          }
+          .flex {
+            @include d-flex($f-start, $s-between);
+            .title {
+              @include breakpoint(xm) {
+                margin: 4px;
+                font-size: 1.6rem;
+              }
+              margin: 6px;
+              @include flex-justify($s-between);
+              flex-direction: column;
+              .text {
+                @include breakpoint(xm) {
+                  font-size: 1.4rem;
+                }
+                font-size: 1.6rem;
+                margin-bottom: 5px;
+                color: $jetBlack-color;
+              }
+            }
+          }
+
+          .total {
+            @include d-flex($f-end, $s-between);
+            .price {
+              @include breakpoint(tm) {
+                font-size: 1.6rem;
+              }
+              position: relative;
+              font-size: 3rem;
+              margin-right: 20px;
+              color: $primary-color;
+              &::after {
+                @include breakpoint(tm) {
+                  font-size: 1.4rem;
+                }
+                position: absolute;
+                content: 'đ';
+                font-size: 1.8rem;
+                top: auto;
+                right: auto;
+                color: inherit;
+              }
+            }
+            .mobile__icon-remote {
+              @include breakpoint(xm) {
+                display: block;
+              }
+              display: none;
+              font-size: 2.8rem;
+              cursor: pointer;
+              color: $firebrick-red-color;
+              &:active {
+                filter: brightness(0.8);
+              }
+            }
+            .button {
+              @include breakpoint(xm) {
+                display: none;
+              }
+              display: flex;
+              gap: 10px;
+            }
+          }
+        }
+      }
+      .loading {
+        margin-top: 50px;
+      }
+    }
+
+    .check-out {
+      flex: 4;
+      padding: 10px;
+      background-color: $white-color;
+
+      .cart-total {
+        .name {
+          display: block;
+          font-size: 2rem;
+          font-weight: 600;
+          color: $firebrick-red-color;
+        }
+
+        .pay {
+          margin: 20px 6px;
+          color: $jetBlack-color;
+          @include d-flex($center, $s-between);
+          .title,
+          .value {
+            font-size: 1.7rem;
+            font-weight: 600;
+          }
+          .value {
+            position: relative;
+            &::after {
+              position: absolute;
+              content: 'đ';
+              top: 0;
+              font-size: 1.2rem;
+              right: auto;
+              color: $primary-color;
+            }
+          }
+        }
+      }
+      .button {
+        @include flex-justify($f-end);
       }
     }
   }

@@ -4,11 +4,11 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { menuCart } from '~/constants/navigate';
 import { state } from '~/store/slice/selector';
-import styles from './MyCart.module.scss';
+import styles from './MyCartWrapper.module.scss';
 
 const cx = classNames.bind(styles);
 
-function MyCart({ children }) {
+function MyCartWrapper({ children }) {
   const navigate = useNavigate();
   const { appState } = useSelector(state);
   return (
@@ -30,8 +30,8 @@ function MyCart({ children }) {
     </div>
   );
 }
-MyCart.propTypes = {
+MyCartWrapper.propTypes = {
   children: propTypes.node,
 };
 
-export default MyCart;
+export default MyCartWrapper;

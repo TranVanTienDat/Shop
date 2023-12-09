@@ -1,8 +1,6 @@
-@import '../../../style/variables.scss';
+@import '../../style/variables.scss';
 
 .wrapper {
-  padding-bottom: 20px;
-  margin-top: calc($height-header);
   background-color: $background-color;
   .heading {
     @include breakpoint(xm) {
@@ -15,10 +13,10 @@
     color: $primary-color;
   }
   .inner {
-    margin: 0 10px;
     @include breakpoint(xs) {
       margin: 0;
     }
+    margin: 0 10px 20px 10px;
     .account {
       display: flex;
       gap: 10px;

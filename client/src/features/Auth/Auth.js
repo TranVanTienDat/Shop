@@ -92,6 +92,13 @@ export const SignIn = () => {
               />
               <div className={cx('error')}>{errors.password?.message}</div>
             </div>
+            <div
+              className={cx('forgot-password')}
+              onClick={() => navigate('/reset-password')}
+            >
+              Forgot password
+            </div>
+
             <div className={cx('button')}>
               <Button large>Log in</Button>
             </div>

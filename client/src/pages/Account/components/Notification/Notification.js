@@ -1,10 +1,10 @@
-import Default from '../Default/Default';
+import { Wrapper } from '../Components';
 
 function Notification() {
   return (
-    <Default title="Cài đặt thông báo">
+    <Wrapper title="Cài đặt thông báo">
       <h3 style={{ textAlign: 'center' }}>updating...</h3>
-    </Default>
+    </Wrapper>
   );
 }
 

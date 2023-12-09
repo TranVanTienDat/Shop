@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import userApi from '~/api/modules/auth.api';
 import cartApi from '~/api/modules/cart.api';
 import Cart from '~/components/Cart/Cart';
-import ModalRating from '~/pages/MyCart/components/Checkout/ModalRating/ModalRating';
+import ModalRating from '~/pages/MyCart/components/ModalRating/ModalRating';
 import { setInfo } from '~/store/slice/infoDataUser';
 import { getCartProduct } from '~/store/slice/myCart';
 import { userData } from '~/store/slice/selector';

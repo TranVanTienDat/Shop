@@ -44,7 +44,7 @@ function ResetPassword() {
 
         <div className={cx('body')}>
           <input placeholder="Email" {...register('email')} />
-          <Button type="submit" danger>
+          <Button type="submit" large>
             Send
           </Button>
         </div>

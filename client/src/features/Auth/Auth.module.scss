@@ -17,6 +17,7 @@
       }
       font-size: 4rem;
     }
+
     .register {
       .text {
         @include breakpoint(xs) {
@@ -78,6 +79,13 @@
             font-size: 1.6rem;
             color: $firebrick-red-color;
           }
+        }
+        .forgot-password {
+          text-align: right;
+          font-size: 1.4rem;
+          margin-top: -12px;
+          cursor: pointer;
+          color: #1a83ff;
         }
         .button {
           width: 100%;
