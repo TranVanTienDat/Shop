@@ -11,24 +11,33 @@ import userApi from '~/api/modules/auth.api';
 import Button from '~/components/Button/Button';
 import { success } from '~/constants/ToastMessage/ToastMessage';
 import styles from './ResetPassword.module.scss';
+import { useDispatch } from 'react-redux';
+import { setIsLoadingButton } from '~/store/slice/loadingSlice';
 
 const cx = classNames.bind(styles);
 function ResetPassword() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   // form rules
   const validationSchema = Yup.object().shape({
     email: Yup.string().required('Email is required').email('Email is invalid'),
   });
   const formOptions = { resolver: yupResolver(validationSchema) };
-  const { register, handleSubmit } = useForm(formOptions);
+  const { register, handleSubmit, formState } = useForm(formOptions);
+  const { errors } = formState;
 
   const onSubmit = async (data) => {
-    try {
-      const res = await userApi.forgotPassword({ email: data.email });
-      success(res.data.message);
-      navigate('/log-in');
-    } catch (error) {
-      errMes(error.response.data.message);
+    dispatch(setIsLoadingButton({ isLoadingButton: true }));
+    const { res, err } = await userApi.resetPassword({ email: data.email });
+    dispatch(setIsLoadingButton({ isLoadingButton: false }));
+
+    if (res) {
+      success(res.message);
+      navigate('/sign-in');
+    }
+
+    if (err) {
+      errMes(err.response?.data.message);
     }
   };
 
@@ -43,7 +52,10 @@ function ResetPassword() {
         </div>
 
         <div className={cx('body')}>
-          <input placeholder="Email" {...register('email')} />
+          <div className={cx('box')}>
+            <input placeholder="Email" {...register('email')} />
+            <div className={cx('err')}>{errors.email?.message}</div>
+          </div>
           <Button type="submit" large>
             Send
           </Button>

@@ -9,5 +9,6 @@ route.get("/get-user", tokenMiddleware.auth, auth.getUserData);
 route.put("/update-user", tokenMiddleware.auth, auth.updateUser);
 route.put("/update-password", tokenMiddleware.auth, auth.updatePassword);
 route.post("/forgot-password", auth.forgotPassword);
+route.post("/reset-password", auth.resetPassword);
 route.delete("/remote-user", tokenMiddleware.auth, auth.deleteUser);
 module.exports = route;

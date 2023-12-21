@@ -7,6 +7,7 @@ const authEndpoints = {
   updateUser: 'user/update-user',
   updatePassword: 'user/update-password',
   forgotPassword: 'user/forgot-password',
+  resetPassword: 'user/reset-password',
   remoteUser: 'user/remote-user',
   getInfo: 'user/get-user',
 };
@@ -39,6 +40,16 @@ const userApi = {
         authEndpoints.forgotPassword,
         payload
       );
+
+      return { res };
+    } catch (err) {
+      console.log('err');
+      return { err };
+    }
+  },
+  resetPassword: async (payload) => {
+    try {
+      const res = await publicClient.post(authEndpoints.resetPassword, payload);
 
       return { res };
     } catch (err) {
