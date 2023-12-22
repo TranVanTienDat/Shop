@@ -32,16 +32,17 @@
       @include breakpoint(tm) {
         margin: 0;
       }
-      margin: 0 20px;
+      margin: 0 10px;
       .info {
         @include breakpoint(tm) {
           display: block;
           padding: 10px;
         }
         position: relative;
+        overflow: hidden;
+        padding: 16px;
+        @include flex-alight($f-start);
         gap: 20px;
-        padding: 20px;
-        display: flex;
         background-color: $white-color;
         .info__img {
           @include breakpoint(md) {
@@ -52,8 +53,8 @@
           @include breakpoint(xs) {
             margin: -10px;
           }
+          flex: 4;
           overflow: hidden;
-          flex: 1;
           .img__main {
             @include breakpoint(md) {
               flex: 1;
@@ -94,7 +95,7 @@
           }
         }
         .info__product {
-          flex: 1;
+          flex: 6;
           .name {
             @include breakpoint(tm) {
               margin-top: 20px;
@@ -306,8 +307,11 @@
       }
 
       .description {
+        @include breakpoint(tm) {
+          padding: 10px;
+        }
         margin-top: 30px;
-        padding: 10px;
+        padding: 16px;
         display: flex;
         gap: 10px;
         background-color: $white-color;
