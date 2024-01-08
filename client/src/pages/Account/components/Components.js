@@ -79,7 +79,7 @@ export const DetailInfo = () => {
       ...info,
       dateBirth: `${dateBirth.day}/${dateBirth.month}/${dateBirth.year}`,
     });
-    dispatch(setIsLoadingButton({ isLoadingButton: true }));
+    dispatch(setIsLoadingButton({ isLoadingButton: false }));
     if (res) {
       dispatch(setInfo({ ...info }));
       setIsSetInfoBtn(false);
