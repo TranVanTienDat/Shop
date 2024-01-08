@@ -10,8 +10,6 @@ export const myCart = (state) => state.myCart;
 //select loading
 export const setGlobalLoading = (state) => state.setGlobalLoading;
 
-// search params
-export const searchParams = (state) => state.searchParams;
 // voucher
 export const voucherSelector = (state) => state.voucher;
 

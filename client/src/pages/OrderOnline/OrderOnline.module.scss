@@ -1,0 +1,14 @@
+@import '../../style/variables.scss';
+.shop__list {
+  margin: 0 auto 20px;
+  padding: 10px;
+  max-width: 1340px;
+  .products {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .no-product {
+    width: 100%;
+  }
+}

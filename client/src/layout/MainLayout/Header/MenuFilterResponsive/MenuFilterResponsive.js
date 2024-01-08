@@ -3,15 +3,22 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classNames from 'classnames/bind';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import {
+  createSearchParams,
+  useNavigate,
+  useSearchParams,
+} from 'react-router-dom';
 import Button from '~/components/Button/Button';
 import { setToggleMenuFilter } from '~/store/slice/loadingSlice';
-import { setPrice, setRating } from '~/store/slice/searchParamsSlice';
 import { setGlobalLoading } from '~/store/slice/selector';
+import { NavigateSearchParams } from '~/utils/updateSearchParams';
 import styles from './MenuFilterResponsive.module.scss';
 
 const cx = classNames.bind(styles);
 function TopSidebar() {
   const dispatch = useDispatch();
+  const [params] = useSearchParams();
+  const navigate = useNavigate();
   const { isToggleMenuFilter } = useSelector(setGlobalLoading);
   const [isToggle, setIsToggle] = useState(false);
   const [filter, setFilter] = useState({
@@ -31,9 +38,11 @@ function TopSidebar() {
     dispatch(setToggleMenuFilter({ isToggleMenuFilter: false }));
   };
   const handleSearch = () => {
-    const { minPrice, maxPrice, rating } = filter;
-    dispatch(setPrice({ minPrice, maxPrice }));
-    dispatch(setRating({ rating }));
+    const navigateSearch = NavigateSearchParams(params, filter);
+    navigate({
+      pathname: '/search',
+      search: `?${createSearchParams(navigateSearch)}`,
+    });
     handleClose();
   };
   return (

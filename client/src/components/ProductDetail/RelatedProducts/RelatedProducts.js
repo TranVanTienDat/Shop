@@ -1,13 +1,13 @@
 import classNames from 'classnames/bind';
-import styles from './RelatedProducts.module.scss';
-import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import styles from './RelatedProducts.module.scss';
 // Skeleton
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 
 import productApi from '~/api/modules/product.api';
-import { formatPrice } from '~/hook/func';
+import { formatPrice } from '~/utils/func';
 const cx = classNames.bind(styles);
 
 function RelatedProducts({ categories, productID }) {

@@ -2,13 +2,36 @@ const userDB = require("../models/auth.model");
 const productDB = require("../models/products.model");
 const statusOrderDB = require("../models/statusOrder.model");
 const getDate = require("../utils/date");
-exports.getProducts = async (req, res) => {
+
+exports.getAllProduct = async (req, res) => {
   try {
-    const { keyword, minPrice, maxPrice, category, rating, page, limit } =
-      req.query;
-    const pageNumber = parseInt(page) || 1;
-    const itemsPerPage = parseInt(limit) || 5;
-    const skip = (pageNumber - 1) * itemsPerPage;
+    const { page, limit } = req.query;
+    const pageNumber = parseInt(page) || 0;
+    const itemsPerPage = parseInt(limit) || 18;
+    const skip = pageNumber * itemsPerPage;
+
+    const products = await productDB.find().limit(itemsPerPage).skip(skip);
+
+    const totalCount = await productDB.countDocuments();
+    const totalPages = Math.ceil(totalCount / itemsPerPage);
+    res.status(200).send({
+      products,
+      totalPages,
+      currentPage: pageNumber,
+      itemsPerPage,
+    });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
+exports.getFilterProducts = async (req, res) => {
+  try {
+    const { keyword, minPrice, maxPrice, rating, page, limit } = req.query;
+    const pageNumber = parseInt(page) || 0;
+    const itemsPerPage = parseInt(limit) || 18;
+    const skip = pageNumber * itemsPerPage;
 
     const filter = {};
 
@@ -33,10 +56,6 @@ exports.getProducts = async (req, res) => {
       filter["selectProduct.newPrice"] = {
         $lte: parseInt(maxPrice),
       };
-    }
-
-    if (category !== "") {
-      filter.categories = { $regex: category, $options: "i" };
     }
 
     if (parseInt(rating) > 0) {
@@ -67,11 +86,24 @@ exports.getTopProducts = async (req, res) => {
     const topProducts = await productDB
       .find({}, { _id: 1, name: 1, categories: 1, images: 1, selectProduct: 1 })
       .sort({ rating: -1 })
-      .limit(7);
+      .limit(4);
     if (!topProducts) {
       return res.status(404).json({ error: "Product not found" });
     }
     return res.status(200).json(topProducts);
+  } catch (error) {}
+};
+
+exports.getBestseller = async (req, res) => {
+  try {
+    const bestsellerProduct = await productDB
+      .find({}, { _id: 1, name: 1, categories: 1, images: 1, selectProduct: 1 })
+      .sort({ sold: -1 })
+      .limit(7);
+    if (!bestsellerProduct) {
+      return res.status(404).json({ error: "Product not found" });
+    }
+    return res.status(200).json(bestsellerProduct);
   } catch (error) {}
 };
 

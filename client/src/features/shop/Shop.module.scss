@@ -2,9 +2,10 @@
 
 // ShopFood
 .shop {
-  @include breakpoint(xm) {
+  @include breakpoint(tm) {
     padding: 10px 0;
   }
+  padding: 10px;
   max-width: 1340px;
   margin: auto;
 
@@ -20,48 +21,17 @@
       flex: 1;
       border-width: 5px;
       .products {
-        @include breakpoint(md) {
-          grid-template-columns: repeat(4, minmax(150px, 1fr));
+        @include breakpoint(tm) {
+          padding: 0 10px;
         }
-        @include breakpoint(sm) {
-          grid-template-columns: repeat(3, minmax(50px, 1fr));
-        }
-        @include breakpoint(xs) {
-          grid-template-columns: repeat(2, minmax(50px, 1fr));
-        }
-        display: grid;
-        grid-template-columns: repeat(5, minmax(150px, 1fr));
-        grid-gap: 8px;
-        padding: 0 10px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
       }
       .no-product {
         width: 100%;
       }
 
-      .page {
-        margin-top: 40px;
-        @include flex-justify($center);
-        .navigation {
-          padding: 6px;
-          border-radius: 8px;
-          border: 1px solid $black-color;
-          .button {
-            margin: 0 8px;
-            font-size: 2rem;
-            padding: 6px 12px;
-            border-radius: 4px;
-            background-color: $white-color;
-            &:hover {
-              cursor: pointer;
-              background-color: #5ab1bb;
-            }
-          }
-          .button__active {
-            color: $white-color;
-            background-color: #5ab1bb;
-          }
-        }
-      }
       .animate {
         height: 200px;
         @include d-flex($center, $center);

@@ -7,7 +7,7 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import 'react-lazy-load-image-component/src/effects/opacity.css';
 
-import { formatPrice } from '~/hook/func';
+import { formatPrice } from '~/utils/func';
 import styles from './Card.module.scss';
 const cx = classNames.bind(styles);
 function Card({ name, sold, rating, selectProduct, _id, images }) {

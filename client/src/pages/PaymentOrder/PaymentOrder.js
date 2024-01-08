@@ -18,7 +18,7 @@ import {
   success,
   warning,
 } from '~/constants/ToastMessage/ToastMessage';
-import { formatPrice } from '~/hook/func';
+import { formatPrice } from '~/utils/func';
 import { setIsModal } from '~/store/slice/infoDataUser';
 import { setIsLoadingButton } from '~/store/slice/loadingSlice';
 import { buySelector, userData, voucherSelector } from '~/store/slice/selector';

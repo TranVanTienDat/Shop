@@ -5,55 +5,63 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classNames from 'classnames/bind';
 import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import {
+  createSearchParams,
+  useNavigate,
+  useSearchParams,
+} from 'react-router-dom';
+
+// Lazy loading image
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
+import 'react-lazy-load-image-component/src/effects/opacity.css';
+
 import Button from '~/components/Button/Button';
-import { setSearch } from '~/store/slice/searchParamsSlice';
-import { setGlobalLoading } from '~/store/slice/selector';
+import { NavigateSearchParams } from '~/utils/updateSearchParams';
 import styles from './SideBar.module.scss';
+import productApi from '~/api/modules/product.api';
+import { formatPrice } from '~/utils/func';
 
 const cx = classNames.bind(styles);
 
 function SideBar() {
-  const dispatch = useDispatch();
-  const { isToggleSidebarFilter } = useSelector(setGlobalLoading);
+  const navigate = useNavigate();
+  const [params] = useSearchParams();
   const [filter, setFilter] = useState({
-    keyword: '',
     minPrice: 0,
     maxPrice: 0,
     category: '',
   });
-
-  const [isToggle, setIsToggle] = useState(false);
+  const [bestSellerProduct, setBestSellerProduct] = useState([]);
 
   useEffect(() => {
-    setIsToggle(isToggleSidebarFilter);
-  }, [isToggleSidebarFilter]);
+    const getBestSellerProduct = async () => {
+      const { res } = await productApi.getBestseller();
+      if (res) {
+        setBestSellerProduct(res);
+      }
+    };
+    getBestSellerProduct();
+  }, []);
 
   const handleFilter = (field, value) => {
-    if (field === 'keyword') {
-      if (!value.startsWith(' ')) {
-        setFilter((prev) => ({ ...prev, [field]: value }));
-      }
-    } else {
-      setFilter((prev) => ({ ...prev, [field]: value }));
-    }
+    setFilter((prev) => ({ ...prev, [field]: value }));
   };
 
   const handleSearch = () => {
-    dispatch(setSearch({ ...filter }));
+    const navigateSearch = NavigateSearchParams(params, filter);
+    navigate({
+      pathname: '/search',
+      search: `?${createSearchParams(navigateSearch)}`,
+    });
+  };
+
+  const handleNavigate = (name, _id) => {
+    navigate(`/detail-product/${name}/${_id}`);
   };
 
   return (
-    <div
-      className={cx('wrapper', isToggle ? 'wrapper--open' : 'wrapper--close')}
-    >
-      <input
-        className={cx('search')}
-        placeholder="Search products"
-        value={filter.keyword}
-        onChange={(e) => handleFilter('keyword', e.target.value)}
-      />
-
+    <div className={cx('wrapper')}>
       <div className={cx('price')}>
         <div className={cx('heading')}>
           <span className={cx('title')}>Price</span>
@@ -109,7 +117,34 @@ function SideBar() {
       <div className={cx('product__featured')}>
         <h1 className={cx('heading')}>Featured Product</h1>
         <div className={cx('list')}>
-          <div className={cx('product')}>
+          {bestSellerProduct.length > 0 &&
+            bestSellerProduct.map((item, i) => {
+              return (
+                <div
+                  className={cx('product')}
+                  key={i}
+                  onClick={() => handleNavigate(item.name, item._id)}
+                >
+                  <LazyLoadImage
+                    src={item.images[0]}
+                    effect="blur"
+                    width="64px"
+                    height="64px"
+                    alt=""
+                    placeholderSrc={item.images[0]}
+                    style={{ borderRadius: '4px' }}
+                  />
+
+                  <div className={cx('description')}>
+                    <h4 className={cx('name')}>{item.name}</h4>
+                    <span className={cx('price')}>
+                      {formatPrice.format(item.selectProduct[0].newPrice)}
+                    </span>
+                  </div>
+                </div>
+              );
+            })}
+          {/* <div className={cx('product')}>
             <img
               className={cx('img')}
               src="https://down-vn.img.susercontent.com/file/vn-11134207-7qukw-lfalvvg3pjdj5e"
@@ -156,7 +191,7 @@ function SideBar() {
               <h4 className={cx('name')}>Tropical Playsuit</h4>
               <span className={cx('price')}>$100</span>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

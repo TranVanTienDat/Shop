@@ -1,78 +1,59 @@
 import classNames from 'classnames/bind';
-import { useEffect, useMemo, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
+import ReactPaginate from 'react-paginate';
+import {
+  createSearchParams,
+  useNavigate,
+  useSearchParams,
+} from 'react-router-dom';
 import productApi from '~/api/modules/product.api';
-import { searchParams } from '~/store/slice/selector';
+import images from '~/assets/images';
 import { LoadingAnimate } from '~/components/Loading/LoadingGlobal';
+import {
+  NavigateSearchParams,
+  updateSearchParams,
+} from '~/utils/updateSearchParams';
 import styles from './Shop.module.scss';
 import SideBar from './SideBar/SideBar';
 import Card from './card/Card';
-import images from '~/assets/images';
 const cx = classNames.bind(styles);
 function Shop() {
-  const dispatch = useDispatch();
-  const { keyword, minPrice, maxPrice, category, rating } =
-    useSelector(searchParams);
-  const [listProduct, setListProduct] = useState([]);
-  const [currentItemPage, setCurrentItemPage] = useState({
-    current: parseInt(localStorage.getItem('currentPage')) || 1,
-    status: true,
-  });
-  const [getTotalPage, setGetTotalPage] = useState([]);
+  const navigate = useNavigate();
+  const [params] = useSearchParams();
+  const [totalPage, setTotalPage] = useState();
   const [isLoading, setIsLoading] = useState();
+  const [listProduct, setListProduct] = useState([]);
+  const [currentItemPage, setCurrentItemPage] = useState();
 
   useEffect(() => {
     const fetchProducts = async () => {
-      const currentPage = currentItemPage.status ? 1 : currentItemPage.current;
-      window.scrollTo(0, 200);
+      window.scrollTo(0, 0);
       setIsLoading(true);
+      const page = params.get('numberPage');
+      setCurrentItemPage(parseInt(page));
+      const searchParams = updateSearchParams(params);
       const { res } = await productApi.getProducts({
-        keyword,
-        minPrice,
-        maxPrice,
-        category,
-        rating,
-        page: currentPage,
-        limit: 5,
+        ...searchParams,
       });
       if (res) {
         const { products, totalPages } = res;
         setListProduct(products);
-        setGetTotalPage(totalPages);
+        setTotalPage(totalPages);
       }
       setIsLoading(false);
     };
     fetchProducts();
-  }, [
-    dispatch,
-    keyword,
-    minPrice,
-    maxPrice,
-    category,
-    rating,
-    currentItemPage,
-  ]);
+  }, [params]);
 
-  // Lưu lại giá trị cũ
-  const currentMemo = useMemo(() => {
-    return {
-      keyword,
-      minPrice,
-      maxPrice,
-      category,
-      rating,
-      status: true,
-    };
-  }, [keyword, minPrice, maxPrice, rating, category]);
+  //  handle pagination
+  const handlePageClick = (event) => {
+    const newOffset = event.selected;
+    const navigateSearch = NavigateSearchParams(params, undefined, newOffset);
 
-  useEffect(() => {
-    setCurrentItemPage({ current: 1, status: true });
-  }, [currentMemo]);
-
-  //  handle
-  const handleNavigation = (value) => {
-    setCurrentItemPage({ current: parseInt(value), status: false });
-    localStorage.setItem('currentPage', value);
+    navigate({
+      pathname: '/search',
+      search: `?${createSearchParams(navigateSearch)}`,
+    });
   };
   return (
     <div className={cx('shop')}>
@@ -89,29 +70,26 @@ function Shop() {
                   })}
                 </div>
 
-                <div className={cx('page')}>
-                  <div className={cx('navigation')}>
-                    {Array(getTotalPage)
-                      .fill(0)
-                      .map((item, i) => {
-                        return (
-                          <button
-                            key={i}
-                            className={cx(
-                              'button',
-                              currentItemPage.current === i + 1
-                                ? 'button__active'
-                                : null
-                            )}
-                            value={i + 1}
-                            onClick={(e) => handleNavigation(e.target.value)}
-                          >
-                            {i + 1}
-                          </button>
-                        );
-                      })}
-                  </div>
-                </div>
+                <ReactPaginate
+                  nextLabel=">"
+                  onPageChange={handlePageClick}
+                  pageCount={totalPage}
+                  forcePage={currentItemPage}
+                  previousLabel="<"
+                  className={'pagination'}
+                  pageClassName="page-item"
+                  pageLinkClassName="page-link"
+                  previousClassName="page-item"
+                  previousLinkClassName="page-link"
+                  nextClassName="page-item"
+                  nextLinkClassName="page-link"
+                  breakLabel="..."
+                  breakClassName="page-item"
+                  breakLinkClassName="page-link"
+                  containerClassName="pagination"
+                  activeClassName={'active'}
+                  renderOnZeroPageCount={null}
+                />
               </div>
             ) : (
               <img src={images.notSearch} alt="" className={cx('no-product')} />

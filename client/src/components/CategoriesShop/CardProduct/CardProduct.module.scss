@@ -3,6 +3,28 @@
   position: relative;
   background-color: $white-color;
   box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.3);
+  @include breakpoint(xl) {
+    flex-basis: 16.666%;
+    max-width: calc(16.666% - 6.666px);
+  }
+  @include breakpoint(lg) {
+    flex-basis: 25%;
+    max-width: calc(25% - 6px);
+  }
+  @include breakpoint(md) {
+    flex-basis: 25%;
+    max-width: calc(25% - 6px);
+  }
+  @include breakpoint(sm) {
+    flex-basis: 33.333%;
+    max-width: calc(33.333% - 5.333px);
+  }
+  @include breakpoint(xs) {
+    flex-basis: 50%;
+    max-width: calc(50% - 4px);
+  }
+  -webkit-box-flex: 0;
+  flex-grow: 0;
 
   .img {
     @include breakpoint(xs) {

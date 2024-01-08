@@ -20,7 +20,7 @@ export const nav = [
     state: 'home',
   },
   {
-    to: config.routes.orderOnline,
+    to: `${config.routes.orderOnline}?numberPage=0&limit=18`,
     icon: faBasketShopping,
     text: 'Shop',
     state: 'shop',

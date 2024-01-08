@@ -14,7 +14,7 @@ import Button from '~/components/Button/Button';
 import { LoadingAnimate } from '~/components/Loading/LoadingGlobal';
 import { errMes, success } from '~/constants/ToastMessage/ToastMessage';
 import { sidebarCheckout } from '~/constants/sidebarCheckout';
-import { formatPrice } from '~/hook/func';
+import { formatPrice } from '~/utils/func';
 import { onBuy } from '~/store/slice/BuyProductSlice';
 import {
   setIsLoadingButton,

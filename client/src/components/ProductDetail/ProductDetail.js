@@ -20,15 +20,15 @@ import {
   success,
   warning,
 } from '~/constants/ToastMessage/ToastMessage';
-import { formatPrice } from '~/hook/func';
+import Footer from '~/layout/MainLayout/Footer/Footer';
 import { onBuy } from '~/store/slice/BuyProductSlice';
 import { setIsLoading, setIsLoadingButton } from '~/store/slice/loadingSlice';
 import { addCartProduct } from '~/store/slice/myCart';
 import { userData } from '~/store/slice/selector';
+import { formatPrice } from '~/utils/func';
 import styles from './ProductDetail.module.scss';
-import Review from './Reviews/Review';
-import Footer from '~/layout/MainLayout/Footer/Footer';
 import RelatedProducts from './RelatedProducts/RelatedProducts';
+import Review from './Reviews/Review';
 const cx = classNames.bind(styles);
 function ProductDetail() {
   const { status } = useSelector(userData);
@@ -133,11 +133,13 @@ function ProductDetail() {
     if (field === 'prev' && quantity > 1) {
       setQuantity((prev) => prev - 1);
     }
+
     if (field === 'next') {
-      setQuantity((prev) => prev + 1);
-    }
-    if (quantity > sizes.quantity) {
-      warning('Vượt qua số lượng trong kho');
+      if (quantity === sizes.quantity) {
+        warning('Vượt qua số lượng trong kho');
+      } else {
+        setQuantity((prev) => prev + 1);
+      }
     }
   };
 
@@ -164,7 +166,6 @@ function ProductDetail() {
 
     if (field === 'cart') {
       dispatch(setIsLoadingButton({ isLoadingButton: true }));
-
       const { res, err } = await cartApi.postCart({
         ...body,
         productCheck: false,

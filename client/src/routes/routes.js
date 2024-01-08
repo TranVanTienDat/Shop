@@ -17,6 +17,7 @@ import MyCartWrapper from '~/pages/MyCart/MyCartWrapper';
 import { Checkout, ShoppingCart } from '~/pages/MyCart/components/Components';
 import OrderOnline from '~/pages/OrderOnline/OrderOnline';
 import PaymentOrder from '~/pages/PaymentOrder/PaymentOrder';
+import SearchPage from '~/pages/SearchPage/SearchPage';
 // Public routes
 const publicRoutes = [
   { path: config.routes.home, component: Home, index: true, state: 'home' },
@@ -25,6 +26,11 @@ const publicRoutes = [
     path: config.routes.orderOnline,
     component: OrderOnline,
     state: 'shop',
+  },
+  {
+    path: config.routes.search,
+    component: SearchPage,
+    state: 'search',
   },
   {
     path: config.routes.gallery,

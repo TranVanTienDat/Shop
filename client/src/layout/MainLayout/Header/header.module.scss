@@ -55,9 +55,10 @@
           margin: 0 10px;
           gap: 10px;
         }
-        @include d-flex($center, $s-between);
         height: 100%;
         margin: 0 24px;
+        @include d-flex($center, $s-between);
+        gap: 36px;
         .category {
           @include d-flex($center, $center);
           margin-left: -20px;
@@ -88,12 +89,7 @@
         .search {
           @include flex-alight($center);
           position: relative;
-          display: none;
-          @include breakpoint(tm) {
-            display: block;
-            flex: 1;
-            max-width: 400px;
-          }
+          flex: 1;
           .input {
             @include breakpoint(xs) {
               padding: 8px;

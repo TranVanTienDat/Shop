@@ -1,22 +1,22 @@
-import classNames from 'classnames/bind';
 import {
   faClipboardCheck,
   faDeleteLeft,
   faTrashArrowUp,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import classNames from 'classnames/bind';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import cartApi from '~/api/modules/cart.api';
 import images from '~/assets/images';
 import { errMes, success } from '~/constants/ToastMessage/ToastMessage';
-import { formatPrice } from '~/hook/func';
+import { setIsLoadingButton } from '~/store/slice/loadingSlice';
 import { removeCartProduct } from '~/store/slice/myCart';
 import { myCart } from '~/store/slice/selector';
+import { formatPrice } from '~/utils/func';
 import Button from '../Button/Button';
 import styles from './Cart.module.scss';
-import { setIsLoadingButton } from '~/store/slice/loadingSlice';
 
 const cx = classNames.bind(styles);
 

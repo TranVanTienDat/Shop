@@ -6,12 +6,12 @@ import 'swiper/scss';
 import 'swiper/scss/navigation';
 
 import classNames from 'classnames/bind';
-import styles from './TopProducts.module.scss';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import styles from './TopProducts.module.scss';
 
 import productApi from '~/api/modules/product.api';
-import { formatPrice } from '~/hook/func';
+import { formatPrice } from '~/utils/func';
 
 const cx = classNames.bind(styles);
 

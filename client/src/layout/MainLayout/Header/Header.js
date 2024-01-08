@@ -15,7 +15,11 @@ import Tippy from '@tippyjs/react/headless';
 import classNames from 'classnames/bind';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import {
+  createSearchParams,
+  useNavigate,
+  useSearchParams,
+} from 'react-router-dom';
 import 'tippy.js/dist/svg-arrow.css';
 import images from '~/assets/images';
 import Button from '~/components/Button/Button';
@@ -26,7 +30,6 @@ import {
   setToggleMenuFilter,
   setToggleSidebar,
 } from '~/store/slice/loadingSlice';
-import { setKeyword } from '~/store/slice/searchParamsSlice';
 import { state, userData } from '~/store/slice/selector';
 import { setAppState } from '~/store/slice/stateAppSlice';
 import MenuFilterResponsive from './MenuFilterResponsive/MenuFilterResponsive';
@@ -36,18 +39,23 @@ const cx = classNames.bind(styles);
 function Header() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [params] = useSearchParams();
   const { status, avatar } = useSelector(userData);
   const { appState } = useSelector(state);
   const [user, setUser] = useState({
     status: false,
     avatar: '',
   });
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useState();
 
   useEffect(() => {
     setUser({ status, avatar });
   }, [status, avatar]);
-
+  useEffect(() => {
+    if (params.get('keyword')) {
+      setSearch(params.get('keyword'));
+    }
+  }, [params]);
   const handleLogOut = () => {
     localStorage.removeItem('access');
     dispatch(setStatus({ status: false }));
@@ -65,11 +73,14 @@ function Header() {
   };
   const handleSearch = () => {
     if (search) {
-      let location = window.location.pathname;
-      if (location !== '/order-online') {
-        navigate('/order-online');
-      }
-      dispatch(setKeyword({ keyword: search }));
+      navigate({
+        pathname: '/search',
+        search: `?${createSearchParams({
+          keyword: search,
+          numberPage: 0,
+          limit: 18,
+        })}`,
+      });
     }
   };
 
@@ -130,7 +141,7 @@ function Header() {
                 />
                 <FontAwesomeIcon
                   style={
-                    appState.includes('shop')
+                    appState.includes('search')
                       ? { display: 'block' }
                       : { display: 'none' }
                   }
