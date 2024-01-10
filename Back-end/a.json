@@ -2964,5 +2964,520 @@
         ]
       }
     ]
+  },
+
+  {
+    "name": "Váy đầm dạ hội sang trọng",
+    "sold": 25,
+    "review": 10,
+    "description": {
+      "parameter": [
+        { "title": "Loại váy", "value": "Váy đầm dạ hội" },
+        { "title": "Chất liệu", "value": "Vải lụa cao cấp" },
+        { "title": "Màu sắc", "value": "Đỏ, đen, xanh navy" }
+      ]
+    },
+    "categories": ["Thời trang", "Váy đầm dạ hội"],
+    "rating": 4.8,
+    "images": [
+      "https://down-vn.img.susercontent.com/file/sg-11134202-7rbmh-ln9kmy90kj2ib9",
+      "https://down-vn.img.susercontent.com/file/sg-11134202-7rbln-ln9km6h17w7b6f",
+      "https://down-vn.img.susercontent.com/file/sg-11134202-7rbkq-ln9km6j94mtmb0",
+      "https://down-vn.img.susercontent.com/file/sg-11134202-7rbmj-ln9km6ip5fx620",
+      "https://down-vn.img.susercontent.com/file/sg-11134202-7rbkx-ln9kmyc2hgq244",
+      "https://down-vn.img.susercontent.com/file/sg-11134202-7rbne-ln9km6fn9xblfc",
+      "https://down-vn.img.susercontent.com/file/sg-11134202-7rbmz-ln9km6grdwsz1f"
+    ],
+    "selectProduct": [
+      {
+        "color": "1 BỘ",
+        "newPrice": 800000,
+        "oldPrice": 1000000,
+        "quantity": 30
+      },
+      {
+        "size": "L",
+        "newPrice": 800000,
+        "oldPrice": 1000000,
+        "quantity": 36
+      },
+      {
+        "size": "XL",
+        "newPrice": 800000,
+        "oldPrice": 1000000,
+        "quantity": 65
+      }
+    ]
+  },
+  {
+    "name": "Giày sneaker nam thể thao",
+    "sold": 45,
+    "review": 15,
+    "description": {
+      "parameter": [
+        { "title": "Loại giày", "value": "Giày sneaker nam" },
+        { "title": "Chất liệu", "value": "Vải và da tổng hợp" },
+        { "title": "Màu sắc", "value": "Trắng, đen, xám" }
+      ]
+    },
+    "categories": ["Thời trang", "Giày nam"],
+    "rating": 4.5,
+    "images": [
+      "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lq2s7xs2001j7d",
+      "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lq2s7xs28fg792",
+      "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lq2s7xs247qv2a",
+      "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lq2s7xs25mbbdc",
+      "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lq2slfv5yuyf67",
+      "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lq2slfv61o3b5e",
+      "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lq2slfv64h8756",
+      "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lq2slfv65vsnb8"
+    ],
+    "selectProduct": [
+      {
+        "color": "Giày sneaker",
+        "newPrice": 750000,
+        "oldPrice": 900000,
+        "discount": 17,
+        "sizes": [
+          {
+            "size": 35,
+            "quantity": 344
+          },
+          {
+            "size": 36,
+            "quantity": 56
+          },
+          {
+            "size": 37,
+            "quantity": 423
+          },
+          {
+            "size": 38,
+            "quantity": 231
+          },
+          {
+            "size": 39,
+            "quantity": 87
+          },
+          {
+            "size": 39,
+            "quantity": 422
+          },
+          {
+            "size": 40,
+            "quantity": 765
+          },
+          {
+            "size": 41,
+            "quantity": 231
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Balo du lịch chống nước",
+    "sold": 20,
+    "review": 6,
+    "description": {
+      "parameter": [
+        { "title": "Loại balo", "value": "Balo du lịch" },
+        { "title": "Chất liệu", "value": "Polyester chống nước" },
+        { "title": "Màu sắc", "value": "Xanh dương, đen, cam" }
+      ]
+    },
+    "categories": ["Thể thao", "Balo du lịch"],
+    "rating": 4.0,
+    "images": [
+      "https://down-vn.img.susercontent.com/file/cn-11134207-7r98o-lmipbjex4piaba",
+      "https://down-vn.img.susercontent.com/file/cn-11134207-7r98o-lmipbjen2b50da",
+      "https://down-vn.img.susercontent.com/file/cn-11134207-7r98o-lmipbjexhcma90",
+      "https://down-vn.img.susercontent.com/file/cn-11134207-7r98o-lmipbjex1wde8a",
+      "https://down-vn.img.susercontent.com/file/cn-11134207-7r98o-lmipbjenx7ms7d",
+      "https://down-vn.img.susercontent.com/file/cn-11134207-7r98o-lmipbjen2azm81",
+      "https://down-vn.img.susercontent.com/file/cn-11134207-7r98o-lmipbjenhrdw19",
+      "https://down-vn.img.susercontent.com/file/cn-11134207-7r98o-lmimnxdsv9wk9c"
+    ],
+    "selectProduct": [
+      {
+        "color": "Xanh dương",
+        "newPrice": 400000,
+        "oldPrice": 500000,
+        "discount": 20,
+        "quantity": 15
+      },
+      {
+        "color": "Đen",
+        "newPrice": 400000,
+        "oldPrice": 500000,
+        "discount": 20,
+        "quantity": 10
+      },
+      {
+        "color": "Vàng",
+        "newPrice": 400000,
+        "oldPrice": 500000,
+        "discount": 20,
+        "quantity": 32
+      },
+      {
+        "color": "Hồng",
+        "newPrice": 400000,
+        "oldPrice": 500000,
+        "discount": 20,
+        "quantity": 65
+      }
+    ]
+  },
+  {
+    "name": "Đồng hồ nam dây da cao cấp",
+    "sold": 30,
+    "review": 9,
+    "description": {
+      "parameter": [
+        { "title": "Loại đồng hồ", "value": "Đồng hồ nam" },
+        { "title": "Chất liệu", "value": "Dây da thật, vỏ thép không gỉ" },
+        { "title": "Màu sắc", "value": "Nâu, đen, vàng hồng" }
+      ]
+    },
+    "categories": ["Phụ kiện", "Đồng hồ nam"],
+    "rating": 4.3,
+    "images": [
+      "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lm4skg21xuqn5d",
+      "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lm3ex4roquov19",
+      "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lm3ex4ros99be1",
+      "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lm3ex4roza3j45",
+      "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lm3ex4roo1jz9e",
+      "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lm3ex4rov2e7e9",
+      "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lm3ex4rotntr77",
+      "https://down-vn.img.susercontent.com/file/sg-11134201-7rbk0-lkphrcvzexrle2",
+      "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lkqyp5e3evnk90"
+    ],
+    "selectProduct": [
+      {
+        "color": "MÀU NÂU",
+        "newPrice": 1200000,
+        "oldPrice": 1500000,
+        "discount": 20,
+        "quantity": 20
+      },
+      {
+        "color": "MÀU TRẮNG",
+        "newPrice": 1200000,
+        "oldPrice": 1500000,
+        "discount": 20,
+        "quantity": 10
+      },
+      {
+        "color": "MÀU XANH",
+        "newPrice": 1200000,
+        "oldPrice": 1500000,
+        "discount": 20,
+        "quantity": 54
+      },
+      {
+        "color": "MÀU TRẮNG VIỀN VÀNG",
+        "newPrice": 1200000,
+        "oldPrice": 1500000,
+        "discount": 20,
+        "quantity": 76
+      }
+    ]
+  },
+  {
+    "name": "Tai nghe Bluetooth không dây",
+    "sold": 50,
+    "review": 18,
+    "description": {
+      "parameter": [
+        { "title": "Loại tai nghe", "value": "Tai nghe Bluetooth" },
+        { "title": "Chất liệu", "value": "Nhựa cao cấp" },
+        { "title": "Màu sắc", "value": "Đen, trắng, đỏ" }
+      ]
+    },
+    "categories": ["Điện tử", "Tai nghe Bluetooth"],
+    "rating": 4.7,
+    "images": [
+      "https://down-vn.img.susercontent.com/file/vn-11134207-7qukw-lh39ejm49f027f",
+      "https://down-vn.img.susercontent.com/file/vn-11134207-7qukw-lh39ejm4atki3c",
+      "https://down-vn.img.susercontent.com/file/vn-11134207-7qukw-lh39ejm4dmpe32",
+      "https://down-vn.img.susercontent.com/file/vn-11134207-7qukw-lh39ejlu9trnd7",
+      "https://down-vn.img.susercontent.com/file/vn-11134207-7qukw-lh39ejlue1gzc5",
+      "https://down-vn.img.susercontent.com/file/vn-11134207-7qukw-lh39ejlui96b04",
+      "https://down-vn.img.susercontent.com/file/vn-11134207-7qukw-lh39ejlul2b71e"
+    ],
+    "selectProduct": [
+      {
+        "color": "Trắng",
+        "newPrice": 600000,
+        "oldPrice": 800000,
+        "discount": 25,
+        "quantity": 25
+      },
+      {
+        "color": "Đỏ",
+        "newPrice": 600000,
+        "oldPrice": 800000,
+        "discount": 25,
+        "quantity": 20
+      }
+    ]
+  },
+  {
+    "name": "Máy ảnh DSLR chuyên nghiệp",
+    "sold": 15,
+    "review": 6,
+    "description": {
+      "parameter": [
+        { "title": "Loại máy ảnh", "value": "Máy ảnh DSLR" },
+        { "title": "Chất liệu", "value": "Nhựa và kim loại" },
+        { "title": "Màu sắc", "value": "Đen" }
+      ]
+    },
+    "categories": ["Điện tử", "Máy ảnh"],
+    "rating": 4.5,
+    "images": [
+      "https://down-vn.img.susercontent.com/file/5688d31cb25b8d17df9722ebb79fed47",
+      "https://down-vn.img.susercontent.com/file/3858442ef0a3ebadca8747d1ad3fe898"
+    ],
+    "selectProduct": [
+      {
+        "color": "Đen",
+        "newPrice": 12000000,
+        "oldPrice": 15000000,
+        "discount": 20,
+        "quantity": 12
+      }
+    ]
+  },
+  {
+    "name": "Bình nước thể thao",
+    "sold": 40,
+    "review": 10,
+    "description": {
+      "parameter": [
+        { "title": "Loại bình nước", "value": "Bình nước thể thao" },
+        { "title": "Chất liệu", "value": "Nhựa an toàn" },
+        { "title": "Màu sắc", "value": "Xanh lá, đỏ, cam" }
+      ]
+    },
+    "categories": ["Thể thao", "Bình nước"],
+    "rating": 4.2,
+    "images": [
+      "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-llsqgl3fhc6758",
+      "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-llsqx5f50z4v14",
+      "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-llsqx5f52dpb36",
+      "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-llsqx5f53s9r86",
+      "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-llsqx5f556u739",
+      "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-llsqx5f56len20",
+      "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lm4305qg9syn79",
+      "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lm4305qgb7j385",
+      "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lm4305qge0nz88"
+    ],
+    "selectProduct": [
+      {
+        "color": "Xanh lá 1000ml",
+        "newPrice": 150000,
+        "oldPrice": 200000,
+        "discount": 25,
+        "quantity": 30
+      },
+      {
+        "color": "Đỏ 1000ml",
+        "newPrice": 150000,
+        "oldPrice": 200000,
+        "discount": 25,
+        "quantity": 10
+      },
+      {
+        "color": "Vàng 1000ml",
+        "newPrice": 150000,
+        "oldPrice": 200000,
+        "discount": 25,
+        "quantity": 32
+      },
+      {
+        "color": "Đen trắng 1000ml",
+        "newPrice": 150000,
+        "oldPrice": 200000,
+        "discount": 25,
+        "quantity": 54
+      },
+      {
+        "color": "Cam 1000ml",
+        "newPrice": 150000,
+        "oldPrice": 200000,
+        "discount": 25,
+        "quantity": 74
+      },
+      {
+        "color": "Đen 1000ml",
+        "newPrice": 150000,
+        "oldPrice": 200000,
+        "discount": 25,
+        "quantity": 54
+      },
+      {
+        "color": "Trắng 1000ml",
+        "newPrice": 150000,
+        "oldPrice": 200000,
+        "discount": 25,
+        "quantity": 64
+      },
+      {
+        "color": "Hồng 1000ml",
+        "newPrice": 150000,
+        "oldPrice": 200000,
+        "discount": 25,
+        "quantity": 53
+      },
+      {
+        "color": "Nâu 1000ml",
+        "newPrice": 150000,
+        "oldPrice": 200000,
+        "discount": 25,
+        "quantity": 10
+      }
+    ]
+  },
+  {
+    "name": "Dù cầm tay chống gió",
+    "sold": 18,
+    "review": 8,
+    "description": {
+      "parameter": [
+        { "title": "Loại dù", "value": "Dù cầm tay" },
+        { "title": "Chất liệu", "value": "Vải chống nước" },
+        { "title": "Màu sắc", "value": "Xanh dương, đỏ, vàng" }
+      ]
+    },
+    "categories": ["Thể thao", "Dù cầm tay"],
+    "rating": 4.4,
+    "images": [
+      "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lnmlkwtwtxfe22",
+      "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lnmlkwtwppq26c",
+      "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lnmlkwtwsiuy43"
+    ],
+    "selectProduct": [
+      {
+        "color": "Đỏ",
+        "newPrice": 250000,
+        "oldPrice": 300000,
+        "discount": 17,
+        "quantity": 15
+      },
+      {
+        "color": "Vàng",
+        "newPrice": 250000,
+        "oldPrice": 300000,
+        "discount": 17,
+        "quantity": 3
+      }
+    ]
+  },
+  {
+    "name": "Quần jogger nam thoáng khí",
+    "sold": 55,
+    "review": 20,
+    "description": {
+      "parameter": [
+        { "title": "Loại quần", "value": "Quần jogger nam" },
+        { "title": "Chất liệu", "value": "Vải cotton thoáng khí" },
+        { "title": "Màu sắc", "value": "Đen, xám, navy" }
+      ]
+    },
+    "categories": ["Thời trang", "Quần nam"],
+    "rating": 4.8,
+    "images": [
+      "https://down-vn.img.susercontent.com/file/sg-11134201-7rbng-lnrbrg1rc4ng8f",
+      "https://down-vn.img.susercontent.com/file/sg-11134201-7rbnk-lnrbrgwu2nqgdd",
+      "https://down-vn.img.susercontent.com/file/sg-11134201-7rblj-lnrbrhp4x8yu17",
+      "https://down-vn.img.susercontent.com/file/sg-11134201-7rblo-lnrbrijnokdtb8",
+      "https://down-vn.img.susercontent.com/file/sg-11134201-7rbm8-lnrbrj5aub4849",
+      "https://down-vn.img.susercontent.com/file/sg-11134201-7rbl5-lnrbrk3ze5cc47",
+      "https://down-vn.img.susercontent.com/file/sg-11134201-7rbmn-lnrbrl1k10vkeb"
+    ],
+    "selectProduct": [
+      {
+        "color": "Đen",
+        "newPrice": 300000,
+        "oldPrice": 350000,
+        "discount": 14,
+        "sizes": [
+          { "size": "M", "quantity": 20 },
+          { "size": "L", "quantity": 15 },
+          { "size": "XL", "quantity": 10 }
+        ]
+      },
+      {
+        "color": "Nâu",
+        "newPrice": 300000,
+        "oldPrice": 350000,
+        "discount": 14,
+        "sizes": [
+          { "size": "L", "quantity": 25 },
+          { "size": "XL", "quantity": 20 }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Nước hoa nữ thơm lâu",
+    "sold": 12,
+    "review": 5,
+    "description": {
+      "parameter": [
+        { "title": "Loại nước hoa", "value": "Nước hoa nữ" },
+        { "title": "Hương thơm", "value": "Hương hoa nhài và hồng" },
+        { "title": "Dung tích", "value": "50ml" }
+      ]
+    },
+    "categories": ["Làm đẹp", "Nước hoa nữ"],
+    "rating": 4.0,
+    "images": [
+      "https://down-vn.img.susercontent.com/file/vn-11134207-7qukw-ljca7je6ipsc6d",
+      "https://down-vn.img.susercontent.com/file/vn-11134207-7qukw-ljca7je6ei30f2",
+      "https://down-vn.img.susercontent.com/file/vn-11134207-7qukw-ljca7je6d3ik1f",
+      "https://down-vn.img.susercontent.com/file/vn-11134207-7qukw-ljca7je6fwng30",
+      "https://down-vn.img.susercontent.com/file/vn-11134207-7qukw-ljca7je6hb7w6d",
+      "https://down-vn.img.susercontent.com/file/vn-11134207-7qukw-ljca7je6k4cs0a"
+    ],
+    "selectProduct": [
+      {
+        "color": "Tự tin",
+        "newPrice": 800000,
+        "oldPrice": 1000000,
+        "discount": 20,
+        "quantity": 8
+      },
+      {
+        "color": "Năng động",
+        "newPrice": 800000,
+        "oldPrice": 1000000,
+        "discount": 20,
+        "quantity": 0
+      },
+      {
+        "color": "Tươi mát",
+        "newPrice": 800000,
+        "oldPrice": 1000000,
+        "discount": 20,
+        "quantity": 0
+      },
+      {
+        "color": "Ngọt dịu",
+        "newPrice": 800000,
+        "oldPrice": 1000000,
+        "discount": 20,
+        "quantity": 32
+      },
+      {
+        "color": "Quyến rũ",
+        "newPrice": 800000,
+        "oldPrice": 1000000,
+        "discount": 20,
+        "quantity": 79
+      }
+    ]
   }
 ]

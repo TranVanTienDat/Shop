@@ -14,14 +14,12 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import images from '~/assets/images';
 import { sideBar } from '~/constants/navigate';
-// import { UserAuth } from '~/firebase/context/AuthContext';
+import Footer from '~/layout/MainLayout/Footer/Footer';
 import { state, userData } from '~/store/slice/selector';
 import styles from './AccountWrapper.module.scss';
-import Footer from '~/layout/MainLayout/Footer/Footer';
 const cx = classNames.bind(styles);
 
 function AccountWrapper({ children }) {
-  // const { logOut } = UserAuth();
   const { appState } = useSelector(state);
   const navigate = useNavigate();
   const { name, avatar } = useSelector(userData);

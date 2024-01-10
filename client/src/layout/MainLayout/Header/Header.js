@@ -78,7 +78,7 @@ function Header() {
         search: `?${createSearchParams({
           keyword: search,
           numberPage: 0,
-          limit: 18,
+          limit: 20,
         })}`,
       });
     }

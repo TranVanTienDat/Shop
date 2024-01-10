@@ -51,7 +51,7 @@ function OrderOnline() {
       pathname: '/order-online',
       search: `?${createSearchParams({
         numberPage: newOffset,
-        limit: 18,
+        limit: 20,
       })}`,
     });
   };

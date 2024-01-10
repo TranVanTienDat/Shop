@@ -31,7 +31,7 @@ export const NavigateSearchParams = (params, filter, numberPage) => {
   } else {
     objectSearchParams.numberPage = 0;
   }
-  objectSearchParams.limit = 18;
+  objectSearchParams.limit = 20;
   return objectSearchParams;
 };
 
