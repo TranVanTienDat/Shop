@@ -764,7 +764,7 @@
     ]
   },
   {
-    "name": "Vỏ bảo vệ hộp tai nghe bằng silicon dẻo cao cấp cho AirPods Pro 2nd Airpods pro / Airpod 3 / Airpod 1/2（Not Airpods",
+    "name": "Vỏ bảo vệ hộp tai nghe bằng silicon dẻo cao cấp cho AirPods Pro 2nd Airpods pro Airpod 3 / Airpod 1/2（Not Airpods",
     "sold": 3128,
     "description": {
       "parameter": [
@@ -3479,5 +3479,384 @@
         "quantity": 79
       }
     ]
-  }
+  },
+
+  [
+    {
+      "name": "Túi xách đeo chéo thời trang",
+      "sold": 40,
+      "review": 12,
+      "description": {
+        "parameter": [
+          { "title": "Loại túi", "value": "Túi xách đeo chéo" },
+          { "title": "Chất liệu", "value": "Vải dù chống nước" },
+          { "title": "Màu sắc", "value": "Xanh lá, đen, hồng pastel" }
+        ]
+      },
+      "categories": ["Thời trang", "Túi xách nữ"],
+      "rating": 4.5,
+      "images": [
+        "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lq8hjnvd13qv6f",
+        "https://down-vn.img.susercontent.com/file/9ddb999a599b91772ff8ed1e7e356fa5",
+        "https://down-vn.img.susercontent.com/file/9ef7db839908f1df32987478f543d275",
+        "https://down-vn.img.susercontent.com/file/vn-11134207-7qukw-lk0i6fdgqxvm28",
+        "https://down-vn.img.susercontent.com/file/vn-11134207-7qukw-lk0i6fdgscg2bf",
+        "https://down-vn.img.susercontent.com/file/vn-11134207-7qukw-lk0i6fdgv5kye8",
+        "https://down-vn.img.susercontent.com/file/e234958f491cbd00664d24dcda4c79ee",
+        "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lq8hjnvczp6faa"
+      ],
+      "selectProduct": [
+        {
+          "color": "Đen",
+          "newPrice": 450000,
+          "oldPrice": 550000,
+          "discount": 18,
+          "quantity": 25
+        },
+        {
+          "color": "Vàng be",
+          "newPrice": 450000,
+          "oldPrice": 550000,
+          "discount": 18,
+          "quantity": 15
+        },
+        {
+          "color": "Hồng",
+          "newPrice": 450000,
+          "oldPrice": 550000,
+          "discount": 18,
+          "quantity": 15
+        },
+        {
+          "color": "Xanh đậm",
+          "newPrice": 450000,
+          "oldPrice": 550000,
+          "discount": 18,
+          "quantity": 54
+        },
+        {
+          "color": "Trắng",
+          "newPrice": 450000,
+          "oldPrice": 550000,
+          "discount": 18,
+          "quantity": 34
+        }
+      ]
+    },
+    {
+      "name": "Chân váy dáng A thoáng khí",
+      "sold": 25,
+      "review": 8,
+      "description": {
+        "parameter": [
+          { "title": "Loại váy", "value": "Chân váy dáng A" },
+          { "title": "Chất liệu", "value": "Vải linen tự nhiên" },
+          { "title": "Màu sắc", "value": "Trắng, xanh ngọc, vàng nhatrang" }
+        ]
+      },
+      "categories": ["Thời trang", "Chân váy nữ"],
+      "rating": 4.2,
+      "images": [
+        "https://down-vn.img.susercontent.com/file/sg-11134201-7rbl1-lq5q1ytakqau27",
+        "https://down-vn.img.susercontent.com/file/sg-11134201-7rbls-lq5q1yqsoe5m30",
+        "https://down-vn.img.susercontent.com/file/sg-11134201-7rbkf-lq5q1yvihhd20e",
+        "https://down-vn.img.susercontent.com/file/sg-11134201-7rbld-lq5q1your8wuec",
+        "https://down-vn.img.susercontent.com/file/sg-11134201-7rbld-lq5q1your8wuec",
+        "https://down-vn.img.susercontent.com/file/sg-11134201-7rbkd-lq5q1ypeqf8q2b",
+        "https://down-vn.img.susercontent.com/file/sg-11134201-7rblb-lq5q1ysglyga3c",
+        "https://down-vn.img.susercontent.com/file/sg-11134201-7rbl1-lq5q1yuyib2cee"
+      ],
+      "selectProduct": [
+        {
+          "color": "Đen",
+          "newPrice": 350000,
+          "size": [
+            { "size": "M", "quantity": 32 },
+            { "size": "XL", "quantity": 43 },
+            { "size": "2XL", "quantity": 65 }
+          ]
+        },
+        {
+          "color": "Xanh ngọc",
+          "newPrice": 350000,
+          "oldPrice": 450000,
+          "discount": 22,
+          "quantity": 15
+        }
+      ]
+    },
+    {
+      "name": "Bông tai hạt lấp lánh",
+      "sold": 18,
+      "review": 6,
+      "description": {
+        "parameter": [
+          { "title": "Loại bông tai", "value": "Bông tai cài" },
+          { "title": "Chất liệu", "value": "Hợp kim không gỉ" },
+          { "title": "Màu sắc", "value": "Bạc, vàng hồng, đen" }
+        ]
+      },
+      "categories": ["Phụ kiện", "Bông tai nữ"],
+      "rating": 4.0,
+      "images": [
+        "image_link_1",
+        "image_link_2",
+        "image_link_3",
+        "image_link_4",
+        "image_link_5",
+        "image_link_6"
+      ],
+      "selectProduct": [
+        {
+          "color": "Vàng hồng",
+          "newPrice": 250000,
+          "oldPrice": 300000,
+          "discount": 17,
+          "quantity": 12
+        },
+        {
+          "color": "Đen",
+          "newPrice": 250000,
+          "oldPrice": 300000,
+          "discount": 17,
+          "quantity": 6
+        }
+      ]
+    },
+    {
+      "name": "Áo sơ mi nữ kiểu dáng Hàn Quốc",
+      "sold": 35,
+      "review": 10,
+      "description": {
+        "parameter": [
+          { "title": "Loại áo", "value": "Áo sơ mi nữ" },
+          { "title": "Chất liệu", "value": "Vải thun cotton" },
+          { "title": "Màu sắc", "value": "Hồng, xanh pastel, trắng" }
+        ]
+      },
+      "categories": ["Thời trang", "Áo sơ mi nữ"],
+      "rating": 4.3,
+      "images": [
+        "image_link_1",
+        "image_link_2",
+        "image_link_3",
+        "image_link_4",
+        "image_link_5",
+        "image_link_6"
+      ],
+      "selectProduct": [
+        {
+          "color": "Hồng",
+          "newPrice": 280000,
+          "oldPrice": 350000,
+          "discount": 20,
+          "quantity": 18
+        },
+        {
+          "color": "Trắng",
+          "newPrice": 280000,
+          "oldPrice": 350000,
+          "discount": 20,
+          "quantity": 12
+        }
+      ]
+    },
+    {
+      "name": "Vòng cổ dây chuyền hạt độc đáo",
+      "sold": 22,
+      "review": 7,
+      "description": {
+        "parameter": [
+          { "title": "Loại vòng cổ", "value": "Vòng cổ dây chuyền" },
+          { "title": "Chất liệu", "value": "Dây da và hạt trang trí" },
+          { "title": "Màu sắc", "value": "Nâu, đen, đỏ" }
+        ]
+      },
+      "categories": ["Phụ kiện", "Vòng cổ nữ"],
+      "rating": 4.1,
+      "images": [
+        "image_link_1",
+        "image_link_2",
+        "image_link_3",
+        "image_link_4",
+        "image_link_5",
+        "image_link_6"
+      ],
+      "selectProduct": [
+        {
+          "color": "Đen",
+          "newPrice": 180000,
+          "oldPrice": 220000,
+          "discount": 18,
+          "quantity": 15
+        },
+        {
+          "color": "Đỏ",
+          "newPrice": 180000,
+          "oldPrice": 220000,
+          "discount": 18,
+          "quantity": 7
+        }
+      ]
+    },
+    {
+      "name": "Mũ len nữ tricot vintage",
+      "sold": 28,
+      "review": 9,
+      "description": {
+        "parameter": [
+          { "title": "Loại mũ", "value": "Mũ len nữ" },
+          { "title": "Chất liệu", "value": "Len cao cấp" },
+          { "title": "Màu sắc", "value": "Xám, hồng pastel, kem" }
+        ]
+      },
+      "categories": ["Thời trang", "Mũ len nữ"],
+      "rating": 4.2,
+      "images": [
+        "image_link_1",
+        "image_link_2",
+        "image_link_3",
+        "image_link_4",
+        "image_link_5",
+        "image_link_6"
+      ],
+      "selectProduct": [
+        {
+          "color": "Hồng pastel",
+          "newPrice": 120000,
+          "oldPrice": 150000,
+          "discount": 20,
+          "quantity": 20
+        },
+        {
+          "color": "Kem",
+          "newPrice": 120000,
+          "oldPrice": 150000,
+          "discount": 20,
+          "quantity": 8
+        }
+      ]
+    },
+    {
+      "name": "Nón snapback thể thao nam nữ",
+      "sold": 32,
+      "review": 11,
+      "description": {
+        "parameter": [
+          { "title": "Loại nón", "value": "Nón snapback" },
+          { "title": "Chất liệu", "value": "Vải kaki chống nước" },
+          { "title": "Màu sắc", "value": "Đen, xanh đậm, cam neon" }
+        ]
+      },
+      "categories": ["Thể thao", "Nón snapback"],
+      "rating": 4.3,
+      "images": [
+        "image_link_1",
+        "image_link_2",
+        "image_link_3",
+        "image_link_4",
+        "image_link_5",
+        "image_link_6"
+      ],
+      "selectProduct": [
+        {
+          "color": "Đen",
+          "newPrice": 180000,
+          "oldPrice": 220000,
+          "discount": 18,
+          "quantity": 25
+        },
+        {
+          "color": "Cam neon",
+          "newPrice": 180000,
+          "oldPrice": 220000,
+          "discount": 18,
+          "quantity": 7
+        }
+      ]
+    },
+    {
+      "name": "Kính mát nữ cat-eye phong cách",
+      "sold": 20,
+      "review": 8,
+      "description": {
+        "parameter": [
+          { "title": "Loại kính", "value": "Kính mát nữ" },
+          { "title": "Chất liệu", "value": "Kính nhựa cao cấp" },
+          { "title": "Màu sắc", "value": "Đen, nâu, xanh dương" }
+        ]
+      },
+      "categories": ["Phụ kiện", "Kính mát nữ"],
+      "rating": 4.2,
+      "images": [
+        "image_link_1",
+        "image_link_2",
+        "image_link_3",
+        "image_link_4",
+        "image_link_5",
+        "image_link_6"
+      ],
+      "selectProduct": [
+        {
+          "color": "Đen",
+          "newPrice": 250000,
+          "oldPrice": 300000,
+          "discount": 17,
+          "quantity": 15
+        },
+        {
+          "color": "Xanh dương",
+          "newPrice": 250000,
+          "oldPrice": 300000,
+          "discount": 17,
+          "quantity": 5
+        }
+      ]
+    },
+    {
+      "name": "Bikini nữ thiết kế trẻ trung",
+      "sold": 25,
+      "review": 9,
+      "description": {
+        "parameter": [
+          { "title": "Loại bikini", "value": "Bikini nữ" },
+          { "title": "Chất liệu", "value": "Vải lycra co giãn" },
+          { "title": "Màu sắc", "value": "Xanh pastel, hồng, đen" }
+        ]
+      },
+      "categories": ["Thời trang", "Bikini nữ"],
+      "rating": 4.2,
+      "images": [
+        "image_link_1",
+        "image_link_2",
+        "image_link_3",
+        "image_link_4",
+        "image_link_5",
+        "image_link_6"
+      ],
+      "selectProduct": [
+        {
+          "color": "Xanh pastel",
+          "newPrice": 200000,
+          "oldPrice": 250000,
+          "discount": 20,
+          "quantity": 15
+        },
+        {
+          "color": "Hồng",
+          "newPrice": 200000,
+          "oldPrice": 250000,
+          "discount": 20,
+          "quantity": 10
+        },
+        {
+          "color": "Trắng",
+          "newPrice": 200000,
+          "oldPrice": 250000,
+          "discount": 20,
+          "quantity": 0
+        }
+      ]
+    }
+  ]
 ]

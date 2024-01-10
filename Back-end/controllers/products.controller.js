@@ -7,7 +7,7 @@ exports.getAllProduct = async (req, res) => {
   try {
     const { page, limit } = req.query;
     const pageNumber = parseInt(page) || 0;
-    const itemsPerPage = parseInt(limit) || 18;
+    const itemsPerPage = parseInt(limit) || 20;
     const skip = pageNumber * itemsPerPage;
 
     const products = await productDB.find().limit(itemsPerPage).skip(skip);
@@ -30,7 +30,7 @@ exports.getFilterProducts = async (req, res) => {
   try {
     const { keyword, minPrice, maxPrice, rating, page, limit } = req.query;
     const pageNumber = parseInt(page) || 0;
-    const itemsPerPage = parseInt(limit) || 18;
+    const itemsPerPage = parseInt(limit) || 20;
     const skip = pageNumber * itemsPerPage;
 
     const filter = {};
