@@ -109,11 +109,16 @@ exports.getBestseller = async (req, res) => {
 
 exports.getCategoriesProduct = async (req, res) => {
   try {
-    const { category } = req.query;
-    const topProducts = await productDB.find(
-      { categories: { $elemMatch: { $regex: category, $options: "i" } } },
-      { _id: 1, name: 1, categories: 1, images: 1 }
-    );
+    const { category, page } = req.query;
+    const itemsPerPage = parseInt(page);
+    const skip = 12 * itemsPerPage;
+    const topProducts = await productDB
+      .find(
+        { categories: { $elemMatch: { $regex: category, $options: "i" } } },
+        { _id: 1, name: 1, categories: 1, images: 1 }
+      )
+      .limit(12)
+      .skip(skip);
     if (!topProducts) {
       return res.status(404).json({ error: "Product not found" });
     }

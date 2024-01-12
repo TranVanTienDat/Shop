@@ -15,8 +15,8 @@ const productEndpoints = {
   }) =>
     `product/search?keyword=${keyword}&minPrice=${minPrice}&maxPrice=${maxPrice}&category=${category}&rating=${rating}&page=${page}&limit=${limit}`,
   getTopProducts: 'product/top',
-  getCategoriesProduct: ({ category }) =>
-    `product/category?category=${category}`,
+  getCategoriesProduct: ({ category, page }) =>
+    `product/category?category=${category}&page=${page}`,
   getBestseller: 'product/best_seller',
   getRelatedProducts: ({ related, _id }) => {
     const string = related.join(',');
@@ -86,10 +86,10 @@ const productApi = {
     }
   },
 
-  getCategoriesProduct: async ({ category }) => {
+  getCategoriesProduct: async ({ category, page }) => {
     try {
       const res = await publicClient.get(
-        productEndpoints.getCategoriesProduct({ category })
+        productEndpoints.getCategoriesProduct({ category, page })
       );
       return { res };
     } catch (err) {

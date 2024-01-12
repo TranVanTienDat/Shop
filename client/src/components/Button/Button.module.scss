@@ -1,6 +1,7 @@
 @import '../../style//variables.scss';
 
 .wrapper {
+  position: relative;
   @include breakpoint(xm) {
     padding: 5px 10px;
   }
@@ -29,13 +30,15 @@
       font-size: 1.4rem;
     }
   }
+
   &:active {
-    filter: brightness(0.9);
+    filter: brightness(0.8);
   }
 }
+
 .leftIcon {
   border-radius: 8px;
-  background-color: $primary-color;
+  background-color: $firebrick-red-color;
   .icon {
     margin-right: 0;
     padding: 2px 6px;
@@ -44,29 +47,43 @@
     background-color: inherit;
     border: 2px solid $white-color;
   }
+  &:active:after {
+    content: '';
+    inset: 0;
+    position: absolute;
+    border-radius: inherit;
+    border: 2px solid rgba(219, 40, 40, 0.6);
+    animation: pulse 1s linear;
+  }
+  @keyframes pulse {
+    to {
+      transform: scale(3);
+      opacity: 0;
+    }
+  }
 }
 
 .color {
   padding: 4px 6px;
   background-color: $white-color;
-  border: 2px solid $primary-color;
+  border: 2px solid $firebrick-red-color;
   .icon {
     font-size: 1.8rem;
-    color: $primary-color;
+    color: $firebrick-red-color;
   }
 }
 
 .outline {
-  color: $primary-color;
+  color: $firebrick-red-color;
   background-color: $white-color;
-  border: 2px solid $primary-color;
+  border: 2px solid $firebrick-red-color;
 }
 
 .large {
   color: $white-color;
-  background-color: $primary-color;
+  background-color: $firebrick-red-color;
   .icon {
-    background-color: $primary-color;
+    background-color: $firebrick-red-color;
   }
 }
 

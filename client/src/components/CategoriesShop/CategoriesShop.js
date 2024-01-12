@@ -13,22 +13,26 @@ function CategoriesShop() {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [item, setItem] = useState({ category: 'Giày', active: 0 });
+  const [page, setPage] = useState(0);
   useEffect(() => {
     const fetchProducts = async () => {
       setIsLoading(true);
       const { res } = await productApi.getCategoriesProduct({
         category: item.category,
+        page: page,
       });
       setIsLoading(false);
       if (res) {
-        setProducts(res);
+        if (page !== 0) setProducts((prev) => [...prev, ...res]);
+        else setProducts([...res]);
       }
     };
     fetchProducts();
-  }, [item.category]);
+  }, [item.category, page]);
 
   const handleCategories = (title, i) => {
     setItem({ category: title, active: i });
+    setPage(0);
   };
   return (
     <div className={cx('wrapper')}>
@@ -48,29 +52,31 @@ function CategoriesShop() {
               );
             })}
           </div>
-          {!isLoading ? (
-            <div className={cx('products')}>
-              {products.length > 0 &&
-                products.map((data, i) => {
-                  return (
-                    <CardProduct
-                      key={i}
-                      _id={data?._id}
-                      category={data?.categories?.[0]}
-                      name={data?.name}
-                      image={data?.images?.[0]}
-                    />
-                  );
-                })}
-            </div>
-          ) : (
+
+          <div className={cx('products')}>
+            {products.length > 0 &&
+              products.map((data, i) => {
+                return (
+                  <CardProduct
+                    key={i}
+                    _id={data?._id}
+                    category={data?.categories?.[0]}
+                    name={data?.name}
+                    image={data?.images?.[0]}
+                  />
+                );
+              })}
+          </div>
+          {isLoading && (
             <div className={cx('animate')}>
               <LoadingAnimate />
             </div>
           )}
 
           <div className={cx('button')}>
-            <Button large>Find out more</Button>
+            <Button large onClick={() => setPage(page + 1)}>
+              Find out more
+            </Button>
           </div>
         </div>
       </div>
