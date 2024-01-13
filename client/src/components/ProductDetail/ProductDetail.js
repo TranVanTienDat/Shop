@@ -36,8 +36,8 @@ function ProductDetail() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const [product, setProduct] = useState(null); // get product
-  const [quantity, setQuantity] = useState(1); //
+  const [product, setProduct] = useState(null);
+  const [quantity, setQuantity] = useState(1);
 
   // List images
   const [listImg, setLisImg] = useState({ list: [], mainImg: '' });
@@ -49,8 +49,7 @@ function ProductDetail() {
   });
 
   // Each product includes size and quantity in the warehouse
-  const [sizes, setSizes] = useState({ ListSize: [], quantity: null });
-
+  const [sizes, setSizes] = useState({ listSize: [], quantity: null });
   // Choose products of customers
   const [typeProduct, setTypeProduct] = useState({
     type: '',
@@ -77,14 +76,14 @@ function ProductDetail() {
 
         if (!data[0].quantity) {
           setSizes({
-            ListSize: data[0].sizes,
+            listSize: data[0].sizes,
             quantity: data[0].sizes[0].quantity,
           });
         } else {
-          setSizes((prev) => ({
-            ...prev,
+          setSizes({
+            listSize: null,
             quantity: data[0].quantity,
-          }));
+          });
         }
 
         setLisImg({
@@ -111,7 +110,7 @@ function ProductDetail() {
         const qtt = product.sizes.find(
           (item) => item.size === typeProduct.value
         );
-        setSizes({ ListSize: product.sizes, quantity: qtt?.quantity ?? 1 });
+        setSizes({ listSize: product.sizes, quantity: qtt?.quantity ?? 1 });
       } else {
         setSizes((prev) => ({ ...prev, quantity: product.quantity }));
       }
@@ -154,6 +153,11 @@ function ProductDetail() {
       return;
     }
 
+    if (sizes.listSize && !typeProduct.value) {
+      warning('Lựa chọn loại');
+      return;
+    }
+
     const body = {
       productID: product._id,
       productName: product.name,
@@ -185,7 +189,6 @@ function ProductDetail() {
       navigate('/payment-product');
     }
   };
-
   return (
     <div className={cx('wrapper')}>
       <div className={cx('inner')}>
@@ -288,12 +291,12 @@ function ProductDetail() {
                     </div>
                   </div>
 
-                  {sizes.ListSize?.length > 0 && (
+                  {sizes.listSize?.length > 0 && (
                     <div className={cx('selection')}>
                       <span className={cx('type')}>Size</span>
                       <div className={cx('values')}>
-                        {sizes.ListSize?.length > 0 &&
-                          sizes.ListSize?.map((item, i) => {
+                        {sizes.listSize?.length > 0 &&
+                          sizes.listSize?.map((item, i) => {
                             return (
                               <button
                                 onClick={() =>

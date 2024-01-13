@@ -157,10 +157,6 @@ exports.getRelatedProducts = async (req, res) => {
       )
       .limit(4);
 
-    // Check if related items were found
-    if (relatedItems.length === 0) {
-      return res.status(404).json({ error: "Related products not found" });
-    }
     return res.status(200).json(relatedItems);
   } catch (error) {
     return res.status(500).json({ error: "Server error" });

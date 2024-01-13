@@ -4199,51 +4199,6 @@
 
   [
     {
-      "name": "Bikini hai mảnh dáng dài",
-      "sold": 20,
-      "review": 9,
-      "description": {
-        "parameter": [
-          { "title": "Loại bikini", "value": "Bikini hai mảnh" },
-          { "title": "Chất liệu", "value": "Nylon và spandex" },
-          { "title": "Màu sắc", "value": "Xanh dương, đen, hồng phấn" }
-        ]
-      },
-      "categories": ["Thời trang", "Bikini"],
-      "rating": 4.2,
-      "images": [
-        "image_link_1",
-        "image_link_2",
-        "image_link_3",
-        "image_link_4",
-        "image_link_5",
-        "image_link_6"
-      ],
-      "selectProduct": [
-        {
-          "color": "Đen",
-          "newPrice": 350000,
-          "oldPrice": 450000,
-          "discount": 22,
-          "sizes": [
-            { "size": "S", "quantity": 8 },
-            { "size": "M", "quantity": 7 },
-            { "size": "L", "quantity": 5 }
-          ]
-        },
-        {
-          "color": "Hồng phấn",
-          "newPrice": 350000,
-          "oldPrice": 450000,
-          "discount": 22,
-          "sizes": [
-            { "size": "M", "quantity": 10 },
-            { "size": "L", "quantity": 8 }
-          ]
-        }
-      ]
-    },
-    {
       "name": "Áo khoác dạ nữ kiểu dáng Hàn Quốc",
       "sold": 28,
       "review": 12,
@@ -4842,6 +4797,809 @@
           "oldPrice": 220000,
           "discount": 18,
           "quantity": 10
+        }
+      ]
+    }
+  ],
+
+  [
+    {
+      "name": "Giày Sneaker Nam Trắng Đen Classic",
+      "sold": 0,
+      "review": 0,
+      "description": {
+        "parameter": [
+          { "title": "Loại giày", "value": "Sneaker nam" },
+          { "title": "Chất liệu", "value": "Da tổng hợp" },
+          { "title": "Màu sắc", "value": "Trắng, đen" }
+        ]
+      },
+      "categories": ["Thời trang", "Giày nam"],
+      "rating": 0.0,
+      "images": [
+        "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lojte9y8e8qf66",
+        "https://down-vn.img.susercontent.com/file/vn-11134201-7r98o-lojtt0y4zrw3d2",
+        "https://down-vn.img.susercontent.com/file/vn-11134201-7r98o-lojtt0xb0zqr0c",
+        "https://down-vn.img.susercontent.com/file/vn-11134201-7r98o-lojtt0vn3fef24",
+        "https://down-vn.img.susercontent.com/file/vn-11134201-7r98o-lojtt0tf6oc751",
+        "https://down-vn.img.susercontent.com/file/vn-11134201-7r98o-lojtt0vx30tv39",
+        "https://down-vn.img.susercontent.com/file/vn-11134201-7r98o-lojtt0uj51vb7f"
+      ],
+      "selectProduct": [
+        {
+          "color": "Trắng Đen",
+          "newPrice": 450000,
+          "sizes": [
+            { "size": "S", "quantity": 34 },
+            { "size": "M", "quantity": 54 },
+            { "size": "L", "quantity": 20 }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Giày Cao Gót Nữ cao cấp",
+      "sold": 0,
+      "review": 0,
+      "description": {
+        "parameter": [
+          { "title": "Loại giày", "value": "Cao gót nữ" },
+          { "title": "Chất liệu", "value": "Da" },
+          { "title": "Màu sắc", "value": "Đỏ" }
+        ]
+      },
+      "categories": ["Thời trang", "Giày nữ"],
+      "rating": 0.0,
+      "images": ["image_link_1", "image_link_2", "image_link_3"],
+      "selectProduct": [
+        {
+          "color": "Đỏ",
+          "newPrice": 0,
+          "oldPrice": 0,
+          "discount": 0,
+          "sizes": [
+            { "size": "S", "quantity": 0 },
+            { "size": "M", "quantity": 0 },
+            { "size": "L", "quantity": 0 }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Giày Thể Thao Nam Phối Màu Đẹp Mắt",
+      "sold": 0,
+      "review": 0,
+      "description": {
+        "parameter": [
+          { "title": "Loại giày", "value": "Giày thể thao nam" },
+          { "title": "Chất liệu", "value": "Vải và da tổng hợp" },
+          { "title": "Màu sắc", "value": "Xanh dương, trắng" }
+        ]
+      },
+      "categories": ["Thời trang", "Giày nam"],
+      "rating": 0.0,
+      "images": [
+        "https://down-vn.img.susercontent.com/file/a24895c40d928fbf350bbbd29bff4246",
+        "https://down-vn.img.susercontent.com/file/154dd36fed111856b9b2536fe4ef73a2",
+        "https://down-vn.img.susercontent.com/file/2ea9d1094dd2a3d943b6413d726d23a6",
+        "https://down-vn.img.susercontent.com/file/cdd10494bf72da4906d79e0d52398f6e",
+        "https://down-vn.img.susercontent.com/file/7c810ac87489c4887d8268433b514e2f",
+        "https://down-vn.img.susercontent.com/file/7c810ac87489c4887d8268433b514e2f",
+        "https://down-vn.img.susercontent.com/file/4d890747777d3c69a55507cb0a4c6f12",
+        "https://down-vn.img.susercontent.com/file/8a1d92ec3e40ba7f9365630fc22e17b9"
+      ],
+      "selectProduct": [
+        {
+          "color": "Đỏ rượu vang",
+          "newPrice": 272496,
+          "sizes": [
+            { "size": "S", "quantity": 7 },
+            { "size": "M", "quantity": 5 },
+            { "size": "L", "quantity": 10 }
+          ]
+        },
+        {
+          "color": "Đen",
+          "newPrice": 272496,
+          "sizes": [
+            { "size": "S", "quantity": 43 },
+            { "size": "M", "quantity": 0 },
+            { "size": "L", "quantity": 53 }
+          ]
+        },
+        {
+          "color": "Trắng",
+          "newPrice": 272496,
+          "sizes": [
+            { "size": "S", "quantity": 54 },
+            { "size": "M", "quantity": 540 },
+            { "size": "L", "quantity": 6 }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Giày Bốt Cao Gót Nữ Sang Trọng",
+      "sold": 0,
+      "review": 0,
+      "description": {
+        "parameter": [
+          { "title": "Loại giày", "value": "Bốt cao gót nữ" },
+          { "title": "Chất liệu", "value": "Da cao cấp" },
+          { "title": "Màu sắc", "value": "Đen" }
+        ]
+      },
+      "categories": ["Thời trang", "Giày nữ"],
+      "rating": 0.0,
+      "images": [
+        "https://down-vn.img.susercontent.com/file/b3a235af6b89d18d0a0fea5fb8844d2f",
+        "https://down-vn.img.susercontent.com/file/3f7102ce404f2eacc962aa19cc59cca1",
+        "https://down-vn.img.susercontent.com/file/6ca8814bb6bfa7e4a768c547901671be",
+        "https://down-vn.img.susercontent.com/file/36e3fcadf3df21dcec759fa85ac0b5ba",
+        "https://down-vn.img.susercontent.com/file/0feba87b795c33ddb96a3c86b7a2e8d1",
+        "https://down-vn.img.susercontent.com/file/74fb32890aee8436e0ae1a1aad0c0717",
+        "https://down-vn.img.susercontent.com/file/bed6d6a983e722f2319e3cbff9ce466a",
+        "https://down-vn.img.susercontent.com/file/2bb3675982bbc6faf312a3cb890c6536"
+      ],
+      "selectProduct": [
+        {
+          "color": "black sling single",
+          "newPrice": 350000,
+          "oldPrice": 500000,
+          "discount": 20,
+          "sizes": [
+            { "size": "S", "quantity": 8 },
+            { "size": "M", "quantity": 0 },
+            { "size": "L", "quantity": 6 }
+          ]
+        },
+        {
+          "color": "black round buckle",
+          "newPrice": 350000,
+          "oldPrice": 500000,
+          "discount": 20,
+          "sizes": [
+            { "size": "S", "quantity": 54 },
+            { "size": "M", "quantity": 54 },
+            { "size": "L", "quantity": 0 }
+          ]
+        },
+        {
+          "color": "black light board",
+          "newPrice": 350000,
+          "oldPrice": 500000,
+          "discount": 20,
+          "sizes": [
+            { "size": "S", "quantity": 45 },
+            { "size": "M", "quantity": 7 },
+            { "size": "L", "quantity": 0 },
+            { "size": "XL", "quantity": 40 }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Giày Thể Thao Nam Phối Màu Đẹp Mắt",
+      "sold": 0,
+      "review": 0,
+      "description": {
+        "parameter": [
+          { "title": "Loại giày", "value": "Giày thể thao nam" },
+          { "title": "Chất liệu", "value": "Vải và da tổng hợp" },
+          { "title": "Màu sắc", "value": "Xanh dương, trắng" }
+        ]
+      },
+      "categories": ["Thời trang", "Giày nam"],
+      "rating": 0.0,
+      "images": [
+        "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-llm644lgy1qn99",
+        "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-llm644lgzgb3bc",
+        "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-llm644lh29fz7f",
+        "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-llm644lh0uvj26",
+        "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-llm644lh3o0f29",
+        "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-llm644lh52kv26"
+      ],
+      "selectProduct": [
+        {
+          "color": "Phối Cam",
+          "newPrice": 165000,
+          "oldPrice": 200000,
+          "discount": 34,
+          "sizes": [
+            { "size": "35", "quantity": 7 },
+            { "size": "36", "quantity": 50 },
+            { "size": "37", "quantity": 10 },
+            { "size": "38", "quantity": 4 },
+            { "size": "39", "quantity": 6 },
+            { "size": "40", "quantity": 23 }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Giày Sneaker Nam Trắng Đen Classic",
+      "sold": 15,
+      "review": 8,
+      "description": {
+        "parameter": [
+          { "title": "Loại giày", "value": "Sneaker nam" },
+          { "title": "Chất liệu", "value": "Da tổng hợp" },
+          { "title": "Màu sắc", "value": "Trắng, đen" }
+        ]
+      },
+      "categories": ["Thời trang", "Giày nam"],
+      "rating": 4.1,
+      "images": [
+        "https://down-vn.img.susercontent.com/file/vn-11134201-7r98o-lq7tmo4xgf93e7",
+        "https://down-vn.img.susercontent.com/file/vn-11134201-7r98o-lq7tmp59z842df"
+      ],
+      "selectProduct": [
+        {
+          "color": "Trắng Đen",
+          "newPrice": 500000,
+          "oldPrice": 600000,
+          "discount": 17,
+          "sizes": [
+            { "size": "37", "quantity": 7 },
+            { "size": "38", "quantity": 5 },
+            { "size": "39", "quantity": 54 },
+            { "size": "40", "quantity": 3 },
+            { "size": "41", "quantity": 67 }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Giày Sneaker Nữ Phối Màu Hồng Cao Cấp",
+      "sold": 30,
+      "review": 12,
+      "description": {
+        "parameter": [
+          { "title": "Loại giày", "value": "Sneaker nữ" },
+          { "title": "Chất liệu", "value": "Vải và da tổng hợp" },
+          { "title": "Màu sắc", "value": "Hồng, trắng" }
+        ]
+      },
+      "categories": ["Thời trang", "Giày nữ"],
+      "rating": 4.7,
+      "images": [
+        "https://down-vn.img.susercontent.com/file/vn-11134201-7r98o-lowesamlbcd7db",
+        "https://down-vn.img.susercontent.com/file/vn-11134201-7r98o-lowesaw0xjdnce",
+        "https://down-vn.img.susercontent.com/file/vn-11134201-7r98o-lowesaq762xa13",
+        "https://down-vn.img.susercontent.com/file/vn-11134201-7r98o-lowesaumzl1q8e",
+        "https://down-vn.img.susercontent.com/file/vn-11134201-7r98o-lowesay8ub0ue9",
+        "https://down-vn.img.susercontent.com/file/vn-11134201-7r98o-lowesawkwqq66b",
+        "https://down-vn.img.susercontent.com/file/vn-11134201-7r98o-lowesb06rgpaaa",
+        "https://down-vn.img.susercontent.com/file/vn-11134201-7r98o-lowesavgyd72bf"
+      ],
+      "selectProduct": [
+        {
+          "color": "LV XANH LÁ",
+          "newPrice": 850000,
+          "oldPrice": 1000000,
+          "discount": 15,
+          "sizes": [
+            { "size": "35", "quantity": 8 },
+            { "size": "36", "quantity": 10 },
+            { "size": "38", "quantity": 12 },
+            { "size": "39", "quantity": 12 },
+            { "size": "40", "quantity": 12 },
+            { "size": "41", "quantity": 12 },
+            { "size": "42", "quantity": 12 },
+            { "size": "43", "quantity": 12 },
+            { "size": "44", "quantity": 12 }
+          ]
+        },
+        {
+          "color": "LV XANH THAN",
+          "newPrice": 850000,
+          "oldPrice": 1000000,
+          "discount": 15,
+          "sizes": [
+            { "size": "35", "quantity": 5 },
+            { "size": "36", "quantity": 6 },
+            { "size": "38", "quantity": 23 },
+            { "size": "39", "quantity": 65 },
+            { "size": "40", "quantity": 87 },
+            { "size": "41", "quantity": 122 },
+            { "size": "42", "quantity": 8 },
+            { "size": "43", "quantity": 13 },
+            { "size": "44", "quantity": 132 }
+          ]
+        },
+        {
+          "color": "LV ĐEN",
+          "newPrice": 850000,
+          "oldPrice": 1000000,
+          "discount": 15,
+          "sizes": [
+            { "size": "35", "quantity": 8 },
+            { "size": "36", "quantity": 8 },
+            { "size": "38", "quantity": 12 },
+            { "size": "39", "quantity": 0 },
+            { "size": "40", "quantity": 12 },
+            { "size": "41", "quantity": 12 },
+            { "size": "42", "quantity": 0 },
+            { "size": "43", "quantity": 12 },
+            { "size": "44", "quantity": 43 }
+          ]
+        },
+        {
+          "color": "LV HỒNG",
+          "newPrice": 850000,
+          "oldPrice": 1000000,
+          "discount": 15,
+          "sizes": [
+            { "size": "35", "quantity": 8 },
+            { "size": "36", "quantity": 10 },
+            { "size": "38", "quantity": 0 },
+            { "size": "39", "quantity": 87 },
+            { "size": "40", "quantity": 0 },
+            { "size": "41", "quantity": 43 },
+            { "size": "42", "quantity": 12 },
+            { "size": "43", "quantity": 54 },
+            { "size": "44", "quantity": 0 }
+          ]
+        },
+        {
+          "color": "LV ĐỎ",
+          "newPrice": 850000,
+          "oldPrice": 1000000,
+          "discount": 15,
+          "sizes": [
+            { "size": "35", "quantity": 8 },
+            { "size": "36", "quantity": 10 },
+            { "size": "38", "quantity": 0 },
+            { "size": "39", "quantity": 98 },
+            { "size": "44", "quantity": 0 }
+          ]
+        },
+        {
+          "color": "LV TRẮNG",
+          "newPrice": 850000,
+          "oldPrice": 1000000,
+          "discount": 15,
+          "sizes": [
+            { "size": "35", "quantity": 8 },
+            { "size": "36", "quantity": 10 },
+            { "size": "38", "quantity": 43 },
+            { "size": "39", "quantity": 98 },
+            { "size": "44", "quantity": 0 }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Giày Loafer Nam Phong Cách Cổ Điển",
+      "sold": 20,
+      "review": 9,
+      "description": {
+        "parameter": [
+          { "title": "Loại giày", "value": "Loafer nam" },
+          { "title": "Chất liệu", "value": "Da thật" },
+          { "title": "Màu sắc", "value": "Nâu, đen" }
+        ]
+      },
+      "categories": ["Thời trang", "Giày nam"],
+      "rating": 4.4,
+      "images": [
+        "https://down-vn.img.susercontent.com/file/a890cf9a6f1db63fa06b3f7c2ca5ca84",
+        "https://down-vn.img.susercontent.com/file/a25985317b35f109045cc7b7035d80c4",
+        "https://down-vn.img.susercontent.com/file/898c7e8a634a8d443d71808b5eef5def",
+        "https://down-vn.img.susercontent.com/file/e953614bfb6c38a4def9d614753a1b79",
+        "https://down-vn.img.susercontent.com/file/dc4ad34e1c1b16e69e9e7f39ed7b6b7f",
+        "https://down-vn.img.susercontent.com/file/c05beecd8ec8f7408df13be08890deea"
+      ],
+      "selectProduct": [
+        {
+          "color": "Đen 38",
+          "newPrice": 1200000,
+          "oldPrice": 1400000,
+          "discount": 14,
+          "quantity": 54
+        },
+        {
+          "color": "Đen 39",
+          "newPrice": 1200000,
+          "oldPrice": 1400000,
+          "discount": 14,
+          "quantity": 524
+        },
+        {
+          "color": "Đen 40",
+          "newPrice": 1200000,
+          "oldPrice": 1400000,
+          "discount": 14,
+          "quantity": 1
+        },
+        {
+          "color": "Đen 41",
+          "newPrice": 1200000,
+          "oldPrice": 1400000,
+          "discount": 14,
+          "quantity": 56
+        },
+        {
+          "color": "Đen 42",
+          "newPrice": 1200000,
+          "oldPrice": 1400000,
+          "discount": 14,
+          "quantity": 0
+        },
+        {
+          "color": "Đen 43",
+          "newPrice": 1200000,
+          "oldPrice": 1400000,
+          "discount": 14,
+          "quantity": 3
+        },
+        {
+          "color": "Đen 44",
+          "newPrice": 1200000,
+          "oldPrice": 1400000,
+          "discount": 14,
+          "quantity": 76
+        }
+      ]
+    },
+    {
+      "name": "Giày Búp Bê Nữ Phối Màu Vintage",
+      "sold": 18,
+      "review": 8,
+      "description": {
+        "parameter": [
+          { "title": "Loại giày", "value": "Giày búp bê nữ" },
+          { "title": "Chất liệu", "value": "Da và vải" },
+          { "title": "Màu sắc", "value": "Nâu, xanh lá cây" }
+        ]
+      },
+      "categories": ["Thời trang", "Giày nữ"],
+      "rating": 4.2,
+      "images": [
+        "https://down-vn.img.susercontent.com/file/sg-11134201-22120-ss2tu75uq0kv9c",
+        "https://down-vn.img.susercontent.com/file/sg-11134201-22120-kro6hn6uq0kv0a",
+        "https://down-vn.img.susercontent.com/file/sg-11134201-22120-fcqhv46uq0kv32",
+        "https://down-vn.img.susercontent.com/file/sg-11134201-22120-b1svui7uq0kv79",
+        "https://down-vn.img.susercontent.com/file/sg-11134201-22120-zgcesu7uq0kve9",
+        "https://down-vn.img.susercontent.com/file/sg-11134201-22120-t2dq6a8uq0kv2d"
+      ],
+      "selectProduct": [
+        {
+          "color": "ĐEN",
+          "newPrice": 900000,
+          "oldPrice": 1100000,
+          "discount": 18,
+          "sizes": [
+            { "size": "36", "quantity": 7 },
+            { "size": "37", "quantity": 6 },
+            { "size": "38", "quantity": 5 }
+          ]
+        },
+        {
+          "color": "TRẮNG",
+          "newPrice": 900000,
+          "oldPrice": 1100000,
+          "discount": 18,
+          "sizes": [
+            { "size": "36", "quantity": 5 },
+            { "size": "37", "quantity": 0 },
+            { "size": "38", "quantity": 543 }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Giày Sandal Nam Chống Trượt",
+      "sold": 25,
+      "review": 10,
+      "description": {
+        "parameter": [
+          { "title": "Loại giày", "value": "Sandal nam" },
+          { "title": "Chất liệu", "value": "Vải và cao su" },
+          { "title": "Màu sắc", "value": "Đen, xanh navy" }
+        ]
+      },
+      "categories": ["Thời trang", "Giày nam"],
+      "rating": 4.5,
+      "images": [
+        "https://down-vn.img.susercontent.com/file/cn-11134207-7qukw-lfrs9g2jvnd46a",
+        "https://down-vn.img.susercontent.com/file/dd266286b500ec8c9efbd779e36f5e78",
+        "https://down-vn.img.susercontent.com/file/cn-11134207-7qukw-lfrs9g2jesn261",
+        "https://down-vn.img.susercontent.com/file/cn-11134207-7qukw-lfrs9g2k19mw47"
+      ],
+      "selectProduct": [
+        {
+          "color": "Đen 37",
+          "newPrice": 650000,
+          "oldPrice": 750000,
+          "discount": 13,
+          "quantity": 23
+        },
+        {
+          "color": "Nâu",
+          "newPrice": 650000,
+          "oldPrice": 750000,
+          "discount": 13,
+          "sizes": [
+            {
+              "size": "36",
+              "quantity": 37
+            },
+            {
+              "size": "37",
+              "quantity": 23
+            },
+            {
+              "size": "38",
+              "quantity": 25
+            },
+            {
+              "size": "39",
+              "quantity": 1
+            }
+          ]
+        },
+        {
+          "color": "Bộ đội",
+          "newPrice": 650000,
+          "oldPrice": 750000,
+          "discount": 13,
+          "sizes": [
+            {
+              "size": "36",
+              "quantity": 54
+            },
+            {
+              "size": "37",
+              "quantity": 0
+            },
+            {
+              "size": "38",
+              "quantity": 254
+            },
+            {
+              "size": "39",
+              "quantity": 42
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Giày Thể Thao Nữ Phối Màu Pastel",
+      "sold": 22,
+      "review": 9,
+      "description": {
+        "parameter": [
+          { "title": "Loại giày", "value": "Giày thể thao nữ" },
+          { "title": "Chất liệu", "value": "Vải và da tổng hợp" },
+          { "title": "Màu sắc", "value": "Hồng nhạt, xanh pastel" }
+        ]
+      },
+      "categories": ["Thời trang", "Giày nữ"],
+      "rating": 4.3,
+      "images": [
+        "https://down-vn.img.susercontent.com/file/288fdd8d380d7d25c12696d16c57f746",
+        "https://down-vn.img.susercontent.com/file/f57dddadfaaf6fa464060df916c0342b",
+        "https://down-vn.img.susercontent.com/file/3034e9c084acedcf3bd3b9535de80451",
+        "https://down-vn.img.susercontent.com/file/da5e178e856474dc946dc5d34e347a87"
+      ],
+      "selectProduct": [
+        {
+          "color": "M1",
+          "newPrice": 750000,
+          "oldPrice": 900000,
+          "discount": 17,
+          "sizes": [
+            {
+              "size": "36",
+              "quantity": 54
+            },
+            {
+              "size": "37",
+              "quantity": 0
+            },
+            {
+              "size": "38",
+              "quantity": 254
+            },
+            {
+              "size": "39",
+              "quantity": 42
+            }
+          ]
+        },
+        {
+          "color": "M2",
+          "newPrice": 750000,
+          "oldPrice": 900000,
+          "discount": 17,
+          "sizes": [
+            {
+              "size": "36",
+              "quantity": 54
+            },
+            {
+              "size": "37",
+              "quantity": 0
+            },
+            {
+              "size": "38",
+              "quantity": 254
+            },
+            {
+              "size": "39",
+              "quantity": 42
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Giày Boots Nam Phối Da Cao Cấp",
+      "sold": 15,
+      "review": 7,
+      "description": {
+        "parameter": [
+          { "title": "Loại giày", "value": "Boots nam" },
+          { "title": "Chất liệu", "value": "Da thật" },
+          { "title": "Màu sắc", "value": "Đen, nâu" }
+        ]
+      },
+      "categories": ["Thời trang", "Giày nam"],
+      "rating": 4.0,
+      "images": [
+        "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lpnhdq63snu7df",
+        "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lpnjm6giuamz44",
+        "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lpnjm6ekx4yjaa"
+      ],
+      "selectProduct": [
+        {
+          "color": "Boot224",
+          "newPrice": 1100000,
+          "oldPrice": 1300000,
+          "discount": 15,
+          "sizes": [
+            {
+              "size": "37",
+              "quantity": 0
+            },
+            {
+              "size": "38",
+              "quantity": 254
+            },
+            {
+              "size": "39",
+              "quantity": 42
+            }
+          ]
+        },
+        {
+          "color": "Boot225",
+          "newPrice": 1100000,
+          "oldPrice": 1300000,
+          "discount": 15,
+          "sizes": [
+            {
+              "size": "37",
+              "quantity": 0
+            },
+            {
+              "size": "38",
+              "quantity": 254
+            },
+            {
+              "size": "39",
+              "quantity": 42
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Bộ Trang Điểm Hồng Nữ Tính",
+      "sold": 35,
+      "review": 15,
+      "description": {
+        "parameter": [
+          { "title": "Loại sản phẩm", "value": "Bộ trang điểm" },
+          { "title": "Thành phần", "value": "Chất liệu an toàn cho da" },
+          { "title": "Màu sắc", "value": "Hồng phấn" }
+        ]
+      },
+      "categories": ["Làm đẹp", "Trang điểm"],
+      "rating": 4.8,
+      "images": [
+        "https://down-vn.img.susercontent.com/file/6e3f3a9bddfc64f666bb88f7b0abd001",
+        "https://down-vn.img.susercontent.com/file/d34c1ca95c77e8682f9baf07b401466c",
+        "https://down-vn.img.susercontent.com/file/f1971d1d07efc880ca99973ea1eedb56",
+        "https://down-vn.img.susercontent.com/file/204a1284d81ab4561c841f6b483d0bae"
+      ],
+      "selectProduct": [
+        {
+          "color": "Bộ 5 sản phẩm",
+          "newPrice": 450000,
+          "oldPrice": 550000,
+          "discount": 18,
+          "quantity": 20
+        }
+      ]
+    },
+    {
+      "name": "Son Môi Matte Cao Cấp",
+      "sold": 28,
+      "review": 12,
+      "description": {
+        "parameter": [
+          { "title": "Loại sản phẩm", "value": "Son môi" },
+          { "title": "Chất liệu", "value": "Matte, không chì" },
+          { "title": "Màu sắc", "value": "Đỏ đậm" }
+        ]
+      },
+      "categories": ["Làm đẹp", "Trang điểm"],
+      "rating": 4.5,
+      "images": [
+        "https://down-vn.img.susercontent.com/file/vn-11134201-7qukw-leqs8kdxt1v741",
+        "https://down-vn.img.susercontent.com/file/c604929377557fd1aa53c8a80f6e39da",
+        "https://down-vn.img.susercontent.com/file/ab164d459bd1d305a9577da0e08358a3",
+        "https://down-vn.img.susercontent.com/file/32378de350ae654ccc00c0c709ea3bd8",
+        "https://down-vn.img.susercontent.com/file/364a295ce01f106137c8da75b08558b4",
+        "https://down-vn.img.susercontent.com/file/c9ffa023c375dd8dde73d3d076aa69bd"
+      ],
+      "selectProduct": [
+        {
+          "variant": "H01-đỏ đậm",
+          "newPrice": 180000,
+          "oldPrice": 220000,
+          "discount": 18,
+          "quantity": 43
+        },
+        {
+          "variant": "H01-đỏ nhạt",
+          "newPrice": 180000,
+          "oldPrice": 220000,
+          "discount": 18,
+          "quantity": 43
+        },
+        {
+          "variant": "H01-Cam",
+          "newPrice": 180000,
+          "oldPrice": 220000,
+          "discount": 18,
+          "quantity": 53
+        }
+      ]
+    },
+    {
+      "name": "Quần Jean Nam Slim Fit",
+      "sold": 22,
+      "review": 9,
+      "description": {
+        "parameter": [
+          { "title": "Loại quần", "value": "Quần jean nam" },
+          { "title": "Chất liệu", "value": "Jean cao cấp" },
+          { "title": "Màu sắc", "value": "Xanh đậm" }
+        ]
+      },
+      "categories": ["Thời trang", "Quần nam"],
+      "rating": 4.5,
+      "images": [
+        "https://down-vn.img.susercontent.com/file/vn-11134201-7qukw-lexrlhxz7s0a78",
+        "https://down-vn.img.susercontent.com/file/vn-11134201-7qukw-lexrn6f8pm6iab",
+        "https://down-vn.img.susercontent.com/file/vn-11134201-7qukw-lexrn6f8pm6iab",
+        "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lo6aplg8e9yv4a"
+      ],
+      "selectProduct": [
+        {
+          "variant": "Quần jeans",
+          "newPrice": 650000,
+          "oldPrice": 750000,
+          "discount": 13,
+          "sizes": [
+            { "size": "S", "quantity": 10 },
+            { "size": "M", "quantity": 8 },
+            { "size": "L", "quantity": 4 }
+          ]
         }
       ]
     }
