@@ -192,7 +192,7 @@ function ProductDetail() {
   return (
     <div className={cx('wrapper')}>
       <div className={cx('inner')}>
-        {product ? (
+        {product && (
           <>
             <div className={cx('path')}>
               Detail
@@ -414,7 +414,7 @@ function ProductDetail() {
               </div>
             </div>
           </>
-        ) : null}
+        )}
       </div>
       <Footer />
     </div>

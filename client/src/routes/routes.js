@@ -80,6 +80,7 @@ const publicRoutes = [
     component: Notification,
     childrenLayout: AccountWrapper,
     state: 'setting',
+    layout: null,
   },
 
   {

@@ -2008,7 +2008,8 @@
     "selectProduct": [
       {
         "color": "Váy",
-        "newPrice": 800000
+        "newPrice": 800000,
+        "quantity": 43
       }
     ]
   },

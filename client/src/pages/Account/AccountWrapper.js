@@ -32,81 +32,82 @@ function AccountWrapper({ children }) {
     }
   };
   return (
-    <div className={cx('wrapper')}>
-      <h3 className={cx('heading')}>MY ACCOUNT</h3>
-      <div className={cx('inner')}>
-        <div className={cx('account')}>
-          <div className={cx('profile')}>
-            <div className={cx('info')}>
-              <div className={cx('sidebar')}>
-                <Sidebar
-                  rootStyles={{
-                    [`.${sidebarClasses.container}`]: {
-                      backgroundColor: '#547AFF',
-                      padding: '10px',
-                    },
-                  }}
-                  collapsedWidth="65px"
-                  collapsed={collapsed}
-                >
-                  <div className={cx('menu')}>
-                    {!collapsed && (
-                      <img src={images.logo} className={cx('logo')} alt="" />
-                    )}
-                    <FontAwesomeIcon
-                      icon={faRightLeft}
-                      className={cx('icon')}
-                      onClick={() => setCollapsed(!collapsed)}
-                    />
-                  </div>
-                  <Menu
+    <>
+      <div className={cx('wrapper')}>
+        <h3 className={cx('heading')}>MY ACCOUNT</h3>
+        <div className={cx('inner')}>
+          <div className={cx('account')}>
+            <div className={cx('profile')}>
+              <div className={cx('info')}>
+                <div className={cx('sidebar')}>
+                  <Sidebar
                     rootStyles={{
-                      [`.${menuClasses.button}`]: {
-                        color: '#fff',
-                        paddingLeft: '5px',
-                        paddingRight: '5px',
-                        margin: '5px 0',
-                      },
-
-                      [`.${menuClasses.button}:hover`]: {
+                      [`.${sidebarClasses.container}`]: {
                         backgroundColor: '#fff',
-                        color: '#547AFF',
+                        padding: '10px',
                       },
                     }}
+                    collapsedWidth="65px"
+                    collapsed={collapsed}
                   >
-                    {sideBar.map((item, i) => {
-                      return (
-                        <MenuItem
-                          key={i}
-                          style={
-                            appState.includes(item.state)
-                              ? {
-                                  backgroundColor: '#fff',
-                                  color: '#547AFF',
-                                }
-                              : null
-                          }
-                          icon={<FontAwesomeIcon icon={item.icon} />}
-                          onClick={() => handleNavigate(i, item.navigate)}
-                        >
-                          {item.title}
-                        </MenuItem>
-                      );
-                    })}
-                  </Menu>
-                </Sidebar>
+                    <div className={cx('menu')}>
+                      {!collapsed && (
+                        <img src={images.logo} className={cx('logo')} alt="" />
+                      )}
+                      <FontAwesomeIcon
+                        icon={faRightLeft}
+                        className={cx('icon')}
+                        onClick={() => setCollapsed(!collapsed)}
+                      />
+                    </div>
+                    <Menu
+                      rootStyles={{
+                        [`.${menuClasses.button}`]: {
+                          color: '#547AFF',
+                          paddingLeft: '5px',
+                          paddingRight: '5px',
+                          margin: '5px 0',
+                        },
+
+                        [`.${menuClasses.button}:hover`]: {
+                          backgroundColor: 'rgb(235, 241, 255)',
+                          color: '#547AFF',
+                        },
+                      }}
+                    >
+                      {sideBar.map((item, i) => {
+                        return (
+                          <MenuItem
+                            key={i}
+                            style={
+                              appState.includes(item.state)
+                                ? {
+                                    backgroundColor: 'rgb(235, 241, 255)',
+                                  }
+                                : null
+                            }
+                            icon={<FontAwesomeIcon icon={item.icon} />}
+                            onClick={() => handleNavigate(i, item.navigate)}
+                          >
+                            {item.title}
+                          </MenuItem>
+                        );
+                      })}
+                    </Menu>
+                  </Sidebar>
+                </div>
+                <div className={cx('content')}>{children}</div>
               </div>
-              <div className={cx('content')}>{children}</div>
             </div>
-          </div>
-          <div className={cx('image')}>
-            <img className={cx('img')} src={avatar} alt="" />
-            <h4 className={cx('fullName')}>{name}</h4>
+            <div className={cx('image')}>
+              <img className={cx('img')} src={avatar} alt="" />
+              <h4 className={cx('fullName')}>{name}</h4>
+            </div>
           </div>
         </div>
       </div>
       <Footer />
-    </div>
+    </>
   );
 }
 AccountWrapper.propTypes = {

@@ -25,7 +25,7 @@ export const Wrapper = ({ title, children }) => {
     >
       <h3
         style={{
-          fontSize: '2rem',
+          fontSize: '1.8rem',
           marginBottom: '30px',
           color: '#3c71ff',
         }}

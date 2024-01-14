@@ -3,14 +3,13 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import userApi from '~/api/modules/auth.api';
 import cartApi from '~/api/modules/cart.api';
-import Cart from '~/components/Cart/Cart';
 import ModalRating from '~/pages/MyCart/components/ModalRating/ModalRating';
 import { setInfo } from '~/store/slice/infoDataUser';
 import { getCartProduct } from '~/store/slice/myCart';
 import { userData } from '~/store/slice/selector';
 import { setAppState } from '~/store/slice/stateAppSlice';
 import { parseDate } from '~/utils/timeConversion';
-import SidebarResponsive from '../../features/shop/SideBar/SidebarResponsive/SidebarResponsive';
+import SidebarResponsive from './Header/SidebarResponsive/SidebarResponsive';
 
 import { Outlet } from 'react-router-dom';
 import Footer from './Footer/Footer';
@@ -52,7 +51,6 @@ function MainLayout() {
   return (
     <>
       <SidebarResponsive />
-      <Cart />
       <ModalRating />
       <Outlet />
     </>

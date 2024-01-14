@@ -28,7 +28,6 @@
           @include breakpoint(xm) {
             position: relative;
           }
-          height: 100%;
           display: flex;
           @include breakpoint(xm) {
             flex-direction: column;
@@ -38,7 +37,6 @@
             @include breakpoint(xm) {
               position: absolute;
             }
-            height: 100%;
             .menu {
               padding: 10px;
               @include d-flex($center, $s-between);
@@ -49,7 +47,7 @@
                 padding: 4px;
                 font-size: 2rem;
                 cursor: pointer;
-                color: $white-color;
+                color: $lightBlue-color;
                 &:hover {
                   background-color: $white-color;
                   color: #547aff;
@@ -59,7 +57,7 @@
           }
           .content {
             background-color: $white-color;
-
+            min-height: calc(90vh);
             flex: 1;
             @include breakpoint(xm) {
               margin-left: 65px;

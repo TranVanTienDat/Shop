@@ -1,5 +1,6 @@
 import { faBell } from '@fortawesome/free-regular-svg-icons';
 
+import { faOpencart } from '@fortawesome/free-brands-svg-icons';
 import {
   faArrowDownShortWide,
   faArrowRightToBracket,
@@ -32,7 +33,7 @@ import {
 } from '~/store/slice/loadingSlice';
 import { state, userData } from '~/store/slice/selector';
 import { setAppState } from '~/store/slice/stateAppSlice';
-import MenuFilterResponsive from './MenuFilterResponsive/MenuFilterResponsive';
+import MenuFilterResponsive from '../../../features/shop/SideBar/MenuFilterResponsive/MenuFilterResponsive';
 import styles from './header.module.scss';
 const cx = classNames.bind(styles);
 
@@ -51,6 +52,7 @@ function Header() {
   useEffect(() => {
     setUser({ status, avatar });
   }, [status, avatar]);
+
   useEffect(() => {
     if (params.get('keyword')) {
       setSearch(params.get('keyword'));
@@ -61,9 +63,14 @@ function Header() {
     dispatch(setStatus({ status: false }));
   };
 
-  const handleNavigate = () => {
-    navigate('/my-account');
-    dispatch(setAppState('account'));
+  const handleNavigate = (_id) => {
+    if (_id === 0) {
+      navigate('/my-account');
+      dispatch(setAppState('account'));
+    } else if (_id === 1) {
+      navigate('/shopping-cart');
+      dispatch(setAppState('shoppingcart'));
+    }
   };
 
   const handleOnChange = (value) => {
@@ -71,6 +78,7 @@ function Header() {
       setSearch(value);
     }
   };
+
   const handleSearch = () => {
     if (search) {
       navigate({
@@ -161,7 +169,10 @@ function Header() {
                   interactive
                   render={(attrs) => (
                     <ul className={cx('user__menu')} {...attrs} tabIndex="-1">
-                      <li className={cx('item')} onClick={handleNavigate}>
+                      <li
+                        className={cx('item')}
+                        onClick={() => handleNavigate(0)}
+                      >
                         <FontAwesomeIcon
                           className={cx('icon')}
                           icon={faIdBadge}
@@ -174,6 +185,16 @@ function Header() {
                           icon={faCircleInfo}
                         />
                         Feedback and help
+                      </li>
+                      <li
+                        className={cx('item')}
+                        onClick={() => handleNavigate(1)}
+                      >
+                        <FontAwesomeIcon
+                          className={cx('icon')}
+                          icon={faOpencart}
+                        />
+                        Giỏ hàng
                       </li>
                       <li className={cx('item')} onClick={handleLogOut}>
                         <FontAwesomeIcon

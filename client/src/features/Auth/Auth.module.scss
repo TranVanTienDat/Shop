@@ -19,14 +19,14 @@
     }
 
     .register {
-      .text {
-        @include breakpoint(xs) {
-          font-size: 1.6rem;
-        }
-        font-size: 2.2rem;
-        margin-right: 6px;
+      @include breakpoint(xs) {
+        font-size: 1.6rem;
       }
+      font-size: 2rem;
+      margin-right: 6px;
+
       .text--blue {
+        margin-left: 6px;
         cursor: pointer;
         color: #1a83ff;
       }
@@ -81,6 +81,9 @@
           }
         }
         .forgot-password {
+          @include breakpoint(xs) {
+            margin: 0;
+          }
           text-align: right;
           font-size: 1.4rem;
           margin-top: -12px;
