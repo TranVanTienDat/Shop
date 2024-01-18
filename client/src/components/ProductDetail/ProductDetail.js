@@ -23,7 +23,7 @@ import {
 import Footer from '~/layout/MainLayout/Footer/Footer';
 import { onBuy } from '~/store/slice/BuyProductSlice';
 import { setIsLoading, setIsLoadingButton } from '~/store/slice/loadingSlice';
-import { addCartProduct } from '~/store/slice/myCart';
+import { addCartProduct } from '~/store/slice/myCartSlice';
 import { userData } from '~/store/slice/selector';
 import { formatPrice } from '~/utils/func';
 import styles from './ProductDetail.module.scss';
@@ -145,6 +145,7 @@ function ProductDetail() {
   const handleOnClick = async (field) => {
     if (!status) {
       errMes('Bạn cần đăng nhập');
+      navigate('/sign-in');
       return;
     }
 
@@ -355,14 +356,14 @@ function ProductDetail() {
                         icon={<FontAwesomeIcon icon={faCartPlus} />}
                         onClick={() => handleOnClick('cart')}
                       >
-                        Add to Cart
+                        Thêm vào giỏi hàng
                       </Button>
                       <Button
                         large
                         onClick={() => handleOnClick('buy')}
                         icon={<FontAwesomeIcon icon={faHeart} />}
                       >
-                        Buy
+                        Mua
                       </Button>
                     </div>
                   </div>

@@ -39,6 +39,7 @@
         cursor: pointer;
         color: $lightBlue-color;
         @include d-flex($center, $s-between);
+        gap: 6px;
         .title,
         .icon {
           @include breakpoint(xm) {
@@ -64,14 +65,14 @@
         @include breakpoint(xm) {
           color: $firebrick-red-color;
           background-color: transparent;
-          border-left: 2px solid $primary-color;
+          border-left: 2px solid $firebrick-red-color;
         }
         background-color: rgb(235, 241, 255);
       }
     }
 
     .content {
-      width: 100%;
+      flex: 1;
       .list {
         .product {
           @include breakpoint(xm) {

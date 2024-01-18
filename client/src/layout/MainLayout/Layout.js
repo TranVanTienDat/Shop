@@ -5,7 +5,7 @@ import userApi from '~/api/modules/auth.api';
 import cartApi from '~/api/modules/cart.api';
 import ModalRating from '~/pages/MyCart/components/ModalRating/ModalRating';
 import { setInfo } from '~/store/slice/infoDataUser';
-import { getCartProduct } from '~/store/slice/myCart';
+import { getCartProduct } from '~/store/slice/myCartSlice';
 import { userData } from '~/store/slice/selector';
 import { setAppState } from '~/store/slice/stateAppSlice';
 import { parseDate } from '~/utils/timeConversion';

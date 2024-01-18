@@ -1,6 +1,3 @@
-//selector comment
-// export const commentSelector = (state) => state.comment;
-
 //selector infoUser
 export const userData = (state) => state.userData;
 
@@ -18,4 +15,6 @@ export const buySelector = (state) => state.buyProduct;
 
 // rating
 export const ratingSelector = (state) => state.ratingUser;
+
+// state app
 export const state = (state) => state.stateApp;

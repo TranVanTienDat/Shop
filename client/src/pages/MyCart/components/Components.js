@@ -20,12 +20,20 @@ import {
   setIsLoadingButton,
   setIsLoadingRating,
 } from '~/store/slice/loadingSlice';
-import { removeCartProduct } from '~/store/slice/myCart';
+import { removeCartProduct } from '~/store/slice/myCartSlice';
 import { myCart } from '~/store/slice/selector';
 import styles from './Components.module.scss';
 const cx = classNames.bind(styles);
+const buttonLabels = {
+  1: 'Hủy Đơn Hàng',
+  2: 'Liên hệ vận chuyển',
+  3: 'Liên hệ vận chuyển',
+  4: 'Đánh giá sản phẩm',
+};
+
 export const Checkout = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [listOrderProduct, setListOrderProduct] = useState([]);
   const [typeStatus, setTypeStatus] = useState(0);
   const [isLoading, setIsLoading] = useState();
@@ -55,6 +63,22 @@ export const Checkout = () => {
 
     if (err) {
       errMes(err.message);
+    }
+  };
+
+  const handleButtonClick = (data) => {
+    switch (data.status.typeStatus) {
+      case 1:
+        return orderCancel(data._id, 5);
+      case 4:
+        return dispatch(
+          setIsLoadingRating({
+            isLoadingRating: true,
+            productID: data.store.productID,
+          })
+        );
+      default:
+        return null;
     }
   };
   return (
@@ -129,26 +153,8 @@ export const Checkout = () => {
                       </div>
 
                       {data.status.typeStatus !== 5 && (
-                        <Button
-                          large
-                          onClick={
-                            data.status.typeStatus === 1
-                              ? () => orderCancel(data._id, 5)
-                              : data.status.typeStatus === 4
-                              ? () =>
-                                  dispatch(
-                                    setIsLoadingRating({
-                                      isLoadingRating: true,
-                                      productID: data.store.productID,
-                                    })
-                                  )
-                              : null
-                          }
-                        >
-                          {data.status.typeStatus === 1 && 'Hủy Đơn Hàng'}
-                          {data.status.typeStatus === 2 && 'Liên hệ vận chuyển'}
-                          {data.status.typeStatus === 3 && 'Liên hệ vận chuyển'}
-                          {data.status.typeStatus === 4 && 'Đánh giá sản phẩm'}
+                        <Button large onClick={() => handleButtonClick(data)}>
+                          {buttonLabels[data.status.typeStatus]}
                         </Button>
                       )}
                     </div>
@@ -164,7 +170,16 @@ export const Checkout = () => {
                           </h4>
                         </>
                       ) : (
-                        <Button large>Mua lại</Button>
+                        <Button
+                          large
+                          onClick={() =>
+                            navigate(
+                              `/detail-product/${data.store.productName}/${data.store.productID}`
+                            )
+                          }
+                        >
+                          Mua lại
+                        </Button>
                       )}
                     </div>
                   </div>

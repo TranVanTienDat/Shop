@@ -5604,5 +5604,52 @@
         }
       ]
     }
-  ]
+  ],
+  {
+    "_id": { "$oid": "6573f7c411aeabcbff7236d1" },
+    "user": { "$oid": "6536915ac09ee0c3433b44e3" },
+    "data": [
+      {
+        "store": {
+          "productID": { "$oid": "65a11308fd32c48ccb74a651" },
+          "productName": "Giày Sneaker Nữ Phối Màu Hồng Cao Cấp",
+          "productImage": "https://down-vn.img.susercontent.com/file/vn-11134201-7r98o-lowesaw0xjdnce",
+          "productPrice": { "$numberInt": "850000" },
+          "productType": "LV XANH LÁ",
+          "productValue": "40",
+          "productQuantity": { "$numberInt": "2" }
+        },
+        "status": {
+          "typeStatus": { "$numberInt": "5" },
+          "typeText": "đã hủy hàng"
+        },
+        "totalPay": { "$numberInt": "1705000" },
+        "transferTime": "13/01/2024",
+        "receivingTime": "18/01/2024",
+        "address": "Trần đạt(091690253) Hưng giang, việt tiến Thạch Hà, Hà Tĩnh, Việt Nam",
+        "_id": { "$oid": "65a2a0f68bf594d54888ae49" }
+      },
+      {
+        "store": {
+          "productID": { "$oid": "657161b1f198895183d0dcc9" },
+          "productName": "Balo du lịch thời trang cao cấp",
+          "productImage": "https://down-vn.img.susercontent.com/file/1d4789d9f2c64649610384df2d4d63ff",
+          "productPrice": { "$numberInt": "400000" },
+          "productType": "Logo đỏ",
+          "productValue": "Logo đỏ",
+          "productQuantity": { "$numberInt": "2" }
+        },
+        "status": {
+          "typeStatus": { "$numberInt": "5" },
+          "typeText": "đã hủy hàng"
+        },
+        "totalPay": { "$numberInt": "835000" },
+        "transferTime": "09/12/2023",
+        "receivingTime": "14/12/2023",
+        "address": "Trần đạt(0916902766) Hưng giang, việt tiến Thạch Hà, Hà Tĩnh, Việt Nam",
+        "_id": { "$oid": "6573f7c411aeabcbff7236d2" }
+      }
+    ],
+    "__v": { "$numberInt": "1" }
+  }
 ]

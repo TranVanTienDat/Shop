@@ -12,7 +12,7 @@ import cartApi from '~/api/modules/cart.api';
 import images from '~/assets/images';
 import { errMes, success } from '~/constants/ToastMessage/ToastMessage';
 import { setIsLoadingButton } from '~/store/slice/loadingSlice';
-import { removeCartProduct } from '~/store/slice/myCart';
+import { removeCartProduct } from '~/store/slice/myCartSlice';
 import { myCart } from '~/store/slice/selector';
 import { formatPrice } from '~/utils/func';
 import Button from '../Button/Button';
@@ -100,7 +100,7 @@ function Cart() {
         </div>
       )}
       <div onClick={handleAnimate} className={cx('cart__icon')}>
-        <FontAwesomeIcon icon={faClipboardCheck} />
+        <FontAwesomeIcon icon={faClipboardCheck} className={cx('icon')} />
 
         <span className={cx('total')}>{listMyCart?.length || 0}</span>
       </div>

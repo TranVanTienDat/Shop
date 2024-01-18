@@ -42,8 +42,18 @@ function Banner() {
       </section>
 
       <div className={cx('background__banner')}>
-        <img className={cx('img')} src={images.banner1} alt="" />
-        <img className={cx('img')} src={images.banner2} alt="" />
+        <div
+          className={cx('banner__img')}
+          style={{
+            backgroundImage: `url(${images.banner1})`,
+          }}
+        />
+        <div
+          className={cx('banner__img')}
+          style={{
+            backgroundImage: `url(${images.banner2})`,
+          }}
+        />
       </div>
     </div>
   );

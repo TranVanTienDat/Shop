@@ -2,7 +2,11 @@ import classNames from 'classnames/bind';
 
 import { useEffect, useState } from 'react';
 import ReactPaginate from 'react-paginate';
-import { useDispatch } from 'react-redux';
+import {
+  createSearchParams,
+  useNavigate,
+  useSearchParams,
+} from 'react-router-dom';
 import productApi from '~/api/modules/product.api';
 import images from '~/assets/images';
 import InputJoin from '~/components/AboutUs/InputJoin/InputJoin';
@@ -10,11 +14,6 @@ import Banner from '~/components/Banner/Banner';
 import { LoadingAnimate } from '~/components/Loading/LoadingGlobal';
 import Card from '~/features/shop/card/Card';
 import styles from './OrderOnline.module.scss';
-import {
-  createSearchParams,
-  useNavigate,
-  useSearchParams,
-} from 'react-router-dom';
 
 const cx = classNames.bind(styles);
 
@@ -27,7 +26,6 @@ function OrderOnline() {
   const [currentItemPage, setCurrentItemPage] = useState();
   useEffect(() => {
     const fetchProducts = async () => {
-      window.scrollTo(0, 200);
       setIsLoading(true);
       const numberPage = searchParam.get('numberPage');
       const limit = searchParam.get('limit');

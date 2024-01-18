@@ -35,12 +35,6 @@ const user = createSlice({
       state.status = action.payload.status;
       state.avatar = '';
     },
-    addInfoFirebase(state, action) {
-      const { address, phoneNumber, gender } = action.payload;
-      state.address = address;
-      state.phoneNumber = phoneNumber;
-      state.gender = gender;
-    },
     setIsModal(state, action) {
       const { isModal } = action.payload;
       state.isModal = isModal;

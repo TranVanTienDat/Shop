@@ -29,56 +29,43 @@
     right: 2px;
   }
 
-  // style  navigation product
+  // style  pagination product
   .pagination {
     list-style: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 20px auto 0;
+    margin: 30px auto 0;
     max-width: 500px;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    background-color: $white-color;
+
     font-size: 2rem;
-    gap: 5px;
+    @include d-flex($center, $center);
+    gap: 6px;
     @include breakpoint(xs) {
       width: 300px;
     }
 
     .page-item {
       cursor: pointer;
-      border-radius: 3px;
       display: flex;
-      font-weight: 400;
-      padding: 4px 0;
-      @include breakpoint(xs) {
-        padding: 0;
-      }
-
       .page-link {
-        padding: 6px 16px;
-        @include breakpoint(xs) {
-          padding: 6px 8px;
-          font-size: 1.5rem;
-        }
+        padding: 4px 16px;
+      }
+      & a {
+        color: $light-color;
       }
       &:hover {
-        background-color: #5ab1bb;
+        background-color: $primary-color;
         a {
           color: $white-color;
         }
       }
     }
-    & .active {
-      background-color: #5ab1bb;
+
+    .active {
+      background-color: $primary-color;
+      a {
+        color: $white-color;
+      }
     }
   }
-
-  // .page-item-active .page-item:nth-child(2) {
-  //   background-color: #5ab1bb;
-  // }
 
   // custom Banner
   .swiper-pagination-bullet {
@@ -103,53 +90,6 @@
   .css-r2qlta {
     height: 100%;
     border: none;
-  }
-
-  // style  pagination product
-  .pagination {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 20px auto 0;
-    max-width: 500px;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    background-color: $white-color;
-    font-size: 2rem;
-    gap: 5px;
-    @include breakpoint(xs) {
-      width: 300px;
-    }
-
-    .page-item {
-      cursor: pointer;
-      border-radius: 3px;
-      display: flex;
-      font-weight: 400;
-      padding: 4px 0;
-      @include breakpoint(xs) {
-        padding: 0;
-      }
-
-      .page-link {
-        padding: 6px 16px;
-        @include breakpoint(xs) {
-          padding: 6px 8px;
-          font-size: 1.5rem;
-        }
-      }
-      &:hover {
-        background-color: #5ab1bb;
-        a {
-          color: $white-color;
-        }
-      }
-    }
-    & .active {
-      background-color: #5ab1bb;
-    }
   }
 }
 
