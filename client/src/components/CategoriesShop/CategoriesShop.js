@@ -33,6 +33,7 @@ function CategoriesShop() {
   const handleCategories = (title, i) => {
     setItem({ category: title, active: i });
     setPage(0);
+    setProducts([]);
   };
   return (
     <div className={cx('wrapper')}>
